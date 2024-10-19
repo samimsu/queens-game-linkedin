@@ -5,8 +5,22 @@ import { levels } from "../utils/levels";
 
 const Board = ({ board, handleClick, level }) => {
   const colorRegions = levels[level].colorRegions;
-  const extraSmallScreenGridSize = "35px";
-  const smallScreenGridSize = "37px";
+  const extraSmallScreenGridSize =
+    board.length < 8
+      ? "45px"
+      : board.length < 9
+      ? "40px"
+      : board.length < 10
+      ? "35px"
+      : "33px";
+  const smallScreenGridSize =
+    board.length < 8
+      ? "47px"
+      : board.length < 9
+      ? "45px"
+      : board.length < 10
+      ? "37px"
+      : "35px";
   const largeScreenGridSize = "50px";
 
   const getInitialGridSize = () => {
