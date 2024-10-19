@@ -1,31 +1,66 @@
-.App {
-  text-align: center;
+.board {
+  display: grid;
+  width: fit-content;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.square {
+  box-sizing: border-box;
+  width: 35px;
+  height: 35px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border: 1px solid black;
 }
 
-.App-link {
-  color: #61dafb;
+.thick-border-t {
+  border-top: 2px solid black;
 }
 
-.heart {
-  color: #ff0000;
+.thick-border-r {
+  border-right: 2px solid black;
 }
 
-.small {
-  font-size: 0.75rem;
+.thick-border-b {
+  border-bottom: 2px solid black;
+}
+
+.thick-border-l {
+  border-left: 2px solid black;
+}
+
+.thick-outer-border-t {
+  border-top-width: 4px;
+}
+
+.thick-outer-border-r {
+  border-right-width: 4px;
+}
+
+.thick-outer-border-b {
+  border-bottom-width: 4px;
+}
+
+.thick-outer-border-l {
+  border-left-width: 4px;
+}
+
+.bg-purple {
+  background: linear-gradient(#7f5aa3, #441e6b);
+}
+
+@media screen and (min-width: 345px) {
+  .square {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .square {
+    width: 50px;
+    height: 50px;
+  }
 }

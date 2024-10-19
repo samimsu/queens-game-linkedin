@@ -8,15 +8,15 @@
     "@testing-library/user-event": "^14.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.27.0",
     "web-vitals": "^3.1.0"
   },
   "overrides": {
     "@svgr/webpack": "^8.0.1",
-    "@adobe/css-tools": "^4.3.1",
-    "postcss": "^8.4.31"
+    "@adobe/css-tools": "^4.3.1"
   },
   "scripts": {
-    "start": "BROWSER=none WDS_SOCKET_PORT=0 vite --port 3000",
+    "start": "BROWSER=none WDS_SOCKET_PORT=0 vite --port 3000 --host",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest"
@@ -41,7 +41,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.20",
     "jsdom": "^22.1.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
     "vite": "^4.5.5",
     "vitest": "^0.34.6"
   }
