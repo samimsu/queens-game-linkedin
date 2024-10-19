@@ -1,3 +1,15 @@
+import {
+  altoMain,
+  anakiwa,
+  bittersweet,
+  celadon,
+  chardonnay,
+  lightOrchid,
+  lightWisteria,
+  nomad,
+  saharaSand,
+} from "../colors";
+
 const level0 = {
   size: 9,
   colorRegions: [
@@ -12,15 +24,15 @@ const level0 = {
     ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
   ],
   regionColors: {
-    A: "#bba3e2",
-    B: "#ffc992",
-    C: "#ff7b60",
-    D: "#b3dfa0",
-    E: "#dfdfdf",
-    F: "#96beff",
-    G: "#e6f388",
-    H: "#b9b29e",
-    I: "#dfa0bf",
+    A: lightWisteria,
+    B: chardonnay,
+    C: bittersweet,
+    D: celadon,
+    E: altoMain,
+    F: anakiwa,
+    G: saharaSand,
+    H: nomad,
+    I: lightOrchid,
   },
 };
 

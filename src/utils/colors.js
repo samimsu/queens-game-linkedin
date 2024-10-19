@@ -8,6 +8,7 @@ export const celadon = "#B3DFA0";
 export const chardonnay = "#FFC992";
 export const coldPurple = "#AF96DC";
 export const feijoa = "#A6D995";
+export const halfBaked = "#95CBCF";
 export const lightOrchid = "#DFA0BF";
 export const lightWisteria = "#BBA3E2";
 export const macNCheese = "#FBBF81";
