@@ -1,12 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Level from "../components/Level";
+import RootLayout from "../layouts/RootLayout";
 
 const GameLevel = () => {
   const { id } = useParams();
   const level = `level${id}`;
 
-  return <Level key={id} id={id} level={level} />;
+  return (
+    <RootLayout>
+      <Level key={id} id={id} level={level} />
+    </RootLayout>
+  );
 };
 
 export default GameLevel;
