@@ -4,7 +4,7 @@ import CloseIcon from "./icons/CloseIcon";
 
 const WinningScreen = ({ PreviousLevelButton, NextLevelButton, close }) => {
   return (
-    <div className="absolute flex flex-col items-center justify-center text-center rounded-lg bg-purple text-white text-xl w-72 h-72 font-bold p-2 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute flex flex-col items-center justify-center text-center rounded-lg bg-purple text-white text-xl w-72 h-72 font-bold p-2 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
       <button className="absolute right-3 top-3" onClick={close}>
         <CloseIcon />
       </button>
