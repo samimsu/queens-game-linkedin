@@ -17,7 +17,7 @@ const Board = ({ board, handleClick, level }) => {
     board.length < 8
       ? "47px"
       : board.length < 9
-      ? "45px"
+      ? "43px"
       : board.length < 10
       ? "37px"
       : "35px";
