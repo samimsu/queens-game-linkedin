@@ -21,7 +21,7 @@ const LevelSelection = () => {
   const availableLevels = getAvailableLevels();
   const totalLevels = Math.max(...availableLevels);
 
-  const [showOnlyAvailableLevels, setShowOnlyAvailableLevels] = useState(true);
+  const [showOnlyAvailableLevels, setShowOnlyAvailableLevels] = useState(false);
 
   return (
     <RootLayout>
