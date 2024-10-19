@@ -1,12 +1,12 @@
 import React from "react";
 
-const Queen = () => {
+const Queen = ({ size = "24", className = "" }) => {
   return (
     <span role="img" aria-label="queen">
       <svg
-        className="queens-icon-svg"
-        width="24"
-        height="24"
+        className={`queens-icon-svg ${className}`}
+        width={size}
+        height={size}
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >

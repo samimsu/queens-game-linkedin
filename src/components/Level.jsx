@@ -5,12 +5,12 @@ import { createEmptyBoard } from "../utils/board";
 import { checkWinCondition } from "../utils/gameLogic";
 import { levels } from "../utils/levels";
 import getAvailableLevels from "../utils/getAvailableLevels";
-import goldCrown from "../assets/gold-crown.svg";
-import CloseIcon from "./icons/CloseIcon";
 import BackIcon from "./icons/BackIcon";
 import PreviousIcon from "./icons/PreviousIcon";
 import NextIcon from "./icons/NextIcon";
 import WinningScreen from "./WinningScreen";
+import Queen from "./Queen";
+import HowToPlay from "./HowToPlay";
 
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
@@ -90,7 +90,7 @@ const Level = ({ id, level }) => {
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
-        <div className="flex items-center mb-2 justify-between py-1 w-full">
+        <div className="flex items-center mb-2 justify-between py-1 w-full px-2">
           <Link to="/" className="flex-none">
             <button className="border border-slate-500 rounded p-2">
               <BackIcon />
@@ -119,7 +119,6 @@ const Level = ({ id, level }) => {
             Reset
           </button>
         </div>
-
         <div className="game relative">
           {hasWon && (
             <WinningScreen
@@ -130,6 +129,8 @@ const Level = ({ id, level }) => {
           )}
           <Board board={board} handleClick={handleClick} level={level} />
         </div>
+
+        <HowToPlay />
       </div>
     </div>
   );
