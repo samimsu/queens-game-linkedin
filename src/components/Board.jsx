@@ -6,7 +6,7 @@ import { levels } from "../utils/levels";
 const Board = ({ board, handleClick, level }) => {
   const colorRegions = levels[level].colorRegions;
   const extraSmallScreenGridSize = "35px";
-  const smallScreenGridSize = "40px";
+  const smallScreenGridSize = "37px";
   const largeScreenGridSize = "50px";
 
   const getInitialGridSize = () => {

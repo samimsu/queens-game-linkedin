@@ -23,7 +23,7 @@ const LevelSelection = () => {
             </a>
           </h1>
         </div>
-        <div className="grid grid-cols-10 gap-1 p-1 text-sm">
+        <div className="grid grid-cols-8 sm:grid-cols-10 gap-1 p-1 text-sm">
           {Array.from({ length: totalLevels }, (_, i) => i + 1).map((level) => (
             <Link to={`/level/${level}`} key={level}>
               <button
