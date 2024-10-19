@@ -41,7 +41,7 @@ const Square = ({ row, col, value, region, onClick, level }) => {
 
   return (
     <div
-      className={`square _region-${region} ${borderClasses}`}
+      className={`square hover:brightness-75 ${borderClasses}`}
       onClick={onClick}
       style={{ backgroundColor: regionColors[region] }}
     >
