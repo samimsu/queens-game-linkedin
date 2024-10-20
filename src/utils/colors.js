@@ -17,3 +17,25 @@ export const manz = "#DCF079";
 export const nomad = "#B9B29E";
 export const saharaSand = "#E6F388";
 export const tallow = "#ADA68E";
+
+export const colorNames = {
+  "#D9D9D9": "alto",
+  "#DFDFDF": "altoMain",
+  "#96BEFF": "anakiwa",
+  "#FF7B60": "bittersweet",
+  "#D895B2": "canCan",
+  "#F96C51": "carnation",
+  "#B3DFA0": "celadon",
+  "#FFC992": "chardonnay",
+  "#AF96DC": "coldPurple",
+  "#A6D995": "feijoa",
+  "#95CBCF": "halfBaked",
+  "#DFA0BF": "lightOrchid",
+  "#BBA3E2": "lightWisteria",
+  "#FBBF81": "macNCheese",
+  "#85B5FC": "malibu",
+  "#DCF079": "manz",
+  "#B9B29E": "nomad",
+  "#E6F388": "saharaSand",
+  "#ADA68E": "tallow",
+};
