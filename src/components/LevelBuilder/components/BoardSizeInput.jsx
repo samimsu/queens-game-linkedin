@@ -14,6 +14,7 @@ const BoardSizeInput = ({ boardSize, setBoardSize, setBoard }) => {
           setBoardSize(size);
           setBoard(createInitialBoardForBuilder(size));
         }}
+        onFocus={(event) => event.target.select()}
         className="font-bold border rounded border-slate-500 px-2 py-0.5 max-w-16"
       />
     </div>
