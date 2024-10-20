@@ -4,9 +4,9 @@ import {
   bittersweet,
   celadon,
   chardonnay,
+  feijoa,
+  lightOrchid,
   lightWisteria,
-  nomad,
-  saharaSand,
 } from "../colors";
 
 const level90 = {
@@ -27,9 +27,9 @@ const level90 = {
     C: anakiwa,
     D: celadon,
     E: altoMain,
-    F: bittersweet,
-    G: saharaSand,
-    H: nomad,
+    F: lightOrchid,
+    G: feijoa,
+    H: bittersweet,
   },
 };
 
