@@ -27,8 +27,6 @@ const RegionSelect = ({
               width: "20px",
               height: "20px",
               backgroundColor: regionColors[region],
-              // display: "inline-block",
-              // marginLeft: "10px",
             }}
           ></div>
           <select

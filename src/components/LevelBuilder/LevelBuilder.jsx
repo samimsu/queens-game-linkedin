@@ -66,6 +66,7 @@ const LevelBuilder = () => {
     H: nomad,
     I: lightOrchid,
     J: halfBaked,
+    K: tallow,
   });
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
