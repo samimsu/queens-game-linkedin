@@ -4,36 +4,36 @@ import {
   bittersweet,
   celadon,
   chardonnay,
+  halfBaked,
   lightOrchid,
   lightWisteria,
-  nomad,
   saharaSand,
 } from "../colors";
 
-const level0 = {
+const level94 = {
   size: 9,
   colorRegions: [
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["A", "A", "A", "A", "B", "C", "C", "D", "D"],
+    ["A", "B", "B", "B", "B", "B", "C", "C", "D"],
+    ["A", "B", "B", "B", "E", "B", "B", "C", "D"],
+    ["B", "B", "B", "B", "E", "B", "B", "C", "D"],
+    ["B", "F", "F", "F", "E", "E", "B", "B", "D"],
+    ["B", "F", "G", "F", "F", "E", "E", "B", "H"],
+    ["B", "B", "G", "B", "B", "B", "B", "B", "H"],
+    ["B", "B", "G", "B", "B", "I", "I", "I", "H"],
+    ["G", "G", "G", "I", "I", "I", "H", "H", "H"],
   ],
   regionColors: {
-    A: lightWisteria,
-    B: chardonnay,
-    C: bittersweet,
-    D: celadon,
-    E: altoMain,
-    F: anakiwa,
+    A: halfBaked,
+    B: altoMain,
+    C: celadon,
+    D: anakiwa,
+    E: bittersweet,
+    F: lightOrchid,
     G: saharaSand,
-    H: nomad,
-    I: lightOrchid,
+    H: chardonnay,
+    I: lightWisteria,
   },
 };
 
-export default level0;
+export default level94;
