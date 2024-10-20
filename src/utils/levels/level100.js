@@ -4,6 +4,7 @@ import {
   bittersweet,
   celadon,
   chardonnay,
+  feijoa,
   lightOrchid,
   lightWisteria,
   malibu,
@@ -23,8 +24,8 @@ const level100 = {
     ["A", "A", "G", "B", "B", "I", "I", "I", "A", "A", "A"],
     ["A", "A", "I", "I", "I", "I", "A", "A", "A", "A", "J"],
     ["A", "A", "A", "A", "A", "A", "A", "A", "J", "J", "J"],
-    ["A", "A", "A", "A", "A", "J", "J", "J", "J", "F", "F"],
-    ["A", "A", "J", "J", "J", "J", "F", "F", "F", "F", "F"],
+    ["A", "A", "A", "A", "A", "J", "J", "J", "J", "K", "K"],
+    ["A", "A", "J", "J", "J", "J", "K", "K", "K", "K", "K"],
   ],
   regionColors: {
     A: anakiwa,
@@ -37,6 +38,7 @@ const level100 = {
     H: altoMain,
     I: lightOrchid,
     J: bittersweet,
+    K: feijoa,
   },
 };
 
