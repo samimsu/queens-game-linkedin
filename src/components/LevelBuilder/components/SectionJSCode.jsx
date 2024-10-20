@@ -102,7 +102,7 @@ export default level${levelNumber};
         <div>
           Add this code to{" "}
           <a
-            href="https://github.com/samimsu/queens-game-linkedin/new/samimsu-new-levels/src/utils/levels"
+            href="https://github.com/samimsu/queens-game-linkedin/new/new-levels/src/utils/levels"
             target="_blank"
             rel="noopener noreferrer"
           >
