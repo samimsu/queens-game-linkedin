@@ -19,7 +19,7 @@ const level90 = {
     ["A", "F", "G", "F", "H", "H", "H", "B"],
     ["A", "F", "G", "F", "H", "B", "B", "B"],
     ["A", "F", "F", "F", "H", "H", "H", "B"],
-    ["A", "A", "A", "A", "A", "A", "A", "A"],
+    ["A", "A", "A", "A", "A", "A", "A", "B"],
   ],
   regionColors: {
     A: lightWisteria,
