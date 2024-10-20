@@ -3,7 +3,6 @@ import { createInitialBoardForBuilder } from "../../../utils/board";
 
 const BoardSizeInput = ({ boardSize, setBoardSize, setBoard }) => {
   const handleBoardSizeChange = (size) => {
-    if (size > 10 || size < 1) return;
     setBoardSize(size);
     setBoard(createInitialBoardForBuilder(size));
   };
@@ -16,7 +15,7 @@ const BoardSizeInput = ({ boardSize, setBoardSize, setBoard }) => {
         value={boardSize}
         onChange={(e) => {
           const size = Number(e.target.value);
-          if (size > 10 || size < 1) return;
+          if (size > 11 || size < 1) return;
           handleBoardSizeChange(size);
         }}
         onFocus={(event) => event.target.select()}
