@@ -40,7 +40,7 @@ const LevelSelection = () => {
           </h1>
         </div>
 
-        <div className="flex items-center space-x-2 self-start">
+        <div className="flex items-center space-x-2 self-start px-1">
           <input
             type="checkbox"
             checked={showOnlyAvailableLevels}
