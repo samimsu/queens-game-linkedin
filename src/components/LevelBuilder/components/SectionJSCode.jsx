@@ -62,7 +62,7 @@ export default level${levelNumber};
           onClick={() => generateLevelJSCode(levelName, board, regionColors)}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          Generate js code
+          Generate code
         </button>
 
         <button

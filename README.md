@@ -16,12 +16,13 @@
   <img src="https://github.com/user-attachments/assets/b75c29d6-546a-43e9-8d40-a5ba7f63b332" width="192" alt="New Expensify Icon">
 </div>
 
-## Levels Added (37/172)
+## Levels Added (38/172)
 
 - [ ] 1-76
 - [x] 77-100
 - [ ] 101-159
-- [x] 160-172
+- [x] 160-173
 
 ## Build Levels
+
 If you would like to help me build levels you can use the [Level Builder](https://queens-linkedin.vercel.app/level-builder).
