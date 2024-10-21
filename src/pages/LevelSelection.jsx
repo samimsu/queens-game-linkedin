@@ -3,15 +3,24 @@ import { Link } from "react-router-dom";
 import getAvailableLevels from "../utils/getAvailableLevels";
 import queensLogo from "../assets/queens_game_logo.jpeg";
 import RootLayout from "../layouts/RootLayout";
+import Queen from "../components/Queen";
+import { isLevelCompleted } from "../utils/localStorage";
 
 const LevelButton = ({ level, disabled }) => {
+  const completed = isLevelCompleted(level);
+
   return (
     <Link to={`/level/${level}`} key={level}>
       <button
-        className="rounded p-2 w-full text-white bg-[#F96C51] disabled:opacity-75"
+        className="relative rounded p-2 w-full text-white bg-[#F96C51] disabled:opacity-75"
         disabled={disabled}
       >
         {level}
+        {completed && (
+          <span className="absolute top-0 right-0 text-2xl font-bold p-0.5">
+            <Queen size="10" className="fill-yellow-400" />
+          </span>
+        )}
       </button>
     </Link>
   );

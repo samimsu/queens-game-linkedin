@@ -11,6 +11,7 @@ import NextIcon from "./icons/NextIcon";
 import WinningScreen from "./WinningScreen";
 import Queen from "./Queen";
 import HowToPlay from "./HowToPlay";
+import { isLevelCompleted, markLevelAsCompleted } from "../utils/localStorage";
 
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
@@ -22,6 +23,8 @@ const Level = ({ id, level }) => {
 
   const boardSize = levels[level].size;
   const colorRegions = levels[level].colorRegions;
+
+  const completed = isLevelCompleted(Number(id));
 
   // Handle click on square
   const handleClick = (row, col) => {
@@ -44,6 +47,7 @@ const Level = ({ id, level }) => {
     // Check for win condition after updating the board
     if (checkWinCondition(newBoard, boardSize, colorRegions)) {
       setHasWon(true);
+      markLevelAsCompleted(Number(id));
     } else {
       setHasWon(false);
     }
@@ -90,7 +94,7 @@ const Level = ({ id, level }) => {
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
-        <div className="flex items-center mb-2 justify-between py-1 w-full px-2">
+        <div className="flex items-center mb-2 space-x-2 sm:space-x-0 sm:justify-between py-1 w-full px-2">
           <Link to="/" className="flex-none">
             <button className="border border-slate-500 rounded p-2">
               <BackIcon />
@@ -102,22 +106,32 @@ const Level = ({ id, level }) => {
               <PreviousIcon />
             </PreviousLevelButton>
 
-            <h2 className="text-xl">Level {id}</h2>
+            <h2 className="text-xl text-center">Level {id}</h2>
 
             <NextLevelButton className="disabled:opacity-50">
               <NextIcon />
             </NextLevelButton>
           </div>
 
-          <button
-            onClick={() => {
-              setBoard(createEmptyBoard(levels[level].size));
-              setHasWon(false);
-            }}
-            className="border border-slate-500 rounded-full py-1 px-3"
-          >
-            Reset
-          </button>
+          <div className="flex flex-1 sm:flex-none justify-end">
+            <div className="relative flex items-center">
+              {completed && (
+                <Queen
+                  size="24"
+                  className="absolute right-full top-1/2 transform -translate-y-1/2 fill-yellow-400 mr-2"
+                />
+              )}
+              <button
+                onClick={() => {
+                  setBoard(createEmptyBoard(levels[level].size));
+                  setHasWon(false);
+                }}
+                className="border border-slate-500 rounded-full py-1 px-3"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
         </div>
         <div className="game relative">
           {hasWon && (
