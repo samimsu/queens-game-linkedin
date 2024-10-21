@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const useBoardSize = (boardSize) => {
+const useGridSize = (boardSize) => {
   const extraSmallScreenGridSize =
     boardSize < 8
       ? "45px"
@@ -8,7 +8,9 @@ const useBoardSize = (boardSize) => {
       ? "40px"
       : boardSize < 10
       ? "35px"
-      : "33px";
+      : boardSize < 11
+      ? "33px"
+      : "30px";
   const smallScreenGridSize =
     boardSize < 8
       ? "47px"
@@ -16,7 +18,10 @@ const useBoardSize = (boardSize) => {
       ? "43px"
       : boardSize < 10
       ? "37px"
-      : "35px";
+      : boardSize < 11
+      ? "35px"
+      : "33px";
+
   const largeScreenGridSize = "50px";
 
   const getInitialGridSize = () => {
@@ -71,4 +76,4 @@ const useBoardSize = (boardSize) => {
   return { gridSize };
 };
 
-export default useBoardSize;
+export default useGridSize;
