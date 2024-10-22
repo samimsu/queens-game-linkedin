@@ -15,7 +15,7 @@ const LinkedInIcon = ({ className = "" }) => {
 
 const LinkedInNote = ({ className = "" }) => {
   return (
-    <div className={`flex items-end space-x-1 justify-end ${className}`}>
+    <div className={`flex items-end space-x-1 ${className}`}>
       <span className="text-sm">Collected from</span>
       <a
         href="https://www.linkedin.com/showcase/queens-game"

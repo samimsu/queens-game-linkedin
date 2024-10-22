@@ -18,7 +18,7 @@ const LevelSelection = () => {
         showOnlyAvailableLevels={showOnlyAvailableLevels}
         className="mb-3"
       />
-      <LinkedInNote className="self-end" />
+      <LinkedInNote />
     </div>
   );
 };
