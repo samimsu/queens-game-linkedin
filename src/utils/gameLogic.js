@@ -34,32 +34,85 @@ export const isSafeToPlaceQueen = (board, row, col, size, colorRegions) => {
 };
 
 // Check if all queens are placed correctly
+
 export const checkWinCondition = (board, size, colorRegions) => {
   let queensPerRow = Array(size).fill(0);
   let queensPerCol = Array(size).fill(0);
   let queensPerRegion = {};
 
+  // To track if queens are placed diagonally next to each other
+  let mainDiagonal = {};
+  let antiDiagonal = {};
+
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
       if (board[row][col] === "Q") {
+        // Increment row and column queen counts
         queensPerRow[row]++;
         queensPerCol[col]++;
 
+        // Increment region queen count
         const region = colorRegions[row][col];
         if (!queensPerRegion[region]) {
           queensPerRegion[region] = 0;
         }
         queensPerRegion[region]++;
+
+        // Check if queens are touching diagonally on the main diagonal
+        const mainDiagIndex = row - col;
+        if (!mainDiagonal[mainDiagIndex]) {
+          mainDiagonal[mainDiagIndex] = [];
+        }
+        mainDiagonal[mainDiagIndex].push(row);
+
+        // Check if queens are touching diagonally on the anti-diagonal
+        const antiDiagIndex = row + col;
+        if (!antiDiagonal[antiDiagIndex]) {
+          antiDiagonal[antiDiagIndex] = [];
+        }
+        antiDiagonal[antiDiagIndex].push(row);
       }
     }
   }
 
-  // Ensure each row, column, and region has exactly one queen
-  const allRowsCorrect = queensPerRow.every((count) => count === 1);
-  const allColsCorrect = queensPerCol.every((count) => count === 1);
-  const allRegionsCorrect = Object.values(queensPerRegion).every(
-    (count) => count === 1
-  );
+  // Check if there are exactly 1 queen per row, column, and region
+  for (let i = 0; i < size; i++) {
+    if (queensPerRow[i] !== 1 || queensPerCol[i] !== 1) {
+      return false; // Fail condition if any row or column has more than 1 queen
+    }
+  }
 
-  return allRowsCorrect && allColsCorrect && allRegionsCorrect;
+  for (const region in queensPerRegion) {
+    if (queensPerRegion[region] !== 1) {
+      return false; // Fail condition if any region has more than 1 queen
+    }
+  }
+
+  // Check for diagonal adjacency violations
+  for (const diagIndex in mainDiagonal) {
+    const rows = mainDiagonal[diagIndex];
+    if (hasAdjacent(rows)) {
+      return false; // Fail condition if queens are touching on the main diagonal
+    }
+  }
+
+  for (const diagIndex in antiDiagonal) {
+    const rows = antiDiagonal[diagIndex];
+    if (hasAdjacent(rows)) {
+      return false; // Fail condition if queens are touching on the anti-diagonal
+    }
+  }
+
+  return true; // Pass condition if no violations are found
+};
+
+// Helper function to check if queens are placed adjacently in a diagonal
+const hasAdjacent = (rowPositions) => {
+  rowPositions.sort((a, b) => a - b); // Sort the row positions
+  for (let i = 0; i < rowPositions.length - 1; i++) {
+    if (rowPositions[i + 1] - rowPositions[i] === 1) {
+      return true; // If any two queens are adjacent in the diagonal, return true
+    }
+  }
+  return false;
 };
