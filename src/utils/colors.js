@@ -17,6 +17,7 @@ export const manz = "#DCF079";
 export const nomad = "#B9B29E";
 export const saharaSand = "#E6F388";
 export const tallow = "#ADA68E";
+export const turquoiseBlue = "#55EBE2";
 
 export const colorNames = {
   "#D9D9D9": "alto",
@@ -38,4 +39,5 @@ export const colorNames = {
   "#B9B29E": "nomad",
   "#E6F388": "saharaSand",
   "#ADA68E": "tallow",
+  "#55EBE2": "turquoiseBlue",
 };

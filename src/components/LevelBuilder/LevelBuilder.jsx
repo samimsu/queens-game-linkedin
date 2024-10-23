@@ -21,6 +21,7 @@ import {
   nomad,
   saharaSand,
   tallow,
+  turquoiseBlue,
 } from "../../utils/colors";
 import LevelNameInput from "./components/LevelNameInput";
 import RegionSelect from "./components/RegionSelect";
@@ -48,6 +49,7 @@ const colorOptions = [
   { name: "Nomad", value: nomad },
   { name: "Sahara Sand", value: saharaSand },
   { name: "Tallow", value: tallow },
+  { name: "Turquoise Blue", value: turquoiseBlue },
 ];
 
 const LevelBuilder = () => {
@@ -68,7 +70,7 @@ const LevelBuilder = () => {
     H: nomad,
     I: lightOrchid,
     J: halfBaked,
-    K: tallow,
+    K: turquoiseBlue,
   };
 
   const [regionColors, setRegionColors] = useState(

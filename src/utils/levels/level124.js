@@ -10,6 +10,7 @@ import {
   manz,
   nomad,
   saharaSand,
+  turquoiseBlue,
 } from "../colors";
 
 const level124 = {
@@ -38,7 +39,7 @@ const level124 = {
     H: bittersweet,
     I: saharaSand,
     J: nomad,
-    K: manz,
+    K: turquoiseBlue,
   },
 };
 
