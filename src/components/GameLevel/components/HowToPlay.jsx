@@ -1,5 +1,5 @@
 import React from "react";
-import Queen from "./Queen";
+import Queen from "../../Queen";
 
 const HowToPlay = () => {
   return (

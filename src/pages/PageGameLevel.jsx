@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Level from "../components/Level";
+import Level from "../components/GameLevel/Level";
 import RootLayout from "../layouts/RootLayout";
 
 const GameLevel = () => {

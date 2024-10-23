@@ -1,7 +1,7 @@
 import React from "react";
 import Square from "./Square";
-import useGridSize from "../hooks/useGridSize";
-import { levels } from "../utils/levels";
+import useGridSize from "../../../hooks/useGridSize";
+import { levels } from "../../../utils/levels";
 
 const Board = ({ board, handleClick, level }) => {
   const { gridSize } = useGridSize(board.length);

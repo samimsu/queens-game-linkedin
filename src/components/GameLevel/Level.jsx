@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Board from "./Board";
-import { createEmptyBoard } from "../utils/board";
-import { checkWinCondition } from "../utils/gameLogic";
-import { levels } from "../utils/levels";
-import getAvailableLevels from "../utils/getAvailableLevels";
-import BackIcon from "./icons/BackIcon";
-import PreviousIcon from "./icons/PreviousIcon";
-import NextIcon from "./icons/NextIcon";
-import WinningScreen from "./WinningScreen";
-import Queen from "./Queen";
-import HowToPlay from "./HowToPlay";
-import { isLevelCompleted, markLevelAsCompleted } from "../utils/localStorage";
+import Board from "./components/Board";
+import { createEmptyBoard } from "../../utils/board";
+import { checkWinCondition } from "../../utils/gameLogic";
+import { levels } from "../../utils/levels";
+import getAvailableLevels from "../../utils/getAvailableLevels";
+import BackIcon from "../icons/BackIcon";
+import PreviousIcon from "../icons/PreviousIcon";
+import NextIcon from "../icons/NextIcon";
+import WinningScreen from "./components/WinningScreen";
+import Queen from "../Queen";
+import HowToPlay from "./components/HowToPlay";
+import {
+  isLevelCompleted,
+  markLevelAsCompleted,
+} from "../../utils/localStorage";
 
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));

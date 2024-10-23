@@ -1,7 +1,7 @@
 import React from "react";
-import Queen from "./Queen";
+import Queen from "../../Queen";
 import Cross from "./Cross";
-import { levels } from "../utils/levels";
+import { levels } from "../../../utils/levels";
 
 // Square component with color regions and toggling between 'X', 'Q', and empty
 const Square = ({ row, col, value, region, onClick, level }) => {

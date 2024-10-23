@@ -1,6 +1,6 @@
 import React from "react";
-import goldCrown from "../assets/gold-crown.svg";
-import CloseIcon from "./icons/CloseIcon";
+import goldCrown from "../../../assets/gold-crown.svg";
+import CloseIcon from "../../icons/CloseIcon";
 
 const WinningScreen = ({ PreviousLevelButton, NextLevelButton, close }) => {
   return (
