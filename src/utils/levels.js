@@ -22,6 +22,31 @@ import level97 from "./levels/level97";
 import level98 from "./levels/level98";
 import level99 from "./levels/level99";
 import level100 from "./levels/level100";
+import level101 from "./levels/level101";
+import level102 from "./levels/level102";
+import level103 from "./levels/level103";
+import level104 from "./levels/level104";
+import level105 from "./levels/level105";
+import level106 from "./levels/level106";
+import level107 from "./levels/level107";
+import level108 from "./levels/level108";
+import level109 from "./levels/level109";
+import level110 from "./levels/level110";
+import level111 from "./levels/level111";
+import level112 from "./levels/level112";
+import level113 from "./levels/level113";
+import level114 from "./levels/level114";
+import level115 from "./levels/level115";
+import level116 from "./levels/level116";
+import level117 from "./levels/level117";
+import level118 from "./levels/level118";
+import level119 from "./levels/level119";
+import level120 from "./levels/level120";
+import level121 from "./levels/level121";
+import level122 from "./levels/level122";
+import level123 from "./levels/level123";
+import level124 from "./levels/level124";
+import level125 from "./levels/level125";
 import level160 from "./levels/level160";
 import level161 from "./levels/level161";
 import level162 from "./levels/level162";
@@ -65,6 +90,31 @@ export const levels = {
   level98,
   level99,
   level100,
+  level101,
+  level102,
+  level103,
+  level104,
+  level105,
+  level106,
+  level107,
+  level108,
+  level109,
+  level110,
+  level111,
+  level112,
+  level113,
+  level114,
+  level115,
+  level116,
+  level117,
+  level118,
+  level119,
+  level120,
+  level121,
+  level122,
+  level123,
+  level124,
+  level125,
   level160,
   level161,
   level162,
