@@ -19,7 +19,9 @@
     "start": "vite --port 3000 --host",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "prettier:check": "npx prettier ./src/utils/levels --check",
+    "prettier:write": "npx prettier ./src/utils/levels --write"
   },
   "eslintConfig": {
     "extends": [
