@@ -1,7 +1,7 @@
 import React from "react";
 import RootLayout from "../layouts/RootLayout";
 
-import LevelSelection from "../components/LevelSection/LevelSelection";
+import LevelSelection from "../components/LevelSelection/LevelSelection";
 
 const PageLevelSelection = () => {
   return (
