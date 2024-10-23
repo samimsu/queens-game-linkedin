@@ -15,7 +15,6 @@ const BoardSizeInput = ({ boardSize, handleBoardSizeChange }) => {
         value={boardSize}
         onChange={(e) => {
           const size = Number(e.target.value);
-          if (size > 11 || size < 1) return;
           handleBoardSizeChange(size);
         }}
         onFocus={(event) => event.target.select()}

@@ -89,6 +89,7 @@ const LevelBuilder = () => {
   };
 
   const handleBoardSizeChange = (newSize) => {
+    if (newSize > 11 || newSize < 1) return;
     setBoardSize(newSize);
     setBoard(createInitialBoardForBuilder(newSize));
 
