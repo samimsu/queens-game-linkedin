@@ -1,11 +1,11 @@
 import React from "react";
 import { createInitialBoardForBuilder } from "../../../utils/board";
 
-const BoardSizeInput = ({ boardSize, setBoardSize, setBoard }) => {
-  const handleBoardSizeChange = (size) => {
-    setBoardSize(size);
-    setBoard(createInitialBoardForBuilder(size));
-  };
+const BoardSizeInput = ({ boardSize, handleBoardSizeChange }) => {
+  // const handleBoardSizeChange = (size) => {
+  //   setBoardSize(size);
+  //   setBoard(createInitialBoardForBuilder(size));
+  // };
 
   return (
     <div className="mb-3 flex items-center space-x-3 text-lg">

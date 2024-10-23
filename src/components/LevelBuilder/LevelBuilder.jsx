@@ -55,7 +55,9 @@ const LevelBuilder = () => {
   const [levelName, setLevelName] = useState(1);
   const [board, setBoard] = useState(createInitialBoardForBuilder(boardSize));
   const [selectedRegion, setSelectedRegion] = useState("A");
-  const [regionColors, setRegionColors] = useState({
+
+  const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
+  const initialRegionColors = {
     A: lightWisteria,
     B: chardonnay,
     C: anakiwa,
@@ -67,7 +69,13 @@ const LevelBuilder = () => {
     I: lightOrchid,
     J: halfBaked,
     K: tallow,
-  });
+  };
+
+  const [regionColors, setRegionColors] = useState(
+    Object.fromEntries(
+      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
+    )
+  );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
   const [hideRegionValues, setHideRegionValues] = useState(false);
@@ -78,6 +86,21 @@ const LevelBuilder = () => {
 
   const handleRegionSelect = (region) => {
     setSelectedRegion(region);
+  };
+
+  const handleBoardSizeChange = (newSize) => {
+    setBoardSize(newSize);
+    setBoard(createInitialBoardForBuilder(newSize));
+
+    // Update the regions when board size changes
+    const updatedRegionKeys = "ABCDEFGHIJK".slice(0, newSize);
+    setRegionColors(
+      Object.fromEntries(
+        updatedRegionKeys
+          .split("")
+          .map((key) => [key, initialRegionColors[key]])
+      )
+    );
   };
 
   const handleSquareClick = (row, col) => {
@@ -123,8 +146,7 @@ const LevelBuilder = () => {
                 <div className="flex space-x-4 justify-between items-center">
                   <BoardSizeInput
                     boardSize={boardSize}
-                    setBoardSize={setBoardSize}
-                    setBoard={setBoard}
+                    handleBoardSizeChange={handleBoardSizeChange}
                   />
 
                   <button
