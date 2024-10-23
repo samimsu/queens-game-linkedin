@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    <a href="https://queens-linkedin.vercel.app/">
+    <a href="https://queensgame.vercel.app/">
       Queens
     </a>
   </h1>
@@ -25,4 +25,4 @@
 
 ## Build Levels
 
-If you would like to help me build levels you can use the [Level Builder](https://queens-linkedin.vercel.app/level-builder).
+If you would like to help me build levels you can use the [Level Builder](https://queensgame.vercel.app/level-builder).
