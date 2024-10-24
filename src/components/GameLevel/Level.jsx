@@ -20,6 +20,7 @@ import ResetIcon from "../icons/ResetIcon";
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
   const [hasWon, setHasWon] = useState(false);
+  const [showWinningScreen, setShowWinningScreen] = useState(false);
 
   const availableLevels = getAvailableLevels();
   const previousDisabled = !availableLevels.includes(Number(id) - 1);
@@ -50,10 +51,14 @@ const Level = ({ id, level }) => {
 
     // Check for win condition after updating the board
     if (checkWinCondition(newBoard, boardSize, colorRegions)) {
+      if (!hasWon) {
+        setShowWinningScreen(true);
+      }
       setHasWon(true);
       markLevelAsCompleted(Number(id));
     } else {
       setHasWon(false);
+      setShowWinningScreen(false);
     }
   };
 
@@ -134,6 +139,7 @@ const Level = ({ id, level }) => {
                   onClick={() => {
                     setBoard(createEmptyBoard(levels[level].size));
                     setHasWon(false);
+                    setShowWinningScreen(false);
                   }}
                   className="border border-slate-500 rounded-full p-2"
                 >
@@ -144,11 +150,11 @@ const Level = ({ id, level }) => {
           </div>
 
           <div className="game relative">
-            {hasWon && (
+            {showWinningScreen && (
               <WinningScreen
                 PreviousLevelButton={PreviousLevelButton}
                 NextLevelButton={NextLevelButton}
-                close={() => setHasWon(false)}
+                close={() => setShowWinningScreen(false)}
               />
             )}
             <Board board={board} handleClick={handleClick} level={level} />
