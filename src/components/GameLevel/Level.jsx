@@ -15,6 +15,7 @@ import {
   isLevelCompleted,
   markLevelAsCompleted,
 } from "../../utils/localStorage";
+import ResetIcon from "../icons/ResetIcon";
 
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
@@ -101,14 +102,14 @@ const Level = ({ id, level }) => {
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
-        <div className="flex items-center mb-2 space-x-2 sm:space-x-0 sm:justify-between py-1 w-full px-2">
+        <div className="flex items-center mb-2 space-x-4 sm:space-x-0 sm:justify-between py-1 w-full px-2">
           <Link to="/" className="flex-none">
-            <button className="border border-slate-500 rounded p-2">
+            <button className="border border-slate-500 rounded-full p-2">
               <BackIcon />
             </button>
           </Link>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <PreviousLevelButton className="disabled:opacity-50">
               <PreviousIcon />
             </PreviousLevelButton>
@@ -133,10 +134,12 @@ const Level = ({ id, level }) => {
                   setBoard(createEmptyBoard(levels[level].size));
                   setHasWon(false);
                 }}
-                className="border border-slate-500 rounded-full py-1 px-3"
+                className="border border-slate-500 rounded-full p-2"
               >
-                Reset
+                <ResetIcon size="18" />
+                {/* Reset */}
               </button>
+              <button></button>
             </div>
           </div>
         </div>
