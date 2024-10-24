@@ -8,7 +8,13 @@ const WinningScreen = ({ PreviousLevelButton, NextLevelButton, close }) => {
       <button className="absolute right-3 top-3" onClick={close}>
         <CloseIcon />
       </button>
-      <img src={goldCrown} alt="Crown" className="align-items-center mb-3" />
+      <img
+        src={goldCrown}
+        alt="Crown"
+        className="align-items-center mb-3"
+        width="64"
+        height="64"
+      />
       <div className="text-2xl mb-6">You Win!</div>
       <div className="flex flex-col space-y-3">
         <PreviousLevelButton
