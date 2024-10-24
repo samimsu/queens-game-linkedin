@@ -102,56 +102,57 @@ const Level = ({ id, level }) => {
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
-        <div className="flex items-center mb-2 space-x-4 sm:space-x-0 sm:justify-between py-1 w-full px-2">
-          <Link to="/" className="flex-none">
-            <button className="border border-slate-500 rounded-full p-2">
-              <BackIcon />
-            </button>
-          </Link>
-
-          <div className="flex items-center space-x-2">
-            <PreviousLevelButton className="disabled:opacity-50">
-              <PreviousIcon />
-            </PreviousLevelButton>
-
-            <h2 className="text-xl text-center">Level {id}</h2>
-
-            <NextLevelButton className="disabled:opacity-50">
-              <NextIcon />
-            </NextLevelButton>
-          </div>
-
-          <div className="flex flex-1 sm:flex-none justify-end">
-            <div className="relative flex items-center">
-              {completed && (
-                <Queen
-                  size="24"
-                  className="absolute right-full top-1/2 transform -translate-y-1/2 fill-yellow-400 mr-2"
-                />
-              )}
-              <button
-                onClick={() => {
-                  setBoard(createEmptyBoard(levels[level].size));
-                  setHasWon(false);
-                }}
-                className="border border-slate-500 rounded-full p-2"
-              >
-                <ResetIcon size="18" />
-                {/* Reset */}
+        <div>
+          <div className="flex items-center mb-2 space-x-4 sm:space-x-0 sm:justify-between py-1 w-full">
+            <Link to="/" className="flex-none">
+              <button className="border border-slate-500 rounded-full p-2">
+                <BackIcon />
               </button>
-              <button></button>
+            </Link>
+
+            <div className="flex items-center space-x-2">
+              <PreviousLevelButton className="disabled:opacity-50">
+                <PreviousIcon />
+              </PreviousLevelButton>
+
+              <h2 className="text-xl text-center">Level {id}</h2>
+
+              <NextLevelButton className="disabled:opacity-50">
+                <NextIcon />
+              </NextLevelButton>
+            </div>
+
+            <div className="flex flex-1 sm:flex-none justify-end">
+              <div className="relative flex items-center">
+                {completed && (
+                  <Queen
+                    size="24"
+                    className="absolute right-full top-1/2 transform -translate-y-1/2 fill-yellow-400 mr-2"
+                  />
+                )}
+                <button
+                  onClick={() => {
+                    setBoard(createEmptyBoard(levels[level].size));
+                    setHasWon(false);
+                  }}
+                  className="border border-slate-500 rounded-full p-2"
+                >
+                  <ResetIcon size="18" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="game relative">
-          {hasWon && (
-            <WinningScreen
-              PreviousLevelButton={PreviousLevelButton}
-              NextLevelButton={NextLevelButton}
-              close={() => setHasWon(false)}
-            />
-          )}
-          <Board board={board} handleClick={handleClick} level={level} />
+
+          <div className="game relative">
+            {hasWon && (
+              <WinningScreen
+                PreviousLevelButton={PreviousLevelButton}
+                NextLevelButton={NextLevelButton}
+                close={() => setHasWon(false)}
+              />
+            )}
+            <Board board={board} handleClick={handleClick} level={level} />
+          </div>
         </div>
 
         <HowToPlay />
