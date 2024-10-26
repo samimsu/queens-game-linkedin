@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import RootLayout from "../../layouts/RootLayout";
 import { createInitialBoardForBuilder } from "../../utils/board";
 import {
@@ -162,7 +163,15 @@ const LevelBuilder = () => {
   return (
     <RootLayout className="!overflow-auto">
       <div className="mt-2 mx-2 sm:mx-8">
-        <h1 className="text-4xl mb-8">Level Builder</h1>
+        {/* BREADCRUMBS */}
+        <div className="text-sm mb-4">
+          <Link to="/" className="text-blue-500">
+            Home
+          </Link>{" "}
+          / Level Builder
+        </div>
+
+        <h1 className="text-4xl mb-6">Level Builder</h1>
 
         <div className="flex flex-col space-y-2">
           <LevelNameInput levelName={levelName} setLevelName={setLevelName} />
