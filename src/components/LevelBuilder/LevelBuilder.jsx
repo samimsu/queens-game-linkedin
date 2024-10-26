@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RootLayout from "../../layouts/RootLayout";
 import { createInitialBoardForBuilder } from "../../utils/board";
 import {
@@ -28,6 +28,9 @@ import RegionSelect from "./components/RegionSelect";
 import Board from "./components/Board";
 import BoardSizeInput from "./components/BoardSizeInput";
 import SectionJSCode from "./components/SectionJSCode";
+import useImageGridProcessing from "../../hooks/useImageGridProcessing";
+import PasteImage from "./components/PasteImage";
+import PreviewImage from "./PreviewImage";
 
 const colorOptions = [
   { name: "Alto", value: alto },
@@ -57,6 +60,7 @@ const LevelBuilder = () => {
   const [levelName, setLevelName] = useState(1);
   const [board, setBoard] = useState(createInitialBoardForBuilder(boardSize));
   const [selectedRegion, setSelectedRegion] = useState("A");
+  const [image, setImage] = useState(null);
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
   const initialRegionColors = {
@@ -81,6 +85,13 @@ const LevelBuilder = () => {
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
   const [hideRegionValues, setHideRegionValues] = useState(false);
+
+  useImageGridProcessing({
+    setBoardSize,
+    setBoard,
+    setRegionColors,
+    levelImg: image,
+  });
 
   const handleColorChange = (region, color) => {
     setRegionColors({ ...regionColors, [region]: color });
@@ -122,6 +133,31 @@ const LevelBuilder = () => {
     );
     setBoard(newBoard);
   };
+
+  const handlePaste = () => {
+    navigator.clipboard.read().then((items) => {
+      items.forEach((item) => {
+        if (item.types.includes("image/png")) {
+          item.getType("image/png").then((blob) => {
+            const imageUrl = URL.createObjectURL(blob);
+            setImage(imageUrl);
+          });
+        }
+      });
+    });
+  };
+
+  const handlePasteByShortcut = (event) => {
+    if (event.ctrlKey && event.key === "v") {
+      handlePaste();
+    }
+  };
+
+  // Handle ctrl+v to paste image from clipboard
+  useEffect(() => {
+    window.addEventListener("keydown", handlePasteByShortcut);
+    return () => window.removeEventListener("keydown", handlePasteByShortcut);
+  }, []);
 
   return (
     <RootLayout className="!overflow-auto">
@@ -170,14 +206,18 @@ const LevelBuilder = () => {
                   hideRegionValues={hideRegionValues}
                 />
 
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    value={hideRegionValues}
-                    onChange={() => setHideRegionValues((prev) => !prev)}
-                  />
-                  <label>Hide letters</label>
+                <div className="flex space-x-3 justify-between mb-2">
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      value={hideRegionValues}
+                      onChange={() => setHideRegionValues((prev) => !prev)}
+                    />
+                    <label className="whitespace-nowrap">Hide letters</label>
+                  </div>
+                  <PasteImage handlePaste={handlePaste} />
                 </div>
+                {image && <PreviewImage image={image} className="w-full" />}
               </div>
             </div>
 
