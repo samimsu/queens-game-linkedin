@@ -6,6 +6,11 @@ const useImageGridProcessing = ({
   setBoard,
   setRegionColors,
   levelImg,
+  setVerticalLines,
+  setHorizontalLines,
+  tolerance,
+  minLineHeight,
+  minLineWidth,
 }) => {
   useEffect(() => {
     if (!levelImg) return;
@@ -32,6 +37,9 @@ const useImageGridProcessing = ({
       const correctedVerticalLines = insertMissingLines(verticalLines);
       const correctedHorizontalLines = insertMissingLines(horizontalLines);
 
+      setVerticalLines(correctedVerticalLines);
+      setHorizontalLines(correctedHorizontalLines);
+
       // Step 2: Extract colors from each cell based on detected grid boundaries
       const { board, regionColors } = detectColorsInGrid(
         imageData,
@@ -43,7 +51,7 @@ const useImageGridProcessing = ({
       setBoard(board);
       setRegionColors(regionColors);
     };
-  }, [levelImg]);
+  }, [levelImg, tolerance, minLineHeight, minLineWidth]);
 
   // Convert a hex color to RGB
   const hexToRgb = (hex) => {
@@ -81,17 +89,9 @@ const useImageGridProcessing = ({
     return closestHex;
   };
 
-  const detectGridLinesInRegion = (
-    imageData,
-    width,
-    height,
-    tolerance = 10
-  ) => {
+  const detectGridLinesInRegion = (imageData, width, height) => {
     const verticalLines = [];
     const horizontalLines = [];
-
-    const MIN_LINE_HEIGHT = 0.1; // Minimum proportion of dark pixels needed
-    const MIN_LINE_WIDTH = 0.1; // Minimum proportion of dark pixels needed
 
     // Scan for potential grid start
     let gridStartX = null;
@@ -112,7 +112,7 @@ const useImageGridProcessing = ({
           darkPixelCount++;
         }
       }
-      if (isLine && darkPixelCount / height >= MIN_LINE_HEIGHT) {
+      if (isLine && darkPixelCount / height >= minLineHeight) {
         gridStartX = x;
         break;
       }
@@ -133,7 +133,7 @@ const useImageGridProcessing = ({
           darkPixelCount++;
         }
       }
-      if (isLine && darkPixelCount / width >= MIN_LINE_WIDTH) {
+      if (isLine && darkPixelCount / width >= minLineWidth) {
         gridStartY = y;
         break;
       }
@@ -156,7 +156,7 @@ const useImageGridProcessing = ({
             darkPixelCount++;
           }
         }
-        if (isLine && darkPixelCount / height >= MIN_LINE_HEIGHT) {
+        if (isLine && darkPixelCount / height >= minLineHeight) {
           verticalLines.push(x);
           x += tolerance; // Skip ahead to account for line thickness
         }
@@ -177,7 +177,7 @@ const useImageGridProcessing = ({
             darkPixelCount++;
           }
         }
-        if (isLine && darkPixelCount / width >= MIN_LINE_WIDTH) {
+        if (isLine && darkPixelCount / width >= minLineWidth) {
           horizontalLines.push(y);
           y += tolerance; // Skip ahead to account for line thickness
         }
@@ -187,12 +187,7 @@ const useImageGridProcessing = ({
     return { verticalLines, horizontalLines };
   };
 
-  const detectColorsInGrid = (
-    imageData,
-    verticalLines,
-    horizontalLines,
-    tolerance = 10
-  ) => {
+  const detectColorsInGrid = (imageData, verticalLines, horizontalLines) => {
     const board = [];
     const regionColors = {};
     const colorMapping = {};
@@ -239,7 +234,7 @@ const useImageGridProcessing = ({
         if (!colorMapping[closestHex]) {
           const region = String.fromCharCode(currentRegionCode);
           colorMapping[closestHex] = region;
-          regionColors[region] = closestHex;
+          regionColors[region] = closestHex || "";
           currentRegionCode++;
         }
 

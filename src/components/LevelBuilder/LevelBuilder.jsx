@@ -62,6 +62,12 @@ const LevelBuilder = () => {
   const [board, setBoard] = useState(createInitialBoardForBuilder(boardSize));
   const [selectedRegion, setSelectedRegion] = useState("A");
   const [image, setImage] = useState(null);
+  const [showGridLines, setShowGridLines] = useState(false);
+  const [verticalLines, setVerticalLines] = useState([]);
+  const [horizontalLines, setHorizontalLines] = useState([]);
+  const [tolerance, setTolerance] = useState(10);
+  const [minLineHeight, setMinLineHeight] = useState(0.1);
+  const [minLineWidth, setMinLineWidth] = useState(0.1);
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
   const initialRegionColors = {
@@ -92,6 +98,11 @@ const LevelBuilder = () => {
     setBoard,
     setRegionColors,
     levelImg: image,
+    setVerticalLines,
+    setHorizontalLines,
+    tolerance,
+    minLineHeight,
+    minLineWidth,
   });
 
   const handleColorChange = (region, color) => {
@@ -226,7 +237,23 @@ const LevelBuilder = () => {
                   </div>
                   <PasteImage handlePaste={handlePaste} />
                 </div>
-                {image && <PreviewImage image={image} className="w-full" />}
+
+                {image && (
+                  <PreviewImage
+                    image={image}
+                    verticalLines={verticalLines}
+                    horizontalLines={horizontalLines}
+                    showGridLines={showGridLines}
+                    setShowGridLines={setShowGridLines}
+                    tolerance={tolerance}
+                    setTolerance={setTolerance}
+                    minLineHeight={minLineHeight}
+                    setMinLineHeight={setMinLineHeight}
+                    minLineWidth={minLineWidth}
+                    setMinLineWidth={setMinLineWidth}
+                    className="w-full"
+                  />
+                )}
               </div>
             </div>
 
