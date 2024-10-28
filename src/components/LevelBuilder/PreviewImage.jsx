@@ -69,13 +69,18 @@ const PreviewImage = ({
 
       {/* Controls */}
       <div className="flex flex-col text-sm space-y-2">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center">
           <input
             type="checkbox"
             checked={showGridLines}
             onChange={() => setShowGridLines((prev) => !prev)}
           />
-          <label className="whitespace-nowrap">Show Grid Lines</label>
+          <label
+            onClick={() => setShowGridLines((prev) => !prev)}
+            className="pl-2 whitespace-nowrap"
+          >
+            Show grid lines
+          </label>
         </div>
         <label className="flex flex-col">
           Tolerance

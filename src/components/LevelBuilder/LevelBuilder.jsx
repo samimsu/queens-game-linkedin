@@ -227,13 +227,18 @@ const LevelBuilder = () => {
                 />
 
                 <div className="flex space-x-3 justify-between mb-2">
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center">
                     <input
                       type="checkbox"
-                      value={hideRegionValues}
+                      checked={hideRegionValues}
                       onChange={() => setHideRegionValues((prev) => !prev)}
                     />
-                    <label className="whitespace-nowrap">Hide letters</label>
+                    <label
+                      className="whitespace-nowrap pl-2"
+                      onClick={() => setHideRegionValues((prev) => !prev)}
+                    >
+                      Hide letters
+                    </label>
                   </div>
                   <PasteImage handlePaste={handlePaste} />
                 </div>

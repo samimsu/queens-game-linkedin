@@ -2,9 +2,11 @@ import React from "react";
 
 const AvailableLevelsFilter = ({ checked, handleChange }) => {
   return (
-    <div className="flex items-center space-x-2 self-start px-1">
+    <div className="flex items-center self-start px-1">
       <input type="checkbox" checked={checked} onChange={handleChange} />
-      <label>Available levels only</label>
+      <label onClick={handleChange} className="pl-2">
+        Available levels only
+      </label>
     </div>
   );
 };
