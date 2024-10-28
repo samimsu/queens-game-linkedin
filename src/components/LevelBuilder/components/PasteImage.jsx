@@ -29,7 +29,7 @@ const PasteImage = ({ handlePaste }) => {
   }, [showHelperText]);
   return (
     <div className="flex items-center space-x-2">
-      <button onClick={handlePaste} title="helloworld">
+      <button onClick={handlePaste}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
