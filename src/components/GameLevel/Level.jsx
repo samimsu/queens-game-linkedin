@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
-import { checkWinCondition } from "../../utils/gameLogic";
+import { checkWinCondition, getClashingQueens } from "../../utils/gameLogic";
 import { levels } from "../../utils/levels";
 import getAvailableLevels from "../../utils/getAvailableLevels";
 import BackIcon from "../icons/BackIcon";
@@ -21,6 +21,7 @@ const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
   const [hasWon, setHasWon] = useState(false);
   const [showWinningScreen, setShowWinningScreen] = useState(false);
+  const [clashingQueens, setClashingQueens] = useState(new Set());
 
   const availableLevels = getAvailableLevels();
   const previousDisabled = !availableLevels.includes(Number(id) - 1);
@@ -60,6 +61,17 @@ const Level = ({ id, level }) => {
       setHasWon(false);
       setShowWinningScreen(false);
     }
+
+    // Update clashing queens
+    const clashingPositions = getClashingQueens(
+      newBoard,
+      boardSize,
+      colorRegions
+    );
+    const clashingSet = new Set(
+      clashingPositions.map(({ row, col }) => `${row},${col}`)
+    );
+    setClashingQueens(clashingSet);
   };
 
   const PreviousLevelButton = ({ children, className }) => {
@@ -103,6 +115,15 @@ const Level = ({ id, level }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    // Update clashing queens
+    const clashingPositions = getClashingQueens(board, boardSize, colorRegions);
+    const clashingSet = new Set(
+      clashingPositions.map(({ row, col }) => `${row},${col}`)
+    );
+    setClashingQueens(clashingSet);
+  }, [board]);
 
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
@@ -157,7 +178,12 @@ const Level = ({ id, level }) => {
                 close={() => setShowWinningScreen(false)}
               />
             )}
-            <Board board={board} handleClick={handleClick} level={level} />
+            <Board
+              board={board}
+              handleClick={handleClick}
+              level={level}
+              clashingQueens={clashingQueens}
+            />
           </div>
         </div>
 

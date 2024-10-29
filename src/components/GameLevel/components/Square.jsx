@@ -4,10 +4,12 @@ import Cross from "./Cross";
 import { levels } from "../../../utils/levels";
 
 // Square component with color regions and toggling between 'X', 'Q', and empty
-const Square = ({ row, col, value, region, onClick, level }) => {
+const Square = ({ row, col, value, region, onClick, level, isClashing }) => {
   const boardSize = levels[level].size;
   const colorRegions = levels[level].colorRegions;
   const regionColors = levels[level].regionColors;
+
+  console.log("isClashing", isClashing);
 
   // Function to determine border classes
   const getBorderClasses = () => {
@@ -43,7 +45,10 @@ const Square = ({ row, col, value, region, onClick, level }) => {
     <div
       className={`square hover:brightness-75 ${borderClasses}`}
       onClick={onClick}
-      style={{ backgroundColor: regionColors[region] }}
+      style={{
+        backgroundColor: regionColors[region],
+        color: isClashing ? "red" : "black",
+      }}
     >
       {value === "Q" ? <Queen /> : value === "X" ? <Cross /> : value}
     </div>

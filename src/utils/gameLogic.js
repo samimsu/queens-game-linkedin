@@ -34,7 +34,6 @@ export const isSafeToPlaceQueen = (board, row, col, size, colorRegions) => {
 };
 
 // Check if all queens are placed correctly
-
 export const checkWinCondition = (board, size, colorRegions) => {
   let queensPerRow = Array(size).fill(0);
   let queensPerCol = Array(size).fill(0);
@@ -115,4 +114,84 @@ const hasAdjacent = (rowPositions) => {
     }
   }
   return false;
+};
+
+// Utility function to find clashing queens
+export const getClashingQueens = (board, size, colorRegions) => {
+  const clashes = [];
+  let queensPerRow = Array(size).fill(0);
+  let queensPerCol = Array(size).fill(0);
+  let queensPerRegion = {};
+  let mainDiagonal = {};
+  let antiDiagonal = {};
+
+  for (let row = 0; row < size; row++) {
+    for (let col = 0; col < size; col++) {
+      if (board[row][col] === "Q") {
+        const region = colorRegions[row][col];
+
+        // Track queens in rows, columns, and regions
+        queensPerRow[row]++;
+        queensPerCol[col]++;
+        queensPerRegion[region] = (queensPerRegion[region] || 0) + 1;
+
+        // Track diagonal queens
+        const mainDiagIndex = row - col;
+        mainDiagonal[mainDiagIndex] = (
+          mainDiagonal[mainDiagIndex] || []
+        ).concat({ row, col });
+
+        const antiDiagIndex = row + col;
+        antiDiagonal[antiDiagIndex] = (
+          antiDiagonal[antiDiagIndex] || []
+        ).concat({ row, col });
+      }
+    }
+  }
+
+  // Detect clashes in rows, columns, and regions
+  for (let row = 0; row < size; row++) {
+    if (queensPerRow[row] > 1) {
+      for (let col = 0; col < size; col++) {
+        if (board[row][col] === "Q") clashes.push({ row, col });
+      }
+    }
+  }
+
+  for (let col = 0; col < size; col++) {
+    if (queensPerCol[col] > 1) {
+      for (let row = 0; row < size; row++) {
+        if (board[row][col] === "Q") clashes.push({ row, col });
+      }
+    }
+  }
+
+  Object.entries(queensPerRegion).forEach(([region, count]) => {
+    if (count > 1) {
+      for (let row = 0; row < size; row++) {
+        for (let col = 0; col < size; col++) {
+          if (colorRegions[row][col] === region && board[row][col] === "Q")
+            clashes.push({ row, col });
+        }
+      }
+    }
+  });
+
+  // Detect diagonal adjacency clashes
+  const checkDiagonalClashes = (diagonal) => {
+    Object.values(diagonal).forEach((positions) => {
+      positions.forEach(({ row, col }, index) => {
+        const next = positions[index + 1];
+        if (next && Math.abs(row - next.row) === 1) {
+          clashes.push({ row, col });
+          clashes.push(next);
+        }
+      });
+    });
+  };
+
+  checkDiagonalClashes(mainDiagonal);
+  checkDiagonalClashes(antiDiagonal);
+
+  return clashes;
 };

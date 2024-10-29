@@ -9,6 +9,7 @@ const Queen = ({ size = "24", className = "" }) => {
         height={size}
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
       >
         <title>Queen</title>
         <g clipPath="url(#clip0_3812_70403)">
