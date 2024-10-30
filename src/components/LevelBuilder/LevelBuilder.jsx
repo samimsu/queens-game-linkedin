@@ -31,6 +31,7 @@ import BoardSizeInput from "./components/BoardSizeInput";
 import SectionJSCode from "./components/SectionJSCode";
 import useImageGridProcessing from "../../hooks/useImageGridProcessing";
 import PasteImage from "./components/PasteImage";
+import { Switch } from "@/components/ui/switch";
 import PreviewImage from "./PreviewImage";
 
 const colorOptions = [
@@ -228,10 +229,11 @@ const LevelBuilder = () => {
 
                 <div className="flex space-x-3 justify-between mb-2">
                   <div className="flex items-center">
-                    <input
-                      type="checkbox"
+                    <Switch
                       checked={hideRegionValues}
-                      onChange={() => setHideRegionValues((prev) => !prev)}
+                      onCheckedChange={() =>
+                        setHideRegionValues((prev) => !prev)
+                      }
                     />
                     <label
                       className="whitespace-nowrap pl-2"

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { Switch } from "@/components/ui/switch";
 
 const PreviewImage = ({
   image,
@@ -70,10 +71,9 @@ const PreviewImage = ({
       {/* Controls */}
       <div className="flex flex-col text-sm space-y-2">
         <div className="flex items-center">
-          <input
-            type="checkbox"
+          <Switch
             checked={showGridLines}
-            onChange={() => setShowGridLines((prev) => !prev)}
+            onCheckedChange={() => setShowGridLines((prev) => !prev)}
           />
           <label
             onClick={() => setShowGridLines((prev) => !prev)}
