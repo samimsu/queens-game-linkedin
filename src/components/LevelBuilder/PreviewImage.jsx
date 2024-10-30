@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Switch } from "@/components/ui/switch";
+import { Slider } from "@/components/ui/slider";
 
 const PreviewImage = ({
   image,
@@ -82,36 +83,33 @@ const PreviewImage = ({
             Show grid lines
           </label>
         </div>
-        <label className="flex flex-col">
-          Tolerance
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value={tolerance}
-            onChange={(e) => setTolerance(Number(e.target.value))}
+        <label className="flex flex-col space-y-1">
+          <span>Tolerance</span>
+          <Slider
+            min={1}
+            max={100}
+            value={[tolerance]}
+            onValueChange={(value) => setTolerance(value[0])}
           />
         </label>
-        <label className="flex flex-col">
-          Minimum line height
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.05"
-            value={minLineHeight}
-            onChange={(e) => setMinLineHeight(Number(e.target.value))}
+        <label className="flex flex-col space-y-1">
+          <span>Minimum line height</span>
+          <Slider
+            min={0}
+            max={1}
+            step={0.05}
+            value={[minLineHeight]}
+            onValueChange={(value) => setMinLineHeight(value[0])}
           />
         </label>
-        <label className="flex flex-col">
-          Minimum line width
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.05"
-            value={minLineWidth}
-            onChange={(e) => setMinLineWidth(Number(e.target.value))}
+        <label className="flex flex-col space-y-1">
+          <span>Minimum line width</span>
+          <Slider
+            min={0}
+            max={1}
+            step={0.05}
+            value={[minLineWidth]}
+            onValueChange={(value) => setMinLineWidth(value[0])}
           />
         </label>
       </div>
