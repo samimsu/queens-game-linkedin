@@ -9,8 +9,6 @@ const Square = ({ row, col, value, region, onClick, level, isClashing }) => {
   const colorRegions = levels[level].colorRegions;
   const regionColors = levels[level].regionColors;
 
-  console.log("isClashing", isClashing);
-
   // Function to determine border classes
   const getBorderClasses = () => {
     const borderClasses = [];

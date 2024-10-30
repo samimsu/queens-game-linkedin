@@ -8,20 +8,31 @@ import getAvailableLevels from "../../utils/getAvailableLevels";
 import BackIcon from "../icons/BackIcon";
 import PreviousIcon from "../icons/PreviousIcon";
 import NextIcon from "../icons/NextIcon";
+import ResetIcon from "../icons/ResetIcon";
 import WinningScreen from "./components/WinningScreen";
 import Queen from "../Queen";
 import HowToPlay from "./components/HowToPlay";
+import SettingsDialog from "./components/SettingsDialog";
 import {
+  getClashingQueensPreference,
+  getShowInstructionsPreference,
   isLevelCompleted,
   markLevelAsCompleted,
+  setClashingQueensPreference,
+  setShowInstructionsPreference,
 } from "../../utils/localStorage";
-import ResetIcon from "../icons/ResetIcon";
 
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
   const [hasWon, setHasWon] = useState(false);
   const [showWinningScreen, setShowWinningScreen] = useState(false);
   const [clashingQueens, setClashingQueens] = useState(new Set());
+  const [showClashingQueens, setShowClashingQueens] = useState(
+    getClashingQueensPreference
+  );
+  const [showInstructions, setShowInstructions] = useState(
+    getShowInstructionsPreference
+  );
 
   const availableLevels = getAvailableLevels();
   const previousDisabled = !availableLevels.includes(Number(id) - 1);
@@ -72,6 +83,18 @@ const Level = ({ id, level }) => {
       clashingPositions.map(({ row, col }) => `${row},${col}`)
     );
     setClashingQueens(clashingSet);
+  };
+
+  const toggleClashingQueens = () => {
+    const newSetting = !showClashingQueens;
+    setShowClashingQueens(newSetting);
+    setClashingQueensPreference(newSetting);
+  };
+
+  const toggleShowInstructions = () => {
+    const newSetting = !showInstructions;
+    setShowInstructions(newSetting);
+    setShowInstructionsPreference(newSetting);
   };
 
   const PreviousLevelButton = ({ children, className }) => {
@@ -162,10 +185,16 @@ const Level = ({ id, level }) => {
                     setHasWon(false);
                     setShowWinningScreen(false);
                   }}
-                  className="border border-slate-500 rounded-full p-2"
+                  className="border border-slate-500 rounded-full p-2 mr-2"
                 >
                   <ResetIcon size="18" />
                 </button>
+                <SettingsDialog
+                  showClashingQueens={showClashingQueens}
+                  toggleShowClashingQueens={toggleClashingQueens}
+                  showInstructions={showInstructions}
+                  toggleShowInstructions={toggleShowInstructions}
+                />
               </div>
             </div>
           </div>
@@ -182,12 +211,13 @@ const Level = ({ id, level }) => {
               board={board}
               handleClick={handleClick}
               level={level}
+              showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
             />
           </div>
         </div>
 
-        <HowToPlay />
+        {showInstructions && <HowToPlay />}
       </div>
     </div>
   );

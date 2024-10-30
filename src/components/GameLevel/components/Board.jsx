@@ -3,7 +3,13 @@ import Square from "./Square";
 import useGridSize from "../../../hooks/useGridSize";
 import { levels } from "../../../utils/levels";
 
-const Board = ({ board, handleClick, level, clashingQueens }) => {
+const Board = ({
+  board,
+  handleClick,
+  level,
+  showClashingQueens,
+  clashingQueens,
+}) => {
   const { gridSize } = useGridSize(board.length);
 
   const colorRegions = levels[level].colorRegions;
@@ -26,7 +32,10 @@ const Board = ({ board, handleClick, level, clashingQueens }) => {
             region={colorRegions[rowIndex][colIndex]}
             onClick={() => handleClick(rowIndex, colIndex)}
             level={level}
-            isClashing={clashingQueens.has(`${rowIndex},${colIndex}`)}
+            isClashing={
+              showClashingQueens &&
+              clashingQueens.has(`${rowIndex},${colIndex}`)
+            }
           />
         ))
       )}
