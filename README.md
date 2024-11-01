@@ -25,3 +25,8 @@
 ## Build Levels
 
 If you would like to help me build levels you can use the [Level Builder](https://queensgame.vercel.app/level-builder).
+
+### By pasting image
+
+https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
+
