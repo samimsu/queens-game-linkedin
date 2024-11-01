@@ -16,11 +16,11 @@
   <img src="https://github.com/user-attachments/assets/b75c29d6-546a-43e9-8d40-a5ba7f63b332" width="192" alt="New Expensify Icon">
 </div>
 
-## Levels Added (128/184)
+## Levels Added (129/185)
 
 - [x] 1
 - [ ] 2-57
-- [x] 58-184
+- [x] 58-185
 
 ## Build Levels
 
@@ -29,4 +29,3 @@ If you would like to help me build levels you can use the [Level Builder](https:
 ### By pasting image
 
 https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
-
