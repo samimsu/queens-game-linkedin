@@ -14,6 +14,16 @@ import level27 from "./levels/level27";
 import level28 from "./levels/level28";
 import level29 from "./levels/level29";
 import level30 from "./levels/level30";
+import level31 from "./levels/level31";
+import level32 from "./levels/level32";
+import level33 from "./levels/level33";
+import level34 from "./levels/level34";
+import level35 from "./levels/level35";
+import level36 from "./levels/level36";
+import level37 from "./levels/level37";
+import level38 from "./levels/level38";
+import level39 from "./levels/level39";
+import level40 from "./levels/level40";
 import level58 from "./levels/level58";
 import level59 from "./levels/level59";
 import level60 from "./levels/level60";
@@ -167,6 +177,16 @@ export const levels = {
   level28,
   level29,
   level30,
+  level31,
+  level32,
+  level33,
+  level34,
+  level35,
+  level36,
+  level37,
+  level38,
+  level39,
+  level40,
   level58,
   level59,
   level60,
