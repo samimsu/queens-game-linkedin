@@ -360,4 +360,5 @@ export const levels = {
   level192,
   level193,
   level194,
+  level195,
 };
