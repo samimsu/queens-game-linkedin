@@ -29,3 +29,11 @@ export const setShowInstructionsPreference = (enabled) => {
 export const getShowInstructionsPreference = () => {
   return JSON.parse(localStorage.getItem("showInstructions")) ?? true; // Default to true
 };
+
+export const setAutoPlaceXsPreference = (enabled) => {
+  localStorage.setItem("autoPlaceXs", JSON.stringify(enabled));
+};
+
+export const getAutoPlaceXsPreference = () => {
+  return JSON.parse(localStorage.getItem("autoPlaceXs")) ?? false; // Default to false
+};
