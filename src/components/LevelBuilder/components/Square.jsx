@@ -12,6 +12,7 @@ const Square = ({
   colorRegions,
   regionColors,
   hideValues,
+  ...props
 }) => {
   // Function to determine border classes
   const getBorderClasses = () => {
@@ -50,6 +51,7 @@ const Square = ({
       onMouseDown={onMouseDown}
       onMouseEnter={onMouseEnter}
       style={{ backgroundColor: regionColors[region] }}
+      {...props}
     >
       {!hideValues && value}
     </div>
