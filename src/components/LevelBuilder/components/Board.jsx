@@ -13,6 +13,7 @@ const Board = ({
 }) => {
   const { gridSize } = useGridSize(size);
   const [isDragging, setIsDragging] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
 
   const handleTouchStart = (rowIndex, colIndex) => {
     setIsDragging(true);
@@ -48,12 +49,19 @@ const Board = ({
               value={square}
               region={board[rowIndex][colIndex]}
               onMouseDown={() => {
+                if (isTouch) return;
                 handleSquareClick(rowIndex, colIndex);
               }}
               onMouseEnter={(e) => {
                 if (e.buttons === 1) handleSquareClick(rowIndex, colIndex);
               }}
-              onTouchStart={() => handleTouchStart(rowIndex, colIndex)}
+              onTouchStart={(e) => {
+                setIsTouch(true);
+                handleTouchStart(rowIndex, colIndex);
+              }}
+              onTouchEnd={() => {
+                setTimeout(() => setIsTouch(false), 0);
+              }}
               boardSize={size}
               colorRegions={board}
               regionColors={regionColors}
