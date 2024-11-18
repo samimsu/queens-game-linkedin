@@ -70,7 +70,7 @@ const PreviewImage = ({
       </div>
 
       {/* Controls */}
-      <div className="flex flex-col text-sm space-y-2">
+      <div className="flex flex-col text-sm space-y-2 sm:w-52">
         <div className="flex items-center">
           <Switch
             checked={showGridLines}
@@ -97,20 +97,22 @@ const PreviewImage = ({
           <Slider
             min={0}
             max={1}
-            step={0.05}
+            step={0.00625}
             value={[minLineHeight]}
             onValueChange={(value) => setMinLineHeight(value[0])}
           />
+          {minLineHeight}
         </label>
         <label className="flex flex-col space-y-1">
           <span>Minimum line width</span>
           <Slider
             min={0}
             max={1}
-            step={0.05}
+            step={0.00625}
             value={[minLineWidth]}
             onValueChange={(value) => setMinLineWidth(value[0])}
           />
+          {minLineWidth}
         </label>
       </div>
     </div>
