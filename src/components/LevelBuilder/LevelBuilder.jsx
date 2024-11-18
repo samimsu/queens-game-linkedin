@@ -135,30 +135,13 @@ const LevelBuilder = () => {
 
   const handleSquareClick = (row, col) => {
     const currentValue = board[row][col];
+    const newDragValue = currentValue ? undefined : selectedRegion; // Toggle value
+    setDragValue(newDragValue);
 
     const newBoard = board.map((r, rIdx) =>
       r.map((square, cIdx) => {
         if (rIdx === row && cIdx === col) {
-          if (currentValue) {
-            return undefined;
-          }
-          return selectedRegion;
-        }
-        return square;
-      })
-    );
-    setBoard(newBoard);
-  };
-
-  const handleSquareTouchStart = (row, col) => {
-    const currentValue = board[row][col];
-    const dragValue = currentValue ? undefined : selectedRegion; // Toggle value
-    setDragValue(dragValue);
-
-    const newBoard = board.map((r, rIdx) =>
-      r.map((square, cIdx) => {
-        if (rIdx === row && cIdx === col) {
-          return dragValue;
+          return newDragValue;
         }
         return square;
       })
@@ -174,16 +157,20 @@ const LevelBuilder = () => {
       const rowIndex = parseInt(target.dataset.row, 10);
       const colIndex = parseInt(target.dataset.col, 10);
 
-      const newBoard = board.map((r, rIdx) =>
-        r.map((square, cIdx) => {
-          if (rIdx === rowIndex && cIdx === colIndex) {
-            return dragValue;
-          }
-          return square;
-        })
-      );
-      setBoard(newBoard);
+      handleDrag(rowIndex, colIndex);
     }
+  };
+
+  const handleDrag = (row, col) => {
+    const newBoard = board.map((r, rIdx) =>
+      r.map((square, cIdx) => {
+        if (rIdx === row && cIdx === col) {
+          return dragValue;
+        }
+        return square;
+      })
+    );
+    setBoard(newBoard);
   };
 
   const handlePaste = () => {
@@ -263,7 +250,8 @@ const LevelBuilder = () => {
                   board={board}
                   regionColors={regionColors}
                   handleSquareClick={handleSquareClick}
-                  handleSquareTouchStart={handleSquareTouchStart}
+                  handleSquareMouseEnter={handleDrag}
+                  handleSquareTouchStart={handleSquareClick}
                   handleSquareTouchMove={handleSquareTouchMove}
                   hideRegionValues={hideRegionValues}
                 />

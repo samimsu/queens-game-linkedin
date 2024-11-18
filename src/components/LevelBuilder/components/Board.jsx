@@ -7,6 +7,7 @@ const Board = ({
   board,
   regionColors,
   handleSquareClick,
+  handleSquareMouseEnter,
   handleSquareTouchStart,
   handleSquareTouchMove,
   hideRegionValues,
@@ -53,7 +54,7 @@ const Board = ({
                 handleSquareClick(rowIndex, colIndex);
               }}
               onMouseEnter={(e) => {
-                if (e.buttons === 1) handleSquareClick(rowIndex, colIndex);
+                if (e.buttons === 1) handleSquareMouseEnter(rowIndex, colIndex);
               }}
               onTouchStart={(e) => {
                 setIsTouch(true);
