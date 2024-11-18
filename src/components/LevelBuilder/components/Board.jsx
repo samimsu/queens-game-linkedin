@@ -7,6 +7,8 @@ const Board = ({
   board,
   regionColors,
   handleSquareClick,
+  handleSquareTouchStart,
+  handleSquareTouchMove,
   hideRegionValues,
 }) => {
   const { gridSize } = useGridSize(size);
@@ -14,22 +16,12 @@ const Board = ({
 
   const handleTouchStart = (rowIndex, colIndex) => {
     setIsDragging(true);
-    handleSquareClick(rowIndex, colIndex); // Fill the initial square
+    handleSquareTouchStart(rowIndex, colIndex); // Fill the initial square
   };
 
   const handleTouchMove = (e) => {
     if (!isDragging) return;
-
-    // Get the target element
-    const touch = e.touches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
-
-    // Ensure the target is a Square and get its row/col attributes
-    if (target && target.dataset.row && target.dataset.col) {
-      const rowIndex = parseInt(target.dataset.row, 10);
-      const colIndex = parseInt(target.dataset.col, 10);
-      handleSquareClick(rowIndex, colIndex); // Fill square on touch move
-    }
+    handleSquareTouchMove(e);
   };
 
   const handleTouchEnd = () => {

@@ -1,6 +1,7 @@
 .board {
   display: grid;
   width: fit-content;
+  touch-action: none;
 }
 
 .square {

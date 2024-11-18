@@ -71,6 +71,7 @@ const LevelBuilder = () => {
   const [tolerance, setTolerance] = useState(10);
   const [minLineHeight, setMinLineHeight] = useState(0.1);
   const [minLineWidth, setMinLineWidth] = useState(0.1);
+  const [dragValue, setDragValue] = useState();
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
   const initialRegionColors = {
@@ -147,6 +148,42 @@ const LevelBuilder = () => {
       })
     );
     setBoard(newBoard);
+  };
+
+  const handleSquareTouchStart = (row, col) => {
+    const currentValue = board[row][col];
+    const dragValue = currentValue ? undefined : selectedRegion; // Toggle value
+    setDragValue(dragValue);
+
+    const newBoard = board.map((r, rIdx) =>
+      r.map((square, cIdx) => {
+        if (rIdx === row && cIdx === col) {
+          return dragValue;
+        }
+        return square;
+      })
+    );
+    setBoard(newBoard);
+  };
+
+  const handleSquareTouchMove = (e) => {
+    const touch = e.touches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    if (target && target.dataset.row && target.dataset.col) {
+      const rowIndex = parseInt(target.dataset.row, 10);
+      const colIndex = parseInt(target.dataset.col, 10);
+
+      const newBoard = board.map((r, rIdx) =>
+        r.map((square, cIdx) => {
+          if (rIdx === rowIndex && cIdx === colIndex) {
+            return dragValue;
+          }
+          return square;
+        })
+      );
+      setBoard(newBoard);
+    }
   };
 
   const handlePaste = () => {
@@ -226,6 +263,8 @@ const LevelBuilder = () => {
                   board={board}
                   regionColors={regionColors}
                   handleSquareClick={handleSquareClick}
+                  handleSquareTouchStart={handleSquareTouchStart}
+                  handleSquareTouchMove={handleSquareTouchMove}
                   hideRegionValues={hideRegionValues}
                 />
 
