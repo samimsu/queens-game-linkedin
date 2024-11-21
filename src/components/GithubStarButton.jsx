@@ -8,7 +8,6 @@ const GithubStarButton = ({ variant = "" }) => {
     return (
       <iframe
         src={`https://ghbtns.com/github-btn.html?user=${user}&repo=${repo}&type=star&count=true`}
-        frameborder="0"
         width="71"
         height="20"
         title="GitHub"
