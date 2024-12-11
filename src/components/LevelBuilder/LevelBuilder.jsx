@@ -251,7 +251,6 @@ const LevelBuilder = () => {
                   regionColors={regionColors}
                   handleSquareClick={handleSquareClick}
                   handleSquareMouseEnter={handleDrag}
-                  handleSquareTouchStart={handleSquareClick}
                   handleSquareTouchMove={handleSquareTouchMove}
                   hideRegionValues={hideRegionValues}
                 />

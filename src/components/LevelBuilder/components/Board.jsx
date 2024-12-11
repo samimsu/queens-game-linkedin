@@ -8,26 +8,13 @@ const Board = ({
   regionColors,
   handleSquareClick,
   handleSquareMouseEnter,
-  handleSquareTouchStart,
   handleSquareTouchMove,
   hideRegionValues,
 }) => {
   const { gridSize } = useGridSize(size);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
-
-  const handleTouchStart = (rowIndex, colIndex) => {
-    setIsDragging(true);
-    handleSquareTouchStart(rowIndex, colIndex); // Fill the initial square
-  };
 
   const handleTouchMove = (e) => {
-    if (!isDragging) return;
     handleSquareTouchMove(e);
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
   };
 
   return (
@@ -38,7 +25,6 @@ const Board = ({
         gridTemplateRows: `repeat(${board.length}, ${gridSize})`,
       }}
       onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       {board.map((row, rowIndex) =>
         row.map((square, colIndex) => {
@@ -49,19 +35,11 @@ const Board = ({
               col={colIndex}
               value={square}
               region={board[rowIndex][colIndex]}
-              onMouseDown={() => {
-                if (isTouch) return;
+              onPointerDown={() => {
                 handleSquareClick(rowIndex, colIndex);
               }}
-              onMouseEnter={(e) => {
+              onPointerEnter={(e) => {
                 if (e.buttons === 1) handleSquareMouseEnter(rowIndex, colIndex);
-              }}
-              onTouchStart={(e) => {
-                setIsTouch(true);
-                handleTouchStart(rowIndex, colIndex);
-              }}
-              onTouchEnd={() => {
-                setTimeout(() => setIsTouch(false), 0);
               }}
               boardSize={size}
               colorRegions={board}

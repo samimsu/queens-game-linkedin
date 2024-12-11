@@ -6,8 +6,8 @@ const Square = ({
   value,
   region,
   onClick,
-  onMouseDown,
-  onMouseEnter,
+  onPointerDown,
+  onPointerEnter,
   boardSize,
   colorRegions,
   regionColors,
@@ -48,8 +48,8 @@ const Square = ({
     <div
       className={`square hover:bg-slate-300 hover:brightness-75 select-none ${borderClasses}`}
       onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
       style={{ backgroundColor: regionColors[region] }}
       {...props}
     >
