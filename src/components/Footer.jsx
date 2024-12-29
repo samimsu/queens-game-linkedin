@@ -8,7 +8,7 @@ const Footer = () => {
         <div>
           Created by{" "}
           <a
-            href="https://github.com/samimsu"
+            href="https://samimsu.github.io"
             target="_blank"
             rel="noopener noreferrer"
             className="underline font-medium"
