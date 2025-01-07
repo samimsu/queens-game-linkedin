@@ -15,6 +15,8 @@ const SettingsDialog = ({
   toggleShowInstructions,
   autoPlaceXs,
   toggleAutoPlaceXs,
+  showClock,
+  toggleShowClock,
 }) => {
   return (
     <Dialog>
@@ -31,6 +33,10 @@ const SettingsDialog = ({
           <DialogTitle className="mb-2">Settings</DialogTitle>
         </DialogHeader>
         <div className="space-y-1 h-40">
+          <div className="flex items-center justify-between space-x-3">
+            <div>Show clock</div>
+            <Switch checked={showClock} onCheckedChange={toggleShowClock} />
+          </div>
           <div className="flex items-center justify-between space-x-3">
             <div>Auto place X's</div>
             <Switch checked={autoPlaceXs} onCheckedChange={toggleAutoPlaceXs} />

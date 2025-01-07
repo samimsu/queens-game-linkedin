@@ -30,6 +30,14 @@ export const getShowInstructionsPreference = () => {
   return JSON.parse(localStorage.getItem("showInstructions")) ?? true; // Default to true
 };
 
+export const setShowClockPreference = (enabled) => {
+  localStorage.setItem("showClock", JSON.stringify(enabled));
+};
+
+export const getShowClockPreference = () => {
+  return JSON.parse(localStorage.getItem("showClock")) ?? true; // Default to true
+};
+
 export const setAutoPlaceXsPreference = (enabled) => {
   localStorage.setItem("autoPlaceXs", JSON.stringify(enabled));
 };
