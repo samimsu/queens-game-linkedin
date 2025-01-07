@@ -56,6 +56,7 @@ const Square = ({ row, col, value, region, onClick, level, isClashing }) => {
         backgroundColor: regionColors[region],
         color: isClashing ? "red" : "black",
       }}
+      draggable="false"
     >
       {value === "Q" ? <Queen /> : value === "X" ? <Cross /> : value}
     </div>
