@@ -2,6 +2,7 @@
   display: grid;
   width: fit-content;
   touch-action: none;
+  user-select: none;
 }
 
 .square {
