@@ -54,7 +54,8 @@ const Level = ({ id, level }) => {
   const completed = isLevelCompleted(Number(id));
 
   // Handle click on square
-  const handleClick = (row, col) => {
+  const handleClick = (row, col) => setBoard(board => {
+
     const currentValue = board[row][col];
 
     // Initialize newBoard as a copy of the current board
@@ -67,8 +68,6 @@ const Level = ({ id, level }) => {
     } else if (currentValue === "Q") {
       removeQueen(newBoard, row, col);
     }
-
-    setBoard(newBoard);
 
     // Check for win condition after updating the board
     if (checkWinCondition(newBoard, boardSize, colorRegions)) {
@@ -92,7 +91,9 @@ const Level = ({ id, level }) => {
       clashingPositions.map(({ row, col }) => `${row},${col}`)
     );
     setClashingQueens(clashingSet);
-  };
+
+    return newBoard;
+  });
 
   const getQueenPositionForGivenX = (xRow, xCol, newBoard) => {
     const directions = [

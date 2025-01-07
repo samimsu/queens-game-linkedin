@@ -9,6 +9,13 @@ const Square = ({ row, col, value, region, onClick, level, isClashing }) => {
   const colorRegions = levels[level].colorRegions;
   const regionColors = levels[level].regionColors;
 
+  const onDrag = (event) => {
+    const primaryButtonHeld = event.buttons & 1;
+    if (primaryButtonHeld && value === null) {
+      onClick();
+    }
+  }
+
   // Function to determine border classes
   const getBorderClasses = () => {
     const borderClasses = [];
@@ -43,10 +50,13 @@ const Square = ({ row, col, value, region, onClick, level, isClashing }) => {
     <div
       className={`square hover:brightness-75 ${borderClasses}`}
       onClick={onClick}
+      onMouseLeave={onDrag}
+      onMouseOver={onDrag}
       style={{
         backgroundColor: regionColors[region],
         color: isClashing ? "red" : "black",
       }}
+      draggable="false"
     >
       {value === "Q" ? <Queen /> : value === "X" ? <Cross /> : value}
     </div>
