@@ -37,3 +37,14 @@ If you would like to help me build levels you can use the [Level Builder](https:
 ### By pasting image
 
 https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
