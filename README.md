@@ -6,14 +6,16 @@
   </h1>
 </div>
 
-[![contributors](https://img.shields.io/github/all-contributors/samimsu/queens-game-linkedin?color=ee8449&style=flat-square)](#contributors)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/samimsu/queens-game-linkedin)
+[![GitHub stars](https://img.shields.io/github/stars/samimsu/queens-game-linkedin?style=flat-square&label=github%20stars)](https://github.com/yzhang-gh/vscode-markdown)
+[![All Contributors](https://img.shields.io/github/all-contributors/samimsu/queens-game-linkedin?color=ee8449&style=flat-square)](#contributors)
 
 <div align="center">
   <div>
     A collection of playable levels from the game
     <a href="https://www.linkedin.com/showcase/queens-game">
       Queens, by LinkedIn</a
-    >. Play it <a href="https://queensgame.vercel.app/"> here</a>.
+    >. Play it <a href="https://queensgame.vercel.app/"> here</a>!
   </div>
 
   <br />
@@ -21,7 +23,7 @@
   <img src="https://github.com/user-attachments/assets/b75c29d6-546a-43e9-8d40-a5ba7f63b332" width="192" alt="Level screenshot">
 </div>
 
-## Levels Added (238/252)
+## Levels Added (239/253)
 
 - [x] 1-2
 - [ ] 3-5
@@ -33,7 +35,7 @@
 - [ ] 12-15
 - [x] 16
 - [ ] 17-20
-- [x] 21-252
+- [x] 21-253
 
 ## Build Levels
 
