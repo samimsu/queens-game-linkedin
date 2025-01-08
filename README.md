@@ -17,10 +17,7 @@
       Queens, by LinkedIn</a
     >. Play it <a href="https://queensgame.vercel.app/"> here</a>!
   </div>
-
-  <br />
-  
-  <img src="https://github.com/user-attachments/assets/b75c29d6-546a-43e9-8d40-a5ba7f63b332" width="192" alt="Level screenshot">
+  <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
 ## Levels Added (239/253)
