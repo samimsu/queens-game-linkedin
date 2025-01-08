@@ -4,6 +4,11 @@
       Queens
     </a>
   </h1>
+</div>
+
+[![contributors](https://img.shields.io/github/all-contributors/samimsu/queens-game-linkedin?color=ee8449&style=flat-square)](#contributors)
+
+<div align="center">
   <div>
     A collection of playable levels from the game
     <a href="https://www.linkedin.com/showcase/queens-game">
@@ -13,7 +18,7 @@
 
   <br />
   
-  <img src="https://github.com/user-attachments/assets/b75c29d6-546a-43e9-8d40-a5ba7f63b332" width="192" alt="New Expensify Icon">
+  <img src="https://github.com/user-attachments/assets/b75c29d6-546a-43e9-8d40-a5ba7f63b332" width="192" alt="Level screenshot">
 </div>
 
 ## Levels Added (238/252)
