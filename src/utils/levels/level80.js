@@ -2,11 +2,11 @@ import {
   altoMain,
   anakiwa,
   bittersweet,
-  canCan,
   celadon,
   chardonnay,
-  lightWisteria,
-  nomad,
+  halfBaked,
+  lightOrchid,
+  lightWisteria
 } from "../colors";
 
 const level80 = {
@@ -19,16 +19,16 @@ const level80 = {
     ["A", "G", "F", "H", "H", "F", "C", "D"],
     ["A", "G", "F", "F", "F", "F", "G", "D"],
     ["A", "G", "G", "G", "G", "G", "G", "D"],
-    ["A", "G", "G", "G", "G", "D", "D", "D"],
+    ["A", "A", "A", "G", "G", "D", "D", "D"],
   ],
   regionColors: {
     A: lightWisteria,
     B: altoMain,
-    C: nomad,
+    C: halfBaked,
     D: bittersweet,
     E: anakiwa,
     F: celadon,
-    G: canCan,
+    G: lightOrchid,
     H: chardonnay,
   },
 };
