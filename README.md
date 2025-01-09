@@ -34,9 +34,11 @@
 - [ ] 17-20
 - [x] 21-254
 
+Note: If anyone could help in finding the missing levels, I'd really appreciate it.
+
 ## Build Levels
 
-If you would like to help me build levels you can use the [Level Builder](https://queensgame.vercel.app/level-builder).
+If you would like to help me build levels you can use the [Level Builder](https://queensgame.vercel.app/level-builder). You can either paste the image of the level or manually build it.
 
 ### By pasting image
 
