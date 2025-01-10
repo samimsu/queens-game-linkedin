@@ -42,7 +42,6 @@ const Board = ({
             }}
             onPointerEnter={(e) => {
               if (e.buttons === 1) {
-                console.log({rowIndex, colIndex});
                 handleSquareMouseEnter(rowIndex, colIndex);
               } 
                 
