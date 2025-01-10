@@ -5,7 +5,9 @@ import { levels } from "../../../utils/levels";
 
 const Board = ({
   board,
-  handleClick,
+  handleSquareClick,
+  handleSquareMouseEnter,
+  handleSquareTouchMove,
   level,
   showClashingQueens,
   clashingQueens,
@@ -14,6 +16,10 @@ const Board = ({
 
   const colorRegions = levels[level].colorRegions;
 
+  const handleTouchMove = (e) => {
+    handleSquareTouchMove(e);
+  };
+
   return (
     <div
       className="board"
@@ -21,6 +27,7 @@ const Board = ({
         gridTemplateColumns: `repeat(${board.length}, ${gridSize})`,
         gridTemplateRows: `repeat(${board.length}, ${gridSize})`,
       }}
+      onTouchMove={handleTouchMove}
     >
       {board.map((row, rowIndex) =>
         row.map((square, colIndex) => (
@@ -30,12 +37,23 @@ const Board = ({
             col={colIndex}
             value={square}
             region={colorRegions[rowIndex][colIndex]}
-            onClick={() => handleClick(rowIndex, colIndex)}
+            onPointerDown={() => {
+              handleSquareClick(rowIndex, colIndex);
+            }}
+            onPointerEnter={(e) => {
+              if (e.buttons === 1) {
+                console.log({rowIndex, colIndex});
+                handleSquareMouseEnter(rowIndex, colIndex);
+              } 
+                
+            }}
             level={level}
             isClashing={
               showClashingQueens &&
               clashingQueens.has(`${rowIndex},${colIndex}`)
             }
+            data-row={rowIndex} // Add data attributes for touch handling
+            data-col={colIndex} 
           />
         ))
       )}

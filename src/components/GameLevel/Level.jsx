@@ -54,12 +54,11 @@ const Level = ({ id, level }) => {
   const completed = isLevelCompleted(Number(id));
 
   // Handle click on square
-  const handleClick = (row, col) => setBoard(board => {
+  const handleSquareClick = (row, col) => {
+    // Initialize newBoard as a copy of the current board
+    const newBoard = structuredClone(board);
 
     const currentValue = board[row][col];
-
-    // Initialize newBoard as a copy of the current board
-    const newBoard = board.map((row) => [...row]);
 
     if (currentValue === null) {
       newBoard[row][col] = "X";
@@ -92,8 +91,28 @@ const Level = ({ id, level }) => {
     );
     setClashingQueens(clashingSet);
 
-    return newBoard;
-  });
+    setBoard(newBoard);
+  };
+
+  const handleSquareTouchMove = (e) => {
+    const touch = e.touches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    if (target && target.dataset.row && target.dataset.col) {
+      const rowIndex = parseInt(target.dataset.row, 10);
+      const colIndex = parseInt(target.dataset.col, 10);
+
+      handleDrag(rowIndex, colIndex);
+    }
+  };
+
+  const handleDrag = (row, col) => {
+    const newBoard = structuredClone(board);
+    if (newBoard[row][col] !== "Q") {
+      newBoard[row][col] = "X";
+    }
+    setBoard(newBoard);
+  };
 
   const getQueenPositionForGivenX = (xRow, xCol, newBoard) => {
     const directions = [
@@ -339,9 +358,8 @@ const Level = ({ id, level }) => {
       <div className="flex flex-col items-center">
         <div>
           <div
-            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${
-              showClock ? "mb-0" : "mb-2"
-            }`}
+            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${showClock ? "mb-0" : "mb-2"
+              }`}
           >
             <Link to="/" className="flex-none">
               <button className="border border-slate-500 rounded-full p-2">
@@ -412,7 +430,9 @@ const Level = ({ id, level }) => {
             )}
             <Board
               board={board}
-              handleClick={handleClick}
+              handleSquareClick={handleSquareClick}
+              handleSquareMouseEnter={handleDrag}
+              handleSquareTouchMove={handleSquareTouchMove}
               level={level}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
