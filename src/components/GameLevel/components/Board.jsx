@@ -7,7 +7,6 @@ const Board = ({
   board,
   handleSquareClick,
   handleSquareMouseEnter,
-  handleSquareTouchMove,
   level,
   showClashingQueens,
   clashingQueens,
@@ -20,12 +19,6 @@ const Board = ({
 
   const colorRegions = levels[level].colorRegions;
 
-  const handleTouchMove = (e) => {
-    if (initialSquare) {
-      handleSquareTouchMove(e);
-    }
-  };
-
   return (
     <div
       className="board"
@@ -33,7 +26,6 @@ const Board = ({
         gridTemplateColumns: `repeat(${board.length}, ${gridSize})`,
         gridTemplateRows: `repeat(${board.length}, ${gridSize})`,
       }}
-      onTouchMove={handleTouchMove}
     >
       {board.map((row, rowIndex) =>
         row.map((square, colIndex) => (

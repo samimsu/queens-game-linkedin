@@ -94,18 +94,6 @@ const Level = ({ id, level }) => {
     setBoard(newBoard);
   };
 
-  const handleSquareTouchMove = (e) => {
-    const touch = e.touches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
-
-    if (target && target.dataset.row && target.dataset.col) {
-      const rowIndex = parseInt(target.dataset.row, 10);
-      const colIndex = parseInt(target.dataset.col, 10);
-
-      handleDrag([[rowIndex, colIndex]]);
-    }
-  };
-
   const handleDrag = (squares) => {
     const newBoard = structuredClone(board);
     for (const [row, col] of squares) {
@@ -434,7 +422,6 @@ const Level = ({ id, level }) => {
               board={board}
               handleSquareClick={handleSquareClick}
               handleSquareMouseEnter={handleDrag}
-              handleSquareTouchMove={handleSquareTouchMove}
               level={level}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
