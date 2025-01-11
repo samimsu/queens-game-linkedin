@@ -11,7 +11,8 @@ const Square = ({
   region, 
   onClick, 
   onPointerDown,
-  onPointerEnter, 
+  onPointerEnter,
+  onPointerUp,
   level, 
   isClashing, 
   ...props 
@@ -56,6 +57,7 @@ const Square = ({
       onClick={onClick}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
+      onPointerUp={onPointerUp}
       style={{
         backgroundColor: regionColors[region],
         color: isClashing ? "red" : "black",

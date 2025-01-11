@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Square from "./Square";
 import useGridSize from "../../../hooks/useGridSize";
 import { levels } from "../../../utils/levels";
@@ -12,12 +12,18 @@ const Board = ({
   showClashingQueens,
   clashingQueens,
 }) => {
+  const [initialSquare, setInitialSquare] = useState(undefined);
+  const [previousSquare, setPreviousSquare] = useState(undefined);
+  const [initialSquareHandled, setInitialSquareHandled] = useState(false);
+
   const { gridSize } = useGridSize(board.length);
 
   const colorRegions = levels[level].colorRegions;
 
   const handleTouchMove = (e) => {
-    handleSquareTouchMove(e);
+    if (initialSquare) {
+      handleSquareTouchMove(e);
+    }
   };
 
   return (
@@ -37,14 +43,40 @@ const Board = ({
             col={colIndex}
             value={square}
             region={colorRegions[rowIndex][colIndex]}
-            onPointerDown={() => {
-              handleSquareClick(rowIndex, colIndex);
+            onPointerDown={(e) => {
+              const currentSquare = `${rowIndex},${colIndex}`;
+              setInitialSquare(currentSquare);
+              setInitialSquareHandled(false);
+              // otherwise the PointerUp event will have the row and col of the initial PointerDown event
+              e.target.releasePointerCapture(e.pointerId);
             }}
             onPointerEnter={(e) => {
-              if (e.buttons === 1) {
-                handleSquareMouseEnter(rowIndex, colIndex);
-              } 
-                
+              const currentSquare = `${rowIndex},${colIndex}`;
+              // on mobile PointerEnter is fired once before PointerDown so check if there is already an initial square
+              if (e.buttons === 1 && initialSquare) {
+                const squares = [[rowIndex, colIndex]];
+                // on desktop the initial drag cell stays empty (because click is triggered on pointer up)
+                // since board state apparently can't be updated multiple times from a single event 
+                // we have to pass two coords (initial and current) to the handler
+                if (!initialSquareHandled) {
+                  squares.push(initialSquare.split(",").map(Number));
+                  setInitialSquareHandled(true);
+                }
+
+                handleSquareMouseEnter(squares);
+                setPreviousSquare(currentSquare);
+              }
+            }}
+            onPointerUp={() => {
+              const currentSquare = `${rowIndex},${colIndex}`;
+              const isBasicClick = initialSquare === currentSquare && !previousSquare;
+              // only do something if it was a regular click (and not the end of the drag)
+              if (isBasicClick) {
+                handleSquareClick(rowIndex, colIndex);
+              }
+              setPreviousSquare(undefined);
+              setInitialSquare(undefined);
+              setInitialSquareHandled(false);
             }}
             level={level}
             isClashing={
@@ -52,7 +84,7 @@ const Board = ({
               clashingQueens.has(`${rowIndex},${colIndex}`)
             }
             data-row={rowIndex} // Add data attributes for touch handling
-            data-col={colIndex} 
+            data-col={colIndex}
           />
         ))
       )}

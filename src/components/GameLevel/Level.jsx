@@ -102,14 +102,16 @@ const Level = ({ id, level }) => {
       const rowIndex = parseInt(target.dataset.row, 10);
       const colIndex = parseInt(target.dataset.col, 10);
 
-      handleDrag(rowIndex, colIndex);
+      handleDrag([[rowIndex, colIndex]]);
     }
   };
 
-  const handleDrag = (row, col) => {
+  const handleDrag = (squares) => {
     const newBoard = structuredClone(board);
-    if (newBoard[row][col] !== "Q") {
-      newBoard[row][col] = "X";
+    for (const [row, col] of squares) {
+      if (newBoard[row][col] !== "Q") {
+        newBoard[row][col] = "X";
+      }
     }
     setBoard(newBoard);
   };
