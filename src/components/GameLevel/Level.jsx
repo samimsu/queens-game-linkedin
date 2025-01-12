@@ -71,7 +71,7 @@ const Level = ({ id, level }) => {
     // Check for win condition after updating the board
     if (checkWinCondition(newBoard, boardSize, colorRegions)) {
       if (!hasWon) {
-        setShowWinningScreen(true);
+        setTimeout(() => setShowWinningScreen(true), 0);
       }
       setHasWon(true);
       markLevelAsCompleted(Number(id));
