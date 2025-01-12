@@ -53,6 +53,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/nightpool"><img src="https://avatars.githubusercontent.com/u/233815?v=4?s=100" width="100px;" alt="nightpool"/><br /><sub><b>nightpool</b></sub></a><br /><a href="#code-nightpool" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MARCxGAMBIT"><img src="https://avatars.githubusercontent.com/u/147161757?v=4?s=100" width="100px;" alt="M̷̱̥̳͔̖̠̙͈̫͕͔̳͉̱̣̭̮̠̰̄͊̒̈͛͗̈̇͆͗͆͋̾̋̅ͅͅẠ̴̡̬̭͓̟̠̣̤̓̽͛̋̌̆̆̔́̊̋́͜Ŕ̶͈̹̯̹͈̠̮̰̓̈́̐̊͐̕̕͝C̷̨̡̖̱̭͉̞̗̳͈̩͚̏͛̓̃͂͌̀̆͊̅̃̒̄͐̿̽̚͝"/><br /><sub><b>M̷̱̥̳͔̖̠̙͈̫͕͔̳͉̱̣̭̮̠̰̄͊̒̈͛͗̈̇͆͗͆͋̾̋̅ͅͅẠ̴̡̬̭͓̟̠̣̤̓̽͛̋̌̆̆̔́̊̋́͜Ŕ̶͈̹̯̹͈̠̮̰̓̈́̐̊͐̕̕͝C̷̨̡̖̱̭͉̞̗̳͈̩͚̏͛̓̃͂͌̀̆͊̅̃̒̄͐̿̽̚͝</b></sub></a><br /><a href="#code-MARCxGAMBIT" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
