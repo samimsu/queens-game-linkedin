@@ -203,32 +203,41 @@ const useImageGridProcessing = ({
         const left = verticalLines[col];
         const right = verticalLines[col + 1];
 
-        // Average color within this square, skipping line areas based on tolerance
-        let totalR = 0,
-          totalG = 0,
-          totalB = 0,
-          count = 0;
+        // Dominant color within this square, skipping line areas based on tolerance
+        const uniqueColors = {};
 
         for (let y = top + tolerance; y < bottom - tolerance; y++) {
           for (let x = left + tolerance; x < right - tolerance; x++) {
             const index = (y * imageData.width + x) * 4;
-            totalR += imageData.data[index];
-            totalG += imageData.data[index + 1];
-            totalB += imageData.data[index + 2];
-            count++;
+            const color = {
+              r: imageData.data[index],
+              g: imageData.data[index + 1],
+              b: imageData.data[index + 2],
+            };
+
+            const colorKey = `${color.r},${color.g},${color.b}`;
+            if (uniqueColors[colorKey]) {
+              uniqueColors[colorKey]++;
+            } else {
+              uniqueColors[colorKey] = 1;
+            }
           }
         }
 
-        const avgR = Math.round(totalR / count);
-        const avgG = Math.round(totalG / count);
-        const avgB = Math.round(totalB / count);
+        // Find the color with the highest count
+        let maxCount = 0;
+        let dominantColor = { r: 0, g: 0, b: 0 };
+        Object.keys(uniqueColors).forEach((key) => {
+          if (uniqueColors[key] > maxCount) {
+            maxCount = uniqueColors[key];
+            const [r, g, b] = key.split(",").map(Number);
+            dominantColor = { r, g, b };
+          }
+        });
 
-        const colorHex = `#${((1 << 24) + (avgR << 16) + (avgG << 8) + avgB)
-          .toString(16)
-          .slice(1)
-          .toUpperCase()}`;
+        const { r, g, b } = dominantColor;
 
-        const closestHex = closestColorHex(avgR, avgG, avgB);
+        const closestHex = closestColorHex(r, g, b);
 
         // Assign color to region if not already mapped
         if (!colorMapping[closestHex]) {
