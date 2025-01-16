@@ -6,7 +6,7 @@ import {
   chardonnay,
   halfBaked,
   lightOrchid,
-  lightWisteria
+  lightWisteria,
 } from "../colors";
 
 const level80 = {
