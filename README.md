@@ -7,7 +7,7 @@
 </div>
 
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/samimsu/queens-game-linkedin)](https://github.com/samimsu/queens-game-linkedin/issues)
-[![GitHub stars](https://img.shields.io/github/stars/samimsu/queens-game-linkedin?style=flat-square&label=github%20stars)](https://github.com/samimsu/queens-game-linkedin)
+[![GitHub stars](https://img.shields.io/github/stars/samimsu/queens-game-linkedin?style=flat-square&label=github%20stars)](https://github.com/samimsu/queens-game-linkedin/stargazers)
 [![All Contributors](https://img.shields.io/github/all-contributors/samimsu/queens-game-linkedin?color=ee8449&style=flat-square)](#contributors)
 
 <div align="center">
