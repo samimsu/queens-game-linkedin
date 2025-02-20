@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import GithubStarButton from "./GithubStarButton";
+import PatreonButton from "./PatreonButton";
 
 const Footer = () => {
   return (
@@ -22,8 +23,13 @@ const Footer = () => {
         </Link>
       </div>
 
-      <div className="mx-auto w-fit">
-        <GithubStarButton variant="small" />
+      <div className="flex justify-center items-center space-x-3 mx-auto w-fit">
+        <div className="h-7">
+          <GithubStarButton />
+        </div>
+        <div>
+          <PatreonButton />
+        </div>
       </div>
     </div>
   );
