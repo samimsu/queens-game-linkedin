@@ -26,6 +26,7 @@ import {
   setClashingQueensPreference,
   setShowInstructionsPreference,
 } from "../../utils/localStorage";
+import Giscus from "@giscus/react";
 
 const Level = ({ id, level }) => {
   const [board, setBoard] = useState(createEmptyBoard(levels[level].size));
@@ -348,8 +349,9 @@ const Level = ({ id, level }) => {
       <div className="flex flex-col items-center">
         <div>
           <div
-            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${showClock ? "mb-0" : "mb-2"
-              }`}
+            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${
+              showClock ? "mb-0" : "mb-2"
+            }`}
           >
             <Link to="/" className="flex-none">
               <button className="border border-slate-500 rounded-full p-2">
@@ -430,6 +432,23 @@ const Level = ({ id, level }) => {
         </div>
 
         {showInstructions && <HowToPlay />}
+
+        <div className="w-full px-2">
+          <Giscus
+            repo="samimsu/queens-game-linkedin"
+            repoId="R_kgDONCfeAg"
+            category="Announcements"
+            categoryId="DIC_kwDONCfeAs4CnIas"
+            mapping="pathname"
+            strict="0"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="bottom"
+            theme="preferred_color_scheme"
+            lang="en"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   );
