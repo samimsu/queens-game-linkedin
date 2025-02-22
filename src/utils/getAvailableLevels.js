@@ -1,6 +1,6 @@
 import { levels } from "./levels";
 
-const getAvailableLevels = () => {
+export const getOrderedLevels = () => {
   const levelKeys = Object.keys(levels);
   const availableLevels = levelKeys.map((key) =>
     parseInt(key.replace("level", ""), 10)
@@ -9,4 +9,16 @@ const getAvailableLevels = () => {
   return availableLevels;
 };
 
-export default getAvailableLevels;
+export const getLevelsBySize = () => {
+  const levelsBySize = {};
+
+  Object.entries(levels).forEach(([key, level]) => {
+    const size = level.size;
+    if (!levelsBySize[size]) {
+      levelsBySize[size] = [];
+    }
+    levelsBySize[size].push(parseInt(key.replace("level", ""), 10));
+  });
+
+  return levelsBySize;
+};

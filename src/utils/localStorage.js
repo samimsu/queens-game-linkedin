@@ -45,3 +45,11 @@ export const setAutoPlaceXsPreference = (enabled) => {
 export const getAutoPlaceXsPreference = () => {
   return JSON.parse(localStorage.getItem("autoPlaceXs")) ?? false; // Default to false
 };
+
+export const setGroupingPreference = (enabled) => {
+  localStorage.setItem("groupBySize", JSON.stringify(enabled));
+};
+
+export const getGroupingPreference = () => {
+  return JSON.parse(localStorage.getItem("groupBySize")) ?? false; // Default to false
+};
