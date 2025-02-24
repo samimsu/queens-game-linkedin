@@ -3,6 +3,7 @@ import Heading from "./components/Heading";
 import AvailableLevelsFilter from "./components/AvailableLevelsFilter";
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
+import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
 import {
   getGroupingPreference,
   setGroupingPreference,
@@ -13,6 +14,7 @@ import UngroupIcon from "../icons/UngroupIcon";
 const LevelSelection = () => {
   const [showOnlyAvailableLevels, setShowOnlyAvailableLevels] = useState(false);
   const [groupBySize, setGroupBySize] = useState(getGroupingPreference);
+  const [resetTrigger, setResetTrigger] = useState(false);
 
   const toggleGroupBySize = () => {
     const newSetting = !groupBySize;
@@ -29,13 +31,19 @@ const LevelSelection = () => {
           handleChange={() => setShowOnlyAvailableLevels((prev) => !prev)}
           disabled={groupBySize}
         />
-        <button onClick={toggleGroupBySize} className="mx-1">
-          {groupBySize ? <GroupIcon /> : <UngroupIcon />}
-        </button>
+        <div className="flex items-center space-x-3 mx-1">
+          <ResetAllProgressDialog
+            onReset={() => setResetTrigger((prev) => !prev)}
+          />
+          <button onClick={toggleGroupBySize}>
+            {groupBySize ? <GroupIcon /> : <UngroupIcon />}
+          </button>
+        </div>
       </div>
       <LevelsCollection
         showOnlyAvailableLevels={showOnlyAvailableLevels}
         groupBySize={groupBySize}
+        resetTrigger={resetTrigger}
         className="mb-3"
       />
       <LinkedInNote />

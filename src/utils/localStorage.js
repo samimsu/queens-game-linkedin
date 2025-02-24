@@ -14,6 +14,10 @@ export const isLevelCompleted = (levelNumber) => {
   return completedLevels.includes(levelNumber);
 };
 
+export const resetCompletedLevels = () => {
+  localStorage.setItem("completedLevels", JSON.stringify([]));
+};
+
 export const setClashingQueensPreference = (enabled) => {
   localStorage.setItem("clashingQueensEnabled", JSON.stringify(enabled));
 };
