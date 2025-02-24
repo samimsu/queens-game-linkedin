@@ -17,7 +17,7 @@ const LevelsCollection = ({
   const renderGroupedLevels = () => {
     return Object.entries(levelsBySize).map(([size, levels]) => (
       <div key={size} className="mb-1 p-1">
-        <h3 className="font-medium mb-2 text-center text-lg">
+        <h3 className="font-medium mb-1 text-center text-lg">
           {size}x{size}
         </h3>
         <div className="grid grid-cols-8 sm:grid-cols-10 gap-1">

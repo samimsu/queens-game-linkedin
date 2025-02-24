@@ -413,8 +413,9 @@ const Level = ({ id, level }) => {
             {showWinningScreen && (
               <WinningScreen
                 timer={showClock && timer}
-                PreviousLevelButton={PreviousLevelButton}
-                NextLevelButton={NextLevelButton}
+                previousLevel={previousLevel}
+                nextLevel={nextLevel}
+                level={id}
                 close={() => setShowWinningScreen(false)}
               />
             )}

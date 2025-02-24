@@ -1,15 +1,64 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import goldCrown from "../../../assets/gold-crown.svg";
 import CloseIcon from "../../icons/CloseIcon";
 import formatDuration from "@/utils/formatDuration";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
+import { getLevelsBySize } from "@/utils/getAvailableLevels";
 
-const WinningScreen = ({
-  timer,
-  PreviousLevelButton,
-  NextLevelButton,
-  close,
-}) => {
+const LevelNavigationButton = ({ level, text, isTextSmall }) => (
+  <Link to={!level ? "#" : `/level/${level}`} className="flex">
+    <button
+      disabled={!level}
+      className={`${
+        isTextSmall ? "text-lg" : "text-xl"
+      } min-w-36 rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
+    >
+      {text}
+    </button>
+  </Link>
+);
+
+const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
+  const isGroupedBySize = localStorage.getItem("groupBySize") === "true";
+
+  let updatedPreviousLevel = previousLevel;
+  let updatedNextLevel = nextLevel;
+  let previousLevelText = "Previous Level";
+  let nextLevelText = "Next Level";
+
+  const updateLevelNavigation = () => {
+    const levelsBySize = getLevelsBySize();
+
+    for (let size in levelsBySize) {
+      const levels = levelsBySize[size];
+
+      const currentIndex = levels.indexOf(Number(level));
+      const isValidCurrentIndex = currentIndex !== -1;
+      if (isValidCurrentIndex) {
+        if (!updatedNextLevel) {
+          const nextSize = levelsBySize[Number(size) + 1];
+          if (nextSize) {
+            updatedNextLevel = nextSize[0];
+            nextLevelText = `Play ${Number(size) + 1}x${Number(size) + 1}`;
+          }
+        }
+        if (!updatedPreviousLevel) {
+          const previousSize = levelsBySize[Number(size) - 1];
+          if (previousSize) {
+            updatedPreviousLevel = previousSize[0];
+            previousLevelText = `Play ${Number(size) - 1}x${Number(size) - 1}`;
+          }
+        }
+        break;
+      }
+    }
+  };
+
+  if (isGroupedBySize && (!updatedPreviousLevel || !updatedNextLevel)) {
+    updateLevelNavigation();
+  }
+
   return (
     <div
       className={`absolute flex flex-col items-center justify-center text-center rounded-lg bg-purple text-white text-xl w-72 ${
@@ -44,20 +93,16 @@ const WinningScreen = ({
             </div>
           </div>
         )}
-        <PreviousLevelButton
-          className={`${
-            timer ? "text-lg" : "text-xl"
-          } rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
-        >
-          Previous Level
-        </PreviousLevelButton>
-        <NextLevelButton
-          className={`${
-            timer ? "text-lg" : "text-xl"
-          } rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
-        >
-          Next Level
-        </NextLevelButton>
+        <LevelNavigationButton
+          level={updatedPreviousLevel}
+          text={previousLevelText}
+          isTextSmall={timer}
+        />
+        <LevelNavigationButton
+          level={updatedNextLevel}
+          text={nextLevelText}
+          isTextSmall={timer}
+        />
       </div>
     </div>
   );
