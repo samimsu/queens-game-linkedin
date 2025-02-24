@@ -11,12 +11,13 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { resetCompletedLevels } from "@/utils/localStorage";
+import { RotateCcw } from "lucide-react";
 
 const ResetAllProgressDialog = ({ onReset }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <ResetIcon size="24" />
+        <RotateCcw />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
