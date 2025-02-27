@@ -4,6 +4,7 @@ import AvailableLevelsFilter from "./components/AvailableLevelsFilter";
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
+import SupportMeIconButton from "./components/SupportMeIconButton";
 import {
   getGroupingPreference,
   setGroupingPreference,
@@ -24,6 +25,9 @@ const LevelSelection = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-fit mx-auto">
+      <div className="flex self-end mx-1">
+        <SupportMeIconButton />
+      </div>
       <Heading />
       <div className="flex w-full justify-between mb-2">
         <AvailableLevelsFilter
