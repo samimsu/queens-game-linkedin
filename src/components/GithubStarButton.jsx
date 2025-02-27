@@ -1,5 +1,6 @@
 import React from "react";
 import GitHubButton from "react-github-btn";
+import { queensGameRepo } from "@/data/links";
 
 const GithubStarButton = ({ variant = "" }) => {
   const user = "samimsu";
@@ -7,7 +8,7 @@ const GithubStarButton = ({ variant = "" }) => {
 
   return (
     <GitHubButton
-      href="https://github.com/samimsu/queens-game-linkedin"
+      href={queensGameRepo}
       data-color-scheme="no-preference: light; light: light; dark: dark;"
       data-icon="octicon-star"
       data-size="large"

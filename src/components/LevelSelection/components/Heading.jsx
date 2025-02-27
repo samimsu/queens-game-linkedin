@@ -1,10 +1,11 @@
 import React from "react";
 import Queen from "@/components/Queen";
+import { queensGameRepo } from "@/data/links";
 
 const Heading = () => {
   return (
     <a
-      href="https://github.com/samimsu/queens-game-linkedin"
+      href={queensGameRepo}
       target="_blank"
       rel="noopener noreferrer"
       className="font-medium group"

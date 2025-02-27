@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import GithubStarButton from "./GithubStarButton";
 import PatreonButton from "./PatreonButton";
+import { portfolioSite } from "@/data/links";
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
         <div>
           Created by{" "}
           <a
-            href="https://samimsu.github.io"
+            href={portfolioSite}
             target="_blank"
             rel="noopener noreferrer"
             className="underline font-medium"

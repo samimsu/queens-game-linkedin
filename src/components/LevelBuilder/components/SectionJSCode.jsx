@@ -1,5 +1,6 @@
 import React from "react";
 import { colorNames } from "../../../utils/colors";
+import { queensGameRepoNewLevelFile } from "@/data/links";
 
 const SectionJSCode = ({
   jsCode,
@@ -102,7 +103,7 @@ export default level${levelNumber};
         <div>
           Add this code to{" "}
           <a
-            href="https://github.com/samimsu/queens-game-linkedin/new/new-levels/src/utils/levels"
+            href={queensGameRepoNewLevelFile}
             target="_blank"
             rel="noopener noreferrer"
           >

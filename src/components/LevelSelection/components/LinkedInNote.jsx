@@ -1,4 +1,5 @@
 import React from "react";
+import { officialLinkedInQueensGamePage } from "@/data/links";
 
 const LinkedInIcon = ({ className = "" }) => {
   return (
@@ -18,7 +19,7 @@ const LinkedInNote = ({ className = "" }) => {
     <div className={`flex items-end space-x-1 ${className}`}>
       <span className="text-sm">Collected from</span>
       <a
-        href="https://www.linkedin.com/showcase/queens-game"
+        href={officialLinkedInQueensGamePage}
         target="_blank"
         rel="noopener noreferrer"
       >
