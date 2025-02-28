@@ -26,7 +26,7 @@ const SettingsDialog = ({
         </button>
       </DialogTrigger>
       <DialogContent
-        className="sm:max-w-[425px] bg-[#f7f0dd]"
+        className="sm:max-w-[425px] bg-background"
         aria-describedby={undefined}
       >
         <DialogHeader>
