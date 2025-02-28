@@ -91,7 +91,7 @@ export default level${levelNumber};
                   setCopied(false);
                 }, 1500);
               }}
-              className="bg-background border border-slate-500 rounded-xl py-0.5 px-1.5 text-sm disabled:bg-slate-100 opacity-75 hover:opacity-100"
+              className="bg-background border border-slate-500 rounded-xl py-0.5 px-1.5 text-sm disabled:opacity-50 opacity-75 hover:opacity-100"
               disabled={!jsCode}
             >
               Copy code
