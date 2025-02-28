@@ -1,19 +1,21 @@
 import React from "react";
 import GitHubButton from "react-github-btn";
 import { queensGameRepo } from "@/data/links";
+import { useTheme } from "next-themes";
 
 const GithubStarButton = ({ variant = "" }) => {
+  const { theme } = useTheme();
   const user = "samimsu";
   const repo = "queens-game-linkedin";
 
   return (
     <GitHubButton
       href={queensGameRepo}
-      data-color-scheme="no-preference: light; light: light; dark: dark;"
+      data-color-scheme={theme}
       data-icon="octicon-star"
       data-size="large"
       data-show-count="true"
-      aria-label="Star samimsu/queens-game-linkedin on GitHub"
+      aria-label={`Star ${user}/${repo} on GitHub`}
     >
       Star
     </GitHubButton>
