@@ -14,7 +14,7 @@ const SupportMeIconButton = () => {
       <Tooltip>
         <TooltipTrigger>
           <a href={patreon} target="_blank" rel="noopener noreferrer">
-            <HeartHandshake color="#ee2677" />
+            <HeartHandshake color="#FF3131" />
           </a>
         </TooltipTrigger>
         <TooltipContent>
