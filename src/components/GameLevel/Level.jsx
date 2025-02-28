@@ -27,8 +27,11 @@ import {
   setShowInstructionsPreference,
 } from "../../utils/localStorage";
 import getNavigationLevels from "@/utils/getNavigationLevels";
+import { useTheme } from "next-themes";
 
 const Level = ({ id, level }) => {
+  const { theme } = useTheme();
+
   const levelSize = levels[level].size;
 
   const [board, setBoard] = useState(createEmptyBoard(levelSize));
@@ -443,7 +446,7 @@ const Level = ({ id, level }) => {
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="bottom"
-            theme="light"
+            theme={theme}
             lang="en"
             loading="lazy"
           />
