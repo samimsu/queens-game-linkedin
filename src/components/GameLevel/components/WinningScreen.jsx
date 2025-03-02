@@ -87,7 +87,7 @@ const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
               alt="Golden chiclet background"
               className="rounded w-full h-16 object-cover"
             />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-foreground">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">
               <div className="text-lg">{formatDuration(timer)}</div>
               <div className="font-medium text-sm">Solve time</div>
             </div>
