@@ -4,7 +4,6 @@ import {
   bittersweet,
   celadon,
   chardonnay,
-  coldPurple,
   halfBaked,
   lightOrchid,
   lightWisteria,
@@ -22,9 +21,9 @@ const level306 = {
     ["F", "F", "H", "G", "G", "G", "G", "C", "C", "E"],
     ["H", "H", "H", "H", "G", "G", "I", "I", "C", "I"],
     ["H", "H", "H", "H", "G", "G", "I", "I", "I", "I"],
-    ["J", "K", "H", "K", "G", "G", "K", "I", "K", "I"],
-    ["H", "K", "K", "K", "G", "G", "K", "K", "K", "I"],
-    ["H", "H", "K", "K", "K", "K", "K", "K", "I", "I"],
+    ["H", "J", "H", "J", "G", "G", "J", "I", "J", "I"],
+    ["H", "J", "J", "J", "G", "G", "J", "J", "J", "I"],
+    ["H", "H", "J", "J", "J", "J", "J", "J", "I", "I"],
   ],
   regionColors: {
     A: lightWisteria,
@@ -36,8 +35,7 @@ const level306 = {
     G: saharaSand,
     H: anakiwa,
     I: chardonnay,
-    J: coldPurple,
-    K: halfBaked,
+    J: halfBaked,
   },
 };
 
