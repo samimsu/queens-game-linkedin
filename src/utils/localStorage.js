@@ -1,3 +1,6 @@
+import { createEmptyBoard } from "@/utils/board";
+import { levels } from "@/utils/levels";
+
 const LOCAL_STORAGE = {
   completedLevels: {
     key: "completedLevels",
@@ -25,9 +28,27 @@ const LOCAL_STORAGE = {
   },
 }
 
+const migrateCompletedLevelsLocalStorage = (completedLevels) => {
+  if (!Array.isArray(completedLevels)) return completedLevels;
+  const completedLevelsMigrated = {}
+
+  completedLevels.forEach(completedLevel => {
+    const level = levels[`level${completedLevel}`]
+    const levelSize = level?.size
+    completedLevelsMigrated[completedLevel] = {
+      completed: true,
+      board: levelSize && createEmptyBoard(levelSize),
+      time: 0
+    }
+  })
+  saveCompletedLevels(completedLevelsMigrated);
+  return completedLevelsMigrated;
+}
+
 const getCompletedLevels = () => {
   try {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE.completedLevels.key)) ?? LOCAL_STORAGE.completedLevels.defaultValue;
+    const loadedCompletedLevels = JSON.parse(localStorage.getItem(LOCAL_STORAGE.completedLevels.key)) ?? LOCAL_STORAGE.completedLevels.defaultValue;
+    return migrateCompletedLevelsLocalStorage(loadedCompletedLevels);
   } catch (error) {
     return LOCAL_STORAGE.completedLevels.defaultValue;
   }
