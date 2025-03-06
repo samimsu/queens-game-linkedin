@@ -5,7 +5,7 @@ import formatDuration from "@/utils/formatDuration";
 const ONE_HOUR_IN_SECONDS = 3600;
 const TEN_HOURS_IN_SECONDS = 36000;
 
-const Timer = ({ run, onTimeUpdate, showTimer, className = "" }) => {
+const Timer = ({ run, onTimeUpdate, showTimer, initialTimer, className = "" }) => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -26,6 +26,12 @@ const Timer = ({ run, onTimeUpdate, showTimer, className = "" }) => {
   useEffect(() => {
     onTimeUpdate(seconds);
   }, [seconds]);
+
+  useEffect(() => {
+    if (initialTimer != null) {
+      setSeconds(initialTimer);
+    }
+  }, [initialTimer]);
 
   if (!showTimer) {
     return <></>;
