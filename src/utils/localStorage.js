@@ -28,39 +28,39 @@ const LOCAL_STORAGE = {
   },
 }
 
-const migrateCompletedLevelsLocalStorage = (completedLevels) => {
-  if (!Array.isArray(completedLevels)) return completedLevels;
-  const completedLevelsMigrated = {}
+const migrateStoredLevelsLocalStorage = (storedLevels) => {
+  if (!Array.isArray(storedLevels)) return storedLevels;
+  const storedLevelsMigrated = {}
 
-  completedLevels.forEach(completedLevel => {
+  storedLevels.forEach(completedLevel => {
     const level = levels[`level${completedLevel}`]
     const levelSize = level?.size
-    completedLevelsMigrated[completedLevel] = {
+    storedLevelsMigrated[completedLevel] = {
       completed: true,
       board: levelSize && createEmptyBoard(levelSize),
       time: 0
     }
   })
-  saveCompletedLevels(completedLevelsMigrated);
-  return completedLevelsMigrated;
+  storeLevels(storedLevelsMigrated);
+  return storedLevelsMigrated;
 }
 
-const getCompletedLevels = () => {
+const getStoredLevels = () => {
   try {
-    const loadedCompletedLevels = JSON.parse(localStorage.getItem(LOCAL_STORAGE.completedLevels.key)) ?? LOCAL_STORAGE.completedLevels.defaultValue;
-    return migrateCompletedLevelsLocalStorage(loadedCompletedLevels);
+    const storedLevels = JSON.parse(localStorage.getItem(LOCAL_STORAGE.completedLevels.key)) ?? LOCAL_STORAGE.completedLevels.defaultValue;
+    return migrateStoredLevelsLocalStorage(storedLevels);
   } catch (error) {
     return LOCAL_STORAGE.completedLevels.defaultValue;
   }
 }
 
-const saveCompletedLevels = (completedLevels) => {
+const storeLevels = (completedLevels) => {
   localStorage.setItem(LOCAL_STORAGE.completedLevels.key, JSON.stringify(completedLevels));
 }
 
-export const getCompletedLevel = (levelNumber) => {
-  const completedLevels = getCompletedLevels();
-  return completedLevels[levelNumber];
+export const getStoredLevel = (levelNumber) => {
+  const storedLevels = getStoredLevels();
+  return storedLevels[levelNumber];
 }
 
 export const markLevelAsCompleted = (levelNumber, time, board) => {
@@ -72,23 +72,23 @@ export const markLevelProgress = (levelNumber, time, board) => {
 }
 
 const saveLevel = (levelNumber, time, board, completed) => {
-  const completedLevels = getCompletedLevels();
+  const storedLevels = getStoredLevels();
   
-  completedLevels[levelNumber] = {
+  storedLevels[levelNumber] = {
     completed,
     time,
     board
   };
-  saveCompletedLevels(completedLevels);
+  storeLevels(storedLevels);
 };
 
 export const isLevelCompleted = (levelNumber) => {
-  const completedLevels = getCompletedLevels();
-  return completedLevels[levelNumber]?.completed;
+  const storedLevels = getStoredLevels();
+  return storedLevels[levelNumber]?.completed;
 };
 
 export const resetCompletedLevels = () => {
-  saveCompletedLevels(JSON.stringify(LOCAL_STORAGE.completedLevels.defaultValue));
+  storeLevels(JSON.stringify(LOCAL_STORAGE.completedLevels.defaultValue));
 };
 
 export const setClashingQueensPreference = (enabled) => {
