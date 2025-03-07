@@ -26,7 +26,7 @@ import {
   setClashingQueensPreference,
   setShowInstructionsPreference,
   markLevelProgress,
-  getCompletedLevel,
+  getStoredLevel,
 } from "../../utils/localStorage";
 import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
@@ -68,7 +68,7 @@ const Level = ({ id, level }) => {
   const colorRegions = levels[level].colorRegions;
 
   useEffect(() => {
-    const levelSaved = getCompletedLevel(Number(id));
+    const levelSaved = getStoredLevel(Number(id));
     setCompleted(isLevelCompleted(Number(id)));
     if (!levelSaved) {
       setBoardLoaded(true);
