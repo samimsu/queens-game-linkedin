@@ -7,7 +7,7 @@ import { queensGameRepoNewIssue } from "@/data/links";
 const PageLevelNotFound = () => {
   return (
     <RootLayout>
-      <div className="flex flex-col items-center justify-center text-gray-600 pt-24">
+      <div className="flex flex-col items-center justify-center text-gray-600 pt-24 mx-2">
         <div className="text-4xl mb-4 font-bold text-primary">
           Level not found
         </div>

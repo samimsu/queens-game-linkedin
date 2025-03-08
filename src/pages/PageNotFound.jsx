@@ -6,7 +6,7 @@ import RootLayout from "@/layouts/RootLayout";
 const PageNotFound = () => {
   return (
     <RootLayout>
-      <div className="flex flex-col items-center justify-center pt-24 text-center">
+      <div className="flex flex-col items-center justify-center pt-24 text-center mx-2">
         <h1 className="text-4xl font-bold text-primary">
           404 - Page Not Found
         </h1>
