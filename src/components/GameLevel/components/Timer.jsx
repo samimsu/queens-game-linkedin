@@ -28,9 +28,7 @@ const Timer = ({ run, onTimeUpdate, showTimer, initialTimer, className = "" }) =
   }, [seconds]);
 
   useEffect(() => {
-    if (initialTimer != null) {
-      setSeconds(initialTimer);
-    }
+    setSeconds(initialTimer || 0);
   }, [initialTimer]);
 
   if (!showTimer) {
