@@ -58,6 +58,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Salzie"><img src="https://avatars.githubusercontent.com/u/32619234?v=4?s=100" width="100px;" alt="Salzie"/><br /><sub><b>Salzie</b></sub></a><br /><a href="#code-Salzie" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/monardo12"><img src="https://avatars.githubusercontent.com/u/5551940?v=4?s=100" width="100px;" alt="Carlos Fernando Ruiz Nieto"/><br /><sub><b>Carlos Fernando Ruiz Nieto</b></sub></a><br /><a href="#code-monardo12" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/preet717"><img src="https://avatars.githubusercontent.com/u/175558786?v=4?s=100" width="100px;" alt="preet717"/><br /><sub><b>preet717</b></sub></a><br /><a href="#code-preet717" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/odrail"><img src="https://avatars.githubusercontent.com/u/76907155?v=4?s=100" width="100px;" alt="Manu"/><br /><sub><b>Manu</b></sub></a><br /><a href="#code-odrail" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
