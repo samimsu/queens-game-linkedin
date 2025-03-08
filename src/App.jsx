@@ -1,13 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "next-themes";
 import PageGameLevel from "./pages/PageGameLevel";
 import PageLevelSelection from "./pages/PageLevelSelection";
 import PageLevelBuilder from "./pages/PageLevelBuilder";
 import PageNotFound from "./pages/PageNotFound";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import "./App.css";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "next-themes";
-import ThemeSwitcher from "./components/ThemeSwitcher"
 
 const App = () => {
   return (
