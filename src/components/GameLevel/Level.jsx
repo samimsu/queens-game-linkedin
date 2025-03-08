@@ -20,12 +20,12 @@ import {
   getClashingQueensPreference,
   getShowInstructionsPreference,
   isLevelCompleted,
-  markLevelAsCompleted,
+  saveLevelAsCompleted,
   setShowClockPreference,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
   setShowInstructionsPreference,
-  markLevelProgress,
+  saveLevelAsNotCompleted,
   getStoredLevel,
 } from "../../utils/localStorage";
 import getNavigationLevels from "@/utils/getNavigationLevels";
@@ -422,9 +422,9 @@ const Level = ({ id, level }) => {
   useEffect(() => {
     if (!boardLoaded) return;
     if (hasWon) {
-      markLevelAsCompleted(Number(id), timer, board);
+      saveLevelAsCompleted(Number(id), timer, board);
     } else {
-      markLevelProgress(Number(id), timer, board);
+      saveLevelAsNotCompleted(Number(id), timer, board);
     }
   }, [timer, board, boardLoaded]);
 
