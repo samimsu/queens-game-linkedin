@@ -30,19 +30,19 @@ const LOCAL_STORAGE = {
 
 const migrateStoredLevelsLocalStorage = (storedLevels) => {
   if (!Array.isArray(storedLevels)) return storedLevels;
-  const storedLevelsMigrated = {}
+  const levelsMigrated = {}
 
   storedLevels.forEach(completedLevel => {
     const level = levels[`level${completedLevel}`]
     const levelSize = level?.size
-    storedLevelsMigrated[completedLevel] = {
+    levelsMigrated[completedLevel] = {
       completed: true,
       board: levelSize && createEmptyBoard(levelSize),
       time: 0
     }
   })
-  storeLevels(storedLevelsMigrated);
-  return storedLevelsMigrated;
+  storeLevels(levelsMigrated);
+  return levelsMigrated;
 }
 
 const getStoredLevels = () => {
@@ -63,11 +63,11 @@ export const getStoredLevel = (levelNumber) => {
   return storedLevels[levelNumber];
 }
 
-export const markLevelAsCompleted = (levelNumber, time, board) => {
+export const saveLevelAsCompleted = (levelNumber, time, board) => {
   saveLevel(levelNumber, time, board, true);
 }
 
-export const markLevelProgress = (levelNumber, time, board) => {
+export const saveLevelAsNotCompleted = (levelNumber, time, board) => {
   saveLevel(levelNumber, time, board, false);
 }
 
