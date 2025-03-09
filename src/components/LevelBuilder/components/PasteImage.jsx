@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import QuestionIcon from "@/components/icons/QuestionIcon";
+import { useTranslation } from "react-i18next";
 
 const PasteImage = ({ handlePaste }) => {
   const [showHelperText, setShowHelperText] = useState(false);
 
   const helperButtonRef = useRef(null);
   const helperTextRef = useRef(null);
+  
+  const { t } = useTranslation()
 
   const handleClickOutside = (event) => {
     if (
@@ -55,8 +58,7 @@ const PasteImage = ({ handlePaste }) => {
             ref={helperTextRef}
             className="absolute top-5 right-0 text-xs min-w-40 bg-white p-2 border-2 rounded border-slate-300"
           >
-            Try pasting an image. The bigger and as specific the image, the
-            better.
+            {t('PAST_IMAGE_MSG')}
           </span>
         )}
       </div>
