@@ -34,6 +34,7 @@ import useImageGridProcessing from "../../hooks/useImageGridProcessing";
 import PasteImage from "./components/PasteImage";
 import { Switch } from "@/components/ui/switch";
 import PreviewImage from "./PreviewImage";
+import { useTranslation } from "react-i18next";
 
 const colorOptions = [
   { name: "Alto", value: alto },
@@ -96,6 +97,7 @@ const LevelBuilder = () => {
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
   const [hideRegionValues, setHideRegionValues] = useState(false);
+  const { t } = useTranslation()
 
   useImageGridProcessing({
     setBoardSize,
@@ -206,10 +208,10 @@ const LevelBuilder = () => {
           <Link to="/" className="text-blue-500">
             Home
           </Link>{" "}
-          / Level Builder
+          / {t('LEVEL_BUILDER')}
         </div>
 
-        <h1 className="text-4xl mb-6">Level Builder</h1>
+        <h1 className="text-4xl mb-6">{t('LEVEL_BUILDER')}</h1>
 
         <div className="flex flex-col space-y-2">
           <LevelNameInput levelName={levelName} setLevelName={setLevelName} />
@@ -241,7 +243,7 @@ const LevelBuilder = () => {
                     }}
                     className="border border-slate-500 rounded-full py-1 px-3 mb-3 whitespace-nowrap"
                   >
-                    Clear board
+                    {t('CLEAR_BOARD')}
                   </button>
                 </div>
                 {/* BOARD */}
@@ -267,7 +269,7 @@ const LevelBuilder = () => {
                       className="whitespace-nowrap pl-2"
                       onClick={() => setHideRegionValues((prev) => !prev)}
                     >
-                      Hide letters
+                      {t('HIDE_LETTERS')}
                     </label>
                   </div>
                   <PasteImage handlePaste={handlePaste} />
