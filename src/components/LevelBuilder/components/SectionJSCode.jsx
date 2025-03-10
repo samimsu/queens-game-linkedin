@@ -1,6 +1,7 @@
 import React from "react";
 import { colorNames } from "../../../utils/colors";
 import { queensGameRepoNewLevelFile } from "@/data/links";
+import { useTranslation } from "react-i18next";
 
 const SectionJSCode = ({
   jsCode,
@@ -56,6 +57,9 @@ export default level${levelNumber};
     setJsCode(jsContent);
   };
 
+  
+  const { t } = useTranslation()
+
   return (
     <div className="flex flex-col items-start">
       <div className="flex justify-between space-x-2 w-full mb-3">
@@ -63,14 +67,14 @@ export default level${levelNumber};
           onClick={() => generateLevelJSCode(levelName, board, regionColors)}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          Generate code
+          {t('GENERATE_CODE')}
         </button>
 
         <button
           onClick={() => setJsCode("")}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          Clear code
+          {t('CLEAR_CODE')}
         </button>
       </div>
 
@@ -94,14 +98,14 @@ export default level${levelNumber};
               className="bg-background border border-slate-500 rounded-xl py-0.5 px-1.5 text-sm disabled:opacity-50 opacity-75 hover:opacity-100"
               disabled={!jsCode}
             >
-              Copy code
+              {t('COPY_CODE')}
             </button>
-            {copied && <div className="text-sm text-foreground">Copied!</div>}
+            {copied && <div className="text-sm text-foreground">{t('COPIED')}!</div>}
           </div>
         </div>
 
         <div>
-          Add this code to{" "}
+          {t('ADD_THIS_CODE_TO')}{" "}
           <a
             href={queensGameRepoNewLevelFile}
             target="_blank"

@@ -1,5 +1,4 @@
-import React, { Component, ReactNode } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
 import { Button } from "./ui/button";
 
 class ErrorBoundary extends Component {
