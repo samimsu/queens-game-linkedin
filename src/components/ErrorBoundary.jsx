@@ -1,6 +1,6 @@
-import React, { Component, ReactNode } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
 import { Button } from "./ui/button";
+import { withTranslation } from 'react-i18next';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class ErrorBoundary extends Component {
       return (
         <div className="flex flex-col items-center justify-center h-screen text-center">
           <h1 className="text-2xl font-bold text-primary">
-            Something went wrong :(
+            {this.props.t('SOMETHING_WENT_WRONG')}
           </h1>
 
           <div className="mt-6 flex space-x-3">
@@ -29,11 +29,11 @@ class ErrorBoundary extends Component {
               className="hover:bg-primary hover:opacity-90"
               onClick={() => this.setState({ hasError: false })}
             >
-              Try Again
+              {this.props.t('TRY_AGAIN')}
             </Button>
             <a href="/" className="">
               <Button className="hover:bg-primary hover:opacity-90">
-                Go home
+                {this.props.t('GO_HOME')}
               </Button>
             </a>
           </div>
@@ -45,4 +45,4 @@ class ErrorBoundary extends Component {
   }
 }
 
-export default ErrorBoundary;
+export default withTranslation()(ErrorBoundary);

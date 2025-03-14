@@ -1,9 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const LevelName = ({ levelName, setLevelName }) => {
+  const { t } = useTranslation()
+
   return (
     <div className="mb-3 flex items-center space-x-3 text-lg">
-      <label>Level name</label>
+      <label>{t('LEVEL_NAME')}</label>
       <input
         value={levelName}
         onChange={(e) => setLevelName(e.target.value)}

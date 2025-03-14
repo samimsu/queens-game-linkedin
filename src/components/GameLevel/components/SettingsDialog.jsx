@@ -7,6 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
+import { useTranslation } from "react-i18next";
 
 const SettingsDialog = ({
   showClashingQueens,
@@ -18,6 +19,8 @@ const SettingsDialog = ({
   showClock,
   toggleShowClock,
 }) => {
+  const { t } = useTranslation()
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -30,26 +33,26 @@ const SettingsDialog = ({
         aria-describedby={undefined}
       >
         <DialogHeader>
-          <DialogTitle className="mb-2">Settings</DialogTitle>
+          <DialogTitle className="mb-2">{t('SETTINGS')}</DialogTitle>
         </DialogHeader>
         <div className="space-y-1 h-40">
           <div className="flex items-center justify-between space-x-3">
-            <div>Show clock</div>
+            <div>{t('SHOW_CLOCK')}</div>
             <Switch checked={showClock} onCheckedChange={toggleShowClock} />
           </div>
           <div className="flex items-center justify-between space-x-3">
-            <div>Auto place X's</div>
+            <div>{t('AUTO_PLACE_XS')}</div>
             <Switch checked={autoPlaceXs} onCheckedChange={toggleAutoPlaceXs} />
           </div>
           <div className="flex items-center justify-between space-x-3">
-            <div>Show clashing queens</div>
+            <div>{t('SHOW_CLASHING_QUEENS')}</div>
             <Switch
               checked={showClashingQueens}
               onCheckedChange={toggleShowClashingQueens}
             />
           </div>
           <div className="flex items-center justify-between space-x-3">
-            <div>Show instructions</div>
+            <div>{t('SHOW_INSTRUCTIONS')}</div>
             <Switch
               checked={showInstructions}
               onCheckedChange={toggleShowInstructions}

@@ -28,6 +28,7 @@ import {
 } from "../../utils/localStorage";
 import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
+import { useTranslation } from "react-i18next";
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -49,6 +50,7 @@ const Level = ({ id, level }) => {
   );
   const [showClock, setShowClock] = useState(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState(getAutoPlaceXsPreference);
+  const { t } = useTranslation();
 
   const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
     getNavigationLevels(id, level);
@@ -365,7 +367,7 @@ const Level = ({ id, level }) => {
                 <PreviousIcon />
               </PreviousLevelButton>
 
-              <h2 className="text-xl text-center">Level {id}</h2>
+              <h2 className="text-xl text-center">{t("LEVEL")} {id}</h2>
 
               <NextLevelButton className="disabled:opacity-50">
                 <NextIcon />
