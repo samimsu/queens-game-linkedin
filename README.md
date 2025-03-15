@@ -45,6 +45,12 @@ If you would like to help me build levels you can use the [Level Builder](https:
 
 https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
 
+## Local Development
+
+1. Clone this repository: `gh repo clone samimsu/queens-game-linkedin` (You will need [GitHub CLI](https://cli.github.com/))
+2. `npm install` to install the dependencies
+3. `npm start` to run the project locally
+
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
