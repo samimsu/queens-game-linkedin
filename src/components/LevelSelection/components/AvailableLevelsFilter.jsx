@@ -20,7 +20,7 @@ const AvailableLevelsFilter = ({ checked, disabled, handleChange }) => {
       <div className="relative ml-2 group">
         <QuestionIcon />
         {!disabled && (
-          <span className="absolute top-5 right-0 text-xs min-w-40 bg-white p-2 rounded-md border-2 border-slate-300 z-10 hidden group-hover:flex">
+          <span className="absolute top-5 right-0 text-xs min-w-40 bg-white dark:bg-gray-800 p-2 rounded-md border-2 border-slate-300 z-10 hidden group-hover:flex">
             I've added as many levels as I could find. I'd appreciate any help
             in finding the rest.
           </span>
