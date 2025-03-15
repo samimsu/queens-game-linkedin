@@ -5,6 +5,7 @@ import CloseIcon from "../../icons/CloseIcon";
 import formatDuration from "@/utils/formatDuration";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
 import { getLevelsBySize } from "@/utils/getAvailableLevels";
+import { useTranslation } from "react-i18next";
 
 const LevelNavigationButton = ({ level, text, isTextSmall }) => (
   <Link to={!level ? "#" : `/level/${level}`} className="flex">
@@ -20,12 +21,14 @@ const LevelNavigationButton = ({ level, text, isTextSmall }) => (
 );
 
 const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
+  const { t } = useTranslation()
+
   const isGroupedBySize = localStorage.getItem("groupBySize") === "true";
 
   let updatedPreviousLevel = previousLevel;
   let updatedNextLevel = nextLevel;
-  let previousLevelText = "Previous Level";
-  let nextLevelText = "Next Level";
+  let previousLevelText = t('PREVIOUS_LEVEL');
+  let nextLevelText = t('NEXT_LEVEL');
 
   const updateLevelNavigation = () => {
     const levelsBySize = getLevelsBySize();
@@ -76,7 +79,7 @@ const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
         height={`${timer ? "52" : "64"}`}
       />
       <div className={`${timer ? "text-xl mb-3" : "text-2xl mb-6"}`}>
-        You Win!
+        {t('YOU_WIN')}
       </div>
 
       <div className="flex flex-col space-y-3">
@@ -89,7 +92,7 @@ const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">
               <div className="text-lg">{formatDuration(timer)}</div>
-              <div className="font-medium text-sm">Solve time</div>
+              <div className="font-medium text-sm">{t('SOLVE_TIME')}</div>
             </div>
           </div>
         )}
