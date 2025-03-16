@@ -50,7 +50,7 @@ const Level = ({ id, level }) => {
   );
   const [showClock, setShowClock] = useState(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState(getAutoPlaceXsPreference);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
     getNavigationLevels(id, level);
@@ -449,7 +449,7 @@ const Level = ({ id, level }) => {
             emitMetadata="0"
             inputPosition="bottom"
             theme={theme}
-            lang="en"
+            lang={i18n.language}
             loading="lazy"
           />
         </div>
