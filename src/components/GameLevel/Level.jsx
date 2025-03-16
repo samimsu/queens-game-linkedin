@@ -31,6 +31,7 @@ import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import Button from "../Button";
 import useVisibility from '../../hooks/useVisibility'
+import { resolveBoard } from "@/engine";
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -389,6 +390,11 @@ const Level = ({ id, level }) => {
     }
   }, [isVisible, hasWon])
 
+  const handleSuggest = () => {
+    console.log('levels[level]', levels[level])
+    const boardResolved = resolveBoard(board, levels[level].colorRegions)
+  }
+
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center sm:w-[512px]">
@@ -485,6 +491,12 @@ const Level = ({ id, level }) => {
           >
             {t("UNDO")}
           </Button>
+          <button 
+              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]" 
+              onClick={handleSuggest}
+            >
+              Suggerimento
+            </button>
         </div>
 
         {showInstructions && <HowToPlay />}
