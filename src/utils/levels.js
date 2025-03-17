@@ -304,6 +304,7 @@ import level317 from "./levels/level317";
 import level318 from "./levels/level318";
 import level319 from "./levels/level319";
 import level320 from "./levels/level320";
+import level321 from "./levels/level321";
 
 export const levels = {
   level1,
@@ -612,4 +613,5 @@ export const levels = {
   level318,
   level319,
   level320,
+  level321,
 };
