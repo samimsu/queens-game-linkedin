@@ -29,6 +29,7 @@ import {
 import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
+import Button from "../Button";
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -461,12 +462,13 @@ const Level = ({ id, level }) => {
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
             />
-            <button 
-              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]" 
+            <Button
+              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
               onClick={handleUndo}
+              disabled={hasWon}
             >
               {t('UNDO')}
-            </button>
+            </Button>
           </div>
         </div>
 
