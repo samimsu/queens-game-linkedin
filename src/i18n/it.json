@@ -2,11 +2,11 @@
     "LEVEL": "Livello",
     "AVAILABLE_LEVELS_ONLY": "Solo livelli disponibili",
     "HELP_IN_FINDING_NEW_LEVELS": "Ho aggiunto tutti i livelli che ho trovato. Apprezzerei qualsiasi aiuto nel trovare i rimanenti.",
-    "ASK_RESET_ALL_PROGRESS": "Sei siruco di voler azzerare tutti i risultati?",
+    "ASK_RESET_ALL_PROGRESS": "Sei sicuro di voler azzerare tutti i risultati?",
     "CANCEL": "Annulla",
     "SUPPORT_ME": "Supportami",
     "CREATED_BY": "Creato da",
-    "LEVEL_BUILDER": "Crea Levello",
+    "LEVEL_BUILDER": "Crea Livello",
     "SETTINGS": "Impostazioni",
     "SHOW_CLOCK": "Mostra orologio",
     "AUTO_PLACE_XS": "Inserisci X automaticamente",
@@ -64,5 +64,6 @@
         "SAHARA_SAND": "Sabbia del Sahara",
         "TALLOW": "Giallo Oliva",
         "TURQUOISE_BLUE": "Blu Turchese"
-    }
+    },
+    "YES": "Sì"
 }

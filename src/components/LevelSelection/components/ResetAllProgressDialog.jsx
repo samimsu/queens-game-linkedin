@@ -39,7 +39,7 @@ const ResetAllProgressDialog = ({ onReset }) => {
               onReset();
             }}
           >
-            Yes
+            {t('YES')}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
