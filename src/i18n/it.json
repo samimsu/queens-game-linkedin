@@ -17,7 +17,7 @@
     "YOU_WIN": "Hai vinto!",
     "SOLVE_TIME": "Risolto in",
     "HOW_TO_PLAY": "Come si gioca",
-    "GAME_GOAL_INSTRUCTION": "Il tuo obiettivo è avere <1>esattamente una</1><2 /> in ogni <3>riga, colonna e regione di colore.</3>",
+    "GAME_GOAL_INSTRUCTION": "Il tuo obiettivo è avere <1>esattamente una</1> <2 /> in ogni <3>riga, colonna e regione di colore.</3>",
     "TAPS_INSTRUCTION": "Fai tap una volta per inserire X e due volte per <1 />. Usa X per contrassegnare dove non è possibile inserire <2 />.",
     "TOUCH_DIAGONAL_QUEENS_INSTRUCTION": "Due <1 /> non possono toccarsi, nemmeno in diagonale.",
     "LEVEL_NAME": "Nome livello",
