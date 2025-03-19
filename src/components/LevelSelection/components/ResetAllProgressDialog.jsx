@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/alert-dialog";
 import { resetCompletedLevels } from "@/utils/localStorage";
 import { RotateCcw } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ResetAllProgressDialog = ({ onReset }) => {
+  const { t } = useTranslation() 
   return (
     <AlertDialog>
       <AlertDialogTrigger>
@@ -23,12 +25,12 @@ const ResetAllProgressDialog = ({ onReset }) => {
         <AlertDialogHeader>
           <AlertDialogTitle>Reset</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to reset all progress?
+            {t('ASK_RESET_ALL_PROGRESS')}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="border-[#e4e4e7]">
-            Cancel
+            {t('CANCEL')}
           </AlertDialogCancel>
           <AlertDialogAction
             className="hover:bg-primary hover:opacity-90"
@@ -37,7 +39,7 @@ const ResetAllProgressDialog = ({ onReset }) => {
               onReset();
             }}
           >
-            Yes
+            {t('YES')}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

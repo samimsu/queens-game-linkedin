@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
+import { useTranslation } from "react-i18next";
 
 const PreviewImage = ({
   image,
@@ -17,6 +18,7 @@ const PreviewImage = ({
   className = "",
 }) => {
   const canvasRef = useRef(null);
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (showGridLines && canvasRef.current) {
@@ -80,11 +82,11 @@ const PreviewImage = ({
             onClick={() => setShowGridLines((prev) => !prev)}
             className="pl-2 whitespace-nowrap"
           >
-            Show grid lines
+            {t('SHOW_GRID_LINES')}
           </label>
         </div>
         <label className="flex flex-col space-y-1">
-          <span>Tolerance</span>
+          <span>{t('TOLERANCE')}</span>
           <Slider
             min={1}
             max={100}
@@ -93,7 +95,7 @@ const PreviewImage = ({
           />
         </label>
         <label className="flex flex-col space-y-1">
-          <span>Minimum line height</span>
+          <span>{t('MINIMUM_LINE_HEIGHT')}</span>
           <Slider
             min={0}
             max={1}
@@ -104,7 +106,7 @@ const PreviewImage = ({
           {minLineHeight}
         </label>
         <label className="flex flex-col space-y-1">
-          <span>Minimum line width</span>
+          <span>{t('MINIMUM_LINE_WIDTH')}</span>
           <Slider
             min={0}
             max={1}

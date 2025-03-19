@@ -1,7 +1,9 @@
 import React from "react";
 import { createInitialBoardForBuilder } from "../../../utils/board";
+import { useTranslation } from "react-i18next";
 
 const BoardSizeInput = ({ boardSize, handleBoardSizeChange }) => {
+  const { t } = useTranslation()
   // const handleBoardSizeChange = (size) => {
   //   setBoardSize(size);
   //   setBoard(createInitialBoardForBuilder(size));
@@ -9,7 +11,7 @@ const BoardSizeInput = ({ boardSize, handleBoardSizeChange }) => {
 
   return (
     <div className="mb-3 flex items-center space-x-3 text-lg">
-      <label className="whitespace-nowrap">Board size</label>
+      <label className="whitespace-nowrap">{t('BOARD_SIZE')}</label>
       <input
         type="number"
         value={boardSize}
