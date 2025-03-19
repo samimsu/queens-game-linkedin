@@ -87,6 +87,11 @@ export const isLevelCompleted = (levelNumber) => {
   return storedLevels[levelNumber]?.completed;
 };
 
+export const isLevelInProgress = (levelNumber) => {
+  const storedLevels = getStoredLevels();
+  return storedLevels[levelNumber]?.completed === false && storedLevels[levelNumber]?.time > 0;
+}
+
 export const resetCompletedLevels = () => {
   storeLevels(JSON.stringify(LOCAL_STORAGE.completedLevels.defaultValue));
 };
