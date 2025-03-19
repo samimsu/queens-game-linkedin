@@ -465,7 +465,7 @@ const Level = ({ id, level }) => {
               className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]" 
               onClick={handleUndo}
             >
-              Undo
+              {t('UNDO')}
             </button>
           </div>
         </div>
