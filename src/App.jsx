@@ -7,7 +7,7 @@ import PageLevelBuilder from "./pages/PageLevelBuilder";
 import PageNotFound from "./pages/PageNotFound";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import "./App.css";
-import "./i18n"
+import "./i18n";
 
 const App = () => {
   return (

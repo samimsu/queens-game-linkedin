@@ -48,7 +48,7 @@ const Board = ({
               if (e.buttons === 1 && initialSquare) {
                 const squares = [[rowIndex, colIndex]];
                 // on desktop the initial drag cell stays empty (because click is triggered on pointer up)
-                // since board state apparently can't be updated multiple times from a single event 
+                // since board state apparently can't be updated multiple times from a single event
                 // we have to pass two coords (initial and current) to the handler
                 if (!initialSquareHandled) {
                   squares.push(initialSquare.split(",").map(Number));
@@ -61,7 +61,8 @@ const Board = ({
             }}
             onPointerUp={() => {
               const currentSquare = `${rowIndex},${colIndex}`;
-              const isBasicClick = initialSquare === currentSquare && !previousSquare;
+              const isBasicClick =
+                initialSquare === currentSquare && !previousSquare;
               // only do something if it was a regular click (and not the end of the drag)
               if (isBasicClick) {
                 handleSquareClick(rowIndex, colIndex);
@@ -78,7 +79,7 @@ const Board = ({
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
           />
-        ))
+        )),
       )}
     </div>
   );

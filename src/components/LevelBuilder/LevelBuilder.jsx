@@ -49,31 +49,34 @@ const LevelBuilder = () => {
   const [minLineHeight, setMinLineHeight] = useState(0.1);
   const [minLineWidth, setMinLineWidth] = useState(0.1);
   const [dragValue, setDragValue] = useState();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  const colorOptions = useMemo(() => [
-    { name: t("COLOR.ALTO"), value: alto },
-    { name: t("COLOR.ALTO_MAIN"), value: altoMain },
-    { name: t("COLOR.ANAKIWA"), value: anakiwa },
-    { name: t("COLOR.BITTERSWEET"), value: bittersweet },
-    { name: t("COLOR.CAN_CAN"), value: canCan },
-    { name: t("COLOR.CARNATION"), value: carnation },
-    { name: t("COLOR.CELADON"), value: celadon },
-    { name: t("COLOR.CHARDONNAY"), value: chardonnay },
-    { name: t("COLOR.COLD_PURPLE"), value: coldPurple },
-    { name: t("COLOR.FEIJOA"), value: feijoa },
-    { name: t("COLOR.HALF_BAKED"), value: halfBaked },
-    { name: t("COLOR.LAVENDER_ROSE"), value: lavenderRose },
-    { name: t("COLOR.LIGHT_ORCHID"), value: lightOrchid },
-    { name: t("COLOR.LIGHT_WISTERIA"), value: lightWisteria },
-    { name: t("COLOR.MAC_N_CHEESE"), value: macNCheese },
-    { name: t("COLOR.MALIBU"), value: malibu },
-    { name: t("COLOR.MANZ"), value: manz },
-    { name: t("COLOR.NOMAD"), value: nomad },
-    { name: t("COLOR.SAHARA_SAND"), value: saharaSand },
-    { name: t("COLOR.TALLOW"), value: tallow },
-    { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
-  ], []);
+  const colorOptions = useMemo(
+    () => [
+      { name: t("COLOR.ALTO"), value: alto },
+      { name: t("COLOR.ALTO_MAIN"), value: altoMain },
+      { name: t("COLOR.ANAKIWA"), value: anakiwa },
+      { name: t("COLOR.BITTERSWEET"), value: bittersweet },
+      { name: t("COLOR.CAN_CAN"), value: canCan },
+      { name: t("COLOR.CARNATION"), value: carnation },
+      { name: t("COLOR.CELADON"), value: celadon },
+      { name: t("COLOR.CHARDONNAY"), value: chardonnay },
+      { name: t("COLOR.COLD_PURPLE"), value: coldPurple },
+      { name: t("COLOR.FEIJOA"), value: feijoa },
+      { name: t("COLOR.HALF_BAKED"), value: halfBaked },
+      { name: t("COLOR.LAVENDER_ROSE"), value: lavenderRose },
+      { name: t("COLOR.LIGHT_ORCHID"), value: lightOrchid },
+      { name: t("COLOR.LIGHT_WISTERIA"), value: lightWisteria },
+      { name: t("COLOR.MAC_N_CHEESE"), value: macNCheese },
+      { name: t("COLOR.MALIBU"), value: malibu },
+      { name: t("COLOR.MANZ"), value: manz },
+      { name: t("COLOR.NOMAD"), value: nomad },
+      { name: t("COLOR.SAHARA_SAND"), value: saharaSand },
+      { name: t("COLOR.TALLOW"), value: tallow },
+      { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
+    ],
+    [],
+  );
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
   const initialRegionColors = {
@@ -92,8 +95,8 @@ const LevelBuilder = () => {
 
   const [regionColors, setRegionColors] = useState(
     Object.fromEntries(
-      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
-    )
+      regionKeys.split("").map((key) => [key, initialRegionColors[key]]),
+    ),
   );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
@@ -130,8 +133,8 @@ const LevelBuilder = () => {
       Object.fromEntries(
         updatedRegionKeys
           .split("")
-          .map((key) => [key, initialRegionColors[key]])
-      )
+          .map((key) => [key, initialRegionColors[key]]),
+      ),
     );
   };
 
@@ -146,7 +149,7 @@ const LevelBuilder = () => {
           return newDragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -170,7 +173,7 @@ const LevelBuilder = () => {
           return dragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -208,10 +211,10 @@ const LevelBuilder = () => {
           <Link to="/" className="text-blue-500">
             Home
           </Link>{" "}
-          / {t('LEVEL_BUILDER')}
+          / {t("LEVEL_BUILDER")}
         </div>
 
-        <h1 className="text-4xl mb-6">{t('LEVEL_BUILDER')}</h1>
+        <h1 className="text-4xl mb-6">{t("LEVEL_BUILDER")}</h1>
 
         <div className="flex flex-col space-y-2">
           <LevelNameInput levelName={levelName} setLevelName={setLevelName} />
@@ -243,7 +246,7 @@ const LevelBuilder = () => {
                     }}
                     className="border border-slate-500 rounded-full py-1 px-3 mb-3 whitespace-nowrap"
                   >
-                    {t('CLEAR_BOARD')}
+                    {t("CLEAR_BOARD")}
                   </button>
                 </div>
                 {/* BOARD */}
@@ -269,7 +272,7 @@ const LevelBuilder = () => {
                       className="whitespace-nowrap pl-2"
                       onClick={() => setHideRegionValues((prev) => !prev)}
                     >
-                      {t('HIDE_LETTERS')}
+                      {t("HIDE_LETTERS")}
                     </label>
                   </div>
                   <PasteImage handlePaste={handlePaste} />

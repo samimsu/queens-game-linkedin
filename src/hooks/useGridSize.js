@@ -5,22 +5,22 @@ const useGridSize = (boardSize) => {
     boardSize < 8
       ? "45px"
       : boardSize < 9
-      ? "40px"
-      : boardSize < 10
-      ? "35px"
-      : boardSize < 11
-      ? "33px"
-      : "30px";
+        ? "40px"
+        : boardSize < 10
+          ? "35px"
+          : boardSize < 11
+            ? "33px"
+            : "30px";
   const smallScreenGridSize =
     boardSize < 8
       ? "47px"
       : boardSize < 9
-      ? "43px"
-      : boardSize < 10
-      ? "37px"
-      : boardSize < 11
-      ? "35px"
-      : "33px";
+        ? "43px"
+        : boardSize < 10
+          ? "37px"
+          : boardSize < 11
+            ? "35px"
+            : "33px";
 
   const largeScreenGridSize = "50px";
 
@@ -42,7 +42,7 @@ const useGridSize = (boardSize) => {
     // Media query lists for different screen widths
     const largeScreenQuery = window.matchMedia("(min-width: 480px)");
     const smallScreenQuery = window.matchMedia(
-      "(min-width: 345px) and (max-width: 479px)"
+      "(min-width: 345px) and (max-width: 479px)",
     );
     const extraSmallScreenQuery = window.matchMedia("(max-width: 344px)");
 

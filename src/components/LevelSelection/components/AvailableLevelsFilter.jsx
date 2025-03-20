@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 const AvailableLevelsFilter = ({ checked, disabled, handleChange }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <div
       className={`flex items-center self-start px-1 ${
@@ -17,13 +17,13 @@ const AvailableLevelsFilter = ({ checked, disabled, handleChange }) => {
         disabled={disabled}
       />
       <label onClick={!disabled ? handleChange : () => {}} className="pl-2">
-        {t('AVAILABLE_LEVELS_ONLY')}
+        {t("AVAILABLE_LEVELS_ONLY")}
       </label>
       <div className="relative ml-2 group">
         <QuestionIcon />
         {!disabled && (
           <span className="absolute top-5 right-0 text-xs min-w-40 bg-white dark:bg-gray-800 p-2 rounded-md border-2 border-slate-300 z-10 hidden group-hover:flex">
-            {t('HELP_IN_FINDING_NEW_LEVELS')}
+            {t("HELP_IN_FINDING_NEW_LEVELS")}
           </span>
         )}
       </div>

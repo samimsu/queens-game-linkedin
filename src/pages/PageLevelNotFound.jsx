@@ -6,28 +6,31 @@ import { queensGameRepoNewIssue } from "@/data/links";
 import { Trans, useTranslation } from "react-i18next";
 
 const PageLevelNotFound = () => {
-  const { t } = useTranslation()
-  
+  const { t } = useTranslation();
+
   return (
     <RootLayout>
       <div className="flex flex-col items-center justify-center text-gray-600 pt-24 mx-2">
         <div className="text-4xl mb-4 font-bold text-primary">
-        {t('LEVEL_NOT_FOUND')}
+          {t("LEVEL_NOT_FOUND")}
         </div>
         <div className="text-lg mb-6">
           <Trans i18nKey="SHARE_LEVEL_SCREENSHOT_LINK">
-            - <a
-            href={queensGameRepoNewIssue}
-            className="text-blue-500 hover:text-blue-600"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            here
-          </a>{" "}
+            -{" "}
+            <a
+              href={queensGameRepoNewIssue}
+              className="text-blue-500 hover:text-blue-600"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>{" "}
           </Trans>
         </div>
         <Link to="/">
-          <Button className="hover:bg-primary hover:opacity-90">{t('GO_HOME')}</Button>
+          <Button className="hover:bg-primary hover:opacity-90">
+            {t("GO_HOME")}
+          </Button>
         </Link>
       </div>
     </RootLayout>

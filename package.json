@@ -37,8 +37,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "prettier:check": "npx prettier ./src/utils/levels --check",
-    "prettier:write": "npx prettier ./src/utils/levels --write"
+    "prettier:check": "npx prettier ./src --check",
+    "prettier:write": "npx prettier ./src --write",
+    "prettier:check:levels": "npx prettier ./src/utils/levels --check",
+    "prettier:write:levels": "npx prettier ./src/utils/levels --write"
   },
   "eslintConfig": {
     "extends": [

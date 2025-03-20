@@ -18,7 +18,7 @@ const PreviewImage = ({
   className = "",
 }) => {
   const canvasRef = useRef(null);
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (showGridLines && canvasRef.current) {
@@ -82,11 +82,11 @@ const PreviewImage = ({
             onClick={() => setShowGridLines((prev) => !prev)}
             className="pl-2 whitespace-nowrap"
           >
-            {t('SHOW_GRID_LINES')}
+            {t("SHOW_GRID_LINES")}
           </label>
         </div>
         <label className="flex flex-col space-y-1">
-          <span>{t('TOLERANCE')}</span>
+          <span>{t("TOLERANCE")}</span>
           <Slider
             min={1}
             max={100}
@@ -95,7 +95,7 @@ const PreviewImage = ({
           />
         </label>
         <label className="flex flex-col space-y-1">
-          <span>{t('MINIMUM_LINE_HEIGHT')}</span>
+          <span>{t("MINIMUM_LINE_HEIGHT")}</span>
           <Slider
             min={0}
             max={1}
@@ -106,7 +106,7 @@ const PreviewImage = ({
           {minLineHeight}
         </label>
         <label className="flex flex-col space-y-1">
-          <span>{t('MINIMUM_LINE_WIDTH')}</span>
+          <span>{t("MINIMUM_LINE_WIDTH")}</span>
           <Slider
             min={0}
             max={1}

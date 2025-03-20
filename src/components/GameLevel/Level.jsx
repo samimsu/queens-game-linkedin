@@ -43,10 +43,10 @@ const Level = ({ id, level }) => {
   const [showWinningScreen, setShowWinningScreen] = useState(false);
   const [clashingQueens, setClashingQueens] = useState(new Set());
   const [showClashingQueens, setShowClashingQueens] = useState(
-    getClashingQueensPreference
+    getClashingQueensPreference,
   );
   const [showInstructions, setShowInstructions] = useState(
-    getShowInstructionsPreference
+    getShowInstructionsPreference,
   );
   const [showClock, setShowClock] = useState(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState(getAutoPlaceXsPreference);
@@ -91,10 +91,10 @@ const Level = ({ id, level }) => {
     const clashingPositions = getClashingQueens(
       newBoard,
       boardSize,
-      colorRegions
+      colorRegions,
     );
     const clashingSet = new Set(
-      clashingPositions.map(({ row, col }) => `${row},${col}`)
+      clashingPositions.map(({ row, col }) => `${row},${col}`),
     );
     setClashingQueens(clashingSet);
 
@@ -342,7 +342,7 @@ const Level = ({ id, level }) => {
     // Update clashing queens
     const clashingPositions = getClashingQueens(board, boardSize, colorRegions);
     const clashingSet = new Set(
-      clashingPositions.map(({ row, col }) => `${row},${col}`)
+      clashingPositions.map(({ row, col }) => `${row},${col}`),
     );
     setClashingQueens(clashingSet);
   }, [board]);
@@ -367,7 +367,9 @@ const Level = ({ id, level }) => {
                 <PreviousIcon />
               </PreviousLevelButton>
 
-              <h2 className="text-xl text-center">{t("LEVEL")} {id}</h2>
+              <h2 className="text-xl text-center">
+                {t("LEVEL")} {id}
+              </h2>
 
               <NextLevelButton className="disabled:opacity-50">
                 <NextIcon />

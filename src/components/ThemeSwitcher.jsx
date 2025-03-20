@@ -49,7 +49,9 @@ const ThemeSwitcher = () => {
       {/* Theme Options Panel (Hidden by Default) */}
       <div
         className={`absolute bottom-full mb-2 right-0 bg-amber-50 dark:bg-gray-700 shadow-lg rounded-lg p-3 w-40 transition-all duration-300 ease-in-out transform ${
-          isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+          isOpen
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
         <div className="space-y-2">

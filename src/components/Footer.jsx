@@ -5,12 +5,12 @@ import { portfolioSite } from "@/data/links";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <div className="px-2 space-y-3">
       <div className="mx-auto w-fit flex items-center divide-x divide-slate-700 space-x-3">
         <div>
-          {t('CREATED_BY')}{" "}
+          {t("CREATED_BY")}{" "}
           <a
             href={portfolioSite}
             target="_blank"
@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
 
         <Link to="/level-builder" className="pl-3 hover:underline">
-          {t('LEVEL_BUILDER')}
+          {t("LEVEL_BUILDER")}
         </Link>
       </div>
 

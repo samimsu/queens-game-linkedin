@@ -10,7 +10,7 @@ import { patreon } from "@/data/links";
 import { useTranslation } from "react-i18next";
 
 const SupportMeIconButton = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <TooltipProvider delayDuration={300}>
@@ -21,7 +21,7 @@ const SupportMeIconButton = () => {
           </a>
         </TooltipTrigger>
         <TooltipContent>
-          <p>{t('SUPPORT_ME')}</p>
+          <p>{t("SUPPORT_ME")}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

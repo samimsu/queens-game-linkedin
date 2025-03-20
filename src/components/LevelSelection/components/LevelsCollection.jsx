@@ -50,7 +50,7 @@ const LevelsCollection = ({
                   level={level}
                   disabled={!orderedLevels.includes(level)}
                 />
-              )
+              ),
             )}
           </>
         )}

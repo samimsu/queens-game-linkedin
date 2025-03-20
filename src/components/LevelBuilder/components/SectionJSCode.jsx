@@ -18,7 +18,7 @@ const SectionJSCode = ({
 
     // Filter the regionColors based on used regions
     const usedRegionColors = Object.entries(regionColors).filter(([region]) =>
-      usedRegions.has(region)
+      usedRegions.has(region),
     );
 
     // Get the color variable names for the used colors
@@ -57,8 +57,7 @@ export default level${levelNumber};
     setJsCode(jsContent);
   };
 
-  
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col items-start">
@@ -67,14 +66,14 @@ export default level${levelNumber};
           onClick={() => generateLevelJSCode(levelName, board, regionColors)}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          {t('GENERATE_CODE')}
+          {t("GENERATE_CODE")}
         </button>
 
         <button
           onClick={() => setJsCode("")}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          {t('CLEAR_CODE')}
+          {t("CLEAR_CODE")}
         </button>
       </div>
 
@@ -98,14 +97,16 @@ export default level${levelNumber};
               className="bg-background border border-slate-500 rounded-xl py-0.5 px-1.5 text-sm disabled:opacity-50 opacity-75 hover:opacity-100"
               disabled={!jsCode}
             >
-              {t('COPY_CODE')}
+              {t("COPY_CODE")}
             </button>
-            {copied && <div className="text-sm text-foreground">{t('COPIED')}!</div>}
+            {copied && (
+              <div className="text-sm text-foreground">{t("COPIED")}!</div>
+            )}
           </div>
         </div>
 
         <div>
-          {t('ADD_THIS_CODE_TO')}{" "}
+          {t("ADD_THIS_CODE_TO")}{" "}
           <a
             href={queensGameRepoNewLevelFile}
             target="_blank"

@@ -4,18 +4,18 @@ import Cross from "./Cross";
 import { levels } from "../../../utils/levels";
 
 // Square component with color regions and toggling between 'X', 'Q', and empty
-const Square = ({ 
-  row, 
-  col, 
-  value, 
-  region, 
-  onClick, 
+const Square = ({
+  row,
+  col,
+  value,
+  region,
+  onClick,
   onPointerDown,
   onPointerEnter,
   onPointerUp,
-  level, 
-  isClashing, 
-  ...props 
+  level,
+  isClashing,
+  ...props
 }) => {
   const boardSize = levels[level].size;
   const colorRegions = levels[level].colorRegions;

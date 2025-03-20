@@ -7,8 +7,8 @@ const PasteImage = ({ handlePaste }) => {
 
   const helperButtonRef = useRef(null);
   const helperTextRef = useRef(null);
-  
-  const { t } = useTranslation()
+
+  const { t } = useTranslation();
 
   const handleClickOutside = (event) => {
     if (
@@ -58,7 +58,7 @@ const PasteImage = ({ handlePaste }) => {
             ref={helperTextRef}
             className="absolute top-5 right-0 text-xs min-w-40 bg-white p-2 border-2 rounded border-slate-300"
           >
-            {t('PAST_IMAGE_MSG')}
+            {t("PAST_IMAGE_MSG")}
           </span>
         )}
       </div>

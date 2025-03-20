@@ -11,7 +11,7 @@ const formatDuration = (seconds) => {
 
   if (duration.hours) {
     return `${duration.hours}:${zeroPad(duration.minutes || 0)}:${zeroPad(
-      duration.seconds || 0
+      duration.seconds || 0,
     )}`;
   } else {
     return `${duration.minutes || 0}:${zeroPad(duration.seconds || 0)}`;

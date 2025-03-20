@@ -19,7 +19,7 @@ const SettingsDialog = ({
   showClock,
   toggleShowClock,
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Dialog>
@@ -33,26 +33,26 @@ const SettingsDialog = ({
         aria-describedby={undefined}
       >
         <DialogHeader>
-          <DialogTitle className="mb-2">{t('SETTINGS')}</DialogTitle>
+          <DialogTitle className="mb-2">{t("SETTINGS")}</DialogTitle>
         </DialogHeader>
         <div className="space-y-1 h-40">
           <div className="flex items-center justify-between space-x-3">
-            <div>{t('SHOW_CLOCK')}</div>
+            <div>{t("SHOW_CLOCK")}</div>
             <Switch checked={showClock} onCheckedChange={toggleShowClock} />
           </div>
           <div className="flex items-center justify-between space-x-3">
-            <div>{t('AUTO_PLACE_XS')}</div>
+            <div>{t("AUTO_PLACE_XS")}</div>
             <Switch checked={autoPlaceXs} onCheckedChange={toggleAutoPlaceXs} />
           </div>
           <div className="flex items-center justify-between space-x-3">
-            <div>{t('SHOW_CLASHING_QUEENS')}</div>
+            <div>{t("SHOW_CLASHING_QUEENS")}</div>
             <Switch
               checked={showClashingQueens}
               onCheckedChange={toggleShowClashingQueens}
             />
           </div>
           <div className="flex items-center justify-between space-x-3">
-            <div>{t('SHOW_INSTRUCTIONS')}</div>
+            <div>{t("SHOW_INSTRUCTIONS")}</div>
             <Switch
               checked={showInstructions}
               onCheckedChange={toggleShowInstructions}
