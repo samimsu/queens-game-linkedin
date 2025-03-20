@@ -1,8 +1,15 @@
 import React from "react";
-import LevelBuilder from "../components/LevelBuilder/LevelBuilder";
+import RootLayout from "@/layouts/RootLayout";
+import PageTitle from "@/components/PageTitle";
+import LevelBuilder from "@/components/LevelBuilder/LevelBuilder";
 
 const PageLevelBuilder = () => {
-  return <LevelBuilder />;
+  return (
+    <RootLayout className="!overflow-auto">
+      <PageTitle title="Level Builder" />
+      <LevelBuilder />
+    </RootLayout>
+  );
 };
 
 export default PageLevelBuilder;

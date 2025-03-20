@@ -1,10 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Level from "../components/GameLevel/Level";
-import RootLayout from "../layouts/RootLayout";
-import { levels } from "@/utils/levels";
+import RootLayout from "@/layouts/RootLayout";
+import PageTitle from "@/components/PageTitle";
+import Level from "@/components/GameLevel/Level";
 import PageNotFound from "./PageNotFound";
 import PageLevelNotFound from "./PageLevelNotFound";
+import { levels } from "@/utils/levels";
 
 const GameLevel = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const GameLevel = () => {
   );
 
   if (!levels[level] && Number(id) < maxLevel) {
-    return <PageLevelNotFound />;
+    return <PageLevelNotFound level={id} />;
   }
 
   if (!levels[level]) {
@@ -24,6 +25,7 @@ const GameLevel = () => {
 
   return (
     <RootLayout>
+      <PageTitle title={`Level ${id}`} />
       <Level key={id} id={id} level={level} />
     </RootLayout>
   );

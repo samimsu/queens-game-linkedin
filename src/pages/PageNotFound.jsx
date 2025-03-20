@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import RootLayout from "@/layouts/RootLayout";
 import { useTranslation } from "react-i18next";
+import RootLayout from "@/layouts/RootLayout";
+import PageTitle from "@/components/PageTitle";
+import { Button } from "@/components/ui/button";
 
 const PageNotFound = () => {
   const { t } = useTranslation();
   return (
     <RootLayout>
+      <PageTitle title="Page Not Found" />
       <div className="flex flex-col items-center justify-center pt-24 text-center mx-2">
         <h1 className="text-4xl font-bold text-primary">
           {t("404_PAGE_NOT_FOUND")}

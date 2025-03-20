@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Trans, useTranslation } from "react-i18next";
 import RootLayout from "@/layouts/RootLayout";
+import PageTitle from "@/components/PageTitle";
 import { Button } from "@/components/ui/button";
 import { queensGameRepoNewIssue } from "@/data/links";
-import { Trans, useTranslation } from "react-i18next";
 
-const PageLevelNotFound = () => {
+const PageLevelNotFound = ({ level }) => {
   const { t } = useTranslation();
 
   return (
     <RootLayout>
+      <PageTitle title={`Level ${level} Not Found`} />
       <div className="flex flex-col items-center justify-center text-gray-600 pt-24 mx-2">
         <div className="text-4xl mb-4 font-bold text-primary">
           {t("LEVEL_NOT_FOUND")}
