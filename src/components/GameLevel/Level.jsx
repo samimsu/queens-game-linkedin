@@ -323,6 +323,8 @@ const Level = ({ id, level }) => {
     } else if (latest.symbol == "Q") {
       removeQueen(newBoard, latest.row, latest.col);
       newBoard[latest.row][latest.col] = "X"
+    } else if (latest.symbol == null) {
+      placeQueen(newBoard, latest.row, latest.col);
     }
     setBoard(newBoard);
   }
