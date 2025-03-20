@@ -15,7 +15,7 @@ export type Cell = {
     col: number
 }
 
-export type Hit = {
+export type Hint = {
     highlightedCells: Cell[],
     crossedCells: Cell[],
     message: React.ReactNode

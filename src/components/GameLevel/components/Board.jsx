@@ -10,6 +10,7 @@ const Board = ({
   level,
   showClashingQueens,
   clashingQueens,
+  notHighlightedSquares,
 }) => {
   const [initialSquare, setInitialSquare] = useState(undefined);
   const [previousSquare, setPreviousSquare] = useState(undefined);
@@ -18,6 +19,10 @@ const Board = ({
   const { gridSize } = useGridSize(board.length);
 
   const colorRegions = levels[level].colorRegions;
+
+  const isOpacity = (row, col) => {
+    return notHighlightedSquares.findIndex(s => s.row === row && s.col === col) !== -1;
+  };
 
   return (
     <div
@@ -35,6 +40,7 @@ const Board = ({
             col={colIndex}
             value={square}
             region={colorRegions[rowIndex][colIndex]}
+            opacity={isOpacity(rowIndex, colIndex)}
             onPointerDown={(e) => {
               const currentSquare = `${rowIndex},${colIndex}`;
               setInitialSquare(currentSquare);

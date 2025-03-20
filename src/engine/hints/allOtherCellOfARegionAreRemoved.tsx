@@ -1,10 +1,49 @@
 import React from "react";
-import { Board, Hit, Regions } from "../interfaces";
+import { Board, Cell, Mark, Region, Regions } from "../interfaces";
+import Queen from "@/components/Queen";
+import { HintFunction } from ".";
+import { Trans } from "react-i18next";
 
-const allOtherCellOfARegionAreRemoved = (board: Board, regions: Regions): Hit => {
-    return {
-        crossedCells: [],
-        highlightedCells: [],
-        message: <span>Tutte le altre celle in questa regione di colore sono state eliminate.\nPuoi inserire nella cella evidenziata</span>
+
+const getEmptyCells = (
+  board: Board,
+  regions: Regions,
+  region: Region
+): Cell[] => {
+  const emptyCells: Cell[] = [];
+
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board.length; col++) {
+      if (board[row][col] === Mark.Empty && regions[row][col] === region) {
+        emptyCells.push({ row, col });
+      }
     }
-}
+  }
+
+  return emptyCells;
+};
+
+const allOtherCellOfARegionAreRemoved: HintFunction = (board, regions) => {
+  for (let i = 65; i < 65 + regions.length; i++) {
+    const region: Region = String.fromCharCode(i) as Region;
+    const emptyCells = getEmptyCells(board, regions, region);
+    if (emptyCells.length === 1) {
+      return {
+        highlightedCells: emptyCells,
+        crossedCells: [],
+        message: (
+          <div>
+            <Trans
+              i18nKey="HITS.INSERT_QUEEN"
+              components={{ p: <p />, queen: <Queen size="20" className="inline mx-1 mb-1" />}}
+            />
+          </div>
+        ),
+      };
+    }
+  }
+
+  return null;
+};
+
+export default allOtherCellOfARegionAreRemoved;
