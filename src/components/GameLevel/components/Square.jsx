@@ -15,6 +15,7 @@ const Square = ({
   onPointerUp,
   level,
   isClashing,
+  opacity,
   ...props
 }) => {
   const boardSize = levels[level].size;
@@ -53,7 +54,7 @@ const Square = ({
 
   return (
     <div
-      className={`square hover:brightness-75 ${borderClasses}`}
+      className={`square hover:brightness-75 ${opacity ? 'opacity-50' : ''} ${borderClasses}`}
       onClick={onClick}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}

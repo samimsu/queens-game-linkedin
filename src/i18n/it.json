@@ -72,5 +72,9 @@
   },
   "SUPPORT_ME_ON_PATREON": "Supportami su Patreon",
   "UNDO": "Annulla",
-  "HINT": "Suggerimento"
+  "HINT": "Suggerimento",
+  "HITS": {
+    "NO_HITS_FOUND": "Nessun suggerimento trovato. Aiutaci a migliorare questo suggerimento inserendone uno migliore.",
+    "INSERT_QUEEN": "<p>Tutte le altre celle in questa regione di colore sono state eliminate.</p><p>Puoi inserire <queen /> nella cella evidenziata</p>"
+  }
 }

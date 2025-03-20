@@ -72,5 +72,9 @@
   },
   "SUPPORT_ME_ON_PATREON": "Support me on Patreon",
   "UNDO": "Undo",
-  "HINT": "Hint"
+  "HINT": "Hint",
+  "HITS": {
+    "NO_HITS_FOUND": "No hits found. Help us to improve this hint by submitting a better one.",
+        "INSERT_QUEEN": "<p>All other cells in this color region have been eliminated.</p><p>You can <queen /> the highlighted cell.</p>"
+  }
 }
