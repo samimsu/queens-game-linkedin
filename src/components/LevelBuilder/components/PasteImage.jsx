@@ -1,36 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import QuestionIcon from "@/components/icons/QuestionIcon";
+import React from "react";
 import { useTranslation } from "react-i18next";
+import QuestionMarkTooltip from "@/components/QuestionMarkTooltip";
 
-const PasteImage = ({ handlePaste }) => {
-  const [showHelperText, setShowHelperText] = useState(false);
-
-  const helperButtonRef = useRef(null);
-  const helperTextRef = useRef(null);
-
+const PasteImage = ({ handlePaste }) => {  
   const { t } = useTranslation();
 
-  const handleClickOutside = (event) => {
-    if (
-      helperTextRef.current &&
-      !helperTextRef.current.contains(event.target) &&
-      helperButtonRef.current &&
-      !helperButtonRef.current.contains(event.target)
-    ) {
-      setShowHelperText(false);
-    }
-  };
-
-  useEffect(() => {
-    if (showHelperText) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showHelperText]);
   return (
     <div className="flex items-center space-x-2">
       <button onClick={handlePaste}>
@@ -47,20 +21,7 @@ const PasteImage = ({ handlePaste }) => {
         </svg>
       </button>
       <div className="relative flex">
-        <button
-          ref={helperButtonRef}
-          onClick={() => setShowHelperText((prev) => !prev)}
-        >
-          <QuestionIcon />
-        </button>
-        {showHelperText && (
-          <span
-            ref={helperTextRef}
-            className="absolute top-5 right-0 text-xs min-w-40 bg-white p-2 border-2 rounded border-slate-300"
-          >
-            {t("PAST_IMAGE_MSG")}
-          </span>
-        )}
+        <QuestionMarkTooltip tooltipText={t("PAST_IMAGE_MSG")}/>
       </div>
     </div>
   );
