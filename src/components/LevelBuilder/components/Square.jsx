@@ -46,7 +46,7 @@ const Square = ({
 
   return (
     <div
-      className={`square hover:bg-slate-300 hover:brightness-75 select-none ${borderClasses}`}
+      className={`square hover:bg-slate-300 hover:brightness-75 select-none text-black ${borderClasses}`}
       onClick={onClick}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}

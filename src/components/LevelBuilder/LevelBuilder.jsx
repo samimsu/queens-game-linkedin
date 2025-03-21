@@ -75,7 +75,7 @@ const LevelBuilder = () => {
       { name: t("COLOR.TALLOW"), value: tallow },
       { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
     ],
-    []
+    [],
   );
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
@@ -95,8 +95,8 @@ const LevelBuilder = () => {
 
   const [regionColors, setRegionColors] = useState(
     Object.fromEntries(
-      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
-    )
+      regionKeys.split("").map((key) => [key, initialRegionColors[key]]),
+    ),
   );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
@@ -133,8 +133,8 @@ const LevelBuilder = () => {
       Object.fromEntries(
         updatedRegionKeys
           .split("")
-          .map((key) => [key, initialRegionColors[key]])
-      )
+          .map((key) => [key, initialRegionColors[key]]),
+      ),
     );
   };
 
@@ -149,7 +149,7 @@ const LevelBuilder = () => {
           return newDragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -173,7 +173,7 @@ const LevelBuilder = () => {
           return dragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };

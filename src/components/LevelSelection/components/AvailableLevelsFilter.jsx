@@ -20,7 +20,10 @@ const AvailableLevelsFilter = ({ checked, disabled, handleChange }) => {
         {t("AVAILABLE_LEVELS_ONLY")}
       </label>
       <div className="relative ml-2">
-        <QuestionMarkTooltip disabled={disabled} tooltipText={t("HELP_IN_FINDING_NEW_LEVELS")}/>
+        <QuestionMarkTooltip
+          disabled={disabled}
+          tooltipText={t("HELP_IN_FINDING_NEW_LEVELS")}
+        />
       </div>
     </div>
   );

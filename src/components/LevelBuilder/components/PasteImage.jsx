@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import QuestionMarkTooltip from "@/components/QuestionMarkTooltip";
 
-const PasteImage = ({ handlePaste }) => {  
+const PasteImage = ({ handlePaste }) => {
   const { t } = useTranslation();
 
   return (
@@ -21,7 +21,7 @@ const PasteImage = ({ handlePaste }) => {
         </svg>
       </button>
       <div className="relative flex">
-        <QuestionMarkTooltip tooltipText={t("PAST_IMAGE_MSG")}/>
+        <QuestionMarkTooltip tooltipText={t("PAST_IMAGE_MSG")} />
       </div>
     </div>
   );
