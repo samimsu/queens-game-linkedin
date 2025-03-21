@@ -464,14 +464,14 @@ const Level = ({ id, level }) => {
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
             />
-            <Button
-              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
-              onClick={handleUndo}
-              disabled={hasWon}
-            >
-              {t('UNDO')}
-            </Button>
           </div>
+          <Button
+            className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
+            onClick={handleUndo}
+            disabled={hasWon}
+          >
+            {t('UNDO')}
+          </Button>
         </div>
 
         {showInstructions && <HowToPlay />}
