@@ -65,5 +65,9 @@
     "TALLOW": "Giallo Oliva",
     "TURQUOISE_BLUE": "Blu Turchese"
   },
-  "YES": "Sì"
+  "YES": "Sì",
+  "THEME": {
+    "DARK": "Scuro",
+    "LIGHT": "Chiaro"
+  }
 }

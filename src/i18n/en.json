@@ -65,5 +65,9 @@
     "TALLOW": "Tallow",
     "TURQUOISE_BLUE": "Turquoise Blue"
   },
-  "YES": "Yes"
+  "YES": "Yes",
+  "THEME": {
+    "DARK": "Dark",
+    "LIGHT": "Light"
+  }
 }
