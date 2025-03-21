@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, ChevronLeft, Settings } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
+  const { t } = useTranslation();
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
@@ -29,8 +31,8 @@ const ThemeSwitcher = () => {
   }, [isOpen, handleClickOutside]);
 
   const themeOptions = [
-    { name: "light", icon: Sun, label: "Light" },
-    { name: "dark", icon: Moon, label: "Dark" },
+    { name: "light", icon: Sun, label: t("THEME.LIGHT") },
+    { name: "dark", icon: Moon, label: t("THEME.DARK") },
   ];
 
   const CurrentThemeIcon = theme === "dark" ? Moon : Sun;
