@@ -419,6 +419,7 @@ const Level = ({ id, level }) => {
                     setBoard(createEmptyBoard(levelSize));
                     setHasWon(false);
                     setShowWinningScreen(false);
+                    history.current = []
                   }}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >
