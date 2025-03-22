@@ -11,7 +11,6 @@ export enum CardType {
 interface CardInfoProps extends PropsWithChildren {
   title: string;
   type: CardType;
-  isCollapsed?: boolean;
   onClose?: () => void;
 };
 
