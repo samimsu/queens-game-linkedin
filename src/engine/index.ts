@@ -1,6 +1,8 @@
 import {
     allOtherCellOfARegionAreRemoved,
     noHintsFound,
+    allThisCellsCanBeRemoved,
+    allLineContainsOnlyOneRegion,
 } from './hints';
 import { Board, Hint, Regions } from './interfaces';
 
@@ -12,6 +14,8 @@ export default class Engine {
     hints(): Hint {
         const hintStrategies: HintFunction[] = [
             allOtherCellOfARegionAreRemoved,
+            allLineContainsOnlyOneRegion,
+            allThisCellsCanBeRemoved,
         ];
         for (const strategy of hintStrategies) {
             const hint = strategy(this.board, this.regions);
