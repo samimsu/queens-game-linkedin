@@ -12,6 +12,7 @@ import ResetIcon from "../icons/ResetIcon";
 import WinningScreen from "./components/WinningScreen";
 import Queen from "../Queen";
 import HowToPlay from "./components/HowToPlay";
+import Hints from "./components/Hints";
 import SettingsDialog from "./components/SettingsDialog";
 import Timer from "./components/Timer";
 import {
@@ -33,7 +34,6 @@ import Button from "../Button";
 import useVisibility from '../../hooks/useVisibility'
 import { resolveBoard } from "@/engine";
 import Engine from "@/engine/index";
-import Hints from "./components/Hints";
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -515,7 +515,7 @@ const Level = ({ id, level }) => {
             </button>
         </div>
 
-        <Hints message={hintMessage}/>
+        <Hints message={hintMessage} onClose={() => setHintMessage(null)}/>
 
         {showInstructions && <HowToPlay />}
 
