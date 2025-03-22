@@ -13,18 +13,23 @@ type CardInfoProps = {
   children: React.ReactNode;
   type: CardType;
   isCollapsed?: boolean;
+  onClose?: () => void;
 };
 
-const CardInfo: React.FC<CardInfoProps> = ({ title = "", children, type }) => {
+const CardInfo: React.FC<CardInfoProps> = ({ title = "", children, type, onClose }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { theme } = useTheme();
 
   const handleClick = () => {
-    if (type === CardType.Closable) {
-      return;
-    }
-    if (type === CardType.Collapsible){
-      setIsCollapsed(!isCollapsed);
+    switch (type) {
+      case CardType.Collapsible: {
+        setIsCollapsed(!isCollapsed);
+        break;
+      }
+      case CardType.Closable: {
+        onClose && onClose();
+        break;
+      }
     }
   };
 
