@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, ReactNode, PropsWithChildren } from "react";
 import CollapseIcon from "./icons/CollapseIcon";
 import CloseIcon from "./icons/CloseIcon";
 import { useTheme } from "next-themes";
 
-enum CardType {
+export enum CardType {
   Collapsible = "collapsible",
   Closable = "closable",
 }
 
-type CardInfoProps = {
+interface CardInfoProps extends PropsWithChildren {
   title: string;
-  children: React.ReactNode;
   type: CardType;
   isCollapsed?: boolean;
   onClose?: () => void;
