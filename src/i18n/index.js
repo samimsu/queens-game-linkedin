@@ -18,12 +18,12 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    fallbackLng: "en",
+    fallbackLng: ["en", "it"],
     interpolation: {
       escapeValue: false,
     },
     supportedLngs: Object.keys(resources),
     detection: {
-      convertDetectedLanguage: lng => lng.split('-')[0], // remove it if you want support regional languages (en -> en-US)
+      convertDetectedLanguage: (lng) => lng.split("-")[0], // remove it if you want support regional languages (en -> en-US)
     },
   });
