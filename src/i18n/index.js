@@ -24,6 +24,6 @@ i18n
     },
     supportedLngs: Object.keys(resources),
     detection: {
-      convertDetectedLanguage: (lng) => lng.substring(0, 2), // remove it if you want support regional languages (en -> en-US)
+      convertDetectedLanguage: lng => lng.split('-')[0], // remove it if you want support regional languages (en -> en-US)
     },
   });
