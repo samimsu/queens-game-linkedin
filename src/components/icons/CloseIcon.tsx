@@ -7,7 +7,7 @@ const CloseIcon: React.FC<CloseIconProps> = () => {
     <svg
       role="none"
       aria-hidden="true"
-      class="artdeco-button__icon "
+      className="artdeco-button__icon "
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
