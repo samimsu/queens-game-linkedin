@@ -3,6 +3,7 @@ import { HintFunction } from ".";
 import Queen from "@/components/Queen";
 import { Board, Cell, Mark, Region, Regions } from "../interfaces";
 import Engine from "..";
+import { Trans } from "react-i18next";
 
 const findRegionsWithAllCellsRemoved = (board: Board, regions: Regions): Set<Region> => {
   const map = new Map<Region, number>()
@@ -84,23 +85,16 @@ const highlightedRegionMustContainOneQueen: HintFunction = (board, regions) => {
   }
 
   if (highlightedCells.length === 0 && crossedCells.length === 0) return null;
-  
+
   return {
     highlightedCells,
     crossedCells,
     message: (
       <div>
-        <p>
-          La regione evidenziata deve contenere una{" "}
-          <Queen size="20" className="inline mx-1 mb-1" />.
-        </p>
-        <p>
-          Se inserisci una <Queen size="20" className="inline mx-1 mb-1" /> in
-          una qualsiasi delle celle a strisce, tutte le celle nella regione
-          evidenziata verranno eliminate perché sono nella stessa riga, colonna
-          e/o adiacenti in diagonale.
-        </p>
-        <p>Puoi eliminare le celle a strisce.</p>
+        <Trans
+          i18nKey="HINTS.DELETE_CROSSED_CELLS"
+          components={{ p: <p />, queen: <Queen size="20" className="inline mx-1 mb-1" />}}
+        />
       </div>
     ),
   };

@@ -73,8 +73,9 @@
   "SUPPORT_ME_ON_PATREON": "Supportami su Patreon",
   "UNDO": "Annulla",
   "HINT": "Suggerimento",
-  "HITS": {
+  "HINTS": {
     "NO_HITS_FOUND": "Nessun suggerimento trovato. Aiutaci a migliorare questo suggerimento inserendone uno migliore.",
-    "INSERT_QUEEN": "<p>Tutte le altre celle in questa regione di colore sono state eliminate.</p><p>Puoi inserire <queen /> nella cella evidenziata</p>"
+    "INSERT_QUEEN": "<p>Tutte le altre celle in questa regione di colore sono state eliminate.</p><p>Puoi inserire <queen /> nella cella evidenziata</p>",
+    "DELETE_CROSSED_CELLS": "<p>La regione evidenziata deve contenere una <queen />.</p><p>Se inserisci una <queen /> in una qualsiasi delle celle a strisce, tutte le celle nella regione evidenziata verranno eliminate perché sono nella stessa riga, colonna e/o adiacenti in diagonale.</p><p>Puoi eliminare le celle a strisce.</p>"
   }
 }

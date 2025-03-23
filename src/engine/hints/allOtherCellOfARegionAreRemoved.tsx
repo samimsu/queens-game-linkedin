@@ -34,7 +34,7 @@ const allOtherCellOfARegionAreRemoved: HintFunction = (board, regions) => {
         message: (
           <div>
             <Trans
-              i18nKey="HITS.INSERT_QUEEN"
+              i18nKey="HINTS.INSERT_QUEEN"
               components={{ p: <p />, queen: <Queen size="20" className="inline mx-1 mb-1" />}}
             />
           </div>
