@@ -3,6 +3,7 @@ import {
   noHintsFound,
   allThisCellsCanBeRemoved,
   checkLineWithOnlyOneEmptyCell,
+  checkUnplacedXs,
   highlightedRegionMustContainOneQueen,
 } from './hints';
 import { Board, Cell, Hint, Mark, Regions } from './interfaces';
@@ -87,6 +88,7 @@ export default class Engine implements IEngine {
   hints(): Hint {
     const hintStrategies: HintFunction[] = [
       allOtherCellOfARegionAreRemoved,
+      checkUnplacedXs,
       highlightedRegionMustContainOneQueen,
       checkLineWithOnlyOneEmptyCell,
       // allThisCellsCanBeRemoved, // TODO
