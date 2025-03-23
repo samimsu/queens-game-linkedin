@@ -2,7 +2,7 @@ import React from "react";
 import { Board, Cell, Mark, Region, Regions } from "../interfaces";
 import Queen from "@/components/Queen";
 import { HintFunction } from ".";
-import { Trans } from "react-i18next";
+import { Trans, getI18n } from "react-i18next";
 
 
 const getEmptyCells = (
@@ -35,7 +35,8 @@ const allOtherCellOfARegionAreRemoved: HintFunction = (board, regions) => {
           <div>
             <Trans
               i18nKey="HINTS.INSERT_QUEEN"
-              components={{ p: <p />, queen: <Queen size="20" className="inline mx-1 mb-1" />}}
+              components={{ p: <p />, queen: <Queen size="20" className="inline mx-1 mb-1" />}}              
+              values={{ typeArea: getI18n().t('AREA') }}
             />
           </div>
         ),
