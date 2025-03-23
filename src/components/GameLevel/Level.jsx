@@ -465,6 +465,7 @@ const Level = ({ id, level }) => {
                     setHasWon(false);
                     setShowWinningScreen(false);
                     history.current = [];
+                    resetHint();
                   }}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >

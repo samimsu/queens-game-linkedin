@@ -80,5 +80,5 @@
   },
   "ROW": "row",
   "COLUMN": "column",
-  "AREA": "area"
+  "COLOR_AREA": "color area"
 }
