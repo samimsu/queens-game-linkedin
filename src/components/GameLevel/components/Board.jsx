@@ -11,6 +11,7 @@ const Board = ({
   showClashingQueens,
   clashingQueens,
   notHighlightedSquares,
+  crossedSquares,
 }) => {
   const [initialSquare, setInitialSquare] = useState(undefined);
   const [previousSquare, setPreviousSquare] = useState(undefined);
@@ -22,6 +23,10 @@ const Board = ({
 
   const isOpacity = (row, col) => {
     return notHighlightedSquares.findIndex(s => s.row === row && s.col === col) !== -1;
+  };
+
+  const isCrossed = (row, col) => {
+    return crossedSquares.findIndex(s => s.row === row && s.col === col) !== -1;
   };
 
   return (
@@ -41,6 +46,7 @@ const Board = ({
             value={square}
             region={colorRegions[rowIndex][colIndex]}
             opacity={isOpacity(rowIndex, colIndex)}
+            crossed={isCrossed(rowIndex, colIndex)}
             onPointerDown={(e) => {
               const currentSquare = `${rowIndex},${colIndex}`;
               setInitialSquare(currentSquare);
