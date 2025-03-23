@@ -2,7 +2,7 @@ import {
   allOtherCellOfARegionAreRemoved,
   noHintsFound,
   allThisCellsCanBeRemoved,
-  allLineContainsOnlyOneRegion,
+  checkLineWithOnlyOneEmptyCell,
   highlightedRegionMustContainOneQueen,
 } from './hints';
 import { Board, Cell, Hint, Mark, Regions } from './interfaces';
@@ -88,7 +88,7 @@ export default class Engine implements IEngine {
     const hintStrategies: HintFunction[] = [
       allOtherCellOfARegionAreRemoved,
       highlightedRegionMustContainOneQueen,
-      // allLineContainsOnlyOneRegion,// TODO
+      checkLineWithOnlyOneEmptyCell,
       // allThisCellsCanBeRemoved, // TODO
     ];
     for (const strategy of hintStrategies) {

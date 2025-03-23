@@ -1,5 +1,5 @@
 import { Board, Hint, Regions } from "../interfaces";
-import allLineContainsOnlyOneRegion from "./allLineContainsOnlyOneRegion";
+import checkLineWithOnlyOneEmptyCell from "./checkLineWithOnlyOneEmptyCell";
 import allOtherCellOfARegionAreRemoved from "./allOtherCellOfARegionAreRemoved";
 import allThisCellsCanBeRemoved from "./allThisCellsCanBeRemoved";
 import highlightedRegionMustContainOneQueen from "./highlightedRegionMustContainOneQueen";
@@ -10,7 +10,7 @@ export type HintFunction = (board: Board, regions: Regions) => Hint;
 export {
     allOtherCellOfARegionAreRemoved,
     allThisCellsCanBeRemoved,
-    allLineContainsOnlyOneRegion,
+    checkLineWithOnlyOneEmptyCell,
     highlightedRegionMustContainOneQueen,
     noHintsFound
 };
