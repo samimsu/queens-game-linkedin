@@ -2,6 +2,7 @@ import React from "react";
 import Queen from "../../Queen";
 import Cross from "./Cross";
 import { levels } from "../../../utils/levels";
+import './square.css';
 
 // Square component with color regions and toggling between 'X', 'Q', and empty
 const Square = ({
@@ -16,6 +17,7 @@ const Square = ({
   level,
   isClashing,
   opacity,
+  crossed,
   ...props
 }) => {
   const boardSize = levels[level].size;
@@ -54,7 +56,7 @@ const Square = ({
 
   return (
     <div
-      className={`square hover:brightness-75 ${opacity ? 'opacity-50' : ''} ${borderClasses}`}
+      className={`square hover:brightness-75 ${opacity ? 'opacity-50' : ''} ${borderClasses} ${crossed ? 'crossed' : ''}`}
       onClick={onClick}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
