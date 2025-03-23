@@ -10,7 +10,7 @@ const Board = ({
   level,
   showClashingQueens,
   clashingQueens,
-  notHighlightedSquares,
+  highlightedCells,
   crossedSquares,
 }) => {
   const [initialSquare, setInitialSquare] = useState(undefined);
@@ -22,7 +22,8 @@ const Board = ({
   const colorRegions = levels[level].colorRegions;
 
   const isOpacity = (row, col) => {
-    return notHighlightedSquares.findIndex(s => s.row === row && s.col === col) !== -1;
+    if (highlightedCells.length === 0 && crossedSquares.length === 0) return false;
+    return highlightedCells.findIndex(s => s.row === row && s.col === col) === -1 && !isCrossed(row, col);
   };
 
   const isCrossed = (row, col) => {
