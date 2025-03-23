@@ -1,8 +1,9 @@
 import {
-    allOtherCellOfARegionAreRemoved,
-    noHintsFound,
-    allThisCellsCanBeRemoved,
-    allLineContainsOnlyOneRegion,
+  allOtherCellOfARegionAreRemoved,
+  noHintsFound,
+  allThisCellsCanBeRemoved,
+  allLineContainsOnlyOneRegion,
+  highlightedRegionMustContainOneQueen,
 } from './hints';
 import { Board, Cell, Hint, Mark, Regions } from './interfaces';
 
@@ -83,4 +84,19 @@ export default class Engine implements IEngine {
     return this.board;
   }
 
+  hints(): Hint {
+    const hintStrategies: HintFunction[] = [
+      allOtherCellOfARegionAreRemoved,
+      highlightedRegionMustContainOneQueen,
+      // allLineContainsOnlyOneRegion,// TODO
+      // allThisCellsCanBeRemoved, // TODO
+    ];
+    for (const strategy of hintStrategies) {
+      const hint = strategy(this.board, this.regions);
+      if (hint) {
+        return hint;
+      }
+    }
+    return noHintsFound();
+  }
 }
