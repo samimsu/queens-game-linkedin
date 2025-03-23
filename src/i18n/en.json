@@ -73,8 +73,9 @@
   "SUPPORT_ME_ON_PATREON": "Support me on Patreon",
   "UNDO": "Undo",
   "HINT": "Hint",
-  "HITS": {
+  "HINTS": {
     "NO_HITS_FOUND": "No hits found. Help us to improve this hint by submitting a better one.",
-        "INSERT_QUEEN": "<p>All other cells in this color region have been eliminated.</p><p>You can <queen /> the highlighted cell.</p>"
+    "INSERT_QUEEN": "<p>All other cells in this color region have been eliminated.</p><p>You can <queen /> the highlighted cell.</p>",
+    "DELETE_CROSSED_CELLS": "<p>The highlighted region must contain a <queen />.</p><p>If you place a <queen /> in any of the striped cells, all cells in the highlighted region will be eliminated because they are in the same row, column, and/or diagonally adjacent.</p><p>You can eliminate the striped cells.</p>"
   }
 }

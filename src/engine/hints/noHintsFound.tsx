@@ -6,7 +6,7 @@ const noHintsFound = (): Hint => {
     return {
         highlightedCells: [],
         crossedCells: [],
-        message: i18n.t('HITS.NO_HITS_FOUND'),
+        message: i18n.t('HINTS.NO_HITS_FOUND'),
     };
 };
 
