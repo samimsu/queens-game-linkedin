@@ -36,7 +36,7 @@ const allOtherCellOfARegionAreRemoved: HintFunction = (board, regions) => {
             <Trans
               i18nKey="HINTS.INSERT_QUEEN"
               components={{ p: <p />, queen: <Queen size="20" className="inline mx-1 mb-1" />}}              
-              values={{ typeArea: getI18n().t('AREA') }}
+              values={{ typeArea: getI18n().t('COLOR_AREA') }}
             />
           </div>
         ),
