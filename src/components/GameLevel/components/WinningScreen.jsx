@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import goldCrown from "../../../assets/gold-crown.svg";
 import CloseIcon from "../../icons/CloseIcon";
@@ -62,11 +62,30 @@ const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
     updateLevelNavigation();
   }
 
+  // 🛑 Prevent user interactions after winning
+  useEffect(() => {
+    const disableMoves = (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+    };
+
+    document.body.style.pointerEvents = "none"; // Disable all interactions
+    document.addEventListener("keydown", disableMoves, true);
+    document.addEventListener("click", disableMoves, true);
+
+    return () => {
+      document.body.style.pointerEvents = "auto"; // Re-enable interactions when component unmounts
+      document.removeEventListener("keydown", disableMoves, true);
+      document.removeEventListener("click", disableMoves, true);
+    };
+  }, []);
+
   return (
     <div
       className={`absolute flex flex-col items-center justify-center text-center rounded-lg bg-purple text-white text-xl w-72 ${
         timer ? "h-80" : "h-72"
       } max-h-full max-w-full font-bold p-2 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10`}
+      style={{ pointerEvents: "auto" }} // Allow interactions only within this popup
     >
       <button className="absolute right-3 top-3" onClick={close}>
         <CloseIcon />
