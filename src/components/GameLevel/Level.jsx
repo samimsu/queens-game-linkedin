@@ -469,7 +469,7 @@ const Level = ({ id, level }) => {
           <Button
             className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
             onClick={handleUndo}
-            disabled={hasWon}
+            disabled={hasWon || !history.current.length}
           >
             {t('UNDO')}
           </Button>
