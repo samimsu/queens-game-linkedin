@@ -514,19 +514,22 @@ const Level = ({ id, level }) => {
               crossedSquares={crossedSquares}
             />
           </div>
-          <Button
-            className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
-            onClick={handleUndo}
-            disabled={hasWon || !history.current.length}
-          >
-            {t("UNDO")}
-          </Button>
-          <button 
+          <div className="flex">
+            <Button
+              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
+              onClick={handleUndo}
+              disabled={hasWon || !history.current.length}
+            >
+              {t("UNDO")}
+            </Button>
+            <Button 
               className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]" 
               onClick={handleHintButton}
+              disabled={hintMessage !== null}
             >
               {t('HINT')}
-            </button>
+            </Button>
+          </div>
         </div>
 
         <Hints message={hintMessage} onClose={handleCloseHint}/>
