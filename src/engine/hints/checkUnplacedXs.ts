@@ -101,7 +101,7 @@ const checkUnplacedXs: HintFunction = (board, regions) => {
     const unremovedCellsOfAColumn = getUnremovedCellsOfAColumn(board, regions, queen)
     if (unremovedCellsOfAColumn.length > 0) return buildHint(unremovedCellsOfAColumn)
     // 4. che le celle intorno siano state rimosse
-    const unremovedCellsAround = getUnremovedCellsAround(board, regions, queen)
+    const unremovedCellsAround = getUnremovedCellsAround(board, queen)
     if (unremovedCellsAround.length > 0) return buildHint(unremovedCellsAround)
   }
   return null;
