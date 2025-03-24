@@ -52,7 +52,7 @@ const Level = ({ id, level }) => {
   const [showClock, setShowClock] = useState(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState(getAutoPlaceXsPreference);
   const { t, i18n } = useTranslation();
-  const history = useRef([])
+  const history = useRef([]);
 
   const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
     getNavigationLevels(id, level);
@@ -71,13 +71,13 @@ const Level = ({ id, level }) => {
 
     if (currentValue === null) {
       newBoard[row][col] = "X";
-      addToHistory({ row, col, symbol: "X" })
+      addToHistory({ row, col, symbol: "X" });
     } else if (currentValue === "X") {
       placeQueen(newBoard, row, col);
-      addToHistory({ row, col, symbol: "Q" })
+      addToHistory({ row, col, symbol: "Q" });
     } else if (currentValue === "Q") {
       removeQueen(newBoard, row, col);
-      addToHistory({ row, col, symbol: null })
+      addToHistory({ row, col, symbol: null });
     }
 
     // Check for win condition after updating the board
@@ -111,7 +111,7 @@ const Level = ({ id, level }) => {
     for (const [row, col] of squares) {
       if (newBoard[row][col] !== "Q") {
         newBoard[row][col] = "X";
-        addToHistory({ row, col, symbol: "X" })
+        addToHistory({ row, col, symbol: "X" });
       }
     }
     setBoard(newBoard);
@@ -277,13 +277,13 @@ const Level = ({ id, level }) => {
     });
   };
 
-  const addToHistory = ({row, col, symbol}) => {
+  const addToHistory = ({ row, col, symbol }) => {
     history.current.push({
       row,
       col,
-      symbol
-    })
-  }
+      symbol,
+    });
+  };
 
   const toggleClashingQueens = () => {
     const newSetting = !showClashingQueens;
@@ -316,18 +316,18 @@ const Level = ({ id, level }) => {
   const handleUndo = () => {
     const newBoard = structuredClone(board);
     const latest = history.current.pop();
-    
-    if (!latest) return
+
+    if (!latest) return;
     if (latest.symbol == "X") {
-      newBoard[latest.row][latest.col] = null
+      newBoard[latest.row][latest.col] = null;
     } else if (latest.symbol == "Q") {
       removeQueen(newBoard, latest.row, latest.col);
-      newBoard[latest.row][latest.col] = "X"
+      newBoard[latest.row][latest.col] = "X";
     } else if (latest.symbol == null) {
       placeQueen(newBoard, latest.row, latest.col);
     }
     setBoard(newBoard);
-  }
+  };
 
   const PreviousLevelButton = ({ children, className }) => {
     return (
@@ -419,7 +419,7 @@ const Level = ({ id, level }) => {
                     setBoard(createEmptyBoard(levelSize));
                     setHasWon(false);
                     setShowWinningScreen(false);
-                    history.current = []
+                    history.current = [];
                   }}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >
@@ -471,7 +471,7 @@ const Level = ({ id, level }) => {
             onClick={handleUndo}
             disabled={hasWon || !history.current.length}
           >
-            {t('UNDO')}
+            {t("UNDO")}
           </Button>
         </div>
 
