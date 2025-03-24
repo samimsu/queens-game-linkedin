@@ -26,7 +26,7 @@ const LevelSelection = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-fit mx-auto">
-      <div className="flex justify-between w-full mx-1">
+      <div className="flex justify-between w-full px-1">
         <LanguageSwitcher />
         <SupportMeIconButton />
       </div>
