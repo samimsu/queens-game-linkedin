@@ -60,7 +60,7 @@ const getUnremovedCellsOfAColumn =  (board: Board, regions: Regions, cell: Cell)
   return unremovedCells
 }
 
-const getUnremovedCellsAround = (board: Board, cell: Cell): Cell[] => {
+const getUnremovedCellsAround = (board: Board, _regions: Regions, cell: Cell): Cell[] => {
   const directions = [
     [-1, 0], [1, 0], [0, -1], [0, 1],
     [-1, -1], [-1, 1], [1, -1], [1, 1]
@@ -89,22 +89,23 @@ const buildHint = (crossedCells: Cell[]): Hint => {
 }
 
 const checkUnplacedXs: HintFunction = (board, regions) => {
-  // per ogni regina
-  for(const queen of getQueens(board)) {
-    // 1. controlla che ogni altra altra cella della regione sia rimossa
-    const unremovedCellsOfRegion = getUnremovedCellsOfRegion(board, regions, queen)
-    if (unremovedCellsOfRegion.length > 0) return buildHint(unremovedCellsOfRegion)
-    // 2. che tutta la riga sia stata rimossa
-    const unremovedCellsOfARow = getUnremovedCellsOfARow(board, regions, queen)
-    if (unremovedCellsOfARow.length > 0) return buildHint(unremovedCellsOfARow)
-    // 3. che tutta la colonna sia stata rimossa
-    const unremovedCellsOfAColumn = getUnremovedCellsOfAColumn(board, regions, queen)
-    if (unremovedCellsOfAColumn.length > 0) return buildHint(unremovedCellsOfAColumn)
-    // 4. che le celle intorno siano state rimosse
-    const unremovedCellsAround = getUnremovedCellsAround(board, queen)
-    if (unremovedCellsAround.length > 0) return buildHint(unremovedCellsAround)
+  const checks = [
+    getUnremovedCellsOfRegion, // 1. check that every other cell in the region is removed
+    getUnremovedCellsOfARow, // 2. check that the entire row has been removed
+    getUnremovedCellsOfAColumn, // 3. check that the entire column has been removed
+    getUnremovedCellsAround, // 4. check that the surrounding cells have been removed
+  ];
+
+  for (const queen of getQueens(board)) {
+    for (const check of checks) {
+      const unremovedCells = check(board, regions, queen);
+      if (unremovedCells.length > 0) {
+        return buildHint(unremovedCells);
+      }
+    }
   }
+
   return null;
-}
+};
 
 export default checkUnplacedXs
