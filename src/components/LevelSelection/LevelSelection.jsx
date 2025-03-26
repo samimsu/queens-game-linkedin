@@ -6,6 +6,7 @@ import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import SupportMeIconButton from "./components/SupportMeIconButton";
+import DiscordButton from "./components/DiscordButton";
 import {
   getGroupingPreference,
   setGroupingPreference,
@@ -28,7 +29,10 @@ const LevelSelection = () => {
     <div className="flex flex-col justify-center items-center w-fit mx-auto">
       <div className="flex justify-between w-full px-1">
         <LanguageSwitcher />
-        <SupportMeIconButton />
+        <div className="flex items-center space-x-3">
+          <DiscordButton />
+          <SupportMeIconButton />
+        </div>
       </div>
       <Heading />
       <div className="flex w-full justify-between mb-2">
