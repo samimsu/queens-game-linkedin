@@ -84,11 +84,12 @@ const buildHint = (crossedCells: Cell[]): Hint => {
   return {
     highlightedCells: [],
     crossedCells,
+    toRemove: crossedCells,
     message: 'TODO'
   }
 }
 
-const checkUnplacedXs: HintFunction = (board, regions) => {
+const checkUnplacedXs: HintFunction = ({ board, regions }) => {
   const checks = [
     getUnremovedCellsOfRegion, // 1. check that every other cell in the region is removed
     getUnremovedCellsOfARow, // 2. check that the entire row has been removed

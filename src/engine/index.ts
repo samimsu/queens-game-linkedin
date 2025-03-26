@@ -1,24 +1,19 @@
-import {
-  allOtherCellOfARegionAreRemoved,
-  noHintsFound,
-  allThisCellsCanBeRemoved,
-  checkLineWithOnlyOneEmptyCell,
-  checkUnplacedXs,
-  highlightedRegionMustContainOneQueen,
-} from './hints';
+import { createEmptyBoard } from '@/utils/board';
+import hintEngineRun from './hints';
 import { Board, Cell, Hint, Mark, Regions } from './interfaces';
 import placeQueen from './placeQueen';
-
-type HintFunction = (board: Board, regions: Regions) => Hint;
 
 interface IEngine {
   placeQueen(cell: Cell, autoPlaceXs: boolean): Engine;
   getBoard(): Board;
-  hints(): Hint
+  hints({ enableCheckIncorrectCells }: { enableCheckIncorrectCells: boolean }): Hint
 }
 
 export default class Engine implements IEngine {
-  constructor(private board: Board, private readonly regions: Regions) { }
+  private boardResolved: Board | null;
+  constructor(private board: Board, private readonly regions: Regions) {
+    this.boardResolved = this.resolveBoard();
+  }
 
   placeQueen(cell: Cell, autoPlaceXs: boolean = false): this {
     this.board = placeQueen(this.board, this.regions, cell, autoPlaceXs);
@@ -30,19 +25,35 @@ export default class Engine implements IEngine {
   }
 
   hints(): Hint {
-    const hintStrategies: HintFunction[] = [
-      allOtherCellOfARegionAreRemoved,
-      checkUnplacedXs,
-      highlightedRegionMustContainOneQueen,
-      checkLineWithOnlyOneEmptyCell,
-      // allThisCellsCanBeRemoved, // TODO
-    ];
-    for (const strategy of hintStrategies) {
-      const hint = strategy(this.board, this.regions);
-      if (hint) {
-        return hint;
+    return hintEngineRun({ board: this.board, regions: this.regions, boardResolved: this.boardResolved })
+  }
+
+  resolveBoard(): Board | null {
+    let boardResolved: Board = createEmptyBoard(this.board.length)
+    do {
+      const hint = hintEngineRun({ board: boardResolved, regions: this.regions });
+      if (hint.crossedCells.length === 0 && hint.highlightedCells.length === 0) return null;
+  
+      for (const cell of hint.crossedCells) {
+        boardResolved[cell.row][cell.col] = Mark.Removed
+      }
+  
+      if (hint.highlightedCells.length === 1) {
+        boardResolved = placeQueen(boardResolved, this.regions, hint.highlightedCells[0], true)
+      }
+      
+    } while (!Engine.isBoardResolved(boardResolved));
+    return boardResolved;
+  }
+
+  private static isBoardResolved(board: Board): boolean {
+    let nQueens = 0;
+    for (const row of board) {
+      for (const cell of row) {
+        if (cell !== Mark.Queen) continue;+
+        nQueens++;
       }
     }
-    return noHintsFound();
+    return nQueens === board.length;
   }
 }
