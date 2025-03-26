@@ -23,7 +23,7 @@ const getEmptyCells = (
   return emptyCells;
 };
 
-const allOtherCellOfARegionAreRemoved: HintFunction = (board, regions) => {
+const allOtherCellOfARegionAreRemoved: HintFunction = ({ board, regions }) => {
   for (let i = 65; i < 65 + regions.length; i++) {
     const region: Region = String.fromCharCode(i) as Region;
     const emptyCells = getEmptyCells(board, regions, region);
@@ -31,6 +31,8 @@ const allOtherCellOfARegionAreRemoved: HintFunction = (board, regions) => {
       return {
         highlightedCells: emptyCells,
         crossedCells: [],
+        toRemove: [],
+        queen: emptyCells[0],
         message: (
           <div>
             <Trans

@@ -13,7 +13,7 @@ const getIndexesOfEmptyCellsOfLine = (line: Mark[]): number[] => {
   }, []);
 };
 
-const checkLineWithOnlyOneEmptyCell: HintFunction = (board, regions) => {
+const checkLineWithOnlyOneEmptyCell: HintFunction = ({ board, regions }) => {
   let highlightedCells: Cell[] = [];
   let typeArea: "ROW" | "COLUMN";
   // 1. Controlla tutte le righe
@@ -50,6 +50,7 @@ const checkLineWithOnlyOneEmptyCell: HintFunction = (board, regions) => {
     ? {
       highlightedCells,
       crossedCells: [],
+      toRemove: [],
       message:(
         <Trans
           i18nKey="HINTS.INSERT_QUEEN"

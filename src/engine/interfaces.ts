@@ -18,5 +18,7 @@ export type Cell = {
 export type Hint = {
     highlightedCells: Cell[],
     crossedCells: Cell[],
+    toRemove: Cell[],
+    queen?: Cell
     message: React.ReactNode
 }

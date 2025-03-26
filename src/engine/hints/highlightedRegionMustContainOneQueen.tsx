@@ -4,6 +4,7 @@ import Queen from "@/components/Queen";
 import { Board, Cell, Mark, Region, Regions } from "../interfaces";
 import Engine from "..";
 import { Trans } from "react-i18next";
+import placeQueen from "../placeQueen";
 
 const findRegionsWithAllCellsRemoved = (board: Board, regions: Regions): Set<Region> => {
   const map = new Map<Region, number>()
@@ -40,7 +41,7 @@ const getRegionRemoved = (set1: Set<Region>, set2: Set<Region>): Region => {
   return null
 }
 
-const highlightedRegionMustContainOneQueen: HintFunction = (board, regions) => {
+const highlightedRegionMustContainOneQueen: HintFunction = ({board, regions}) => {
   const crossedCells: Cell[] = [];
   let regionToHighlighted: Region
   let selectedRegion: Region = null;
@@ -53,9 +54,8 @@ const highlightedRegionMustContainOneQueen: HintFunction = (board, regions) => {
       // 1.1 controlla che la cella sia nella regione selezionata
       if (selectedRegion !== null && regions[rowIndex][colIndex] !== selectedRegion) continue;
       // 2. piazza una regina nella cella
-      const engine = new Engine(JSON.parse(JSON.stringify(board)), regions);
       const regionWithAllCellsRemovedBeforeQueenPlaced = findRegionsWithAllCellsRemoved(board, regions);
-      const boardWithQueenSet = engine.placeQueen({ row: rowIndex, col: colIndex }, true).getBoard();
+      const boardWithQueenSet = placeQueen(board, regions, { row: rowIndex, col: colIndex }, true);
       // 3. controlla se ci sono regioni con sole celle eliminate
       const regionWithAllCellsRemovedAfterQueenPlaced = findRegionsWithAllCellsRemoved(boardWithQueenSet, regions);
       regionWithAllCellsRemovedAfterQueenPlaced.delete(regions[rowIndex][colIndex])
@@ -89,6 +89,7 @@ const highlightedRegionMustContainOneQueen: HintFunction = (board, regions) => {
   return {
     highlightedCells,
     crossedCells,
+    toRemove: crossedCells,
     message: (
       <div>
         <Trans

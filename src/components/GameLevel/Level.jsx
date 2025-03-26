@@ -45,6 +45,9 @@ const Level = ({ id, level }) => {
   const [hintMessage, setHintMessage] = useState();
   const [highlightedCells, setHighlightedCells] = useState([])
   const [crossedSquares, setCrossedSquares] = useState([]);
+  const hintParams = useRef({
+    toRemove: []
+  })
   const [hasWon, setHasWon] = useState(false);
   const [timer, setTimer] = useState(0);
   const [showWinningScreen, setShowWinningScreen] = useState(false);
@@ -396,17 +399,17 @@ const Level = ({ id, level }) => {
   }, [isVisible, hasWon])
   
   const checkHintIsDone = () => {
-    const allCellAreRemoved = crossedSquares.every(cell => board[cell.row][cell.col] === 'X')
-    const isQueenPlaced = highlightedCells.length > 1 || highlightedCells.every(cell => board[cell.row][cell.col] === 'Q')
-    const highlightedCellsAreRemoved = highlightedCells.some(cell => board[cell.row][cell.col] === 'X')
-    if (!allCellAreRemoved || !isQueenPlaced || highlightedCellsAreRemoved) return
+    const allCellAreRemoved = hintParams.current.toRemove.every(cell => board[cell.row][cell.col] === 'X')
+    const isQueenPlaced = hintParams.current.queen ? board[hintParams.current.queen.row][hintParams.current.queen.col] === 'Q' : true
+    if (!allCellAreRemoved || !isQueenPlaced) return
     resetHint()
   }
 
   const handleHintButton = () => {
     const engine = new Engine(board, colorRegions);
     const hint = engine.hints()
-    console.log('hints', engine.hints())
+    hintParams.current = hint
+    console.log('hints', hint)
     setHighlightedCells(hint.highlightedCells)
     setCrossedSquares(hint.crossedCells)
     setHintMessage(hint.message)
