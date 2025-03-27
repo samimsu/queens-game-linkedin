@@ -16,7 +16,7 @@ const findRegionsWithAllCellsRemoved = (board: Board, regions: Regions): Set<Reg
       for (let col = 0; col < board.length; col++) {
         if (board[row][col] === Mark.Empty && regions[row][col] === region) {
           emptyCells++;
-          map.set(region, map.get(region) + 1)
+          map.set(region, (map.get(region) || 0) + 1)
         }
       }
     }
@@ -34,7 +34,7 @@ const findRegionsWithAllCellsRemoved = (board: Board, regions: Regions): Set<Reg
   return regionsWithoutEmptyCells;
 }
 
-const getRegionRemoved = (set1: Set<Region>, set2: Set<Region>): Region => {
+const getRegionRemoved = (set1: Set<Region>, set2: Set<Region>): Region | null=> {
   for (let regionInSet2 of Array.from(set2.keys())) {
     if (!set1.has(regionInSet2)) return regionInSet2
   }
@@ -43,8 +43,8 @@ const getRegionRemoved = (set1: Set<Region>, set2: Set<Region>): Region => {
 
 const highlightedRegionMustContainOneQueen: HintFunction = ({board, regions}) => {
   const crossedCells: Cell[] = [];
-  let regionToHighlighted: Region
-  let selectedRegion: Region = null;
+  let regionToHighlighted: Region | null = null
+  let selectedRegion: Region | null = null;
   for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
     const row = board[rowIndex];
     for (let colIndex = 0; colIndex < row.length; colIndex++) {

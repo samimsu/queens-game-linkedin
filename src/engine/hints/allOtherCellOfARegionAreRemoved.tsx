@@ -1,5 +1,6 @@
 import React from "react";
 import { Board, Cell, Mark, Region, Regions } from "../interfaces";
+// @ts-ignore
 import Queen from "@/components/Queen";
 import { HintFunction } from ".";
 import { Trans, getI18n } from "react-i18next";

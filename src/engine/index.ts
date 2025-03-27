@@ -1,3 +1,4 @@
+// @ts-ignore
 import { createEmptyBoard } from '@/utils/board';
 import hintEngineRun from './hints';
 import { Board, Cell, Hint, Mark, Regions } from './interfaces';
@@ -10,7 +11,7 @@ interface IEngine {
 }
 
 export default class Engine implements IEngine {
-  private boardResolved: Board | null;
+  private boardResolved?: Board;
   constructor(private board: Board, private readonly regions: Regions) {
     this.boardResolved = this.resolveBoard();
   }
@@ -28,11 +29,11 @@ export default class Engine implements IEngine {
     return hintEngineRun({ board: this.board, regions: this.regions, boardResolved: this.boardResolved })
   }
 
-  resolveBoard(): Board | null {
+  resolveBoard(): Board | undefined {
     let boardResolved: Board = createEmptyBoard(this.board.length)
     do {
       const hint = hintEngineRun({ board: boardResolved, regions: this.regions });
-      if (hint.crossedCells.length === 0 && hint.highlightedCells.length === 0) return null;
+      if (hint.crossedCells.length === 0 && hint.highlightedCells.length === 0) return;
   
       for (const cell of hint.crossedCells) {
         boardResolved[cell.row][cell.col] = Mark.Removed

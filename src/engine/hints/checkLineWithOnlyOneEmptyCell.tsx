@@ -2,6 +2,7 @@ import { Trans, getI18n } from "react-i18next";
 import { HintFunction } from ".";
 import { Cell, Mark } from "../interfaces";
 import React from "react";
+// @ts-ignore
 import Queen from "@/components/Queen";
 
 const getIndexesOfEmptyCellsOfLine = (line: Mark[]): number[] => {
@@ -15,7 +16,7 @@ const getIndexesOfEmptyCellsOfLine = (line: Mark[]): number[] => {
 
 const checkLineWithOnlyOneEmptyCell: HintFunction = ({ board, regions }) => {
   let highlightedCells: Cell[] = [];
-  let typeArea: "ROW" | "COLUMN";
+  let typeArea: "ROW" | "COLUMN" | "" = "";
   // 1. Controlla tutte le righe
   for (let rowIndex = 0; rowIndex < regions.length; rowIndex++) {
     const indexesOfEmptyCells = getIndexesOfEmptyCellsOfLine(board[rowIndex]);
