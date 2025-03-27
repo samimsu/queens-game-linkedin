@@ -26,7 +26,7 @@ const allThisCellsCanBeRemoved: HintFunction = ({ board, regions }) => {
         highlightedCells: [],
         crossedCells: [],
         toRemove: [],
-        queen: null,
+        queen: undefined,
         message: null
     }
 };
