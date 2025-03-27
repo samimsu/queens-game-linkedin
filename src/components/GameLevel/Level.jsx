@@ -407,7 +407,7 @@ const Level = ({ id, level }) => {
 
   const handleHintButton = () => {
     const engine = new Engine(board, colorRegions);
-    const hint = engine.hints()
+    const hint = engine.getHint()
     hintParams.current = hint
     console.log('hints', hint)
     setHighlightedCells(hint.highlightedCells)

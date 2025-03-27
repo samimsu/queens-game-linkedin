@@ -7,7 +7,7 @@ import placeQueen from './placeQueen';
 interface IEngine {
   placeQueen(cell: Cell, autoPlaceXs: boolean): Engine;
   getBoard(): Board;
-  hints({ enableCheckIncorrectCells }: { enableCheckIncorrectCells: boolean }): Hint
+  getHint(): Hint
 }
 
 export default class Engine implements IEngine {
@@ -25,7 +25,7 @@ export default class Engine implements IEngine {
     return this.board;
   }
 
-  hints(): Hint {
+  getHint(): Hint {
     return hintEngineRun({ board: this.board, regions: this.regions, boardResolved: this.boardResolved })
   }
 
