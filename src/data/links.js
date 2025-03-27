@@ -6,3 +6,4 @@ export const queensGameRepoNewIssue =
   "https://github.com/samimsu/queens-game-linkedin/issues/new";
 export const officialLinkedInQueensGamePage =
   "https://www.linkedin.com/showcase/queens-game";
+export const discord = "https://discord.gg/dr49fthwSb";
