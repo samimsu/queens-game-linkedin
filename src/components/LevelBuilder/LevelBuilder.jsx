@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import RootLayout from "../../layouts/RootLayout";
 import { createInitialBoardForBuilder } from "../../utils/board";
 import {
   alto,
@@ -75,7 +74,7 @@ const LevelBuilder = () => {
       { name: t("COLOR.TALLOW"), value: tallow },
       { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
     ],
-    [],
+    []
   );
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
@@ -95,8 +94,8 @@ const LevelBuilder = () => {
 
   const [regionColors, setRegionColors] = useState(
     Object.fromEntries(
-      regionKeys.split("").map((key) => [key, initialRegionColors[key]]),
-    ),
+      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
+    )
   );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
@@ -133,8 +132,8 @@ const LevelBuilder = () => {
       Object.fromEntries(
         updatedRegionKeys
           .split("")
-          .map((key) => [key, initialRegionColors[key]]),
-      ),
+          .map((key) => [key, initialRegionColors[key]])
+      )
     );
   };
 
@@ -149,7 +148,7 @@ const LevelBuilder = () => {
           return newDragValue;
         }
         return square;
-      }),
+      })
     );
     setBoard(newBoard);
   };
@@ -173,7 +172,7 @@ const LevelBuilder = () => {
           return dragValue;
         }
         return square;
-      }),
+      })
     );
     setBoard(newBoard);
   };
@@ -194,6 +193,14 @@ const LevelBuilder = () => {
   const handlePasteByShortcut = (event) => {
     if (event.ctrlKey && event.key === "v") {
       handlePaste();
+    }
+  };
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "image/png") {
+      const imageUrl = URL.createObjectURL(file);
+      setImage(imageUrl);
     }
   };
 
@@ -274,6 +281,15 @@ const LevelBuilder = () => {
                 </div>
                 <PasteImage handlePaste={handlePaste} />
               </div>
+
+              {/* Hidden file input */}
+              <input
+                id="screenshot-upload"
+                type="file"
+                accept="image/png"
+                onChange={handleFileUpload}
+                style={{ display: "none" }}
+              />
 
               {image && (
                 <PreviewImage
