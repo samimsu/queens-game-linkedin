@@ -32,7 +32,6 @@ import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import Button from "../Button";
 import useVisibility from '../../hooks/useVisibility'
-import { resolveBoard } from "@/engine";
 import Engine from "@/engine/index";
 
 const Level = ({ id, level }) => {
