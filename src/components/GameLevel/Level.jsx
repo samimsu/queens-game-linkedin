@@ -30,6 +30,7 @@ import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import Button from "../Button";
+import useVisibility from '../../hooks/useVisibility'
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -53,6 +54,8 @@ const Level = ({ id, level }) => {
   const [autoPlaceXs, setAutoPlaceXs] = useState(getAutoPlaceXsPreference);
   const { t, i18n } = useTranslation();
   const history = useRef([]);
+  const isVisible = useVisibility();
+  const [timerRunning, setTimerRunning] = useState(false);
 
   const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
     getNavigationLevels(id, level);
@@ -377,6 +380,15 @@ const Level = ({ id, level }) => {
     setClashingQueens(clashingSet);
   }, [board]);
 
+  useEffect(() => {
+    if (!isVisible || hasWon) {
+      setTimerRunning(false)
+    }
+    if (isVisible && !hasWon) {
+      setTimerRunning(true)
+    }
+  }, [isVisible, hasWon])
+
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
@@ -441,7 +453,7 @@ const Level = ({ id, level }) => {
 
           <div className="flex justify-end">
             <Timer
-              isGameWon={hasWon}
+              run={timerRunning}
               onTimeUpdate={handleTimeUpdate}
               showTimer={showClock}
             />
