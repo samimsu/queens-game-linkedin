@@ -40,7 +40,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "add-level": "ts-node scripts/addLevel.ts",
     "ptr:c": "npx prettier ./src --check",
     "ptr:w": "npx prettier ./src --write",
     "ptr:c:levels": "npx prettier ./src/utils/levels --check",
