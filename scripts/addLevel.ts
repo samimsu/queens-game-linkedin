@@ -174,7 +174,7 @@ async function setLevelName(page: Page, levelNumber: number): Promise<void> {
       timeout: 15000,
     });
     await input.fill(levelNumber.toString());
-    console.log(`Level name set to "level${levelNumber}"`);
+    console.log(`Level name set to "${levelNumber}"`);
   } catch (error) {
     console.log(
       "Error setting level name:",
