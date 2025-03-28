@@ -103,6 +103,12 @@ async function captureScreenshot(
     // Optional: Wait a moment for the zoom to take effect
     await iframe.waitForTimeout(500);
 
+    // Move the mouse to a safe location (e.g., top-left corner)
+    await page.mouse.move(0, 0);
+
+    // Wait a moment for any tooltip to disappear
+    await iframe.waitForTimeout(500);
+
     // Capture screenshot of just the queens-board element
     const screenshotBuffer = await boardElement.screenshot({
       scale: "device", // Use device pixel ratio for sharper images
