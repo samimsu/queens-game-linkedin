@@ -1,6 +1,23 @@
 import { chromium, Browser, Page, Frame } from "playwright";
 import * as fs from "fs/promises";
 import * as path from "path";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
+
+// Define automation steps
+enum AutomationSteps {
+  NAVIGATE = "navigate",
+  START = "start",
+  CAPTURE = "capture",
+  BUILDER = "builder",
+  UPLOAD = "upload",
+  NAME = "name",
+  GENERATE = "generate",
+  FILE = "file",
+  LEVELS = "levels",
+  README = "readme",
+  COMPLETE = "complete",
+}
 
 async function navigateToGame(page: Page): Promise<void> {
   console.log("Navigating to Queens game...");
@@ -312,21 +329,46 @@ async function updateReadme(
   }
 }
 
-async function addNewLevel(levelNumber: number): Promise<void> {
-  const browser: Browser = await chromium.launch({ headless: true });
+async function addNewLevel(
+  levelNumber: number,
+  headless: boolean = true,
+  stopAt?: string
+): Promise<void> {
+  const browser: Browser = await chromium.launch({ headless });
   const context = await browser.newContext({
     permissions: ["clipboard-read", "clipboard-write"],
   });
   const page: Page = await context.newPage();
+  const stopStep = stopAt?.toLowerCase() as AutomationSteps;
 
   try {
+    // Step 1: Navigate to game
     await navigateToGame(page);
+    if (stopStep === AutomationSteps.NAVIGATE) return;
+
+    // Step 2: Start game
     await startGameIfNeeded(page);
+    if (stopStep === AutomationSteps.START) return;
+
+    // Step 3: Capture screenshot
     const screenshotPath = await captureScreenshot(page, levelNumber);
+    if (stopStep === AutomationSteps.CAPTURE) return;
+
+    // Step 4: Navigate to level builder
     await navigateToLevelBuilder(page);
+    if (stopStep === AutomationSteps.BUILDER) return;
+
+    // Step 5: Upload screenshot
     await uploadScreenshot(page, screenshotPath);
+    if (stopStep === AutomationSteps.UPLOAD) return;
+
+    // Step 6: Set level name
     await setLevelName(page, levelNumber);
+    if (stopStep === AutomationSteps.NAME) return;
+
+    // Step 7: Generate and copy code
     const generatedCode = await generateAndCopyCode(page);
+    if (stopStep === AutomationSteps.GENERATE) return;
 
     const projectRoot = path.resolve(__dirname, "..");
     const utilsDir: string = path.join(projectRoot, "src", "utils");
@@ -335,11 +377,20 @@ async function addNewLevel(levelNumber: number): Promise<void> {
 
     await fs.mkdir(levelsDir, { recursive: true });
 
+    // Step 8: Create level file
     await createLevelFile(levelsDir, levelNumber, generatedCode);
+    if (stopStep === AutomationSteps.FILE) return;
+
+    // Step 9: Update levels file
     await updateLevelsFile(levelsFile, levelNumber);
+    if (stopStep === AutomationSteps.LEVELS) return;
+
+    // Step 10: Update README
     const readmePath: string = path.join(projectRoot, "README.md");
     await updateReadme(readmePath, levelNumber);
+    if (stopStep === AutomationSteps.README) return;
 
+    // Step 11: Complete
     console.log(`Level ${levelNumber} added successfully!`);
   } catch (error) {
     console.error(
@@ -352,13 +403,63 @@ async function addNewLevel(levelNumber: number): Promise<void> {
   }
 }
 
-const levelNumber: number = parseInt(process.argv[2]);
-if (isNaN(levelNumber)) {
-  console.error("Please provide a valid level number");
-  process.exit(1);
+// Function to show available steps
+function showSteps() {
+  console.log("Available automation steps:");
+  Object.values(AutomationSteps).forEach((step) => {
+    console.log(`- ${step}`);
+  });
 }
 
-addNewLevel(levelNumber).catch((error) => {
-  console.error("Failed to add level:", error);
-  process.exit(1);
-});
+// Parse command line arguments
+const argv = yargs(hideBin(process.argv))
+  .option("level", {
+    type: "number",
+    description: "Level number to add",
+  })
+  .option("headless", {
+    type: "boolean",
+    default: true,
+    description: "Run in headless mode",
+  })
+  .option("stop-at", {
+    type: "string",
+    description: "Stop automation at specific step",
+  })
+  .option("show-steps", {
+    type: "boolean",
+    default: false,
+    description: "Show all available steps and exit",
+  })
+  .check((argv) => {
+    if (!argv["show-steps"] && typeof argv.level !== "number") {
+      throw new Error(
+        'Argument "level" is required when not using --show-steps'
+      );
+    }
+    return true;
+  })
+  .help().argv as {
+  level?: number;
+  headless: boolean;
+  "stop-at"?: string;
+  "show-steps": boolean;
+};
+
+// Main execution
+async function main() {
+  if (argv["show-steps"]) {
+    showSteps();
+    return;
+  }
+
+  // We know level exists here because of the check above
+  await addNewLevel(argv.level!, argv.headless, argv["stop-at"]).catch(
+    (error) => {
+      console.error("Failed to add level:", error);
+      process.exit(1);
+    }
+  );
+}
+
+main();
