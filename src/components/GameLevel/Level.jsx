@@ -20,11 +20,13 @@ import {
   getClashingQueensPreference,
   getShowInstructionsPreference,
   isLevelCompleted,
-  markLevelAsCompleted,
+  saveLevelAsCompleted,
   setShowClockPreference,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
   setShowInstructionsPreference,
+  saveLevelAsNotCompleted,
+  getStoredLevel,
 } from "../../utils/localStorage";
 import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
@@ -56,6 +58,8 @@ const Level = ({ id, level }) => {
   const history = useRef([]);
   const isVisible = useVisibility();
   const [timerRunning, setTimerRunning] = useState(false);
+  const [completed, setCompleted] = useState(false);
+  const [boardLoaded, setBoardLoaded] = useState(false);
 
   const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
     getNavigationLevels(id, level);
@@ -63,10 +67,28 @@ const Level = ({ id, level }) => {
   const boardSize = levelSize;
   const colorRegions = levels[level].colorRegions;
 
-  const completed = isLevelCompleted(Number(id));
+  useEffect(() => {
+    const levelSaved = getStoredLevel(Number(id));
+    setCompleted(isLevelCompleted(Number(id)));
+    if (!levelSaved) {
+      setBoardLoaded(true);
+      return;
+    }
+    if (levelSaved.completed) {
+      setHasWon(true);
+    }
+    if (levelSaved.time) {
+      setTimer(levelSaved.time);
+    }
+    if (levelSaved.board) {
+      setBoard(levelSaved.board);
+      setBoardLoaded(true);
+    }
+  }, []);
 
   // Handle click on square
   const handleSquareClick = (row, col) => {
+    if (hasWon) return;
     // Initialize newBoard as a copy of the current board
     const newBoard = structuredClone(board);
 
@@ -89,7 +111,6 @@ const Level = ({ id, level }) => {
         setTimeout(() => setShowWinningScreen(true), 0);
       }
       setHasWon(true);
-      markLevelAsCompleted(Number(id));
     } else {
       setHasWon(false);
       setShowWinningScreen(false);
@@ -110,6 +131,7 @@ const Level = ({ id, level }) => {
   };
 
   const handleDrag = (squares) => {
+    if (hasWon) return;
     const newBoard = structuredClone(board);
     for (const [row, col] of squares) {
       if (newBoard[row][col] !== "Q") {
@@ -332,6 +354,14 @@ const Level = ({ id, level }) => {
     setBoard(newBoard);
   };
 
+  const handleResetButtonClick = () => {
+    setBoard(createEmptyBoard(levelSize));
+    setHasWon(false);
+    setShowWinningScreen(false);
+    history.current = []
+    setTimer(0);
+  }
+
   const PreviousLevelButton = ({ children, className }) => {
     return (
       <Link
@@ -388,6 +418,15 @@ const Level = ({ id, level }) => {
       setTimerRunning(true)
     }
   }, [isVisible, hasWon])
+  
+  useEffect(() => {
+    if (!boardLoaded) return;
+    if (hasWon) {
+      saveLevelAsCompleted(Number(id), timer, board);
+    } else {
+      saveLevelAsNotCompleted(Number(id), timer, board);
+    }
+  }, [timer, board, boardLoaded]);
 
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
@@ -427,12 +466,7 @@ const Level = ({ id, level }) => {
                   />
                 )}
                 <button
-                  onClick={() => {
-                    setBoard(createEmptyBoard(levelSize));
-                    setHasWon(false);
-                    setShowWinningScreen(false);
-                    history.current = [];
-                  }}
+                  onClick={handleResetButtonClick}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >
                   <ResetIcon size="18" />
@@ -456,6 +490,7 @@ const Level = ({ id, level }) => {
               run={timerRunning}
               onTimeUpdate={handleTimeUpdate}
               showTimer={showClock}
+              initialTimer={timer}
             />
           </div>
 
