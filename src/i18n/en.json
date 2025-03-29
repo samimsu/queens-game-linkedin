@@ -30,7 +30,7 @@
   "COPIED": "Copied",
   "ADD_THIS_CODE_TO": "Add this code to",
   "PAST_IMAGE_MSG": "Try pasting an image. The bigger and as specific the image, the better.",
-  "LEVEL_NOT_FOUND": "Level not found",
+  "LEVEL_NOT_FOUND": "Level {{level}} not found",
   "GO_HOME": "Go home",
   "SHARE_LEVEL_SCREENSHOT_LINK": "If you have a screenshot of the level, please share it <1>here</1> or reach out directly.",
   "404_PAGE_NOT_FOUND": "404 - Page Not Found",

@@ -14,7 +14,7 @@ const PageLevelNotFound = ({ level }) => {
       <PageTitle title={`Level ${level} Not Found`} />
       <div className="flex flex-col items-center justify-center text-gray-600 pt-24 mx-2">
         <div className="text-4xl mb-4 font-bold text-primary">
-          {t("LEVEL_NOT_FOUND")}
+          {t("LEVEL_NOT_FOUND", { level })}
         </div>
         <div className="text-lg mb-6">
           <Trans i18nKey="SHARE_LEVEL_SCREENSHOT_LINK">
