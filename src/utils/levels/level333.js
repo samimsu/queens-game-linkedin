@@ -1,7 +1,7 @@
 
 import { altoMain, anakiwa, bittersweet, celadon, chardonnay, lightWisteria, nomad, saharaSand } from "../colors";
 
-const level1 = {
+const level333 = {
   size: 8,
   colorRegions: [
   ["A", "A", "A", "B", "B", "B", "B", "C"],
@@ -18,4 +18,4 @@ const level1 = {
   }
 };
 
-export default level1;
+export default level333;
