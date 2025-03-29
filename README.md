@@ -67,6 +67,9 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/odrail"><img src="https://avatars.githubusercontent.com/u/76907155?v=4?s=100" width="100px;" alt="Manu"/><br /><sub><b>Manu</b></sub></a><br /><a href="#code-odrail" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Samjason03"><img src="https://avatars.githubusercontent.com/u/61657633?v=4?s=100" width="100px;" alt="Samjason03"/><br /><sub><b>Samjason03</b></sub></a><br /><a href="#code-Samjason03" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/yll0rd"><img src="https://avatars.githubusercontent.com/u/114886588?v=4?s=100" width="100px;" alt="Youmbi Leo (Why-Lord)"/><br /><sub><b>Youmbi Leo (Why-Lord)</b></sub></a><br /><a href="#code-yll0rd" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
