@@ -30,9 +30,9 @@ import {
 import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import Button from "../Button";
 import useVisibility from '../../hooks/useVisibility'
 import Engine from "@/engine/index";
+import BoardControls from './components/BoardControls'
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -515,22 +515,12 @@ const Level = ({ id, level }) => {
               highlightedCells={highlightedCells}
               crossedSquares={crossedSquares}
             />
-          </div>
-          <div className="flex">
-            <Button
-              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
-              onClick={handleUndo}
-              disabled={hasWon || !history.current.length}
-            >
-              {t("UNDO")}
-            </Button>
-            <Button 
-              className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]" 
-              onClick={handleHintButton}
-              disabled={hintMessage !== null}
-            >
-              {t('HINT')}
-            </Button>
+            <BoardControls
+              onUndoClick={handleUndo}
+              onHintClick={handleHintButton}
+              undoButtonDisabled={hasWon || !history.current.length}
+              hintButtonDisabled={hintMessage !== null}
+            />
           </div>
         </div>
 
