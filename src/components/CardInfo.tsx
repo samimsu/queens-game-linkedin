@@ -1,11 +1,11 @@
-import React, { useState, ReactNode, PropsWithChildren } from "react";
+import React, { useState, PropsWithChildren, useCallback } from "react";
 import CollapseIcon from "./icons/CollapseIcon";
 import CloseIcon from "./icons/CloseIcon";
-import { useTheme } from "next-themes";
 
 export enum CardType {
   Collapsible = "collapsible",
   Closable = "closable",
+  Fixed = "fixed"
 }
 
 interface CardInfoProps extends PropsWithChildren {
@@ -17,29 +17,33 @@ interface CardInfoProps extends PropsWithChildren {
 const CardInfo: React.FC<CardInfoProps> = ({ title = "", children, type, onClose }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const handleClick = () => {
-    switch (type) {
-      case CardType.Collapsible: {
-        setIsCollapsed(!isCollapsed);
-        break;
-      }
-      case CardType.Closable: {
-        onClose && onClose();
-        break;
-      }
+  const handleClick = useCallback(() => {
+    if (type === CardType.Collapsible) {
+      setIsCollapsed((prev) => !prev);
+    } else if (type === CardType.Closable && onClose) {
+      onClose();
     }
-  };
+  }, [type, onClose]);
+
+  const getIcon = useCallback((type: CardType): React.ReactElement | null => {
+    switch (type) {
+      case CardType.Collapsible:
+        return <CollapseIcon isCollapsed={isCollapsed} />;
+      case CardType.Closable:
+        return <CloseIcon />;
+      case CardType.Fixed:
+        return null;
+      default:
+        throw new Error("CardType not defined");
+    }
+  }, [type, isCollapsed]);
 
   return (
     <div className={`rounded-[4px] p-[12px 20px 16px] pt-[12px] pl-[20px] pr-[20px] pb-[16px] mt-[12px] w-full border border-solid`}>
       <div className="flex justify-between">
         <h2 className="font-medium">{title}</h2>
         <button className="w-[32px] h-[32px]" onClick={handleClick}>
-          {type == CardType.Collapsible ? (
-            <CollapseIcon isCollapsed={isCollapsed} />
-          ) : (
-            <CloseIcon />
-          )}
+          {getIcon(type)}
         </button>
       </div>
       {!isCollapsed && children}
