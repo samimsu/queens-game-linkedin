@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Heading from "./components/Heading";
-import AvailableLevelsFilter from "./components/AvailableLevelsFilter";
-import CompletedLevelsFilter from "./components/CompletedLevelsFilter";
+import LevelSelectionFilters from './components/LevelSelectionFilters'
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
@@ -43,18 +42,13 @@ const LevelSelection = () => {
       </div>
       <Heading />
       <div className="flex w-full justify-between mb-2">
-        <div>
-          <AvailableLevelsFilter
-            checked={showOnlyAvailableLevels}
-            handleChange={() => setShowOnlyAvailableLevels((prev) => !prev)}
-            disabled={onlyAvailableLevelsSwitchDisable}
-          />
-          <CompletedLevelsFilter
-            checked={hideCompletedLevels}
-            handleChange={() => setHideCompletedLevels((prev) => !prev)}
-            disabled={false}
-          />
-        </div>
+        <LevelSelectionFilters
+          availableLevelsChecked={showOnlyAvailableLevels}
+          completedLevelsChecked={hideCompletedLevels}
+          availableLevelsDisabled={onlyAvailableLevelsSwitchDisable}
+          onAvailableLevelsChange={() => setShowOnlyAvailableLevels((prev) => !prev)}
+          onCompletedLevelsChange={() => setHideCompletedLevels((prev) => !prev)}
+        />
         <div className="flex items-center space-x-3 mx-1">
           <ResetAllProgressDialog
             onReset={() => setResetTrigger((prev) => !prev)}
