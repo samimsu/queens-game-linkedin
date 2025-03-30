@@ -6,10 +6,12 @@ import Level from "@/components/GameLevel/Level";
 import PageNotFound from "./PageNotFound";
 import PageLevelNotFound from "./PageLevelNotFound";
 import { levels } from "@/utils/levels";
+import { useTranslation } from "react-i18next";
 
 const GameLevel = () => {
   const { id } = useParams();
   const level = `level${id}`;
+  const { t } = useTranslation();
 
   const maxLevel = Math.max(
     ...Object.keys(levels).map((key) => parseInt(key.replace("level", ""), 10)),
@@ -25,7 +27,7 @@ const GameLevel = () => {
 
   return (
     <RootLayout>
-      <PageTitle title={`Level ${id}`} />
+      <PageTitle title={`${t("LEVEL")} ${id}`} />
       <Level key={id} id={id} level={level} />
     </RootLayout>
   );
