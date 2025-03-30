@@ -218,7 +218,7 @@ async function generateAndCopyCode(page: Page): Promise<string> {
     await page.bringToFront();
     await page.click('button:text("Generate Code")');
     await page.waitForTimeout(500);
-    await page.click('button:text("Copy Code")');
+    await page.click('button[aria-label="Copy code"]');
     await page.waitForTimeout(500);
     const clipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
