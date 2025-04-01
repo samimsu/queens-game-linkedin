@@ -1,12 +1,12 @@
 import {
-    altoMain,
-    anakiwa,
-    bittersweet,
-    celadon,
-    chardonnay,
-    lightWisteria,
-    nomad,
-    saharaSand 
+  altoMain,
+  anakiwa,
+  bittersweet,
+  celadon,
+  chardonnay,
+  lightWisteria,
+  nomad,
+  saharaSand,
 } from "../colors";
 
 const level331 = {
@@ -19,7 +19,7 @@ const level331 = {
     ["A", "E", "E", "E", "E", "F", "F", "G"],
     ["A", "E", "E", "E", "E", "A", "F", "G"],
     ["A", "A", "H", "H", "A", "A", "G", "G"],
-    ["A", "A", "A", "A", "A", "A", "A", "G"]
+    ["A", "A", "A", "A", "A", "A", "A", "G"],
   ],
   regionColors: {
     A: lightWisteria,
@@ -29,8 +29,8 @@ const level331 = {
     E: altoMain,
     F: bittersweet,
     G: saharaSand,
-    H: nomad
-  }
+    H: nomad,
+  },
 };
 
 export default level331;

@@ -25,7 +25,7 @@ const SectionJSCode = ({
 
     // Filter the regionColors based on used regions
     const usedRegionColors = Object.entries(regionColors).filter(([region]) =>
-      usedRegions.has(region)
+      usedRegions.has(region),
     );
 
     // Get the color variable names for the used colors

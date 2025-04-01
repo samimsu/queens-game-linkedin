@@ -30,7 +30,7 @@ import getNavigationLevels from "@/utils/getNavigationLevels";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import Button from "../Button";
-import useVisibility from '../../hooks/useVisibility'
+import useVisibility from "../../hooks/useVisibility";
 
 const Level = ({ id, level }) => {
   const { theme } = useTheme();
@@ -382,12 +382,12 @@ const Level = ({ id, level }) => {
 
   useEffect(() => {
     if (!isVisible || hasWon) {
-      setTimerRunning(false)
+      setTimerRunning(false);
     }
     if (isVisible && !hasWon) {
-      setTimerRunning(true)
+      setTimerRunning(true);
     }
-  }, [isVisible, hasWon])
+  }, [isVisible, hasWon]);
 
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
