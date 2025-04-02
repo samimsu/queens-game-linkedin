@@ -391,7 +391,7 @@ const Level = ({ id, level }) => {
 
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center sm:w-[512px]">
         <div>
           <div
             className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${
