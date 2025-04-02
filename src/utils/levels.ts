@@ -1,3 +1,9 @@
+interface Level {
+  size: number;
+  colorRegions: string[][];
+  regionColors: { [key: string]: string };
+}
+
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
 import level6 from "./levels/level6";
@@ -322,7 +328,7 @@ import level335 from "./levels/level335";
 import level336 from "./levels/level336";
 import level337 from "./levels/level337";
 
-export const levels = {
+export const levels: { [key: string]: Level } = {
   level1,
   level2,
   level6,
