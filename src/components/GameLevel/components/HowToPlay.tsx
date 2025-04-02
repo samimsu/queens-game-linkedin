@@ -1,13 +1,16 @@
-import React from "react";
+// @ts-ignore
 import Queen from "../../Queen";
 import { useTranslation, Trans } from "react-i18next";
 import CardInfo from "@/components/CardInfo";
+import { CardType } from "../../CardInfo";
 
-const HowToPlay = () => {
+type HowToPlayProps = {}
+
+const HowToPlay: React.FC<HowToPlayProps> = () => {
   const { t } = useTranslation();
 
   return (
-    <CardInfo title={`${t('HOW_TO_PLAY')}:`} type="collapsible">
+    <CardInfo title={`${t('HOW_TO_PLAY')}:`} type={CardType.Collapsible}>
       <div className="self-start mt-6 mb-16 mx-2">
         <ol className="list-decimal space-y-2">
           <li className="ml-4">
