@@ -71,5 +71,16 @@
     "LIGHT": "Chiaro"
   },
   "SUPPORT_ME_ON_PATREON": "Supportami su Patreon",
-  "UNDO": "Annulla"
+  "UNDO": "Annulla",
+  "HINT": "Suggerimento",
+  "HINTS": {
+    "NO_HITS_FOUND": "Nessun suggerimento trovato. Aiutaci a migliorare questo suggerimento inserendone uno migliore.",
+    "INSERT_QUEEN": "<p>Tutte le altre celle in questa {{typeArea}} sono state eliminate.</p><p>Puoi inserire <queen /> nella cella evidenziata</p>",
+    "DELETE_CROSSED_CELLS": "<p>La regione evidenziata deve contenere una <queen />.</p><p>Se inserisci una <queen /> in una qualsiasi delle celle a strisce, tutte le celle nella regione evidenziata verranno eliminate perché sono nella stessa riga, colonna e/o adiacenti in diagonale.</p><p>Puoi eliminare le celle a strisce.</p>",
+    "HIGHLIGHTED_CELL_IS_INCORRECT": "La cella evidenziata non è corretta",
+    "STUCK_MESSAGE": "Sei bloccato? Clicca su \"Suggerimento\" per ottenere una spinta nella giusta direzione. Oppure, guarda un video di risoluzione di un puzzle di esempio <a href=\"https://www.linkedin.com/showcase/queens-game\" target=\"_blank\">qui.</a>"
+  },
+  "ROW": "riga",
+  "COLUMN": "colonna",
+  "COLOR_AREA": "regione di colore"
 }
