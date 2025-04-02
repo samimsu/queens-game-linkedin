@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import Queen from "../../../components/Queen";
-import { isLevelCompleted } from "../../../utils/localStorage";
+import { isLevelCompleted, isLevelInProgress } from "../../../utils/localStorage";
 
 const LevelButton = ({ level, disabled }) => {
-  const completed = isLevelCompleted(level);
+  const completed = useMemo(() => isLevelCompleted(level), [level]);
+  const inProgress = useMemo(() => isLevelInProgress(level), [level]);
 
   return (
     <Link to={`/level/${level}`} key={level}>
       <button
-        className={`relative rounded p-2 w-full text-white bg-[#F96C51] ${
+        className={`relative rounded p-2 w-full text-white ${
           disabled ? "opacity-75" : ""
         }`}
+        style={{ backgroundColor: inProgress ? "red" : "#F96C51" }}
       >
         {level}
         {completed && (
