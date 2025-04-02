@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "./components/Heading";
-import AvailableLevelsFilter from "./components/AvailableLevelsFilter";
+import LevelSelectionFilters from './components/LevelSelectionFilters'
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
@@ -16,8 +16,14 @@ import UngroupIcon from "../icons/UngroupIcon";
 
 const LevelSelection = () => {
   const [showOnlyAvailableLevels, setShowOnlyAvailableLevels] = useState(false);
+  const [onlyAvailableLevelsSwitchDisable, setOnlyAvailableLevelsSwitchDisable] = useState(false)
+  const [hideCompletedLevels, setHideCompletedLevels] = useState(false)
   const [groupBySize, setGroupBySize] = useState(getGroupingPreference);
   const [resetTrigger, setResetTrigger] = useState(false);
+
+  useEffect(() => {
+    setOnlyAvailableLevelsSwitchDisable(groupBySize || hideCompletedLevels)
+  }, [groupBySize, hideCompletedLevels])
 
   const toggleGroupBySize = () => {
     const newSetting = !groupBySize;
@@ -36,10 +42,12 @@ const LevelSelection = () => {
       </div>
       <Heading />
       <div className="flex w-full justify-between mb-2">
-        <AvailableLevelsFilter
-          checked={showOnlyAvailableLevels}
-          handleChange={() => setShowOnlyAvailableLevels((prev) => !prev)}
-          disabled={groupBySize}
+        <LevelSelectionFilters
+          availableLevelsChecked={showOnlyAvailableLevels}
+          completedLevelsChecked={hideCompletedLevels}
+          availableLevelsDisabled={onlyAvailableLevelsSwitchDisable}
+          onAvailableLevelsChange={() => setShowOnlyAvailableLevels((prev) => !prev)}
+          onCompletedLevelsChange={() => setHideCompletedLevels((prev) => !prev)}
         />
         <div className="flex items-center space-x-3 mx-1">
           <ResetAllProgressDialog
@@ -52,6 +60,7 @@ const LevelSelection = () => {
       </div>
       <LevelsCollection
         showOnlyAvailableLevels={showOnlyAvailableLevels}
+        hideCompletedLevels={hideCompletedLevels}
         groupBySize={groupBySize}
         resetTrigger={resetTrigger}
         className="mb-3"
