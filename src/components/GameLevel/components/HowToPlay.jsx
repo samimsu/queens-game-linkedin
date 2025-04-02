@@ -8,7 +8,7 @@ const HowToPlay = () => {
 
   return (
     <CardInfo title={`${t('HOW_TO_PLAY')}:`} type="collapsible">
-      <div className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2">
+      <div className="self-start mt-6 mb-16 mx-2">
         <ol className="list-decimal space-y-2">
           <li className="ml-4">
             <Trans i18nKey="GAME_GOAL_INSTRUCTION">
