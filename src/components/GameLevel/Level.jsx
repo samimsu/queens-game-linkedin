@@ -63,6 +63,7 @@ const Level = ({ id, level }) => {
   const history = useRef([]);
   const isVisible = useVisibility();
   const [timerRunning, setTimerRunning] = useState(false);
+  const hintRef = useRef();
 
   const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
     getNavigationLevels(id, level);
@@ -386,6 +387,7 @@ const Level = ({ id, level }) => {
     );
     setClashingQueens(clashingSet);
     checkHintIsDone()
+    hintRef.current.resetStuckTimer()
   }, [board]);
 
   useEffect(() => {
@@ -524,7 +526,7 @@ const Level = ({ id, level }) => {
           </div>
         </div>
 
-        <Hints message={hintMessage} onClose={handleCloseHint}/>
+        <Hints message={hintMessage} onClose={handleCloseHint} ref={hintRef} />
 
         {showInstructions && <HowToPlay />}
 
