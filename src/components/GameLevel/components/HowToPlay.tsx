@@ -1,6 +1,5 @@
-import React from "react";
-import Queen from "../../Queen";
 import { useTranslation, Trans } from "react-i18next";
+import Queen from "../../Queen";
 
 const HowToPlay = () => {
   const { t } = useTranslation();

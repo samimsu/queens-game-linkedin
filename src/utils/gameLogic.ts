@@ -1,7 +1,11 @@
-// import { BOARD_SIZE, colorRegions } from "./board";
-
 // Check if it's safe to place a queen
-export const isSafeToPlaceQueen = (board, row, col, size, colorRegions) => {
+export const isSafeToPlaceQueen = (
+  board: string[][],
+  row: number,
+  col: number,
+  size: number,
+  colorRegions: string[][]
+) => {
   const region = colorRegions[row][col];
 
   // Check for same row and column
@@ -34,14 +38,18 @@ export const isSafeToPlaceQueen = (board, row, col, size, colorRegions) => {
 };
 
 // Check if all queens are placed correctly
-export const checkWinCondition = (board, size, colorRegions) => {
+export const checkWinCondition = (
+  board: string[][],
+  size: number,
+  colorRegions: string[][]
+) => {
   let queensPerRow = Array(size).fill(0);
   let queensPerCol = Array(size).fill(0);
-  let queensPerRegion = {};
+  let queensPerRegion: Record<string, number> = {};
 
   // To track if queens are placed diagonally next to each other
-  let mainDiagonal = {};
-  let antiDiagonal = {};
+  let mainDiagonal: Record<number, number[]> = {};
+  let antiDiagonal: Record<number, number[]> = {};
 
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
@@ -106,7 +114,7 @@ export const checkWinCondition = (board, size, colorRegions) => {
 };
 
 // Helper function to check if queens are placed adjacently in a diagonal
-const hasAdjacent = (rowPositions) => {
+const hasAdjacent = (rowPositions: number[]) => {
   rowPositions.sort((a, b) => a - b); // Sort the row positions
   for (let i = 0; i < rowPositions.length - 1; i++) {
     if (rowPositions[i + 1] - rowPositions[i] === 1) {
@@ -117,13 +125,17 @@ const hasAdjacent = (rowPositions) => {
 };
 
 // Utility function to find clashing queens
-export const getClashingQueens = (board, size, colorRegions) => {
+export const getClashingQueens = (
+  board: string[][],
+  size: number,
+  colorRegions: string[][]
+) => {
   const clashes = [];
   let queensPerRow = Array(size).fill(0);
   let queensPerCol = Array(size).fill(0);
-  let queensPerRegion = {};
-  let mainDiagonal = {};
-  let antiDiagonal = {};
+  let queensPerRegion: Record<string, number> = {};
+  let mainDiagonal: Record<number, { row: number; col: number }[]> = {};
+  let antiDiagonal: Record<number, { row: number; col: number }[]> = {};
 
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
@@ -178,7 +190,9 @@ export const getClashingQueens = (board, size, colorRegions) => {
   });
 
   // Detect diagonal adjacency clashes
-  const checkDiagonalClashes = (diagonal) => {
+  const checkDiagonalClashes = (
+    diagonal: Record<number, { row: number; col: number }[]>
+  ) => {
     Object.values(diagonal).forEach((positions) => {
       positions.forEach(({ row, col }, index) => {
         const next = positions[index + 1];

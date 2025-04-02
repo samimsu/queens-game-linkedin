@@ -1,5 +1,3 @@
-import React from "react";
-
 const ResetIcon = ({ size = "16" }) => {
   return (
     <svg

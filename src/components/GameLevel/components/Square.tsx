@@ -1,15 +1,26 @@
-import React from "react";
 import Queen from "../../Queen";
 import Cross from "./Cross";
 import { levels } from "../../../utils/levels";
 
+interface SquareProps {
+  row: number;
+  col: number;
+  value: string | null;
+  region: string;
+  onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerEnter: (e: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerUp: () => void;
+  level: number;
+  isClashing: boolean;
+  [key: string]: any; // For additional props
+}
+
 // Square component with color regions and toggling between 'X', 'Q', and empty
-const Square = ({
+const Square: React.FC<SquareProps> = ({
   row,
   col,
   value,
   region,
-  onClick,
   onPointerDown,
   onPointerEnter,
   onPointerUp,
@@ -23,7 +34,7 @@ const Square = ({
 
   // Function to determine border classes
   const getBorderClasses = () => {
-    const borderClasses = [];
+    const borderClasses: string[] = [];
     const adjacentSquares = [
       { position: "top", value: row > 0 ? colorRegions[row - 1][col] : null },
       {
@@ -54,7 +65,6 @@ const Square = ({
   return (
     <div
       className={`square hover:brightness-75 ${borderClasses}`}
-      onClick={onClick}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
       onPointerUp={onPointerUp}

@@ -1,13 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import goldCrown from "../../../assets/gold-crown.svg";
+import { useTranslation } from "react-i18next";
 import CloseIcon from "../../icons/CloseIcon";
 import formatDuration from "@/utils/formatDuration";
+import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
 import { getLevelsBySize } from "@/utils/getAvailableLevels";
-import { useTranslation } from "react-i18next";
 
-const LevelNavigationButton = ({ level, text, isTextSmall }) => (
+interface LevelNavigationButtonProps {
+  level: number | null;
+  text: string;
+  isTextSmall: boolean;
+}
+
+const LevelNavigationButton = ({
+  level,
+  text,
+  isTextSmall,
+}: LevelNavigationButtonProps) => (
   <Link to={!level ? "#" : `/level/${level}`} className="flex">
     <button
       disabled={!level}
@@ -20,7 +30,21 @@ const LevelNavigationButton = ({ level, text, isTextSmall }) => (
   </Link>
 );
 
-const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
+interface WinningScreenProps {
+  timer: number;
+  previousLevel: number | number[] | null;
+  nextLevel: number | number[] | null;
+  level: string;
+  close: () => void;
+}
+
+const WinningScreen = ({
+  timer,
+  previousLevel,
+  nextLevel,
+  level,
+  close,
+}: WinningScreenProps) => {
   const { t } = useTranslation();
 
   const isGroupedBySize = localStorage.getItem("groupBySize") === "true";
@@ -99,12 +123,12 @@ const WinningScreen = ({ timer, previousLevel, nextLevel, level, close }) => {
         <LevelNavigationButton
           level={updatedPreviousLevel}
           text={previousLevelText}
-          isTextSmall={timer}
+          isTextSmall={!!timer}
         />
         <LevelNavigationButton
           level={updatedNextLevel}
           text={nextLevelText}
-          isTextSmall={timer}
+          isTextSmall={!!timer}
         />
       </div>
     </div>

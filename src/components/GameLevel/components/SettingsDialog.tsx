@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import SettingsIcon from "@/components/icons/SettingsIcon";
 import {
   Dialog,
@@ -7,9 +8,19 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
-import { useTranslation } from "react-i18next";
 
-const SettingsDialog = ({
+interface SettingsDialogProps {
+  showClashingQueens: boolean;
+  toggleShowClashingQueens: (checked: boolean) => void;
+  showInstructions: boolean;
+  toggleShowInstructions: (checked: boolean) => void;
+  autoPlaceXs: boolean;
+  toggleAutoPlaceXs: (checked: boolean) => void;
+  showClock: boolean;
+  toggleShowClock: (checked: boolean) => void;
+}
+
+const SettingsDialog: React.FC<SettingsDialogProps> = ({
   showClashingQueens,
   toggleShowClashingQueens,
   showInstructions,
@@ -23,15 +34,12 @@ const SettingsDialog = ({
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <button className="border border-slate-500 rounded-full p-2">
           <SettingsIcon size="18" />
         </button>
       </DialogTrigger>
-      <DialogContent
-        className="sm:max-w-[425px] bg-background"
-        aria-describedby={undefined}
-      >
+      <DialogContent className="sm:max-w-[425px] bg-background">
         <DialogHeader>
           <DialogTitle className="mb-2">{t("SETTINGS")}</DialogTitle>
         </DialogHeader>

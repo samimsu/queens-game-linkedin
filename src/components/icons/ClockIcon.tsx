@@ -1,5 +1,3 @@
-import React from "react";
-
 const ClockIcon = ({ size = "18" }) => {
   return (
     <svg

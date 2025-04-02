@@ -1,15 +1,27 @@
+import { useState, useEffect } from "react";
 import ClockIcon from "@/components/icons/ClockIcon";
-import React, { useState, useEffect } from "react";
 import formatDuration from "@/utils/formatDuration";
 
 const ONE_HOUR_IN_SECONDS = 3600;
 const TEN_HOURS_IN_SECONDS = 36000;
 
-const Timer = ({ run, onTimeUpdate, showTimer, className = "" }) => {
+interface TimerProps {
+  run: boolean;
+  onTimeUpdate: (time: number) => void;
+  showTimer: boolean;
+  className?: string;
+}
+
+const Timer = ({
+  run,
+  onTimeUpdate,
+  showTimer,
+  className = "",
+}: TimerProps) => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    let interval = null;
+    let interval: NodeJS.Timeout | null = null;
     if (run) {
       interval = setInterval(() => {
         setSeconds((prevSeconds) => {
@@ -18,9 +30,11 @@ const Timer = ({ run, onTimeUpdate, showTimer, className = "" }) => {
         });
       }, 1000);
     } else {
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
     }
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [run]);
 
   useEffect(() => {
@@ -39,8 +53,8 @@ const Timer = ({ run, onTimeUpdate, showTimer, className = "" }) => {
           seconds < ONE_HOUR_IN_SECONDS
             ? "w-10"
             : seconds < TEN_HOURS_IN_SECONDS
-              ? "w-14"
-              : "w-full"
+            ? "w-14"
+            : "w-full"
         }`}
       >
         {formatDuration(seconds)}

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Queen = ({ size = "24", className = "" }) => {
   return (
     <span role="img" aria-label="queen">

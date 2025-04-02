@@ -1,5 +1,3 @@
-import React from "react";
-
 const Cross = () => {
   return (
     <span className="cell-input cell-input--cross">

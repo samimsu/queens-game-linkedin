@@ -3,7 +3,16 @@ import Square from "./Square";
 import useGridSize from "../../../hooks/useGridSize";
 import { levels } from "../../../utils/levels";
 
-const Board = ({
+interface BoardProps {
+  board: string[][];
+  handleSquareClick: (row: number, col: number) => void;
+  handleSquareMouseEnter: (squares: number[][]) => void;
+  level: number;
+  showClashingQueens: boolean;
+  clashingQueens: Set<string>;
+}
+
+const Board: React.FC<BoardProps> = ({
   board,
   handleSquareClick,
   handleSquareMouseEnter,
@@ -11,8 +20,12 @@ const Board = ({
   showClashingQueens,
   clashingQueens,
 }) => {
-  const [initialSquare, setInitialSquare] = useState(undefined);
-  const [previousSquare, setPreviousSquare] = useState(undefined);
+  const [initialSquare, setInitialSquare] = useState<string | undefined>(
+    undefined
+  );
+  const [previousSquare, setPreviousSquare] = useState<string | undefined>(
+    undefined
+  );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
   const { gridSize } = useGridSize(board.length);
@@ -40,7 +53,7 @@ const Board = ({
               setInitialSquare(currentSquare);
               setInitialSquareHandled(false);
               // otherwise the PointerUp event will have the row and col of the initial PointerDown event
-              e.target.releasePointerCapture(e.pointerId);
+              (e.target as HTMLElement).releasePointerCapture(e.pointerId);
             }}
             onPointerEnter={(e) => {
               const currentSquare = `${rowIndex},${colIndex}`;
@@ -79,7 +92,7 @@ const Board = ({
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
           />
-        )),
+        ))
       )}
     </div>
   );
