@@ -245,7 +245,7 @@ async function createLevelFile(
   generatedCode: string
 ): Promise<void> {
   console.log("Creating level file...");
-  const levelFile: string = `level${levelNumber}.js`;
+  const levelFile: string = `level${levelNumber}.ts`;
   await fs.writeFile(path.join(levelsDir, levelFile), generatedCode);
 }
 
@@ -275,7 +275,7 @@ async function updateLevelsFile(
 
   // Update the export statement
   const exportMatch: RegExpMatchArray | null = levelsContent.match(
-    /export const levels = {([\s\S]*?)}\;/
+    /export\s+const\s+levels\s*:\s*{[^}]*}\s*=\s*{([\s\S]*?)}\s*;/
   );
   if (exportMatch && exportMatch[1] !== undefined) {
     const existingLevels = exportMatch[1].trim();
@@ -293,12 +293,12 @@ async function updateLevelsFile(
     }
 
     levelsContent = levelsContent.replace(
-      /export const levels = {([\s\S]*?)}\;/,
-      `export const levels = {\n${newLevels}\n};`
+      /export\s+const\s+levels\s*:\s*{[^}]*}\s*=\s*{([\s\S]*?)}\s*;/,
+      `export const levels: { [key: string]: Level } = {\n${newLevels}\n};`
     );
     await fs.writeFile(levelsFile, levelsContent);
   } else {
-    throw new Error("Could not find export statement in levels.js");
+    throw new Error("Could not find export statement in levels.ts");
   }
 }
 
@@ -373,7 +373,7 @@ async function addNewLevel(
     const projectRoot = path.resolve(__dirname, "..");
     const utilsDir: string = path.join(projectRoot, "src", "utils");
     const levelsDir: string = path.join(utilsDir, "levels");
-    const levelsFile: string = path.join(utilsDir, "levels.js");
+    const levelsFile: string = path.join(utilsDir, "levels.ts");
 
     await fs.mkdir(levelsDir, { recursive: true });
 
