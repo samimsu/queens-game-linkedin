@@ -1,7 +1,16 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 
-const LanguageButton = ({ lang, changeLanguage, selected }) => {
+interface LanguageButtonProps {
+  lang: string;
+  changeLanguage: (lang: string) => void;
+  selected: boolean;
+}
+
+const LanguageButton = ({
+  lang,
+  changeLanguage,
+  selected,
+}: LanguageButtonProps) => {
   return (
     <button
       className={`text-sm px-1 py-0.5 ${

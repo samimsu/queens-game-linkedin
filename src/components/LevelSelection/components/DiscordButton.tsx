@@ -1,4 +1,3 @@
-import React from "react";
 import DiscordIcon from "@/components/icons/DiscordIcon";
 import { discord } from "@/data/links";
 
