@@ -1,6 +1,11 @@
 import { Helmet } from "react-helmet-async";
 
-const PageTitle = ({ title, suffix = "Queens" }) => {
+interface PageTitleProps {
+  title?: string;
+  suffix?: string;
+}
+
+const PageTitle = ({ title, suffix = "Queens" }: PageTitleProps) => {
   const fullTitle = title ? `${title} - ${suffix}` : suffix;
 
   return (

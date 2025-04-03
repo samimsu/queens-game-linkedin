@@ -23,7 +23,7 @@ import useGameLogic from "@/hooks/useGameLogic";
 
 interface LevelProps {
   id: string;
-  level: number;
+  level: string;
 }
 
 const Level: React.FC<LevelProps> = ({ id, level }) => {

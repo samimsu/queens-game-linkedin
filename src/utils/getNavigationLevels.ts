@@ -1,7 +1,7 @@
 import { levels } from "@/utils/levels";
 import { getLevelsBySize, getOrderedLevels } from "@/utils/getAvailableLevels";
 
-const getNavigationLevels = (levelId: string, level: number) => {
+const getNavigationLevels = (levelId: string, level: string) => {
   if (!levels[level]) {
     console.log(`Level ${level} does not exist.`);
     return {

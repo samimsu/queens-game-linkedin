@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import RootLayout from "@/layouts/RootLayout";
 import PageTitle from "@/components/PageTitle";
@@ -14,14 +13,14 @@ const GameLevel = () => {
   const { t } = useTranslation();
 
   const maxLevel = Math.max(
-    ...Object.keys(levels).map((key) => parseInt(key.replace("level", ""), 10)),
+    ...Object.keys(levels).map((key) => parseInt(key.replace("level", ""), 10))
   );
 
   if (!levels[level] && Number(id) < maxLevel) {
     return <PageLevelNotFound level={id} />;
   }
 
-  if (!levels[level]) {
+  if (!levels[level] || !id) {
     return <PageNotFound />;
   }
 

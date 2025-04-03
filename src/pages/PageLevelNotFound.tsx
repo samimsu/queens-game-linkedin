@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import RootLayout from "@/layouts/RootLayout";
@@ -6,7 +5,11 @@ import PageTitle from "@/components/PageTitle";
 import { Button } from "@/components/ui/button";
 import { queensGameRepoNewIssue } from "@/data/links";
 
-const PageLevelNotFound = ({ level }) => {
+interface PageLevelNotFoundProps {
+  level: string | undefined;
+}
+
+const PageLevelNotFound = ({ level }: PageLevelNotFoundProps) => {
   const { t } = useTranslation();
 
   return (

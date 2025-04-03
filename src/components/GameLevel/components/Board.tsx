@@ -7,7 +7,7 @@ interface BoardProps {
   board: string[][];
   handleSquareClick: (row: number, col: number) => void;
   handleSquareMouseEnter: (squares: number[][]) => void;
-  level: number;
+  level: string;
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
 }

@@ -10,7 +10,7 @@ interface SquareProps {
   onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
   onPointerEnter: (e: React.PointerEvent<HTMLDivElement>) => void;
   onPointerUp: () => void;
-  level: number;
+  level: string;
   isClashing: boolean;
   [key: string]: any; // For additional props
 }

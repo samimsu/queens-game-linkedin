@@ -1,9 +1,8 @@
-import React from "react";
 import GitHubButton from "react-github-btn";
 import { queensGameRepo } from "@/data/links";
 import { useTheme } from "next-themes";
 
-const GithubStarButton = ({ variant = "" }) => {
+const GithubStarButton = () => {
   const { theme } = useTheme();
   const user = "samimsu";
   const repo = "queens-game-linkedin";
