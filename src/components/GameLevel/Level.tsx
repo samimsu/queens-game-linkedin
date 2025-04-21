@@ -39,6 +39,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
 
   const boardSize = levelSize;
   const colorRegions = levels[level].colorRegions;
+  const regionColors = levels[level].regionColors;
 
   const {
     board,
@@ -206,6 +207,9 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
               handleSquareClick={handleSquareClick}
               handleSquareMouseEnter={handleDrag}
               level={level}
+              boardSize={boardSize}
+              colorRegions={colorRegions}
+              regionColors={regionColors}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
             />

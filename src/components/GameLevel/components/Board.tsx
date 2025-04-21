@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Square from "./Square";
 import useGridSize from "../../../hooks/useGridSize";
-import { levels } from "../../../utils/levels";
 
 interface BoardProps {
   board: string[][];
   handleSquareClick: (row: number, col: number) => void;
   handleSquareMouseEnter: (squares: number[][]) => void;
   level: string;
+  boardSize: number;
+  colorRegions: string[][];
+  regionColors: { [key: string]: string };
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
 }
@@ -17,6 +19,9 @@ const Board: React.FC<BoardProps> = ({
   handleSquareClick,
   handleSquareMouseEnter,
   level,
+  boardSize,
+  colorRegions,
+  regionColors,
   showClashingQueens,
   clashingQueens,
 }) => {
@@ -29,8 +34,6 @@ const Board: React.FC<BoardProps> = ({
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
   const { gridSize } = useGridSize(board.length);
-
-  const colorRegions = levels[level].colorRegions;
 
   return (
     <div
@@ -85,6 +88,9 @@ const Board: React.FC<BoardProps> = ({
               setInitialSquareHandled(false);
             }}
             level={level}
+            boardSize={boardSize}
+            colorRegions={colorRegions}
+            regionColors={regionColors}
             isClashing={
               showClashingQueens &&
               clashingQueens.has(`${rowIndex},${colIndex}`)

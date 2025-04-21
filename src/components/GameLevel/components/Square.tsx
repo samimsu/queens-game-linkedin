@@ -1,6 +1,5 @@
 import Queen from "../../Queen";
 import Cross from "./Cross";
-import { levels } from "../../../utils/levels";
 
 interface SquareProps {
   row: number;
@@ -11,6 +10,9 @@ interface SquareProps {
   onPointerEnter: (e: React.PointerEvent<HTMLDivElement>) => void;
   onPointerUp: () => void;
   level: string;
+  boardSize: number;
+  colorRegions: string[][];
+  regionColors: { [key: string]: string };
   isClashing: boolean;
   [key: string]: any; // For additional props
 }
@@ -25,13 +27,12 @@ const Square: React.FC<SquareProps> = ({
   onPointerEnter,
   onPointerUp,
   level,
+  boardSize,
+  colorRegions,
+  regionColors,
   isClashing,
   ...props
 }) => {
-  const boardSize = levels[level].size;
-  const colorRegions = levels[level].colorRegions;
-  const regionColors = levels[level].regionColors;
-
   // Function to determine border classes
   const getBorderClasses = () => {
     const borderClasses: string[] = [];
