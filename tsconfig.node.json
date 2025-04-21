@@ -11,17 +11,14 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    // "noEmit": true,
+    "noEmit": true,
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-
-    "composite": true
+    "noUncheckedSideEffectImports": true
   },
   "include": ["vite.config.ts"]
 }
-// Compare this snippet from vite.config.ts:
