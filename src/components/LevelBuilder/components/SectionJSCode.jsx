@@ -1,5 +1,10 @@
 import React from "react";
 import { colorNames } from "../../../utils/colors";
+import { queensGameRepoNewLevelFile } from "@/data/links";
+import { useTranslation } from "react-i18next";
+import JSCode from "./JSCode";
+import { Check, Copy } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const SectionJSCode = ({
   jsCode,
@@ -10,13 +15,17 @@ const SectionJSCode = ({
   board,
   regionColors,
 }) => {
+  const { t } = useTranslation();
+  const { theme } = useTheme();
+  const isDarkTheme = theme === "dark";
+
   const generateLevelJSCode = (levelNumber, board, regionColors) => {
     // Get the unique regions used in the board
     const usedRegions = new Set(board.flat().filter(Boolean));
 
     // Filter the regionColors based on used regions
     const usedRegionColors = Object.entries(regionColors).filter(([region]) =>
-      usedRegions.has(region)
+      usedRegions.has(region),
     );
 
     // Get the color variable names for the used colors
@@ -28,9 +37,14 @@ const SectionJSCode = ({
     const uniqueColorVariables = [...new Set(usedColorVariables)];
 
     // Create the import statement only with used colors
-    const importStatement = `import { ${uniqueColorVariables
+    const importStatement = `import {\n  ${uniqueColorVariables
       .sort()
-      .join(", ")} } from "../colors";`;
+      .join(",\n  ")},\n} from "../colors";`;
+
+    // Format the board as single-line subarrays
+    const colorRegionsFormatted = board
+      .map((row) => `    [${row.map((cell) => `"${cell}"`).join(", ")}],`)
+      .join("\n");
 
     // Create the regionColors content dynamically with the color variable names
     const regionColorsEntries = usedRegionColors
@@ -38,15 +52,16 @@ const SectionJSCode = ({
       .join(",\n");
 
     // Generate the JS file content
-    const jsContent = `
-${importStatement}
+    const jsContent = `${importStatement}
 
 const level${levelNumber} = {
   size: ${board.length},
-  colorRegions: ${JSON.stringify(board, null, 2)},
+  colorRegions: [
+${colorRegionsFormatted}
+  ],
   regionColors: {
-${regionColorsEntries}
-  }
+${regionColorsEntries},
+  },
 };
 
 export default level${levelNumber};
@@ -62,47 +77,45 @@ export default level${levelNumber};
           onClick={() => generateLevelJSCode(levelName, board, regionColors)}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          Generate code
+          {t("GENERATE_CODE")}
         </button>
 
         <button
           onClick={() => setJsCode("")}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
-          Clear code
+          {t("CLEAR_CODE")}
         </button>
       </div>
 
       <div className="h-full w-full">
         <div className="relative h-full w-full sm:w-fit">
-          <textarea
-            value={jsCode}
-            className="border rounded border-slate-500 px-2 py-0.5 h-96 sm:h-full w-full sm:w-96 overflow-y-scroll"
-            disabled
-          />
+          <JSCode code={jsCode || "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"} />
 
-          <div className="absolute top-2 right-5 flex flex-col items-center">
+          <div className="absolute top-2 right-2 flex flex-col items-center">
             <button
-              onClick={async (e) => {
-                navigator.clipboard.writeText(jsCode);
+              onClick={async () => {
+                await navigator.clipboard.writeText(jsCode);
                 setCopied(true);
-                setTimeout(() => {
-                  setCopied(false);
-                }, 1500);
+                setTimeout(() => setCopied(false), 2000);
               }}
-              className="bg-white border border-slate-500 rounded-xl py-0.5 px-1.5 text-sm hover:bg-slate-200 disabled:bg-slate-100 opacity-75 hover:opacity-100"
-              disabled={!jsCode}
+              className={`absolute right-2 top-2 p-2 rounded-md transition-colors z-10 ${
+                isDarkTheme
+                  ? "bg-gray-700 hover:bg-gray-600 text-gray-300"
+                  : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+              }`}
+              aria-label="Copy code"
+              title="Copy code"
             >
-              Copy code
+              {copied ? <Check size={16} /> : <Copy size={16} />}
             </button>
-            {copied && <div className="text-sm bg-white">Copied!</div>}
           </div>
         </div>
 
         <div>
-          Add this code to{" "}
+          {t("ADD_THIS_CODE_TO")}{" "}
           <a
-            href="https://github.com/samimsu/queens-game-linkedin/new/new-levels/src/utils/levels"
+            href={queensGameRepoNewLevelFile}
             target="_blank"
             rel="noopener noreferrer"
           >

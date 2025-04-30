@@ -30,7 +30,7 @@ const useImageGridProcessing = ({
       const { verticalLines, horizontalLines } = detectGridLinesInRegion(
         imageData,
         img.width,
-        img.height
+        img.height,
       );
 
       // Correct detected vertical and horizontal lines
@@ -44,7 +44,7 @@ const useImageGridProcessing = ({
       const { board, regionColors } = detectColorsInGrid(
         imageData,
         correctedVerticalLines,
-        correctedHorizontalLines
+        correctedHorizontalLines,
       );
 
       setBoardSize(board.length);
@@ -68,7 +68,7 @@ const useImageGridProcessing = ({
     return Math.sqrt(
       Math.pow(color1.r - color2.r, 2) +
         Math.pow(color1.g - color2.g, 2) +
-        Math.pow(color1.b - color2.b, 2)
+        Math.pow(color1.b - color2.b, 2),
     );
   };
 
@@ -265,7 +265,7 @@ const useImageGridProcessing = ({
 
     // Get the smallest spacing or average small spacing
     let smallDifferences = differences.filter(
-      (diff) => diff < Math.max(...differences) / 2
+      (diff) => diff < Math.max(...differences) / 2,
     );
 
     if (!smallDifferences.length) {

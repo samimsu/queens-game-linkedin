@@ -9,8 +9,9 @@ const LevelButton = ({ level, disabled }) => {
   return (
     <Link to={`/level/${level}`} key={level}>
       <button
-        className="relative rounded p-2 w-full text-white bg-[#F96C51] disabled:opacity-75"
-        disabled={disabled}
+        className={`relative rounded p-2 w-full text-white bg-[#F96C51] ${
+          disabled ? "opacity-75" : ""
+        }`}
       >
         {level}
         {completed && (

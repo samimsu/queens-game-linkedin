@@ -1,4 +1,6 @@
 import React from "react";
+import { officialLinkedInQueensGamePage } from "@/data/links";
+import { useTranslation } from "react-i18next";
 
 const LinkedInIcon = ({ className = "" }) => {
   return (
@@ -14,11 +16,12 @@ const LinkedInIcon = ({ className = "" }) => {
 };
 
 const LinkedInNote = ({ className = "" }) => {
+  const { t } = useTranslation();
   return (
     <div className={`flex items-end space-x-1 ${className}`}>
-      <span className="text-sm">Collected from</span>
+      <span className="text-sm">{t("COLLECTED_FROM")}</span>
       <a
-        href="https://www.linkedin.com/showcase/queens-game"
+        href={officialLinkedInQueensGamePage}
         target="_blank"
         rel="noopener noreferrer"
       >

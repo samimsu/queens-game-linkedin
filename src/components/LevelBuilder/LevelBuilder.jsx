@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import RootLayout from "../../layouts/RootLayout";
 import { createInitialBoardForBuilder } from "../../utils/board";
 import {
   alto,
@@ -34,30 +33,7 @@ import useImageGridProcessing from "../../hooks/useImageGridProcessing";
 import PasteImage from "./components/PasteImage";
 import { Switch } from "@/components/ui/switch";
 import PreviewImage from "./PreviewImage";
-
-const colorOptions = [
-  { name: "Alto", value: alto },
-  { name: "Alto Main", value: altoMain },
-  { name: "Anakiwa", value: anakiwa },
-  { name: "Bittersweet", value: bittersweet },
-  { name: "Can Can", value: canCan },
-  { name: "Carnation", value: carnation },
-  { name: "Celadon", value: celadon },
-  { name: "Chardonnay", value: chardonnay },
-  { name: "Cold Purple", value: coldPurple },
-  { name: "Feijoa", value: feijoa },
-  { name: "Half Baked", value: halfBaked },
-  { name: "Lavender Rose", value: lavenderRose },
-  { name: "Light Orchid", value: lightOrchid },
-  { name: "Light Wisteria", value: lightWisteria },
-  { name: "Mac n Cheese", value: macNCheese },
-  { name: "Malibu", value: malibu },
-  { name: "Manz", value: manz },
-  { name: "Nomad", value: nomad },
-  { name: "Sahara Sand", value: saharaSand },
-  { name: "Tallow", value: tallow },
-  { name: "Turquoise Blue", value: turquoiseBlue },
-];
+import { useTranslation } from "react-i18next";
 
 const LevelBuilder = () => {
   const [boardSize, setBoardSize] = useState(7);
@@ -72,6 +48,34 @@ const LevelBuilder = () => {
   const [minLineHeight, setMinLineHeight] = useState(0.1);
   const [minLineWidth, setMinLineWidth] = useState(0.1);
   const [dragValue, setDragValue] = useState();
+  const { t } = useTranslation();
+
+  const colorOptions = useMemo(
+    () => [
+      { name: t("COLOR.ALTO"), value: alto },
+      { name: t("COLOR.ALTO_MAIN"), value: altoMain },
+      { name: t("COLOR.ANAKIWA"), value: anakiwa },
+      { name: t("COLOR.BITTERSWEET"), value: bittersweet },
+      { name: t("COLOR.CAN_CAN"), value: canCan },
+      { name: t("COLOR.CARNATION"), value: carnation },
+      { name: t("COLOR.CELADON"), value: celadon },
+      { name: t("COLOR.CHARDONNAY"), value: chardonnay },
+      { name: t("COLOR.COLD_PURPLE"), value: coldPurple },
+      { name: t("COLOR.FEIJOA"), value: feijoa },
+      { name: t("COLOR.HALF_BAKED"), value: halfBaked },
+      { name: t("COLOR.LAVENDER_ROSE"), value: lavenderRose },
+      { name: t("COLOR.LIGHT_ORCHID"), value: lightOrchid },
+      { name: t("COLOR.LIGHT_WISTERIA"), value: lightWisteria },
+      { name: t("COLOR.MAC_N_CHEESE"), value: macNCheese },
+      { name: t("COLOR.MALIBU"), value: malibu },
+      { name: t("COLOR.MANZ"), value: manz },
+      { name: t("COLOR.NOMAD"), value: nomad },
+      { name: t("COLOR.SAHARA_SAND"), value: saharaSand },
+      { name: t("COLOR.TALLOW"), value: tallow },
+      { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
+    ],
+    [],
+  );
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
   const initialRegionColors = {
@@ -90,8 +94,8 @@ const LevelBuilder = () => {
 
   const [regionColors, setRegionColors] = useState(
     Object.fromEntries(
-      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
-    )
+      regionKeys.split("").map((key) => [key, initialRegionColors[key]]),
+    ),
   );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
@@ -128,8 +132,8 @@ const LevelBuilder = () => {
       Object.fromEntries(
         updatedRegionKeys
           .split("")
-          .map((key) => [key, initialRegionColors[key]])
-      )
+          .map((key) => [key, initialRegionColors[key]]),
+      ),
     );
   };
 
@@ -144,7 +148,7 @@ const LevelBuilder = () => {
           return newDragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -168,7 +172,7 @@ const LevelBuilder = () => {
           return dragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -192,6 +196,14 @@ const LevelBuilder = () => {
     }
   };
 
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "image/png") {
+      const imageUrl = URL.createObjectURL(file);
+      setImage(imageUrl);
+    }
+  };
+
   // Handle ctrl+v to paste image from clipboard
   useEffect(() => {
     window.addEventListener("keydown", handlePasteByShortcut);
@@ -199,112 +211,117 @@ const LevelBuilder = () => {
   }, []);
 
   return (
-    <RootLayout className="!overflow-auto">
-      <div className="mt-2 mx-2 sm:mx-8">
-        {/* BREADCRUMBS */}
-        <div className="text-sm mb-4">
-          <Link to="/" className="text-blue-500">
-            Home
-          </Link>{" "}
-          / Level Builder
-        </div>
+    <div className="mt-2 mx-2 sm:mx-8">
+      {/* BREADCRUMBS */}
+      <div className="text-sm mb-4">
+        <Link to="/" className="text-blue-500">
+          Home
+        </Link>{" "}
+        / {t("LEVEL_BUILDER")}
+      </div>
 
-        <h1 className="text-4xl mb-6">Level Builder</h1>
+      <h1 className="text-4xl mb-6">{t("LEVEL_BUILDER")}</h1>
 
-        <div className="flex flex-col space-y-2">
-          <LevelNameInput levelName={levelName} setLevelName={setLevelName} />
+      <div className="flex flex-col space-y-2">
+        <LevelNameInput levelName={levelName} setLevelName={setLevelName} />
 
-          <div className="flex flex-col sm:flex-row sm:space-x-8 w-full">
-            <div className="flex flex-col-reverse sm:space-y-0 sm:flex-row sm:space-x-8">
-              {/* REGION SELECT */}
-              <div className="mb-6 sm:mb-0">
-                <RegionSelect
-                  regionColors={regionColors}
-                  selectedRegion={selectedRegion}
-                  colorOptions={colorOptions}
-                  handleColorChange={handleColorChange}
-                  handleRegionSelect={handleRegionSelect}
-                />
-              </div>
-
-              {/* BOARD SECTION */}
-              <div className="mb-2 sm:mb-0">
-                <div className="flex space-x-4 justify-between items-center">
-                  <BoardSizeInput
-                    boardSize={boardSize}
-                    handleBoardSizeChange={handleBoardSizeChange}
-                  />
-
-                  <button
-                    onClick={() => {
-                      setBoard(createInitialBoardForBuilder(boardSize));
-                    }}
-                    className="border border-slate-500 rounded-full py-1 px-3 mb-3 whitespace-nowrap"
-                  >
-                    Clear board
-                  </button>
-                </div>
-                {/* BOARD */}
-                <Board
-                  size={boardSize}
-                  board={board}
-                  regionColors={regionColors}
-                  handleSquareClick={handleSquareClick}
-                  handleSquareMouseEnter={handleDrag}
-                  handleSquareTouchMove={handleSquareTouchMove}
-                  hideRegionValues={hideRegionValues}
-                />
-
-                <div className="flex space-x-3 justify-between mb-2">
-                  <div className="flex items-center">
-                    <Switch
-                      checked={hideRegionValues}
-                      onCheckedChange={() =>
-                        setHideRegionValues((prev) => !prev)
-                      }
-                    />
-                    <label
-                      className="whitespace-nowrap pl-2"
-                      onClick={() => setHideRegionValues((prev) => !prev)}
-                    >
-                      Hide letters
-                    </label>
-                  </div>
-                  <PasteImage handlePaste={handlePaste} />
-                </div>
-
-                {image && (
-                  <PreviewImage
-                    image={image}
-                    verticalLines={verticalLines}
-                    horizontalLines={horizontalLines}
-                    showGridLines={showGridLines}
-                    setShowGridLines={setShowGridLines}
-                    tolerance={tolerance}
-                    setTolerance={setTolerance}
-                    minLineHeight={minLineHeight}
-                    setMinLineHeight={setMinLineHeight}
-                    minLineWidth={minLineWidth}
-                    setMinLineWidth={setMinLineWidth}
-                    className="w-full"
-                  />
-                )}
-              </div>
+        <div className="flex flex-col sm:flex-row sm:space-x-8 w-full">
+          <div className="flex flex-col-reverse sm:space-y-0 sm:flex-row sm:space-x-8">
+            {/* REGION SELECT */}
+            <div className="mb-6 sm:mb-0">
+              <RegionSelect
+                regionColors={regionColors}
+                selectedRegion={selectedRegion}
+                colorOptions={colorOptions}
+                handleColorChange={handleColorChange}
+                handleRegionSelect={handleRegionSelect}
+              />
             </div>
 
-            <SectionJSCode
-              jsCode={jsCode}
-              setJsCode={setJsCode}
-              copied={copied}
-              setCopied={setCopied}
-              levelName={levelName}
-              board={board}
-              regionColors={regionColors}
-            />
+            {/* BOARD SECTION */}
+            <div className="mb-2 sm:mb-0">
+              <div className="flex space-x-4 justify-between items-center">
+                <BoardSizeInput
+                  boardSize={boardSize}
+                  handleBoardSizeChange={handleBoardSizeChange}
+                />
+
+                <button
+                  onClick={() => {
+                    setBoard(createInitialBoardForBuilder(boardSize));
+                  }}
+                  className="border border-slate-500 rounded-full py-1 px-3 mb-3 whitespace-nowrap"
+                >
+                  {t("CLEAR_BOARD")}
+                </button>
+              </div>
+              {/* BOARD */}
+              <Board
+                size={boardSize}
+                board={board}
+                regionColors={regionColors}
+                handleSquareClick={handleSquareClick}
+                handleSquareMouseEnter={handleDrag}
+                handleSquareTouchMove={handleSquareTouchMove}
+                hideRegionValues={hideRegionValues}
+              />
+
+              <div className="flex space-x-3 justify-between mb-2">
+                <div className="flex items-center">
+                  <Switch
+                    checked={hideRegionValues}
+                    onCheckedChange={() => setHideRegionValues((prev) => !prev)}
+                  />
+                  <label
+                    className="whitespace-nowrap pl-2"
+                    onClick={() => setHideRegionValues((prev) => !prev)}
+                  >
+                    {t("HIDE_LETTERS")}
+                  </label>
+                </div>
+                <PasteImage handlePaste={handlePaste} />
+              </div>
+
+              {/* Hidden file input */}
+              <input
+                id="screenshot-upload"
+                type="file"
+                accept="image/png"
+                onChange={handleFileUpload}
+                style={{ display: "none" }}
+              />
+
+              {image && (
+                <PreviewImage
+                  image={image}
+                  verticalLines={verticalLines}
+                  horizontalLines={horizontalLines}
+                  showGridLines={showGridLines}
+                  setShowGridLines={setShowGridLines}
+                  tolerance={tolerance}
+                  setTolerance={setTolerance}
+                  minLineHeight={minLineHeight}
+                  setMinLineHeight={setMinLineHeight}
+                  minLineWidth={minLineWidth}
+                  setMinLineWidth={setMinLineWidth}
+                  className="w-full"
+                />
+              )}
+            </div>
           </div>
+
+          <SectionJSCode
+            jsCode={jsCode}
+            setJsCode={setJsCode}
+            copied={copied}
+            setCopied={setCopied}
+            levelName={levelName}
+            board={board}
+            regionColors={regionColors}
+          />
         </div>
       </div>
-    </RootLayout>
+    </div>
   );
 };
 
