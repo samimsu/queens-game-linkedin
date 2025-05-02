@@ -50,3 +50,18 @@
 .bg-purple {
   background: linear-gradient(#7f5aa3, #441e6b);
 }
+
+#remove-completed:hover::after {
+  width: 28%;
+}
+#remove-completed::after {
+  content: '';
+  position: absolute;
+  top: 48%;
+  left: 14%;
+  width: 0;
+  height: 1px;
+  background-color: #65758c;
+  transform: translate(-50%, 50%) rotate(45deg);
+  transition: width 0.3s ease;
+}

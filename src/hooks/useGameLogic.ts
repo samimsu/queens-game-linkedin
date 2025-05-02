@@ -7,6 +7,7 @@ import {
   getShowInstructionsPreference,
   isLevelCompleted,
   markLevelAsCompleted,
+  unmarkLevelAsCompleted,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
   setShowClockPreference,
@@ -41,6 +42,10 @@ const useGameLogic = ({ id, boardSize, colorRegions }: useGameLogicProps) => {
     []
   );
   const completed = isLevelCompleted(Number(id));
+
+  const unmarkCompleted = () => {
+    unmarkLevelAsCompleted(Number(id));
+  }
 
   const getQueenPositionForGivenX = (
     xRow: number,
@@ -358,6 +363,7 @@ const useGameLogic = ({ id, boardSize, colorRegions }: useGameLogicProps) => {
     timerRunning,
     setTimerRunning,
     completed,
+    unmarkCompleted,
     history,
     handleSquareClick,
     handleDrag,

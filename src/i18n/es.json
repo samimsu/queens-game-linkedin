@@ -71,5 +71,6 @@
     "LIGHT": "Claro"
   },
   "SUPPORT_ME_ON_PATREON": "Apóyame en Patreon",
-  "UNDO": "Deshacer"
+  "UNDO": "Deshacer",
+  "UNMARK_COMPLETED": "Marcar nivel como no completado"
 }

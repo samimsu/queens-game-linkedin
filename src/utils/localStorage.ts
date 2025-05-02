@@ -7,6 +7,18 @@ export const markLevelAsCompleted = (levelNumber: number) => {
     localStorage.setItem("completedLevels", JSON.stringify(completedLevels));
   }
 };
+//eliminar el nivel de la lista de niveles completados
+export const unmarkLevelAsCompleted = (levelNumber: number) => {
+  let completedLevels =
+  JSON.parse(localStorage.getItem("completedLevels") as string) || [];
+  if (completedLevels.includes(levelNumber)) {
+    completedLevels.splice(
+      completedLevels.indexOf(levelNumber),
+      1
+    );
+    localStorage.setItem("completedLevels", JSON.stringify(completedLevels));
+  }
+}
 
 export const isLevelCompleted = (levelNumber: number) => {
   const completedLevels =
