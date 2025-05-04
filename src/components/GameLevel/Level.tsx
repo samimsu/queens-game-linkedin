@@ -16,7 +16,7 @@ import HowToPlay from "./components/HowToPlay";
 import SettingsDialog from "./components/SettingsDialog";
 import Timer from "./components/Timer";
 import getNavigationLevels from "@/utils/getNavigationLevels";
-
+import Tooltip from "@/components/Tooltip";
 import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
@@ -54,6 +54,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
     timerRunning,
     completed,
     history,
+    unmarkCompleted,
     setBoard,
     setHasWon,
     setShowWinningScreen,
@@ -154,10 +155,21 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
             <div className="flex flex-1 sm:flex-none justify-end">
               <div className="relative flex items-center">
                 {completed && (
-                  <Queen
-                    size="24"
-                    className="absolute right-full top-1/2 transform -translate-y-1/2 fill-yellow-400 mr-2"
-                  />
+                  <button id="remove-completed"
+                  onClick={() => {
+                    unmarkCompleted();
+                  }}
+                  className="border border-slate-500 rounded-full p-2 mr-2"
+                >
+                  <Tooltip
+                    tooltipText={t("UNMARK_COMPLETED")}
+                  >
+                    <Queen
+                      size="18"
+                      className="transform fill-yellow-400"
+                    />
+                    </Tooltip>
+                  </button>
                 )}
                 <button
                   onClick={() => {
