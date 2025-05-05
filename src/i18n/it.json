@@ -71,5 +71,7 @@
     "LIGHT": "Chiaro"
   },
   "SUPPORT_ME_ON_PATREON": "Supportami su Patreon",
-  "UNDO": "Annulla"
+  "UNDO": "Annulla",
+  "HIDE_COMPLETED_LEVELS": "Nascondi livelli completati",
+  "ALL_LEVELS_COMPLETED": "Tutti i livelli sono stati completati"
 }

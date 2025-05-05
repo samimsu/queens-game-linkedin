@@ -72,6 +72,8 @@
   },
   "SUPPORT_ME_ON_PATREON": "Support me on Patreon",
   "UNDO": "Undo",
+  "HIDE_COMPLETED_LEVELS": "Hide completed levels",
+  "ALL_LEVELS_COMPLETED": "All levels have been completed",
   "HOME": "Home",
   "RESET": "Reset"
 }
