@@ -1,11 +1,13 @@
 import { useTranslation, Trans } from "react-i18next";
 import Queen from "../../Queen";
+import { useDirection } from "@/hooks/useDirection";
 
 const HowToPlay = () => {
   const { t } = useTranslation();
+  const direction = useDirection();
 
   return (
-    <div className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2">
+    <div className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2" dir={direction}>
       <div className="font-medium mb-3">{t("HOW_TO_PLAY")}</div>
       <ol className="list-decimal space-y-2">
         <li className="ml-4">
