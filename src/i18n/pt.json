@@ -19,7 +19,7 @@
   "HOW_TO_PLAY": "Como jogar",
   "GAME_GOAL_INSTRUCTION": "O objetivo é ter <1>exatamente uma</1> <2 /> em cada <3> linha, coluna e região de cor.</3>",
   "TAPS_INSTRUCTION": "Clique uma vez para posicionar um X e duas vezes para posicionar uma <1 />. Use o X para marcar onde a <2 /> não pode ser colocada.",
-  "TOUCH_DIAGONAL_QUEENS_INSTRUCTION": "Duas <1 /> não podem se tocar, nem mesmo na diagonal",
+  "TOUCH_DIAGONAL_QUEENS_INSTRUCTION": "Duas <1 /> não podem se tocar, nem mesmo na diagonal.",
   "LEVEL_NAME": "Nome do nível",
   "BOARD_SIZE": "Tamanho do tabuleiro",
   "CLEAR_BOARD": "Limpar tabuleiro",
