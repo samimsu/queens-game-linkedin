@@ -7,9 +7,12 @@ const HowToPlay = () => {
   const direction = useDirection();
 
   return (
-    <div className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2" dir={direction}>
+    <div
+      className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2"
+      dir={direction}
+    >
       <div className="font-medium mb-3">{t("HOW_TO_PLAY")}</div>
-      <ol className="list-decimal space-y-2">
+      <ol className="list-decimal list-inside space-y-2">
         <li className="ml-4">
           <Trans i18nKey="GAME_GOAL_INSTRUCTION">
             - <b className="font-medium"> </b>
