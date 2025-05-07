@@ -4,6 +4,7 @@ import enJson from "./en.json";
 import itJson from "./it.json";
 import esJson from "./es.json";
 import arJson from "./ar.json";
+import ptJson from "./pt.json";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 const resources = {
@@ -19,6 +20,9 @@ const resources = {
   ar: {
     translation: arJson,
   },
+  pt: {
+    translation: ptJson,
+  },
 };
 
 i18n
@@ -26,7 +30,7 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    fallbackLng: ["en", "it", "es", "ar"],
+    fallbackLng: ["en", "it", "es", "ar", "pt"],
     interpolation: {
       escapeValue: false,
     },
