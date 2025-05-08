@@ -75,5 +75,6 @@
   "HIDE_COMPLETED_LEVELS": "Hide completed levels",
   "ALL_LEVELS_COMPLETED": "All levels have been completed",
   "HOME": "Home",
-  "RESET": "Reset"
+  "RESET": "Reset",
+  "PLAY": "Play"
 }
