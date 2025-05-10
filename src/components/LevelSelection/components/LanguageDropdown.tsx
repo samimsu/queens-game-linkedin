@@ -6,6 +6,7 @@ import i18n from "i18next";
 // Mapeo de códigos de idioma a códigos de país para banderas cuando no corresponde el codigo del pais al icono de la bandera a mostrar de https://flagcdn.com
 const languageToFlagCode: Record<string, string> = {
   en: "gb", // Inglés -> Gran Bretaña  //en= error404
+  pt: "br", // Portugués -> Brasil     //pt= portugal
   ar: "sa", // Árabe -> Arabia Saudita //ar= argentina
 };
 
