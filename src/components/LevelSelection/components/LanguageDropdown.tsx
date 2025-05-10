@@ -74,7 +74,7 @@ const LanguageDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       {/* Botón del dropdown */}
       <button
-        className="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        className="flex items-center gap-2 px-2 py-1 rounded bg-[#F96C51] opacity-75 hover:opacity-100  transition-colors"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
         aria-expanded={isOpen}
