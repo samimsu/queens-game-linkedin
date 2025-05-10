@@ -13,7 +13,7 @@ const languageToFlagCode: Record<string, string> = {
 const getLanguageNativeName = (code: string): string => {
   try {
     // Intenta obtener el nombre del idioma desde las traducciones
-    return i18n.getFixedT(code)('LANGUAGE');
+    return i18n.getFixedT(code)("LANGUAGE_NAME");
   } catch (error) {
     // Si hay algún error, usa el código del idioma como fallback
     return code.toUpperCase();
