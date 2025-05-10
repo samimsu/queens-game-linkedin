@@ -1,19 +1,50 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
-// Definición de los idiomas disponibles con sus nombres y códigos de bandera
-const languages = [
-  { code: "en", name: "English", flagCode: "gb" },
-  { code: "es", name: "Español", flagCode: "es" },
-  { code: "it", name: "Italiano", flagCode: "it" },
-  { code: "ar", name: "العربية", flagCode: "sa" },
-  { code: "pt", name: "Português", flagCode: "pt" },
-];
+
+// Mapeo de códigos de idioma a códigos de país para banderas cuando no corresponde el codigo del pais al icono de la bandera a mostrar de https://flagcdn.com
+const languageToFlagCode: Record<string, string> = {
+  en: "gb", // Inglés -> Gran Bretaña  //en= error404
+  ar: "sa", // Árabe -> Arabia Saudita //ar= argentina
+};
+
+// Función para obtener el nombre del idioma desde las traducciones
+const getLanguageNativeName = (code: string): string => {
+  try {
+    // Intenta obtener el nombre del idioma desde las traducciones
+    return i18n.getFixedT(code)('LANGUAGE');
+  } catch (error) {
+    // Si hay algún error, usa el código del idioma como fallback
+    return code.toUpperCase();
+  }
+};
+
+// Función para obtener el código de país para la bandera
+const getFlagCodeFromLanguage = (langCode: string): string => {
+  return languageToFlagCode[langCode] || langCode; // Usa el código de idioma como fallback
+};
 
 const LanguageDropdown = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Obtiene los idiomas soportados dinámicamente desde i18n
+  const languages = useMemo(() => {
+    // Obtiene los códigos de idioma de supportedLngs o resources
+    const languageCodes = i18n.options.supportedLngs || Object.keys(i18n.options.resources || {});
+
+    // Filtra 'cimode' que es un idioma especial de i18next para desarrollo
+    return languageCodes
+      .filter(code => code !== 'cimode' && typeof code === 'string')
+      .map(code => ({
+        code,
+        // Obtiene el nombre del idioma desde las traducciones
+        name: getLanguageNativeName(code),
+        flagCode: getFlagCodeFromLanguage(code)
+      }));
+  }, []);
 
   // Encuentra el idioma actual
   const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
@@ -42,7 +73,7 @@ const LanguageDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       {/* Botón del dropdown */}
       <button
-        className="flex items-center gap-2 px-2 py-1 rounded bg-[#F96C51] opacity-75 hover:opacity-100 transition-colors"
+        className="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
         aria-expanded={isOpen}
