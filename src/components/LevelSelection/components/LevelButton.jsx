@@ -2,12 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Queen from "../../../components/Queen";
 import { isLevelCompleted } from "../../../utils/localStorage";
+import NewBadge from "@/components/NewBadge";
 
-const LevelButton = ({ level, disabled }) => {
+const LevelButton = ({ level, disabled, isNew }) => {
   const completed = isLevelCompleted(level);
 
   return (
-    <Link to={`/level/${level}`} key={level}>
+    <Link to={`/level/${level}`} key={level} className="relative">
+      {isNew && !completed && (
+        <NewBadge className="absolute -top-2 -right-3 z-10" />
+      )}
       <button
         className={`relative rounded p-2 w-full text-white bg-[#F96C51] ${
           disabled ? "opacity-75" : ""

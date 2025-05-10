@@ -1,6 +1,7 @@
 import { type Level } from "./types";
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
+import level3 from "./levels/level3";
 import level6 from "./levels/level6";
 import level8 from "./levels/level8";
 import level11 from "./levels/level11";
@@ -364,6 +365,7 @@ import level375 from "./levels/level375";
 export const levels: { [key: string]: Level } = {
   level1,
   level2,
+  level3,
   level6,
   level8,
   level11,

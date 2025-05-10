@@ -37,6 +37,7 @@ const level375 = {
     I: altoMain,
     J: chardonnay,
   },
+  isNew: true,
 };
 
 export default level375;
