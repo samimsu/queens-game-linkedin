@@ -110,7 +110,7 @@ const LanguageDropdown = () => {
 
       {/* Menú desplegable */}
       {isOpen && (
-        <div className="absolute left-0 mt-1 w-40 bg-white dark:bg-gray-800 rounded shadow-lg z-10">
+        <div className="absolute left-0 mt-1 w-40 bg-white dark:bg-gray-800 rounded shadow-lg z-20">
           <ul className="py-1">
             {languages.map((language) => (
               <li key={language.code}>
