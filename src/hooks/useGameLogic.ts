@@ -5,7 +5,9 @@ import {
   getClashingQueensPreference,
   getShowClockPreference,
   getShowInstructionsPreference,
+  isBonusLevelCompleted,
   isLevelCompleted,
+  markBonusLevelAsCompleted,
   markLevelAsCompleted,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
@@ -18,29 +20,41 @@ interface useGameLogicProps {
   id: string;
   boardSize: number;
   colorRegions: string[][];
+  levelType?: "bonus";
 }
 
-const useGameLogic = ({ id, boardSize, colorRegions }: useGameLogicProps) => {
+const useGameLogic = ({
+  id,
+  boardSize,
+  colorRegions,
+  levelType,
+}: useGameLogicProps) => {
+  const isBonusLevel = levelType === "bonus";
+
   const [board, setBoard] = useState(createEmptyBoard(boardSize));
   const [, setQueenGeneratedXs] = useState<Record<string, Set<string>>>({});
   const [hasWon, setHasWon] = useState(false);
   const [timer, setTimer] = useState(0);
   const [showWinningScreen, setShowWinningScreen] = useState(false);
   const [clashingQueens, setClashingQueens] = useState<Set<string>>(new Set());
-  const [showClashingQueens, setShowClashingQueens] = useState(
+  const [showClashingQueens, setShowClashingQueens] = useState<boolean>(
     getClashingQueensPreference
   );
-  const [showInstructions, setShowInstructions] = useState(
+  const [showInstructions, setShowInstructions] = useState<boolean>(
     getShowInstructionsPreference
   );
-  const [showClock, setShowClock] = useState(getShowClockPreference);
-  const [autoPlaceXs, setAutoPlaceXs] = useState(getAutoPlaceXsPreference);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [showClock, setShowClock] = useState<boolean>(getShowClockPreference);
+  const [autoPlaceXs, setAutoPlaceXs] = useState<boolean>(
+    getAutoPlaceXsPreference
+  );
+  const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
   const history = useRef<{ row: number; col: number; symbol: string | null }[]>(
     []
   );
-  const completed = isLevelCompleted(Number(id));
+  const completed = isBonusLevel
+    ? isBonusLevelCompleted(id)
+    : isLevelCompleted(Number(id));
 
   const getQueenPositionForGivenX = (
     xRow: number,
@@ -122,7 +136,12 @@ const useGameLogic = ({ id, boardSize, colorRegions }: useGameLogicProps) => {
         setTimeout(() => setShowWinningScreen(true), 0);
       }
       setHasWon(true);
-      markLevelAsCompleted(Number(id));
+
+      if (isBonusLevel) {
+        markBonusLevelAsCompleted(id);
+      } else {
+        markLevelAsCompleted(Number(id));
+      }
     } else {
       setHasWon(false);
       setShowWinningScreen(false);

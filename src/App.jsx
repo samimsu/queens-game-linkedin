@@ -4,6 +4,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "next-themes";
 import PageGameLevel from "./pages/PageGameLevel";
 import PageLevelSelection from "./pages/PageLevelSelection";
+import PageBonusLevelsList from "./pages/PageBonusLevelsList";
+import PageBonusLevel from "./pages/PageBonusLevel";
 import PageLevelBuilder from "./pages/PageLevelBuilder";
 import PageNotFound from "./pages/PageNotFound";
 import ThemeSwitcher from "./components/ThemeSwitcher";
@@ -18,6 +20,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<PageLevelSelection />} />
             <Route path="/level/:id" element={<PageGameLevel />} />
+            <Route path="/bonus-levels" element={<PageBonusLevelsList />} />
+            <Route path="/bonus-level/:id" element={<PageBonusLevel />} />
             <Route path="/level-builder" element={<PageLevelBuilder />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
