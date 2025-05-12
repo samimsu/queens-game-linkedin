@@ -5,6 +5,7 @@ import Queen from "@/components/Queen";
 import DiscordButton from "./LevelSelection/components/DiscordButton";
 import SupportMeIconButton from "./LevelSelection/components/SupportMeIconButton";
 import LanguageDropdown from "./LevelSelection/components/LanguageDropdown";
+import NewBadge from "./NewBadge";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className="relative">
               <NavLink
                 to="/bonus-levels"
                 className={({ isActive }) =>
@@ -44,6 +45,7 @@ const Navbar = () => {
               >
                 Bonus Levels
               </NavLink>
+              <NewBadge className="absolute -top-3 -right-4 z-10" />
             </li>
             <li>
               <NavLink
