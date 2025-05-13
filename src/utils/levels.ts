@@ -1,10 +1,14 @@
 import { type Level } from "./types";
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
+import level3 from "./levels/level3";
 import level6 from "./levels/level6";
 import level8 from "./levels/level8";
+import level10 from "./levels/level10";
 import level11 from "./levels/level11";
+import level15 from "./levels/level15";
 import level16 from "./levels/level16";
+import level17 from "./levels/level17";
 import level21 from "./levels/level21";
 import level22 from "./levels/level22";
 import level23 from "./levels/level23";
@@ -360,14 +364,21 @@ import level372 from "./levels/level372";
 import level373 from "./levels/level373";
 import level374 from "./levels/level374";
 import level375 from "./levels/level375";
+import level376 from "./levels/level376";
+import level377 from "./levels/level377";
+import level378 from "./levels/level378";
 
 export const levels: { [key: string]: Level } = {
   level1,
   level2,
+  level3,
   level6,
   level8,
+  level10,
   level11,
+  level15,
   level16,
+  level17,
   level21,
   level22,
   level23,
@@ -723,4 +734,7 @@ export const levels: { [key: string]: Level } = {
   level373,
   level374,
   level375,
+  level376,
+  level377,
+  level378,
 };
