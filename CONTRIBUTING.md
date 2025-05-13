@@ -62,17 +62,7 @@ Example (beginning of the file):
 }
 ```
 
-### Step 5: Update the i18n Configuration
-
-After creating your translation file, you'll need to update the i18n configuration to include your new language. Open the file `src/i18n/index.js` and:
-
-1. Import your new language file at the top:
-
-    ```javascript
-    import yourLanguageJson from "./your-language-code.json";
-    ```
-
-### Step 6: Test Your Translation
+### Step 5: Test Your Translation
 
 Run the application locally to ensure your translations appear correctly:
 
@@ -83,7 +73,7 @@ npm run dev
 
 Switch to your language in the application and verify that all text is properly translated.
 
-### Step 7: Submit a Pull Request
+### Step 6: Submit a Pull Request
 
 1. Commit your changes:
 
