@@ -1,4 +1,4 @@
-# Contributing to Queens Game
+# How to contribute to Queens Game
 
 Thank you for your interest in contributing to the Queens Game project! This document provides guidelines on how to contribute to the project, with a special focus on internationalization (i18n).
 
