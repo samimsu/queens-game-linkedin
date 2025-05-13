@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Heading from "./components/Heading";
-import LevelSelectionFilters from './components/LevelSelectionFilters'
+import LevelSelectionFilters from "./components/LevelSelectionFilters";
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
@@ -16,14 +16,17 @@ import UngroupIcon from "../icons/UngroupIcon";
 
 const LevelSelection = () => {
   const [showOnlyAvailableLevels, setShowOnlyAvailableLevels] = useState(false);
-  const [onlyAvailableLevelsSwitchDisable, setOnlyAvailableLevelsSwitchDisable] = useState(false)
-  const [hideCompletedLevels, setHideCompletedLevels] = useState(false)
+  const [
+    onlyAvailableLevelsSwitchDisable,
+    setOnlyAvailableLevelsSwitchDisable,
+  ] = useState(false);
+  const [hideCompletedLevels, setHideCompletedLevels] = useState(false);
   const [groupBySize, setGroupBySize] = useState(getGroupingPreference);
   const [resetTrigger, setResetTrigger] = useState(false);
 
   useEffect(() => {
-    setOnlyAvailableLevelsSwitchDisable(groupBySize || hideCompletedLevels)
-  }, [groupBySize, hideCompletedLevels])
+    setOnlyAvailableLevelsSwitchDisable(groupBySize || hideCompletedLevels);
+  }, [groupBySize, hideCompletedLevels]);
 
   const toggleGroupBySize = () => {
     const newSetting = !groupBySize;
@@ -33,21 +36,17 @@ const LevelSelection = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-fit mx-auto">
-      <div className="flex justify-between w-full px-1">
-        <LanguageDropdown />
-        <div className="flex items-center space-x-3">
-          <DiscordButton />
-          <SupportMeIconButton />
-        </div>
-      </div>
-      <Heading />
       <div className="flex w-full justify-between mb-2">
         <LevelSelectionFilters
           availableLevelsChecked={showOnlyAvailableLevels}
           completedLevelsChecked={hideCompletedLevels}
           availableLevelsDisabled={onlyAvailableLevelsSwitchDisable}
-          onAvailableLevelsChange={() => setShowOnlyAvailableLevels((prev) => !prev)}
-          onCompletedLevelsChange={() => setHideCompletedLevels((prev) => !prev)}
+          onAvailableLevelsChange={() =>
+            setShowOnlyAvailableLevels((prev) => !prev)
+          }
+          onCompletedLevelsChange={() =>
+            setHideCompletedLevels((prev) => !prev)
+          }
         />
         <div className="flex items-center space-x-3 mx-1">
           <ResetAllProgressDialog
