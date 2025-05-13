@@ -75,5 +75,9 @@
   "HIDE_COMPLETED_LEVELS": "Ocultar niveles completados",
   "ALL_LEVELS_COMPLETED": "Todos los niveles han sido completados",
   "HOME": "Inicio",
-  "RESET": "Resetear"
+  "RESET": "Resetear",
+  "BONUS_LEVELS": "Niveles Bonus",
+  "NEW": "Nuevo",
+  "WEEK_OF": "Semana del {{date}}",
+  "PLAY": "Jugar"
 }
