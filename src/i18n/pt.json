@@ -77,5 +77,8 @@
   "ALL_LEVELS_COMPLETED": "Todos os níveis foram concluídos",
   "HOME": "Home",
   "RESET": "Resetar",
-  "PLAY_SIZE": "Jogar {{playSize}}"
+  "BONUS_LEVEL": "Nível de bônus",
+  "BONUS_LEVELS": "Níveis de bônus",
+  "WEEK_OF": "Semana de {{weekOfDate}}",
+  "PLAY": "Jogar"
 }

@@ -76,5 +76,9 @@
   "HIDE_COMPLETED_LEVELS": "Hide completed levels",
   "ALL_LEVELS_COMPLETED": "All levels have been completed",
   "HOME": "Home",
-  "RESET": "Reset"
+  "RESET": "Reset",
+  "BONUS_LEVEL": "Bonus Level",
+  "BONUS_LEVELS": "Bonus Levels",
+  "WEEK_OF": "Week of {{weekOfDate}}",
+  "PLAY": "Play"
 }

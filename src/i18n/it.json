@@ -74,5 +74,9 @@
   "SUPPORT_ME_ON_PATREON": "Supportami su Patreon",
   "UNDO": "Annulla",
   "HIDE_COMPLETED_LEVELS": "Nascondi livelli completati",
-  "ALL_LEVELS_COMPLETED": "Tutti i livelli sono stati completati"
+  "ALL_LEVELS_COMPLETED": "Tutti i livelli sono stati completati",
+  "BONUS_LEVEL": "Livello Bonus",
+  "BONUS_LEVELS": "Livelli Bonus",
+  "WEEK_OF": "Settimana del {{weekOfDate}}",
+  "PLAY": "Giocare"
 }

@@ -6,8 +6,17 @@ import DiscordButton from "./LevelSelection/components/DiscordButton";
 import SupportMeIconButton from "./LevelSelection/components/SupportMeIconButton";
 import LanguageDropdown from "./LevelSelection/components/LanguageDropdown";
 import NewBadge from "./NewBadge";
+import { useTranslation } from "react-i18next";
+
+const NAV_LINKS = [
+  { to: "/", labelKey: "HOME" },
+  { to: "/bonus-levels", labelKey: "BONUS_LEVELS" },
+  { to: "/level-builder", labelKey: "LEVEL_BUILDER" },
+];
 
 const Navbar = () => {
+  const { t } = useTranslation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -26,37 +35,21 @@ const Navbar = () => {
           </div>
           {/* Navigation Links - Desktop */}
           <ul className="space-x-2 hidden md:flex">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "bg-primary text-white p-2 rounded" : "p-2"
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="relative">
-              <NavLink
-                to="/bonus-levels"
-                className={({ isActive }) =>
-                  isActive ? "bg-primary text-white p-2 rounded" : "p-2"
-                }
-              >
-                Bonus Levels
-              </NavLink>
-              <NewBadge className="absolute -top-3 -right-4 z-10" />
-            </li>
-            <li>
-              <NavLink
-                to="/level-builder"
-                className={({ isActive }) =>
-                  isActive ? "bg-primary text-white p-2 rounded" : "p-2"
-                }
-              >
-                Level Builder
-              </NavLink>
-            </li>
+            {NAV_LINKS.map((link) => (
+              <li key={link.to} className="relative">
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    isActive ? "bg-primary text-white p-2 rounded" : "p-2"
+                  }
+                >
+                  {t(link.labelKey)}
+                </NavLink>
+                {link.labelKey === "BONUS_LEVELS" && (
+                  <NewBadge className="absolute -top-3 -right-4 z-10" />
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -75,45 +68,24 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-background shadow-lg rounded-b-lg p-4 z-20 md:hidden">
           <ul className="space-y-2">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-primary text-white p-2 rounded w-full flex"
-                    : "w-full flex p-2"
-                }
-                onClick={toggleMenu}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/bonus-levels"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-primary text-white p-2 rounded w-full flex"
-                    : "w-full flex p-2"
-                }
-                onClick={toggleMenu}
-              >
-                Bonus Levels
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/level-builder"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-primary text-white p-2 rounded w-full flex"
-                    : "w-full flex p-2"
-                }
-                onClick={toggleMenu}
-              >
-                Level Builder
-              </NavLink>
-            </li>
+            {NAV_LINKS.map((link) => (
+              <li key={link.to} className="relative">
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary text-white p-2 rounded w-full flex"
+                      : "w-full flex p-2"
+                  }
+                  onClick={toggleMenu}
+                >
+                  {t(link.labelKey)}
+                </NavLink>
+                {link.labelKey === "BONUS_LEVELS" && (
+                  <NewBadge className="absolute top-1/2 -translate-y-1/2 right-4 z-10" />
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       )}

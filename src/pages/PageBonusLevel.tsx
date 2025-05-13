@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { parse, isEqual, format } from "date-fns";
 import RootLayout from "@/layouts/RootLayout";
 import PageTitle from "@/components/PageTitle";
 import BonusLevel from "@/components/BonusLevel/BonusLevel";
 import { bonusLevels } from "@/utils/bonusLevels";
-
-import { parse, isEqual, format } from "date-fns";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
 import PageNotFound from "./PageNotFound";
 
@@ -14,7 +14,6 @@ function findLevelById(
   bonusLevels: { [key: string]: BonusLevelType }
 ) {
   // Extract start and end dates from ID (e.g., "4-may-2025-10-may-2025")
-  console.log("id", id);
   const match = id.match(/^\d{4}-\d{2}-\d{2}$/);
   if (!match) {
     throw new Error("Invalid ID format. Expected: yyyy-MM-dd");
@@ -116,6 +115,7 @@ function findNextLevel(
 
 const PageBonusLevel = () => {
   const { id } = useParams();
+  const { t } = useTranslation();
 
   if (!id) return;
 
@@ -133,12 +133,17 @@ const PageBonusLevel = () => {
 
   const { startDate } = getDatesFromId(id);
 
+  const weekOfDate = formatDate(startDate);
+
   return (
     <RootLayout>
-      <PageTitle title={`Bonus level - Week of ${formatDate(startDate)}`} />
+      {/* <PageTitle title={`Bonus level - Week of ${formatDate(startDate)}`} /> */}
+      <PageTitle
+        title={`${t("BONUS_LEVEL")} - ${t("WEEK_OF", { weekOfDate })}`}
+      />
       <BonusLevel
         id={level.key}
-        title={`Week of ${formatDate(startDate)}`}
+        title={t("WEEK_OF", { weekOfDate })}
         level={level.level}
         previousLevel={previousLevel}
         nextLevel={nextLevel}
