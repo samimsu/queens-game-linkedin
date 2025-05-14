@@ -2,10 +2,12 @@ import { type Level } from "./types";
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
 import level3 from "./levels/level3";
+import level5 from "./levels/level5";
 import level6 from "./levels/level6";
 import level8 from "./levels/level8";
 import level10 from "./levels/level10";
 import level11 from "./levels/level11";
+import level12 from "./levels/level12";
 import level15 from "./levels/level15";
 import level16 from "./levels/level16";
 import level17 from "./levels/level17";
@@ -373,10 +375,12 @@ export const levels: { [key: string]: Level } = {
   level1,
   level2,
   level3,
+  level5,
   level6,
   level8,
   level10,
   level11,
+  level12,
   level15,
   level16,
   level17,
