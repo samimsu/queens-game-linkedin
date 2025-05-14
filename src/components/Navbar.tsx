@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className="relative rounded-2xl p-4 w-full">
-      <div className="max-w-7xl flex justify-between items-center w-full">
+      <div className="max-w-7xl flex justify-between items-center w-full mx-auto">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-3 font-medium">
             <Link to="/" className="flex items-center space-x-2">
