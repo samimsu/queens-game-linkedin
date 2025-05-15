@@ -7,6 +7,10 @@ import SupportMeIconButton from "./LevelSelection/components/SupportMeIconButton
 import LanguageDropdown from "./LevelSelection/components/LanguageDropdown";
 import NewBadge from "./NewBadge";
 import { useTranslation } from "react-i18next";
+import {
+  getBonusLevelsClicked,
+  setBonusLevelsClicked,
+} from "@/utils/localStorage";
 
 const NAV_LINKS = [
   { to: "/", labelKey: "HOME" },
@@ -18,6 +22,14 @@ const Navbar = () => {
   const { t } = useTranslation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const bonusLevelsClicked = getBonusLevelsClicked();
+
+  const handleBonusLevelsClick = () => {
+    if (!bonusLevelsClicked) {
+      setBonusLevelsClicked(true);
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -42,6 +54,11 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     isActive ? "bg-primary text-white p-2 rounded" : "p-2"
                   }
+                  onClick={() => {
+                    if (link.labelKey === "BONUS_LEVELS") {
+                      handleBonusLevelsClick();
+                    }
+                  }}
                 >
                   {t(link.labelKey)}
                 </NavLink>
@@ -58,9 +75,17 @@ const Navbar = () => {
           <div className="flex items-center space-x-3">
             <DiscordButton />
             <SupportMeIconButton />
-            <button className="md:hidden" onClick={toggleMenu}>
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <span className="relative inline-flex">
+              <button className="md:hidden" onClick={toggleMenu}>
+                {!bonusLevelsClicked && (
+                  <span className="absolute top-0 right-0 -mt-1 -mr-1 flex size-3">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex size-3 rounded-full bg-primary"></span>
+                  </span>
+                )}
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </span>
           </div>
         </div>
       </div>
@@ -77,7 +102,12 @@ const Navbar = () => {
                       ? "bg-primary text-white p-2 rounded w-full flex"
                       : "w-full flex p-2"
                   }
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    if (link.labelKey === "BONUS_LEVELS") {
+                      handleBonusLevelsClick();
+                    }
+                  }}
                 >
                   {t(link.labelKey)}
                 </NavLink>

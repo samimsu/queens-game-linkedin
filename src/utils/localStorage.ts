@@ -78,3 +78,13 @@ export const setGroupingPreference = (enabled: boolean) => {
 export const getGroupingPreference = () => {
   return JSON.parse(localStorage.getItem("groupBySize") as string) ?? false; // Default to false
 };
+
+export const setBonusLevelsClicked = (clicked: boolean) => {
+  localStorage.setItem("bonusLevelsClicked", JSON.stringify(clicked));
+};
+
+export const getBonusLevelsClicked = () => {
+  return (
+    JSON.parse(localStorage.getItem("bonusLevelsClicked") as string) ?? false
+  ); // Default to false
+};
