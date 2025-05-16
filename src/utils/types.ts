@@ -11,3 +11,12 @@ export interface BonusLevel {
   colorRegions: string[][];
   regionColors: { [key: string]: string };
 }
+
+export interface CommunityLevel {
+  path: string;
+  size: number;
+  colorRegions: string[][];
+  regionColors: { [key: string]: string };
+  createdBy: string;
+  creatorLink?: string;
+}

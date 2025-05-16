@@ -137,11 +137,11 @@ const PageBonusLevel = () => {
 
   return (
     <RootLayout>
-      {/* <PageTitle title={`Bonus level - Week of ${formatDate(startDate)}`} /> */}
       <PageTitle
         title={`${t("BONUS_LEVEL")} - ${t("WEEK_OF", { weekOfDate })}`}
       />
       <BonusLevel
+        key={level.key}
         id={level.key}
         title={t("WEEK_OF", { weekOfDate })}
         level={level.level}

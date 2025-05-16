@@ -6,8 +6,10 @@ import {
   getShowClockPreference,
   getShowInstructionsPreference,
   isBonusLevelCompleted,
+  isCommunityLevelCompleted,
   isLevelCompleted,
   markBonusLevelAsCompleted,
+  markCommunityLevelAsCompleted,
   markLevelAsCompleted,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
@@ -20,7 +22,7 @@ interface useGameLogicProps {
   id: string;
   boardSize: number;
   colorRegions: string[][];
-  levelType?: "bonus";
+  levelType?: "bonus" | "community";
 }
 
 const useGameLogic = ({
@@ -30,6 +32,7 @@ const useGameLogic = ({
   levelType,
 }: useGameLogicProps) => {
   const isBonusLevel = levelType === "bonus";
+  const isCommunityLevel = levelType === "community";
 
   const [board, setBoard] = useState(createEmptyBoard(boardSize));
   const [, setQueenGeneratedXs] = useState<Record<string, Set<string>>>({});
@@ -54,6 +57,8 @@ const useGameLogic = ({
   );
   const completed = isBonusLevel
     ? isBonusLevelCompleted(id)
+    : isCommunityLevel
+    ? isCommunityLevelCompleted(id)
     : isLevelCompleted(Number(id));
 
   const getQueenPositionForGivenX = (
@@ -139,6 +144,8 @@ const useGameLogic = ({
 
       if (isBonusLevel) {
         markBonusLevelAsCompleted(id);
+      } else if (isCommunityLevel) {
+        markCommunityLevelAsCompleted(id);
       } else {
         markLevelAsCompleted(Number(id));
       }

@@ -80,5 +80,8 @@
   "BONUS_LEVEL": "Bonus Level",
   "BONUS_LEVELS": "Bonus Levels",
   "WEEK_OF": "Week of {{weekOfDate}}",
-  "PLAY": "Play"
+  "PLAY": "Play",
+  "COMMUNITY_LEVEL": "Community Level",
+  "COMMUNITY_LEVELS": "Community Levels",
+  "CREATED_BY_2": "Created by:"
 }

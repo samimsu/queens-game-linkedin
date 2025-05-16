@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Heading from "./components/Heading";
 import LevelSelectionFilters from "./components/LevelSelectionFilters";
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
-import LanguageDropdown from "./components/LanguageDropdown";
-import SupportMeIconButton from "./components/SupportMeIconButton";
-import DiscordButton from "./components/DiscordButton";
 import {
   getGroupingPreference,
   setGroupingPreference,
