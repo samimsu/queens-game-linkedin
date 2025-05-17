@@ -88,6 +88,42 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "TamerHN",
+      "name": "Tamer H. Naana",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10697961?v=4",
+      "profile": "https://www.linkedin.com/in/tamerhn/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "krinklie",
+      "name": "krinklie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/136399636?v=4",
+      "profile": "https://github.com/krinklie",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "claramirandaal",
+      "name": "claramirandaal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/207726891?v=4",
+      "profile": "https://github.com/claramirandaal",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "lucasfoufou",
+      "name": "lucasfoufou",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23100591?v=4",
+      "profile": "https://github.com/lucasfoufou",
+      "contributions": [
+        "translation"
+      ]
     }
   ]
 }

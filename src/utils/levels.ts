@@ -1,10 +1,16 @@
 import { type Level } from "./types";
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
+import level3 from "./levels/level3";
+import level5 from "./levels/level5";
 import level6 from "./levels/level6";
 import level8 from "./levels/level8";
+import level10 from "./levels/level10";
 import level11 from "./levels/level11";
+import level12 from "./levels/level12";
+import level15 from "./levels/level15";
 import level16 from "./levels/level16";
+import level17 from "./levels/level17";
 import level21 from "./levels/level21";
 import level22 from "./levels/level22";
 import level23 from "./levels/level23";
@@ -350,14 +356,36 @@ import level362 from "./levels/level362";
 import level363 from "./levels/level363";
 import level364 from "./levels/level364";
 import level365 from "./levels/level365";
+import level366 from "./levels/level366";
+import level367 from "./levels/level367";
+import level368 from "./levels/level368";
+import level369 from "./levels/level369";
+import level370 from "./levels/level370";
+import level371 from "./levels/level371";
+import level372 from "./levels/level372";
+import level373 from "./levels/level373";
+import level374 from "./levels/level374";
+import level375 from "./levels/level375";
+import level376 from "./levels/level376";
+import level377 from "./levels/level377";
+import level378 from "./levels/level378";
+import level379 from "./levels/level379";
+import level380 from "./levels/level380";
+import level381 from "./levels/level381";
 
 export const levels: { [key: string]: Level } = {
   level1,
   level2,
+  level3,
+  level5,
   level6,
   level8,
+  level10,
   level11,
+  level12,
+  level15,
   level16,
+  level17,
   level21,
   level22,
   level23,
@@ -703,4 +731,20 @@ export const levels: { [key: string]: Level } = {
   level363,
   level364,
   level365,
+  level366,
+  level367,
+  level368,
+  level369,
+  level370,
+  level371,
+  level372,
+  level373,
+  level374,
+  level375,
+  level376,
+  level377,
+  level378,
+  level379,
+  level380,
+  level381,
 };

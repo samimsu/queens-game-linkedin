@@ -46,38 +46,42 @@ async function startGameIfNeeded(page: Page): Promise<void> {
   console.log("Iframe found, waiting for content...");
 
   try {
-    const startButton = await iframe.waitForSelector(
-      '.launch-footer__btn--start:has-text("Start game")',
-      { timeout: 15000, state: "visible" }
-    );
+    let startButton;
 
-    if (startButton) {
-      const buttonText = await startButton.textContent();
-      console.log(
-        `Start button found with text: "${buttonText?.trim()}", clicking...`
+    try {
+      startButton = await iframe.waitForSelector(
+        '.launch-footer__btn--start:has-text("Start game")',
+        { timeout: 5000, state: "visible" }
       );
-      await startButton.click();
-      console.log("Waiting for game to load...");
-      await iframe.waitForTimeout(2000);
 
-      try {
-        const dismissButton = await iframe.waitForSelector(
-          ".artdeco-modal__dismiss",
-          { timeout: 5000, state: "visible" }
-        );
-        if (dismissButton) {
-          console.log("Tutorial modal found, closing...");
-          await dismissButton.click();
-          await iframe.waitForTimeout(1000);
-          console.log("Tutorial modal closed");
-        }
-      } catch (error) {
+      if (startButton) {
+        const buttonText = await startButton.textContent();
         console.log(
-          "No tutorial modal found or failed to close, proceeding..."
+          `Start button found with text: "${buttonText?.trim()}", clicking...`
         );
+        await startButton.click();
+        console.log("Start button clicked, waiting for game to load...");
+        await iframe.waitForTimeout(2000);
+      } else {
+        console.log("No start button found, proceeding...");
       }
-    } else {
-      console.log("No start button found with specific selector");
+    } catch (error) {
+      console.log("Start button not found or not visible, proceeding...");
+    }
+
+    try {
+      const dismissButton = await iframe.waitForSelector(
+        ".artdeco-modal__dismiss",
+        { timeout: 5000, state: "visible" }
+      );
+      if (dismissButton) {
+        console.log("Tutorial modal found, closing...");
+        await dismissButton.click();
+        await iframe.waitForTimeout(1000);
+        console.log("Tutorial modal closed");
+      }
+    } catch (error) {
+      console.log("No tutorial modal found or failed to close, proceeding...");
     }
   } catch (error) {
     console.log(

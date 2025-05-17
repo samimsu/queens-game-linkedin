@@ -215,7 +215,7 @@ const LevelBuilder = () => {
       {/* BREADCRUMBS */}
       <div className="text-sm mb-4">
         <Link to="/" className="text-blue-500">
-          Home
+          {t("HOME")}
         </Link>{" "}
         / {t("LEVEL_BUILDER")}
       </div>

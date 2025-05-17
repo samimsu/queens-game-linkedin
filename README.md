@@ -21,19 +21,19 @@
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
-## Levels Added (351/365)
+## Levels Added (373/381)
 
-- [x] 1-2
-- [ ] 3-5
-- [x] 6
+- [x] 1-3
+- [ ] 4
+- [x] 5-6
 - [ ] 7
 - [x] 8
-- [ ] 9-10
-- [x] 11
-- [ ] 12-15
-- [x] 16
-- [ ] 17-20
-- [x] 21-365
+- [ ] 9
+- [x] 10-12
+- [ ] 13-14
+- [x] 15-17
+- [ ] 18-20
+- [x] 21-381
 
 Note: If anyone could help in finding the missing levels, I'd really appreciate it.
 
@@ -70,6 +70,10 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yll0rd"><img src="https://avatars.githubusercontent.com/u/114886588?v=4?s=100" width="100px;" alt="Youmbi Leo (Why-Lord)"/><br /><sub><b>Youmbi Leo (Why-Lord)</b></sub></a><br /><a href="#code-yll0rd" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.infoinnova.es"><img src="https://avatars.githubusercontent.com/u/29180676?v=4?s=100" width="100px;" alt="@̵̩͖͉̒̉̔̂͗̐T̷̛̬̠̘͎̊̅͐͗͘r̴̖͎̫͋y̵̡̪̙͎̝̣̓̊͐̽̕s̶̥̖̦͎̊̈́͋͊̋̇t̵̹̤̓͌̒͜͝ắ̵͕͈̙̠͈̥̑̋̚n̷̛͚̓̔̇4̷̩͎̖̤̥̐8̵̡̟̙̜̒̀̆͆̆̇̓6̷̱͈͎̲̰͔̇1̸̣̥̺̾̀̄͘"/><br /><sub><b>@̵̩͖͉̒̉̔̂͗̐T̷̛̬̠̘͎̊̅͐͗͘r̴̖͎̫͋y̵̡̪̙͎̝̣̓̊͐̽̕s̶̥̖̦͎̊̈́͋͊̋̇t̵̹̤̓͌̒͜͝ắ̵͕͈̙̠͈̥̑̋̚n̷̛͚̓̔̇4̷̩͎̖̤̥̐8̵̡̟̙̜̒̀̆͆̆̇̓6̷̱͈͎̲̰͔̇1̸̣̥̺̾̀̄͘</b></sub></a><br /><a href="#code-Trystan4861" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/tamerhn/"><img src="https://avatars.githubusercontent.com/u/10697961?v=4?s=100" width="100px;" alt="Tamer H. Naana"/><br /><sub><b>Tamer H. Naana</b></sub></a><br /><a href="#code-TamerHN" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/krinklie"><img src="https://avatars.githubusercontent.com/u/136399636?v=4?s=100" width="100px;" alt="krinklie"/><br /><sub><b>krinklie</b></sub></a><br /><a href="#content-krinklie" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/claramirandaal"><img src="https://avatars.githubusercontent.com/u/207726891?v=4?s=100" width="100px;" alt="claramirandaal"/><br /><sub><b>claramirandaal</b></sub></a><br /><a href="#translation-claramirandaal" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucasfoufou"><img src="https://avatars.githubusercontent.com/u/23100591?v=4?s=100" width="100px;" alt="lucasfoufou"/><br /><sub><b>lucasfoufou</b></sub></a><br /><a href="#translation-lucasfoufou" title="Translation">🌍</a></td>
     </tr>
   </tbody>
 </table>
@@ -78,3 +82,5 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Note: If I've forgotten to mention someone, please let me know.

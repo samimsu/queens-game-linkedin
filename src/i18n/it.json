@@ -1,4 +1,5 @@
 {
+  "LANGUAGE_NAME": "Italiano",
   "LEVEL": "Livello",
   "AVAILABLE_LEVELS_ONLY": "Solo livelli disponibili",
   "HELP_IN_FINDING_NEW_LEVELS": "Ho aggiunto tutti i livelli che ho trovato. Apprezzerei qualsiasi aiuto nel trovare i rimanenti.",
@@ -71,5 +72,11 @@
     "LIGHT": "Chiaro"
   },
   "SUPPORT_ME_ON_PATREON": "Supportami su Patreon",
-  "UNDO": "Annulla"
+  "UNDO": "Annulla",
+  "HIDE_COMPLETED_LEVELS": "Nascondi livelli completati",
+  "ALL_LEVELS_COMPLETED": "Tutti i livelli sono stati completati",
+  "BONUS_LEVEL": "Livello Bonus",
+  "BONUS_LEVELS": "Livelli Bonus",
+  "WEEK_OF": "Settimana del {{weekOfDate}}",
+  "PLAY": "Giocare"
 }

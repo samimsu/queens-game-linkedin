@@ -1,0 +1,84 @@
+{
+  "LANGUAGE_NAME": "عربي",
+  "LEVEL": "مستوى",
+  "AVAILABLE_LEVELS_ONLY": "عرض المستويات المتاحة فقط",
+  "HELP_IN_FINDING_NEW_LEVELS": "لقد قمت بإضافة أكبر عدد ممكن من المستويات. سأكون ممتنًا لأي مساعدة في العثور على البقية.",
+  "ASK_RESET_ALL_PROGRESS": "هل أنت متأكد أنك تريد إعادة تعيين التقدم؟",
+  "CANCEL": "إلغاء",
+  "SUPPORT_ME": "ادعمني",
+  "CREATED_BY": "أنشأه",
+  "LEVEL_BUILDER": "انشئ مستوى جديد",
+  "SETTINGS": "الإعدادات",
+  "SHOW_CLOCK": "عرض المؤقت",
+  "AUTO_PLACE_XS": "تعيين X تلقائيًا",
+  "SHOW_CLASHING_QUEENS": "عرض الملكات المتعارضة",
+  "SHOW_INSTRUCTIONS": "عرض التعليمات",
+  "PREVIOUS_LEVEL": "المستوى السابق",
+  "NEXT_LEVEL": "المستوى التالي",
+  "YOU_WIN": "لقد فزت!",
+  "SOLVE_TIME": "وقت الحل",
+  "HOW_TO_PLAY": "كيفية اللعب",
+  "GAME_GOAL_INSTRUCTION": "هدفك هو أن يكون لديك<2 /> <1>واحد فقط</1> في كل <3> صف وعمود ومنطقة لون.</3>",
+  "TAPS_INSTRUCTION": "اضغط مرة واحدة لوضع X واضغط مرتين لـ <1 />. استخدم X للإشارة إلى المكان الذي لا يمكن وضع <2 /> فيه.",
+  "TOUCH_DIAGONAL_QUEENS_INSTRUCTION": "لا يمكن للعنصرين <1 /> أن يتلامسا، حتى بشكل قطري.",
+  "LEVEL_NAME": "اسم المستوى",
+  "BOARD_SIZE": "حجم اللوحة",
+  "CLEAR_BOARD": "مسح اللوحة",
+  "HIDE_LETTERS": "إخفاء الحروف",
+  "GENERATE_CODE": "أنشئ كود جديد",
+  "CLEAR_CODE": "مسح الكود",
+  "COPY_CODE": "نسخ الكود",
+  "COPIED": "تم النسخ",
+  "ADD_THIS_CODE_TO": "أضف هذا الكود إلى",
+  "PAST_IMAGE_MSG": "حاول لصق صورة. كلما كانت الصورة أكبر وأكثر تحديدًا، كان ذلك أفضل.",
+  "LEVEL_NOT_FOUND": "المستوى {{level}} غير موجود",
+  "GO_HOME": "اذهب إلى الصفحة الرئيسية",
+  "SHARE_LEVEL_SCREENSHOT_LINK": "إذا كان لديك لقطة شاشة للمستوى، يرجى مشاركتها <1>هنا</1> أو التواصل مباشرة.",
+  "404_PAGE_NOT_FOUND": "404 - الصفحة غير موجودة",
+  "PAGE_YOU_ARE_LOOKING_FOR_DOESNT_EXIST": "عذرًا! الصفحة التي تبحث عنها غير موجودة.",
+  "SHOW_GRID_LINES": "عرض خطوط الشبكة",
+  "TOLERANCE": "تحمل",
+  "MINIMUM_LINE_HEIGHT": "اقل ارتفاع للخط",
+  "MINIMUM_LINE_WIDTH": "اقل عرض للخط",
+  "COLLECTED_FROM": "تم جمعها من",
+  "SOMETHING_WENT_WRONG": "حدث خطأ ما :(",
+  "TRY_AGAIN": "حاول مرة أخرى",
+  "COLOR": {
+    "ALTO": "Alto",
+    "ALTO_MAIN": "Alto Main",
+    "ANAKIWA": "Anakiwa",
+    "BITTERSWEET": "Bittersweet",
+    "CAN_CAN": "Can Can",
+    "CARNATION": "Carnation",
+    "CELADON": "Celadon",
+    "CHARDONNAY": "Chardonnay",
+    "COLD_PURPLE": "Cold Purple",
+    "FEIJOA": "Feijoa",
+    "HALF_BAKED": "Half Baked",
+    "LAVENDER_ROSE": "Lavender Rose",
+    "LIGHT_ORCHID": "Light Orchid",
+    "LIGHT_WISTERIA": "Light Wisteria",
+    "MAC_N_CHEESE": "Mac n Cheese",
+    "MALIBU": "Malibu",
+    "MANZ": "Manz",
+    "NOMAD": "Nomad",
+    "SAHARA_SAND": "Sahara Sand",
+    "TALLOW": "Tallow",
+    "TURQUOISE_BLUE": "Turquoise Blue"
+  },
+  "YES": "نعم",
+  "THEME": {
+    "DARK": "داكن",
+    "LIGHT": "فاتح"
+  },
+  "SUPPORT_ME_ON_PATREON": "ادعمني على Patreon",
+  "UNDO": "تراجع",
+  "HIDE_COMPLETED_LEVELS": "اخفاء المستويات التي تم حلها",
+  "ALL_LEVELS_COMPLETED": "جميع المستويات تم حلها 🎉",
+  "HOME": "الصفحة الرئيسية",
+  "RESET": "إعادة تعيين",
+  "BONUS_LEVEL": " مستوى المكافأة",
+  "BONUS_LEVELS": "مستويات المكافأة",
+  "WEEK_OF": "أسبوع {{weekOfDate}}",
+  "PLAY": "يلعب"
+}

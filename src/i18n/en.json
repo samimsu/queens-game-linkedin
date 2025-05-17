@@ -1,4 +1,5 @@
 {
+  "LANGUAGE_NAME": "English",
   "LEVEL": "Level",
   "AVAILABLE_LEVELS_ONLY": "Available levels only",
   "HELP_IN_FINDING_NEW_LEVELS": "I've added as many levels as I could find. I'd appreciate any help in finding the rest.",
@@ -71,5 +72,13 @@
     "LIGHT": "Light"
   },
   "SUPPORT_ME_ON_PATREON": "Support me on Patreon",
-  "UNDO": "Undo"
+  "UNDO": "Undo",
+  "HIDE_COMPLETED_LEVELS": "Hide completed levels",
+  "ALL_LEVELS_COMPLETED": "All levels have been completed",
+  "HOME": "Home",
+  "RESET": "Reset",
+  "BONUS_LEVEL": "Bonus Level",
+  "BONUS_LEVELS": "Bonus Levels",
+  "WEEK_OF": "Week of {{weekOfDate}}",
+  "PLAY": "Play"
 }

@@ -25,7 +25,7 @@ const SectionJSCode = ({
 
     // Filter the regionColors based on used regions
     const usedRegionColors = Object.entries(regionColors).filter(([region]) =>
-      usedRegions.has(region),
+      usedRegions.has(region)
     );
 
     // Get the color variable names for the used colors
@@ -121,7 +121,7 @@ export default level${levelNumber};
           >
             <code className="bg-[#1f1f1f] text-[#cccccc]">
               src/utils/levels/
-              <span className="text-[#50b8fe]">level{levelName}.js</span>
+              <span className="text-[#50b8fe]">level{levelName}.ts</span>
             </code>
           </a>
         </div>

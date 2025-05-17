@@ -23,7 +23,7 @@ const ResetAllProgressDialog = ({ onReset }) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Reset</AlertDialogTitle>
+          <AlertDialogTitle>{t("RESET")}</AlertDialogTitle>
           <AlertDialogDescription>
             {t("ASK_RESET_ALL_PROGRESS")}
           </AlertDialogDescription>
