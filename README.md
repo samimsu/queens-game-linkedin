@@ -76,6 +76,9 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucasfoufou"><img src="https://avatars.githubusercontent.com/u/23100591?v=4?s=100" width="100px;" alt="lucasfoufou"/><br /><sub><b>lucasfoufou</b></sub></a><br /><a href="#translation-lucasfoufou" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gnr2bernstein"><img src="https://avatars.githubusercontent.com/u/50257551?v=4?s=100" width="100px;" alt="gnr2bernstein"/><br /><sub><b>gnr2bernstein</b></sub></a><br /><a href="#content-gnr2bernstein" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/siddydutta"><img src="https://avatars.githubusercontent.com/u/29818092?v=4?s=100" width="100px;" alt="Siddhartha Dutta"/><br /><sub><b>Siddhartha Dutta</b></sub></a><br /><a href="#code-siddydutta" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
