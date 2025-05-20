@@ -88,3 +88,13 @@ export const getBonusLevelsClicked = () => {
     JSON.parse(localStorage.getItem("bonusLevelsClicked") as string) ?? false
   ); // Default to false
 };
+
+export const setHideCompletedLevelsPreference = (enabled: boolean) => {
+  localStorage.setItem("hideCompletedLevels", JSON.stringify(enabled));
+};
+
+export const getHideCompletedLevelsPreference = () => {
+  return (
+    JSON.parse(localStorage.getItem("hideCompletedLevels") as string) ?? false
+  ); // Default to false
+};

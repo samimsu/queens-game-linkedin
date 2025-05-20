@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Heading from "./components/Heading";
 import LevelSelectionFilters from "./components/LevelSelectionFilters";
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
 import ResetAllProgressDialog from "./components/ResetAllProgressDialog";
-import LanguageDropdown from "./components/LanguageDropdown";
-import SupportMeIconButton from "./components/SupportMeIconButton";
-import DiscordButton from "./components/DiscordButton";
 import {
   getGroupingPreference,
   setGroupingPreference,
+  getHideCompletedLevelsPreference,
+  setHideCompletedLevelsPreference,
 } from "@/utils/localStorage";
 import GroupIcon from "../icons/GroupIcon";
 import UngroupIcon from "../icons/UngroupIcon";
@@ -20,13 +18,21 @@ const LevelSelection = () => {
     onlyAvailableLevelsSwitchDisable,
     setOnlyAvailableLevelsSwitchDisable,
   ] = useState(false);
-  const [hideCompletedLevels, setHideCompletedLevels] = useState(false);
+  const [hideCompletedLevels, setHideCompletedLevels] = useState(
+    getHideCompletedLevelsPreference
+  );
   const [groupBySize, setGroupBySize] = useState(getGroupingPreference);
   const [resetTrigger, setResetTrigger] = useState(false);
 
   useEffect(() => {
     setOnlyAvailableLevelsSwitchDisable(groupBySize || hideCompletedLevels);
   }, [groupBySize, hideCompletedLevels]);
+
+  const toggleHideCompletedLevels = () => {
+    const newSetting = !hideCompletedLevels;
+    setHideCompletedLevels(newSetting);
+    setHideCompletedLevelsPreference(newSetting);
+  };
 
   const toggleGroupBySize = () => {
     const newSetting = !groupBySize;
@@ -44,9 +50,7 @@ const LevelSelection = () => {
           onAvailableLevelsChange={() =>
             setShowOnlyAvailableLevels((prev) => !prev)
           }
-          onCompletedLevelsChange={() =>
-            setHideCompletedLevels((prev) => !prev)
-          }
+          onCompletedLevelsChange={toggleHideCompletedLevels}
         />
         <div className="flex items-center space-x-3 mx-1">
           <ResetAllProgressDialog
