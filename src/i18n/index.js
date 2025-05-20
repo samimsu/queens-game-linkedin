@@ -9,7 +9,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { setDefaultOptions } from "date-fns";
-import { ar, enUS, es, it, ptBR } from "date-fns/locale";
+import { ar, enUS, es, it, ptBR, zhCN } from "date-fns/locale";
 
 // Import language JSON files using Vite's dynamic imports
 const modules = import.meta.glob("./*.json", { eager: true });
@@ -39,6 +39,7 @@ const dateFnsLocaleMap = {
   es: es,
   it: it,
   pt: ptBR,
+  zh: zhCN,
 };
 
 const defaultDateFnsLocale = enUS;
