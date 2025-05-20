@@ -26,7 +26,7 @@ const LanguageButton = ({
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
-  const languages = ["en", "it", "es", "ar", "pt"];
+  const languages = ["en", "it", "es", "ar", "pt", "zh"];
 
   return (
     <div className="grid grid-cols-12">
