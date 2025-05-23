@@ -34,7 +34,6 @@ const level387 = {
     H: anakiwa,
     I: lightOrchid,
   },
-  isNew: true,
 };
 
 export default level387;
