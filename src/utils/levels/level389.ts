@@ -37,7 +37,6 @@ const level389 = {
     I: saharaSand,
     J: celadon,
   },
-  isNew: true,
 };
 
 export default level389;
