@@ -34,7 +34,6 @@ const level390 = {
     H: chardonnay,
     I: lightWisteria,
   },
-  isNew: true,
 };
 
 export default level390;
