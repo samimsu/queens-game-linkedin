@@ -20,10 +20,6 @@ const Footer = () => {
             Sami
           </a>
         </div>
-
-        <Link to="/level-builder" className="pl-3 hover:underline">
-          {t("LEVEL_BUILDER")}
-        </Link>
       </div>
 
       <div className="flex justify-center items-center space-x-3 mx-auto w-fit">
