@@ -1,0 +1,45 @@
+import {
+  alto,
+  anakiwa,
+  bittersweet,
+  celadon,
+  chardonnay,
+  halfBaked,
+  lavenderRose,
+  lightOrchid,
+  lightWisteria,
+  saharaSand,
+  turquoiseBlue,
+} from "../colors";
+
+const level1 = {
+  size: 11,
+  colorRegions: [
+    ["J", "J", "J", "J", "J", "I", "I", "I", "H", "H", "H"],
+    ["G", "G", "G", "G", "J", "I", "I", "I", "H", "H", "H"],
+    ["G", "G", "G", "G", "G", "K", "K", "I", "C", "H", "E"],
+    ["G", "G", "G", "G", "G", "K", "K", "I", "C", "H", "E"],
+    ["F", "F", "F", "F", "G", "K", "K", "I", "C", "H", "E"],
+    ["D", "F", "F", "F", "G", "K", "C", "C", "C", "H", "E"],
+    ["D", "F", "F", "B", "B", "K", "C", "C", "C", "H", "E"],
+    ["D", "F", "F", "B", "B", "K", "C", "C", "C", "H", "E"],
+    ["D", "B", "B", "B", "B", "K", "C", "C", "A", "H", "E"],
+    ["B", "B", "B", "B", "B", "K", "A", "C", "A", "H", "E"],
+    ["B", "B", "B", "B", "B", "K", "A", "A", "A", "H", "E"],
+  ],
+  regionColors: {
+    A: lightWisteria,
+    B: chardonnay,
+    C: anakiwa,
+    D: celadon,
+    E: lavenderRose,
+    F: bittersweet,
+    G: saharaSand,
+    H: alto,
+    I: lightOrchid,
+    J: halfBaked,
+    K: turquoiseBlue,
+  },
+};
+
+export default level1;
