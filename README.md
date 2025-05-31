@@ -21,7 +21,7 @@
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
-## Levels Added (374/382)
+## Levels Added (388/396)
 
 - [x] 1-3
 - [ ] 4
@@ -33,7 +33,7 @@
 - [ ] 13-14
 - [x] 15-17
 - [ ] 18-20
-- [x] 21-382
+- [x] 21-396
 
 Note: If anyone could help in finding the missing levels, I'd really appreciate it.
 
@@ -74,6 +74,10 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/krinklie"><img src="https://avatars.githubusercontent.com/u/136399636?v=4?s=100" width="100px;" alt="krinklie"/><br /><sub><b>krinklie</b></sub></a><br /><a href="#content-krinklie" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/claramirandaal"><img src="https://avatars.githubusercontent.com/u/207726891?v=4?s=100" width="100px;" alt="claramirandaal"/><br /><sub><b>claramirandaal</b></sub></a><br /><a href="#translation-claramirandaal" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucasfoufou"><img src="https://avatars.githubusercontent.com/u/23100591?v=4?s=100" width="100px;" alt="lucasfoufou"/><br /><sub><b>lucasfoufou</b></sub></a><br /><a href="#translation-lucasfoufou" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gnr2bernstein"><img src="https://avatars.githubusercontent.com/u/50257551?v=4?s=100" width="100px;" alt="gnr2bernstein"/><br /><sub><b>gnr2bernstein</b></sub></a><br /><a href="#content-gnr2bernstein" title="Content">🖋</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/siddydutta"><img src="https://avatars.githubusercontent.com/u/29818092?v=4?s=100" width="100px;" alt="Siddhartha Dutta"/><br /><sub><b>Siddhartha Dutta</b></sub></a><br /><a href="#code-siddydutta" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

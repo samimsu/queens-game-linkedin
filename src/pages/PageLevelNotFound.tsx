@@ -21,7 +21,7 @@ const PageLevelNotFound = ({ level }: PageLevelNotFoundProps) => {
         </div>
         <div className="text-lg mb-6">
           <Trans i18nKey="SHARE_LEVEL_SCREENSHOT_LINK">
-            -{" "}
+            If you have a screenshot of the level, please share it
             <a
               href={queensGameRepoNewIssue}
               className="text-blue-500 hover:text-blue-600"
@@ -30,6 +30,7 @@ const PageLevelNotFound = ({ level }: PageLevelNotFoundProps) => {
             >
               here
             </a>{" "}
+            or reach out directly.
           </Trans>
         </div>
         <Link to="/">
