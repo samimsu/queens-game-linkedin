@@ -78,7 +78,7 @@ const TestLevel = ({ level }: TestLevelProps) => {
               }}
               className="border border-slate-500 rounded px-3 py-1 w-fit"
             >
-              Reset
+              {t("RESET")}
             </Button>
           </div>
 

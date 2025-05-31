@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Required from "@/components/Required";
 
 interface CreatedByInputProps {
@@ -14,15 +15,17 @@ const CreatedByInput = ({
   onChange,
   error,
 }: CreatedByInputProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="max-w-lg">
       <div className="grid sm:grid-cols-2 sm:gap-4 items-center">
         <label className="w-56">
-          Created By <Required />
+          {t("CREATED_BY_3")} <Required />
         </label>
         <div>
           <input
-            placeholder="Your name/nickname"
+            placeholder={t("YOUR_NAME_NICKNAME")}
             ref={ref}
             name="createdBy"
             value={value}

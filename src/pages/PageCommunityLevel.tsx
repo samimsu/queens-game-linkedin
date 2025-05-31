@@ -113,7 +113,7 @@ const PageCommunityLevel = () => {
       <CommunityLevel
         key={level.key}
         id={level.key}
-        title={"Level " + id}
+        title={`${t("LEVEL")} ${id}`}
         level={level.level}
         previousLevel={previousLevel}
         nextLevel={nextLevel}

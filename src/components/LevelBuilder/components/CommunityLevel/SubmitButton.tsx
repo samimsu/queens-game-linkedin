@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -16,6 +17,8 @@ const SubmitButton = ({
   handleCopy,
   copied,
 }: SubmitButtonProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="pt-2 flex space-x-2 items-center">
       <Button
@@ -23,19 +26,19 @@ const SubmitButton = ({
         disabled={isSubmitting}
         className="hover:bg-primary hover:opacity-90"
       >
-        {isSubmitting ? "Submitting..." : "Submit Level"}
+        {isSubmitting ? `${t("SUBMITTING")}...` : t("SUBMIT_LEVEL")}
       </Button>
       {via === "email" && (
         <>
-          <span>or</span>
+          <span>{t("OR")}</span>
           <Button variant="outline" onClick={handleCopy}>
             {copied ? (
               <span className="flex items-center space-x-1">
-                <span>Copied</span>
+                <span>{t("COPIED")}</span>
                 <Check size={16} />
               </span>
             ) : (
-              "Copy details"
+              <span>{t("COPY_DETAILS")}</span>
             )}
           </Button>
         </>

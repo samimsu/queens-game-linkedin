@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface PersonalLinkInputProps {
   ref?: React.Ref<HTMLInputElement>;
@@ -13,12 +14,14 @@ const PersonalLinkInput = ({
   onChange,
   error,
 }: PersonalLinkInputProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="max-w-lg">
       <div className="grid sm:grid-cols-2 sm:gap-4 items-center">
         <label className="flex flex-col">
-          <span>Personal Link</span>
-          <span className="text-sm">(Website, GitHub, Instagram etc.)</span>
+          <span>{t("PERSONAL_LINK")}</span>
+          <span className="text-sm">{t("PERSONAL_LINK_DESCRIPTION")}</span>
         </label>
         <div>
           <input

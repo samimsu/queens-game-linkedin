@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Required from "@/components/Required";
 
 type LevelType = "linkedin" | "community";
@@ -11,6 +12,8 @@ const LevelBuilderSelector = ({
   levelType,
   setLevelType,
 }: LevelBuilderSelectorProps) => {
+  const { t } = useTranslation();
+
   const handleSelection = (type: LevelType) => {
     setLevelType(type);
   };
@@ -18,7 +21,7 @@ const LevelBuilderSelector = ({
   return (
     <div className="max-w-lg">
       <p className="mb-1">
-        Level Type <Required />
+        {t("LEVEL_TYPE")} <Required />
       </p>
 
       <div className="grid sm:grid-cols-2 gap-2 sm:gap-4">
@@ -36,10 +39,10 @@ const LevelBuilderSelector = ({
                 levelType === "community" ? "text-primary" : ""
               }`}
             >
-              Community Level
+              {t("COMMUNITY_LEVEL")}
             </h2>
             <p className="text-gray-600 dark:text-gray-100 text-sm">
-              Create your own level for the community
+              {t("COMMUNITY_LEVELS_DESCRIPTION")}
             </p>
           </div>
         </button>
@@ -57,10 +60,10 @@ const LevelBuilderSelector = ({
               className={`text-md font-semibold 
             ${levelType === "linkedin" ? "text-primary" : ""}`}
             >
-              LinkedIn Level
+              {t("LINKEDIN_LEVEL")}
             </h2>
             <p className="text-gray-600 dark:text-gray-100 text-sm">
-              Clone levels from the original game
+              {t("LINKEDIN_LEVELS_DESCRIPTION")}
             </p>
           </div>
         </button>

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   Dialog,
   DialogContent,
@@ -15,6 +16,8 @@ interface TestLevelDialogProps {
 }
 
 const TestLevelDialog = ({ level, disabled }: TestLevelDialogProps) => {
+  const { t } = useTranslation();
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,7 +26,7 @@ const TestLevelDialog = ({ level, disabled }: TestLevelDialogProps) => {
           className="hover:bg-primary hover:opacity-90"
           type="button"
         >
-          Test Level
+          {t("TEST_LEVEL")}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-fit bg-background max-h-full overflow-y-auto overflow-x-auto">

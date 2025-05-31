@@ -37,8 +37,7 @@ const PageCommunityLevelsList = () => {
   return (
     <RootLayout>
       <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 max-w-lg text-sm">
-        Discover unique levels created by the community! Play, get inspired, and
-        build your own with the{" "}
+        {t("DISCOVER_AND_BUILD_COMMUNITY_LEVELS")}{" "}
         <Link
           to="/level-builder"
           className="text-blue-600 font-semibold hover:underline"
