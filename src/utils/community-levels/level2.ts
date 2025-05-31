@@ -11,6 +11,7 @@ import {
 } from "../colors";
 
 const leveljojo = {
+  path: "/community-level/2",
   size: 9,
   colorRegions: [
     ["C", "C", "C", "C", "C", "C", "C", "C", "C"],
@@ -34,6 +35,8 @@ const leveljojo = {
     H: nomad,
     I: lightOrchid,
   },
+  createdBy: "joananana",
+  creatorLink: "https://github.com/joananana",
 };
 
 export default leveljojo;
