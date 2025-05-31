@@ -138,7 +138,7 @@ const CommunityLevel = ({
       <div className="flex flex-col items-center">
         <div>
           <div
-            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${
+            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full min-w-72 ${
               showClock ? "mb-0" : "mb-2"
             }`}
           >

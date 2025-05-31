@@ -23,7 +23,6 @@ const Board: React.FC<BoardProps> = ({
   showClashingQueens,
   clashingQueens,
 }) => {
-  console.log("board", board);
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
     undefined
   );

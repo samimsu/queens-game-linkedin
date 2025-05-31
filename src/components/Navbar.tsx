@@ -14,7 +14,7 @@ import {
 
 const NAV_LINKS = [
   { to: "/", labelKey: "HOME" },
-  { to: "/bonus-levels", labelKey: "BONUS_LEVELS", isNew: true },
+  { to: "/bonus-levels", labelKey: "BONUS_LEVELS" },
   { to: "/community-levels", labelKey: "COMMUNITY_LEVELS", isNew: true },
   { to: "/level-builder", labelKey: "LEVEL_BUILDER" },
 ];
