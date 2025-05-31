@@ -11,7 +11,7 @@ const Board = ({
   handleSquareTouchMove,
   hideRegionValues,
 }) => {
-  const { gridSize } = useGridSize(size);
+  const { gridSize } = useGridSize(size, "small");
 
   const handleTouchMove = (e) => {
     handleSquareTouchMove(e);
@@ -49,7 +49,7 @@ const Board = ({
               data-col={colIndex} // Add data attributes for touch handling
             />
           );
-        }),
+        })
       )}
     </div>
   );

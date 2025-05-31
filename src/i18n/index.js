@@ -71,8 +71,6 @@ updateDateFnsLocale(i18n.language || primaryLanguage);
 
 // Update date-fns locale on language change
 i18n.on("languageChanged", (lng) => {
-  console.log("languageChanged");
-  console.log("lng", lng);
   updateDateFnsLocale(lng);
 });
 

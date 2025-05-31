@@ -1,0 +1,39 @@
+import { useTranslation, Trans } from "react-i18next";
+import Queen from "../../Queen";
+import { useDirection } from "@/hooks/useDirection";
+
+const HowToPlay = () => {
+  const { t } = useTranslation();
+  const direction = useDirection();
+
+  return (
+    <div
+      className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2"
+      dir={direction}
+    >
+      <div className="font-medium mb-3">{t("HOW_TO_PLAY")}</div>
+      <ol className="list-decimal list-inside space-y-2">
+        <li>
+          <Trans i18nKey="GAME_GOAL_INSTRUCTION">
+            - <b className="font-medium"> </b>
+            <Queen size="20" className="inline mx-1 mb-1" />
+            <b className="font-medium"></b>
+          </Trans>
+        </li>
+        <li>
+          <Trans i18nKey="TAPS_INSTRUCTION">
+            - <Queen size="20" className="inline mx-1 mb-1" />
+            <Queen size="20" className="inline mx-1 mb-1" />
+          </Trans>
+        </li>
+        <li>
+          <Trans i18nKey="TOUCH_DIAGONAL_QUEENS_INSTRUCTION">
+            - <Queen size="20" className="inline mx-1 mb-1" />
+          </Trans>
+        </li>
+      </ol>
+    </div>
+  );
+};
+
+export default HowToPlay;

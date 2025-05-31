@@ -48,7 +48,6 @@ const GroupedLevelsGrid: React.FC<GroupedLevelsGridProps> = ({
           <div className="grid grid-cols-8 sm:grid-cols-10 gap-1">
             {levels.map((level) => {
               const isNew = levelDetails[`level${level}`]?.isNew;
-              console.log("levels", levels);
               return <LevelButton key={level} level={level} isNew={isNew} />;
             })}
           </div>
