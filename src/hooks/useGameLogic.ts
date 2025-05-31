@@ -19,7 +19,7 @@ import {
 import { checkWinCondition, getClashingQueens } from "@/utils/gameLogic";
 
 interface useGameLogicProps {
-  id: string;
+  id?: string;
   boardSize: number;
   colorRegions: string[][];
   levelType?: "bonus" | "community";
@@ -55,11 +55,13 @@ const useGameLogic = ({
   const history = useRef<{ row: number; col: number; symbol: string | null }[]>(
     []
   );
-  const completed = isBonusLevel
-    ? isBonusLevelCompleted(id)
-    : isCommunityLevel
-    ? isCommunityLevelCompleted(id)
-    : isLevelCompleted(Number(id));
+  const completed = id
+    ? isBonusLevel
+      ? isBonusLevelCompleted(id)
+      : isCommunityLevel
+      ? isCommunityLevelCompleted(id)
+      : isLevelCompleted(Number(id))
+    : false;
 
   const getQueenPositionForGivenX = (
     xRow: number,
@@ -142,12 +144,14 @@ const useGameLogic = ({
       }
       setHasWon(true);
 
-      if (isBonusLevel) {
-        markBonusLevelAsCompleted(id);
-      } else if (isCommunityLevel) {
-        markCommunityLevelAsCompleted(id);
-      } else {
-        markLevelAsCompleted(Number(id));
+      if (id) {
+        if (isBonusLevel) {
+          markBonusLevelAsCompleted(id);
+        } else if (isCommunityLevel) {
+          markCommunityLevelAsCompleted(id);
+        } else {
+          markLevelAsCompleted(Number(id));
+        }
       }
     } else {
       setHasWon(false);
@@ -356,6 +360,7 @@ const useGameLogic = ({
   };
 
   useEffect(() => {
+    if (!id) return;
     window.scrollTo(0, 0);
   }, []);
 

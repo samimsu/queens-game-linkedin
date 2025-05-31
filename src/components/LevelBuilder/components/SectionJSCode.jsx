@@ -1,10 +1,10 @@
 import React from "react";
-import { colorNames } from "../../../utils/colors";
-import { queensGameRepoNewLevelFile } from "@/data/links";
-import { useTranslation } from "react-i18next";
-import JSCode from "./JSCode";
-import { Check, Copy } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Check, Copy } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { queensGameRepoNewLevelFile } from "@/data/links";
+import JSCode from "./JSCode";
+import generateLevelJSCode from "@/utils/generateCode";
 
 const SectionJSCode = ({
   jsCode,
@@ -19,62 +19,14 @@ const SectionJSCode = ({
   const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
 
-  const generateLevelJSCode = (levelNumber, board, regionColors) => {
-    // Get the unique regions used in the board
-    const usedRegions = new Set(board.flat().filter(Boolean));
-
-    // Filter the regionColors based on used regions
-    const usedRegionColors = Object.entries(regionColors).filter(([region]) =>
-      usedRegions.has(region)
-    );
-
-    // Get the color variable names for the used colors
-    const usedColorVariables = usedRegionColors
-      .map(([, color]) => colorNames[color])
-      .filter(Boolean);
-
-    // Remove duplicate color variables
-    const uniqueColorVariables = [...new Set(usedColorVariables)];
-
-    // Create the import statement only with used colors
-    const importStatement = `import {\n  ${uniqueColorVariables
-      .sort()
-      .join(",\n  ")},\n} from "../colors";`;
-
-    // Format the board as single-line subarrays
-    const colorRegionsFormatted = board
-      .map((row) => `    [${row.map((cell) => `"${cell}"`).join(", ")}],`)
-      .join("\n");
-
-    // Create the regionColors content dynamically with the color variable names
-    const regionColorsEntries = usedRegionColors
-      .map(([region, color]) => `    ${region}: ${colorNames[color]}`)
-      .join(",\n");
-
-    // Generate the JS file content
-    const jsContent = `${importStatement}
-
-const level${levelNumber} = {
-  size: ${board.length},
-  colorRegions: [
-${colorRegionsFormatted}
-  ],
-  regionColors: {
-${regionColorsEntries},
-  },
-};
-
-export default level${levelNumber};
-`;
-
-    setJsCode(jsContent);
-  };
-
   return (
     <div className="flex flex-col items-start">
       <div className="flex justify-between space-x-2 w-full mb-3">
         <button
-          onClick={() => generateLevelJSCode(levelName, board, regionColors)}
+          onClick={() => {
+            const code = generateLevelJSCode(levelName, board, regionColors);
+            setJsCode(code);
+          }}
           className="border border-slate-500 rounded-full py-1 px-3"
         >
           {t("GENERATE_CODE")}

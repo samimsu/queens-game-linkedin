@@ -20,3 +20,9 @@ export interface CommunityLevel {
   createdBy: string;
   creatorLink?: string;
 }
+
+export interface TestLevel {
+  size: number;
+  colorRegions: string[][];
+  regionColors: { [key: string]: string };
+}
