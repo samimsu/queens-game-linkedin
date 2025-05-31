@@ -373,6 +373,20 @@ import level379 from "./levels/level379";
 import level380 from "./levels/level380";
 import level381 from "./levels/level381";
 import level382 from "./levels/level382";
+import level383 from "./levels/level383";
+import level384 from "./levels/level384";
+import level385 from "./levels/level385";
+import level386 from "./levels/level386";
+import level387 from "./levels/level387";
+import level388 from "./levels/level388";
+import level389 from "./levels/level389";
+import level390 from "./levels/level390";
+import level391 from "./levels/level391";
+import level392 from "./levels/level392";
+import level393 from "./levels/level393";
+import level394 from "./levels/level394";
+import level395 from "./levels/level395";
+import level396 from "./levels/level396";
 
 export const levels: { [key: string]: Level } = {
   level1,
@@ -749,4 +763,18 @@ export const levels: { [key: string]: Level } = {
   level380,
   level381,
   level382,
+  level383,
+  level384,
+  level385,
+  level386,
+  level387,
+  level388,
+  level389,
+  level390,
+  level391,
+  level392,
+  level393,
+  level394,
+  level395,
+  level396,
 };

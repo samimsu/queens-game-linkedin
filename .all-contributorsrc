@@ -124,6 +124,42 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "gnr2bernstein",
+      "name": "gnr2bernstein",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50257551?v=4",
+      "profile": "https://github.com/gnr2bernstein",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "siddydutta",
+      "name": "Siddhartha Dutta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29818092?v=4",
+      "profile": "https://github.com/siddydutta",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "joananana",
+      "name": "Joana Wasserberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60950826?v=4",
+      "profile": "https://github.com/joananana",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "BradleyDE14",
+      "name": "BradleyDE14",
+      "avatar_url": "https://avatars.githubusercontent.com/u/200233588?v=4",
+      "profile": "https://github.com/BradleyDE14",
+      "contributions": [
+        "content"
+      ]
     }
   ]
 }

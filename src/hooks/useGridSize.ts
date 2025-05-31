@@ -1,28 +1,66 @@
 import { useEffect, useState } from "react";
 
-const useGridSize = (boardSize: number) => {
+const useGridSize = (boardSize: number, variant?: "large" | "small") => {
+  let gridSizes = {
+    extraSmallScreen: {
+      8: "45px",
+      9: "40px",
+      10: "35px",
+      11: "33px",
+      12: "30px",
+    },
+    smallScreen: {
+      8: "47px",
+      9: "43px",
+      10: "37px",
+      11: "35px",
+      12: "33px",
+    },
+    largeScreen: "50px",
+  };
+
+  if (variant === "small") {
+    gridSizes = {
+      extraSmallScreen: {
+        8: "43px",
+        9: "38px",
+        10: "33px",
+        11: "30px",
+        12: "27px",
+      },
+      smallScreen: {
+        8: "47px",
+        9: "43px",
+        10: "37px",
+        11: "35px",
+        12: "32px",
+      },
+      largeScreen: "50px",
+    };
+  }
+
   const extraSmallScreenGridSize =
     boardSize < 8
-      ? "45px"
+      ? gridSizes.extraSmallScreen[8]
       : boardSize < 9
-      ? "40px"
+      ? gridSizes.extraSmallScreen[9]
       : boardSize < 10
-      ? "35px"
+      ? gridSizes.extraSmallScreen[10]
       : boardSize < 11
-      ? "33px"
-      : "30px";
+      ? gridSizes.extraSmallScreen[11]
+      : gridSizes.extraSmallScreen[12];
   const smallScreenGridSize =
     boardSize < 8
-      ? "47px"
+      ? gridSizes.smallScreen[8]
       : boardSize < 9
-      ? "43px"
+      ? gridSizes.smallScreen[9]
       : boardSize < 10
-      ? "37px"
+      ? gridSizes.smallScreen[10]
       : boardSize < 11
-      ? "35px"
-      : "33px";
+      ? gridSizes.smallScreen[11]
+      : gridSizes.smallScreen[12];
 
-  const largeScreenGridSize = "50px";
+  const largeScreenGridSize = gridSizes.largeScreen;
 
   const getInitialGridSize = () => {
     const windowWidth = window.innerWidth;

@@ -21,6 +21,20 @@ export const markBonusLevelAsCompleted = (levelId: string) => {
   }
 };
 
+export const markCommunityLevelAsCompleted = (levelId: string) => {
+  const completedLevels =
+    JSON.parse(localStorage.getItem("completedCommunityLevels") as string) ||
+    [];
+
+  if (!completedLevels.includes(levelId)) {
+    completedLevels.push(levelId);
+    localStorage.setItem(
+      "completedCommunityLevels",
+      JSON.stringify(completedLevels)
+    );
+  }
+};
+
 export const isLevelCompleted = (levelNumber: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedLevels") as string) || [];
@@ -30,6 +44,13 @@ export const isLevelCompleted = (levelNumber: number) => {
 export const isBonusLevelCompleted = (levelId: string) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedBonusLevels") as string) || [];
+  return completedLevels.includes(levelId);
+};
+
+export const isCommunityLevelCompleted = (levelId: string) => {
+  const completedLevels =
+    JSON.parse(localStorage.getItem("completedCommunityLevels") as string) ||
+    [];
   return completedLevels.includes(levelId);
 };
 
@@ -86,5 +107,26 @@ export const setBonusLevelsClicked = (clicked: boolean) => {
 export const getBonusLevelsClicked = () => {
   return (
     JSON.parse(localStorage.getItem("bonusLevelsClicked") as string) ?? false
+  ); // Default to false
+};
+
+export const setCommunityLevelsClicked = (clicked: boolean) => {
+  localStorage.setItem("communityLevelsClicked", JSON.stringify(clicked));
+};
+
+export const getCommunityLevelsClicked = () => {
+  return (
+    JSON.parse(localStorage.getItem("communityLevelsClicked") as string) ??
+    false
+  ); // Default to false
+};
+
+export const setHideCompletedLevelsPreference = (enabled: boolean) => {
+  localStorage.setItem("hideCompletedLevels", JSON.stringify(enabled));
+};
+
+export const getHideCompletedLevelsPreference = () => {
+  return (
+    JSON.parse(localStorage.getItem("hideCompletedLevels") as string) ?? false
   ); // Default to false
 };
