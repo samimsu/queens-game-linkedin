@@ -8,7 +8,8 @@ import {
   saharaSand,
 } from "../colors";
 
-const level1 = {
+const level3 = {
+  path: "/community-level/3",
   size: 7,
   colorRegions: [
     ["B", "B", "B", "C", "C", "C", "C"],
@@ -28,6 +29,8 @@ const level1 = {
     F: bittersweet,
     G: saharaSand,
   },
+  createdBy: "akraja1",
+  creatorLink: "https://github.com/akraja1",
 };
 
-export default level1;
+export default level3;
