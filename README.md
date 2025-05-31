@@ -78,6 +78,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/siddydutta"><img src="https://avatars.githubusercontent.com/u/29818092?v=4?s=100" width="100px;" alt="Siddhartha Dutta"/><br /><sub><b>Siddhartha Dutta</b></sub></a><br /><a href="#code-siddydutta" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/joananana"><img src="https://avatars.githubusercontent.com/u/60950826?v=4?s=100" width="100px;" alt="Joana Wasserberg"/><br /><sub><b>Joana Wasserberg</b></sub></a><br /><a href="#content-joananana" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
