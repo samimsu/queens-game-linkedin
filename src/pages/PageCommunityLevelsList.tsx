@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import RootLayout from "@/layouts/RootLayout";
 import Queen from "@/components/Queen";
 import { isCommunityLevelCompleted } from "@/utils/localStorage";
 import { communityLevels } from "@/utils/communityLevels";
-import { useTranslation } from "react-i18next";
+import PageTitle from "@/components/PageTitle";
 
 interface LevelButtonProps {
   level: number;
@@ -36,6 +37,7 @@ const PageCommunityLevelsList = () => {
 
   return (
     <RootLayout>
+      <PageTitle title={t("COMMUNITY_LEVELS")} />
       <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 max-w-lg text-sm">
         {t("DISCOVER_AND_BUILD_COMMUNITY_LEVELS")}{" "}
         <Link

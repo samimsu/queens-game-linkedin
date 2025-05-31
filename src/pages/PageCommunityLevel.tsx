@@ -95,7 +95,7 @@ const PageCommunityLevel = () => {
 
   return (
     <RootLayout>
-      <PageTitle title={`${t("COMMUNITY_LEVEL")} ${level}`} />
+      <PageTitle title={`${t("COMMUNITY_LEVEL")} ${id}`} />
       <div className="flex justify-center space-x-2">
         <div>{t("CREATED_BY_2")}</div>
         {(creatorLink && (
