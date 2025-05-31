@@ -9,7 +9,9 @@ import NewBadge from "./NewBadge";
 import { useTranslation } from "react-i18next";
 import {
   getBonusLevelsClicked,
+  getCommunityLevelsClicked,
   setBonusLevelsClicked,
+  setCommunityLevelsClicked,
 } from "@/utils/localStorage";
 
 const NAV_LINKS = [
@@ -25,10 +27,17 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const bonusLevelsClicked = getBonusLevelsClicked();
+  const communityLevelsClicked = getCommunityLevelsClicked();
 
   const handleBonusLevelsClick = () => {
     if (!bonusLevelsClicked) {
       setBonusLevelsClicked(true);
+    }
+  };
+
+  const handleCommunityLevelsClick = () => {
+    if (!communityLevelsClicked) {
+      setCommunityLevelsClicked(true);
     }
   };
 
@@ -57,7 +66,11 @@ const Navbar = () => {
                   }
                   onClick={() => {
                     if (link.labelKey === "BONUS_LEVELS") {
+                      console.log("bonus clicked");
                       handleBonusLevelsClick();
+                    }
+                    if (link.labelKey === "COMMUNITY_LEVELS") {
+                      handleCommunityLevelsClick();
                     }
                   }}
                 >
@@ -78,7 +91,7 @@ const Navbar = () => {
             <SupportMeIconButton />
             <span className="relative inline-flex">
               <button className="lg:hidden" onClick={toggleMenu}>
-                {!bonusLevelsClicked && (
+                {(!bonusLevelsClicked || !communityLevelsClicked) && (
                   <span className="absolute top-0 right-0 -mt-1 -mr-1 flex size-3">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
                     <span className="relative inline-flex size-3 rounded-full bg-primary"></span>
@@ -107,6 +120,9 @@ const Navbar = () => {
                     toggleMenu();
                     if (link.labelKey === "BONUS_LEVELS") {
                       handleBonusLevelsClick();
+                    }
+                    if (link.labelKey === "COMMUNITY_LEVELS") {
+                      handleCommunityLevelsClick();
                     }
                   }}
                 >

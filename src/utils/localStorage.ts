@@ -110,6 +110,17 @@ export const getBonusLevelsClicked = () => {
   ); // Default to false
 };
 
+export const setCommunityLevelsClicked = (clicked: boolean) => {
+  localStorage.setItem("communityLevelsClicked", JSON.stringify(clicked));
+};
+
+export const getCommunityLevelsClicked = () => {
+  return (
+    JSON.parse(localStorage.getItem("communityLevelsClicked") as string) ??
+    false
+  ); // Default to false
+};
+
 export const setHideCompletedLevelsPreference = (enabled: boolean) => {
   localStorage.setItem("hideCompletedLevels", JSON.stringify(enabled));
 };
