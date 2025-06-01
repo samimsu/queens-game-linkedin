@@ -85,6 +85,9 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MooseMoosesMeese"><img src="https://avatars.githubusercontent.com/u/166053846?v=4?s=100" width="100px;" alt="MooseMoosesMeese"/><br /><sub><b>MooseMoosesMeese</b></sub></a><br /><a href="#content-MooseMoosesMeese" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ali-Heskol"><img src="https://avatars.githubusercontent.com/u/77662374?v=4?s=100" width="100px;" alt="Ali A. Heskol"/><br /><sub><b>Ali A. Heskol</b></sub></a><br /><a href="#content-Ali-Heskol" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/connorrclarke"><img src="https://avatars.githubusercontent.com/u/144261509?v=4?s=100" width="100px;" alt="Connor Clarke"/><br /><sub><b>Connor Clarke</b></sub></a><br /><a href="#content-connorrclarke" title="Content">🖋</a></td>
+    </tr>
   </tbody>
 </table>
 
