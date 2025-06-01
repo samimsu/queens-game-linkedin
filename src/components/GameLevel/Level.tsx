@@ -232,7 +232,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
             category="Announcements"
             categoryId="DIC_kwDONCfeAs4CnIas"
             mapping="pathname"
-            strict="0"
+            strict="1"
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="bottom"
