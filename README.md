@@ -83,6 +83,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/akraja1"><img src="https://avatars.githubusercontent.com/u/214076649?v=4?s=100" width="100px;" alt="akraja1"/><br /><sub><b>akraja1</b></sub></a><br /><a href="#content-akraja1" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://freischuetz.org"><img src="https://avatars.githubusercontent.com/u/1988585?v=4?s=100" width="100px;" alt="Johannes Freischuetz"/><br /><sub><b>Johannes Freischuetz</b></sub></a><br /><a href="#content-jsfreischuetz" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MooseMoosesMeese"><img src="https://avatars.githubusercontent.com/u/166053846?v=4?s=100" width="100px;" alt="MooseMoosesMeese"/><br /><sub><b>MooseMoosesMeese</b></sub></a><br /><a href="#content-MooseMoosesMeese" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ali-Heskol"><img src="https://avatars.githubusercontent.com/u/77662374?v=4?s=100" width="100px;" alt="Ali A. Heskol"/><br /><sub><b>Ali A. Heskol</b></sub></a><br /><a href="#content-Ali-Heskol" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
