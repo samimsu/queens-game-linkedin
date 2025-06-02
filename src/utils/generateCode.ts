@@ -9,7 +9,9 @@ interface RegionColors {
 const generateLevelJSCode = (
   levelNumber: number,
   board: Board,
-  regionColors: RegionColors
+  regionColors: RegionColors,
+  createdBy?: string,
+  personalLink?: string
 ): string => {
   // Get the unique regions used in the board
   const usedRegions = new Set(board.flat().filter(Boolean));
@@ -52,7 +54,9 @@ ${colorRegionsFormatted}
   ],
   regionColors: {
 ${regionColorsEntries},
-  },
+  },${createdBy ? `\n  createdBy: "${createdBy}",` : ""}${
+    personalLink ? `\n  creatorLink: "${personalLink}",` : ""
+  }
 };
 
 export default level${levelNumber ? levelNumber : ""};
