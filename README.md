@@ -87,6 +87,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/connorrclarke"><img src="https://avatars.githubusercontent.com/u/144261509?v=4?s=100" width="100px;" alt="Connor Clarke"/><br /><sub><b>Connor Clarke</b></sub></a><br /><a href="#content-connorrclarke" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/KoroKira"><img src="https://avatars.githubusercontent.com/u/63927791?v=4?s=100" width="100px;" alt="Guilhem Desarcy-Lemiere"/><br /><sub><b>Guilhem Desarcy-Lemiere</b></sub></a><br /><a href="#content-KoroKira" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
