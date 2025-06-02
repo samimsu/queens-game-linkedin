@@ -78,5 +78,6 @@
   "BONUS_LEVEL": "Livello Bonus",
   "BONUS_LEVELS": "Livelli Bonus",
   "WEEK_OF": "Settimana del {{weekOfDate}}",
-  "PLAY": "Giocare"
+  "PLAY": "Giocare",
+  "PLAY_SIZE": "Gioca {{playSize}}"
 }

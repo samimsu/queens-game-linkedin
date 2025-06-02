@@ -101,5 +101,6 @@
   "SUBMIT_LEVEL": "Enviar Nivel",
   "OR": "o",
   "COPY_DETAILS": "Detalles de la copia",
-  "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "¡Descubre niveles únicos creados por la comunidad! Juega, inspírate y construye los tuyos con el"
+  "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "¡Descubre niveles únicos creados por la comunidad! Juega, inspírate y construye los tuyos con el",
+  "PLAY_SIZE": "Jugar {{playSize}}"
 }

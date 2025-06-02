@@ -80,5 +80,6 @@
   "BONUS_LEVEL": "Nível de bônus",
   "BONUS_LEVELS": "Níveis de bônus",
   "WEEK_OF": "Semana de {{weekOfDate}}",
-  "PLAY": "Jogar"
+  "PLAY": "Jogar",
+  "PLAY_SIZE": "Jogar {{playSize}}"
 }

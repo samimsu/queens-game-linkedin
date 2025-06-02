@@ -67,14 +67,16 @@ const WinningScreen = ({
           const nextSize = levelsBySize[Number(size) + 1];
           if (nextSize) {
             updatedNextLevel = nextSize[0];
-            nextLevelText = `Play ${Number(size) + 1}x${Number(size) + 1}`;
+            const playSize = `${Number(size) + 1}x${Number(size) + 1}`;
+            nextLevelText = t("PLAY_SIZE", { playSize });
           }
         }
         if (!updatedPreviousLevel) {
           const previousSize = levelsBySize[Number(size) - 1];
           if (previousSize) {
             updatedPreviousLevel = previousSize[0];
-            previousLevelText = `Play ${Number(size) - 1}x${Number(size) - 1}`;
+            const playSize = `${Number(size) - 1}x${Number(size) - 1}`;
+            previousLevelText = t("PLAY_SIZE", { playSize });
           }
         }
         break;
