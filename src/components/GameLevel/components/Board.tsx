@@ -33,7 +33,7 @@ const Board: React.FC<BoardProps> = ({
   );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
-  const { gridSize } = useGridSize(board.length);
+  const { gridSize } = useGridSize(board.length, "small");
 
   return (
     <div
