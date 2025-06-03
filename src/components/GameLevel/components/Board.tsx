@@ -12,6 +12,7 @@ interface BoardProps {
   regionColors: { [key: string]: string };
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
+  disabled?: boolean;
 }
 
 const Board: React.FC<BoardProps> = ({
@@ -24,6 +25,7 @@ const Board: React.FC<BoardProps> = ({
   regionColors,
   showClashingQueens,
   clashingQueens,
+  disabled = false,
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
     undefined
@@ -52,6 +54,7 @@ const Board: React.FC<BoardProps> = ({
             value={square}
             region={colorRegions[rowIndex][colIndex]}
             onPointerDown={(e) => {
+              if (disabled) return;
               const currentSquare = `${rowIndex},${colIndex}`;
               setInitialSquare(currentSquare);
               setInitialSquareHandled(false);
@@ -59,6 +62,7 @@ const Board: React.FC<BoardProps> = ({
               (e.target as HTMLElement).releasePointerCapture(e.pointerId);
             }}
             onPointerEnter={(e) => {
+              if (disabled) return;
               const currentSquare = `${rowIndex},${colIndex}`;
               // on mobile PointerEnter is fired once before PointerDown so check if there is already an initial square
               if (e.buttons === 1 && initialSquare) {
@@ -76,6 +80,7 @@ const Board: React.FC<BoardProps> = ({
               }
             }}
             onPointerUp={() => {
+              if (disabled) return;
               const currentSquare = `${rowIndex},${colIndex}`;
               const isBasicClick =
                 initialSquare === currentSquare && !previousSquare;
