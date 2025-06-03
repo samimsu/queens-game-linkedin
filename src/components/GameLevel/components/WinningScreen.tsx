@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CloseIcon from "../../icons/CloseIcon";
@@ -123,12 +122,12 @@ const WinningScreen = ({
           </div>
         )}
         <LevelNavigationButton
-          level={updatedPreviousLevel}
+          level={Array.isArray(updatedPreviousLevel) ? updatedPreviousLevel[0] : updatedPreviousLevel}
           text={previousLevelText}
           isTextSmall={!!timer}
         />
         <LevelNavigationButton
-          level={updatedNextLevel}
+          level={Array.isArray(updatedNextLevel) ? updatedNextLevel[0] : updatedNextLevel}
           text={nextLevelText}
           isTextSmall={!!timer}
         />
