@@ -66,7 +66,6 @@ const Navbar = () => {
                   }
                   onClick={() => {
                     if (link.labelKey === "BONUS_LEVELS") {
-                      console.log("bonus clicked");
                       handleBonusLevelsClick();
                     }
                     if (link.labelKey === "COMMUNITY_LEVELS") {

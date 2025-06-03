@@ -138,7 +138,7 @@ const BonusLevel = ({
       <div className="flex flex-col items-center">
         <div>
           <div
-            className={`flex items-center space-x-4 sm:space-x-0 sm:justify-between py-1 w-full ${
+            className={`flex items-center space-x-2 justify-between py-1 w-full ${
               showClock ? "mb-0" : "mb-2"
             }`}
           >
@@ -153,7 +153,7 @@ const BonusLevel = ({
                 <PreviousIcon />
               </PreviousLevelButton>
 
-              <h2 className="text-xl text-center">{title}</h2>
+              <h2 className="text-lg text-center">{title}</h2>
 
               <NextLevelButton className="disabled:opacity-50">
                 <NextIcon />
@@ -161,13 +161,13 @@ const BonusLevel = ({
             </div>
 
             <div className="flex flex-1 sm:flex-none justify-end">
-              <div className="relative flex items-center">
-                {completed && (
-                  <Queen
-                    size="24"
-                    className="absolute right-full top-1/2 transform -translate-y-1/2 fill-yellow-400 mr-2"
-                  />
-                )}
+              <div className="flex items-center">
+                <Queen
+                  size="24"
+                  className={`fill-yellow-400 mr-2 ${
+                    completed ? "visible" : "invisible"
+                  }`}
+                />
                 <button
                   onClick={() => {
                     setBoard(createEmptyBoard(levelSize));
@@ -201,7 +201,7 @@ const BonusLevel = ({
             />
           </div>
 
-          <div className="game relative">
+          <div className="game relative flex justify-center">
             {showWinningScreen && (
               <WinningScreen
                 {...(showClock && { timer })}
@@ -245,7 +245,7 @@ const BonusLevel = ({
             category="Announcements"
             categoryId="DIC_kwDONCfeAs4CnIas"
             mapping="pathname"
-            strict="0"
+            strict="1"
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="bottom"

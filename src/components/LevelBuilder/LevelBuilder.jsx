@@ -250,7 +250,13 @@ const LevelBuilder = () => {
       if (!firstErrorField) firstErrorField = "createdBy";
     }
 
-    formData.level = generateLevelJSCode(null, board, regionColors);
+    formData.level = generateLevelJSCode(
+      null,
+      board,
+      regionColors,
+      formData.createdBy,
+      formData.personalLink
+    );
 
     // Validate board for emptiness, completeness, and color usage
     if (!formData.level.trim()) {

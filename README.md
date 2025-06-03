@@ -21,7 +21,7 @@
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
-## Levels Added (389/397)
+## Levels Added (391/399)
 
 - [x] 1-3
 - [ ] 4
@@ -33,7 +33,7 @@
 - [ ] 13-14
 - [x] 15-17
 - [ ] 18-20
-- [x] 21-397
+- [x] 21-399
 
 Note: If anyone could help in finding the missing levels, I'd really appreciate it.
 
@@ -87,6 +87,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/connorrclarke"><img src="https://avatars.githubusercontent.com/u/144261509?v=4?s=100" width="100px;" alt="Connor Clarke"/><br /><sub><b>Connor Clarke</b></sub></a><br /><a href="#content-connorrclarke" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/KoroKira"><img src="https://avatars.githubusercontent.com/u/63927791?v=4?s=100" width="100px;" alt="Guilhem Desarcy-Lemiere"/><br /><sub><b>Guilhem Desarcy-Lemiere</b></sub></a><br /><a href="#content-KoroKira" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
