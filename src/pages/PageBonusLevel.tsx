@@ -51,10 +51,6 @@ function getDatesFromId(id: string) {
   return { startDate };
 }
 
-const formatDate = (date: Date) => {
-  return format(date, "MMMM d, yyyy");
-};
-
 // Function to find the previous level
 function findPreviousLevel(
   currentLevelKey: string,
@@ -133,8 +129,9 @@ const PageBonusLevel = () => {
 
   const { startDate } = getDatesFromId(id);
 
-  const weekOfDate = formatDate(startDate);
-
+  // Format dates for display and ID
+  const dateFormat = t("DATE_FORMAT", "MMMM d, yyyy");
+  const weekOfDate = format(startDate, dateFormat);
   return (
     <RootLayout>
       <PageTitle

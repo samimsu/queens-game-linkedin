@@ -27,8 +27,9 @@ const PageBonusLevelsList = () => {
     const dateStr = key.replace("level", "");
     const startDate = parse(dateStr, "yyyyMMdd", new Date());
 
-    const weekOfDate = format(startDate, "MMM d, yyyy");
-
+    const dateFormat = t("DATE_FORMAT", "MMM d, yyyy");
+    
+    const weekOfDate = format(startDate, dateFormat);
     // Format dates for display and ID
     const displayRange = t("WEEK_OF", { weekOfDate });
     const id = bonusLevels[key as keyof typeof bonusLevels].path;
