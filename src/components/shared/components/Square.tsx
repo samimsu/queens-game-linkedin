@@ -17,7 +17,7 @@ interface SquareProps {
 }
 
 // Square component with color regions and toggling between 'X', 'Q', and empty
-const Square = ({
+const Square: React.FC<SquareProps> = ({
   row,
   col,
   value,
@@ -30,7 +30,7 @@ const Square = ({
   regionColors,
   isClashing,
   ...props
-}: SquareProps) => {
+}) => {
   // Function to determine border classes
   const getBorderClasses = () => {
     const borderClasses: string[] = [];
