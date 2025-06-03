@@ -22,7 +22,7 @@ interface useGameLogicProps {
   id?: string;
   boardSize: number;
   colorRegions: string[][];
-  levelType?: "game" | "bonus" | "community";
+  levelType?: "normal" | "bonus" | "community";
 }
 
 const useGameLogic = ({

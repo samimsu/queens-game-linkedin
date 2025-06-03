@@ -34,7 +34,7 @@ export interface BaseLevelProps {
   level: LevelData;
   previousLevel?: LevelData | null;
   nextLevel?: LevelData | null;
-  levelType: "game" | "bonus" | "community";
+  levelType: "normal" | "bonus" | "community";
   previousPage: string;
 }
 

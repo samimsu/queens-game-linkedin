@@ -34,7 +34,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
       level={levelData}
       previousLevel={previousLevelData}
       nextLevel={nextLevelData}
-      levelType="game"
+      levelType="normal"
       previousPage="/"
     />
   );
