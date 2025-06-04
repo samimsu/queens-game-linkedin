@@ -91,6 +91,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/SindhuLie"><img src="https://avatars.githubusercontent.com/u/56371890?v=4?s=100" width="100px;" alt="SindhuLie"/><br /><sub><b>SindhuLie</b></sub></a><br /><a href="#content-SindhuLie" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/boulledogue"><img src="https://avatars.githubusercontent.com/u/12085977?v=4?s=100" width="100px;" alt="boulledogue"/><br /><sub><b>boulledogue</b></sub></a><br /><a href="#content-boulledogue" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/KhanhNabule"><img src="https://avatars.githubusercontent.com/u/93192370?v=4?s=100" width="100px;" alt="KhanhNabule"/><br /><sub><b>KhanhNabule</b></sub></a><br /><a href="#content-KhanhNabule" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ampyroteuthis-infernalis"><img src="https://avatars.githubusercontent.com/u/214874963?v=4?s=100" width="100px;" alt="ampyroteuthis-infernalis"/><br /><sub><b>ampyroteuthis-infernalis</b></sub></a><br /><a href="#content-ampyroteuthis-infernalis" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
