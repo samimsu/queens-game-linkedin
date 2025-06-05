@@ -1,28 +1,48 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import CloseIcon from "@/components/icons/CloseIcon";
+import CloseIcon from "../../icons/CloseIcon";
+import formatDuration from "@/utils/formatDuration";
 import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
-import formatDuration from "@/utils/formatDuration";
+
+interface LinkData {
+  path: string;
+  text: string;
+}
+
+interface LevelNavigationButtonProps {
+  link: LinkData;
+  isTextSmall: boolean;
+}
+
+const LevelNavigationButton = ({
+  link,
+  isTextSmall,
+}: LevelNavigationButtonProps) => (
+  <Link to={!link.path ? "#" : link.path} className="flex">
+    <button
+      disabled={!link.path}
+      className={`${
+        isTextSmall ? "text-lg" : "text-xl"
+      } min-w-36 rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
+    >
+      {link.text}
+    </button>
+  </Link>
+);
 
 interface WinningScreenProps {
-  previousLink: {
-    path: string;
-    text: string;
-  };
-  nextLink: {
-    path: string;
-    text: string;
-  };
-  close: () => void;
   timer?: number;
+  previousLink: LinkData;
+  nextLink: LinkData;
+  close: () => void;
 }
 
 const WinningScreen = ({
+  timer = 0,
   previousLink,
   nextLink,
   close,
-  timer,
 }: WinningScreenProps) => {
   const { t } = useTranslation();
 
@@ -47,7 +67,7 @@ const WinningScreen = ({
       </div>
 
       <div className="flex flex-col space-y-3">
-        {timer && timer > 0 && (
+        {timer > 0 && (
           <div className="relative flex justify-center">
             <img
               src={goldenChicletBg}
@@ -61,41 +81,16 @@ const WinningScreen = ({
           </div>
         )}
         <LevelNavigationButton
-          path={previousLink.path}
-          text={previousLink.text}
+          link={previousLink}
           isTextSmall={!!timer}
         />
         <LevelNavigationButton
-          path={nextLink.path}
-          text={nextLink.text}
+          link={nextLink}
           isTextSmall={!!timer}
         />
       </div>
     </div>
   );
 };
-
-interface LevelNavigationButtonProps {
-  path: string;
-  text: string;
-  isTextSmall: boolean;
-}
-
-const LevelNavigationButton = ({
-  path,
-  text,
-  isTextSmall,
-}: LevelNavigationButtonProps) => (
-  <Link to={path} className="flex">
-    <button
-      disabled={!path}
-      className={`${
-        isTextSmall ? "text-lg" : "text-xl"
-      } min-w-36 rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
-    >
-      {text}
-    </button>
-  </Link>
-);
 
 export default WinningScreen;
