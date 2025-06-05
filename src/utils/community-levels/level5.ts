@@ -38,6 +38,7 @@ const level = {
     I: lightOrchid,
     J: halfBaked,
   },
+  solutionsCount: 2,
   createdBy: "zimooo2",
   creatorLink: "https://www.freischuetz.org/",
 };

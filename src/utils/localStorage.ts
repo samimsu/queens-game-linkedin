@@ -130,3 +130,54 @@ export const getHideCompletedLevelsPreference = () => {
     JSON.parse(localStorage.getItem("hideCompletedLevels") as string) ?? false
   ); // Default to false
 };
+
+export const setShowUniqueCommunityLevelsPreference = (enabled: boolean) => {
+  localStorage.setItem("showUniqueCommunityLevels", JSON.stringify(enabled));
+};
+
+export const getShowUniqueCommunityLevelsPreference = () => {
+  return (
+    JSON.parse(localStorage.getItem("showUniqueCommunityLevels") as string) ??
+    false
+  ); // Default to false
+};
+
+export const setShowMultipleCommunityLevelsPreference = (enabled: boolean) => {
+  localStorage.setItem("showMultipleCommunityLevels", JSON.stringify(enabled));
+};
+
+export const getShowMultipleCommunityLevelsPreference = () => {
+  return (
+    JSON.parse(localStorage.getItem("showMultipleCommunityLevels") as string) ??
+    false
+  ); // Default to false
+};
+
+export const setShowCompletedCommunityLevelsPreference = (enabled: boolean) => {
+  localStorage.setItem("showCompletedCommunityLevels", JSON.stringify(enabled));
+};
+
+export const getShowCompletedCommunityLevelsPreference = () => {
+  return (
+    JSON.parse(
+      localStorage.getItem("showCompletedCommunityLevels") as string
+    ) ?? false
+  ); // Default to false
+};
+
+export const setShowNotCompletedCommunityLevelsPreference = (
+  enabled: boolean
+) => {
+  localStorage.setItem(
+    "showNotCompletedCommunityLevels",
+    JSON.stringify(enabled)
+  );
+};
+
+export const getShowNotCompletedCommunityLevelsPreference = () => {
+  return (
+    JSON.parse(
+      localStorage.getItem("showNotCompletedCommunityLevels") as string
+    ) ?? false
+  ); // Default to false
+};

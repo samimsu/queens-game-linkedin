@@ -26,6 +26,7 @@ const level = {
     E: altoMain,
     F: bittersweet,
   },
+  solutionsCount: 1,
   createdBy: "DocUniverse",
 };
 

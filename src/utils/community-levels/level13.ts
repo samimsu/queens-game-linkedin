@@ -38,6 +38,7 @@ const level = {
     I: lightOrchid,
     J: halfBaked,
   },
+  solutionsCount: 5839,
   createdBy: "Yakoy U'Kugura",
 };
 

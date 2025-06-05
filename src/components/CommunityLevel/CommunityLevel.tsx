@@ -18,6 +18,7 @@ import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import useGameLogic from "@/hooks/useGameLogic";
+import Tag from "../Tag";
 
 interface CommunityLevelProps {
   id: string;
@@ -193,7 +194,12 @@ const CommunityLevel = ({
             </div>
           </div>
 
-          <div className="flex justify-end">
+          <div
+            className={`flex mb-1 ${
+              level.solutionsCount > 1 ? "justify-between" : "justify-end"
+            }`}
+          >
+            {level.solutionsCount > 1 && <Tag>{t("MULTIPLE_SOLUTIONS")}</Tag>}
             <Timer
               run={timerRunning}
               onTimeUpdate={handleTimeUpdate}

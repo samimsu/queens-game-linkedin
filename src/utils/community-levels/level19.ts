@@ -38,6 +38,7 @@ const level = {
     I: lightOrchid,
     J: halfBaked,
   },
+  solutionsCount: 1,
   createdBy: "TheGreatestPaul",
 };
 

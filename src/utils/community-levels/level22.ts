@@ -32,6 +32,7 @@ const level = {
     G: saharaSand,
     H: halfBaked,
   },
+  solutionsCount: 2,
   createdBy: "caitlinellish",
 };
 

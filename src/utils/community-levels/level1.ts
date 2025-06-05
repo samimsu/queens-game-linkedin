@@ -26,6 +26,7 @@ const level1 = {
     E: altoMain,
     F: bittersweet,
   },
+  solutionsCount: 14,
   createdBy: "BradleyDE14",
   creatorLink: "https://www.github.com/BradleyDE14",
 };

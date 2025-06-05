@@ -35,6 +35,7 @@ const leveljojo = {
     H: nomad,
     I: lightOrchid,
   },
+  solutionsCount: 6,
   createdBy: "joananana",
   creatorLink: "https://github.com/joananana",
 };

@@ -104,5 +104,10 @@
   "COPY_DETAILS": "Copy Details",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Discover unique levels created by the community! Play, get inspired, and build your own with the",
   "PLAY_SIZE": "Play {{playSize}}",
-  "NEW": "New"
+  "NEW": "New",
+  "UNIQUE_SOLUTIONS": "Unique solutions",
+  "MULTIPLE_SOLUTIONS": "Multiple solutions",
+  "COMPLETED": "Completed",
+  "NOT_COMPLETED": "Not completed",
+  "CLEAR_ALL": "Clear all"
 }

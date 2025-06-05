@@ -41,6 +41,7 @@ const level = {
     J: saharaSand,
     K: bittersweet,
   },
+  solutionsCount: 56,
   createdBy: "trystan4861",
   creatorLink: "https://github.com/Trystan4861",
 };

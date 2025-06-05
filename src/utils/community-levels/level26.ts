@@ -29,6 +29,7 @@ const level = {
     F: bittersweet,
     G: saharaSand,
   },
+  solutionsCount: 1,
   createdBy: "Brenda LL",
   creatorLink: "https://github.com/ampyroteuthis-infernalis",
 };

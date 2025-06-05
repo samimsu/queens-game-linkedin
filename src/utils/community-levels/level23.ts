@@ -29,6 +29,7 @@ const level = {
     F: bittersweet,
     G: saharaSand,
   },
+  solutionsCount: 1,
   createdBy: "saletype",
   creatorLink: "https://github.com/boulledogue",
 };

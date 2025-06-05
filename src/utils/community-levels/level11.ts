@@ -1,4 +1,3 @@
-import { CommunityLevel } from "../types";
 import {
   altoMain,
   anakiwa,
@@ -13,7 +12,7 @@ import {
   turquoiseBlue,
 } from "../colors";
 
-const level: CommunityLevel = {
+const level = {
   path: "/community-level/11",
   size: 11,
   colorRegions: [
@@ -42,6 +41,7 @@ const level: CommunityLevel = {
     J: halfBaked,
     K: turquoiseBlue,
   },
+  solutionsCount: 51948,
   createdBy: "KoroKira",
   creatorLink: "https://github.com/KoroKira",
 };

@@ -32,6 +32,7 @@ const level = {
     G: saharaSand,
     H: nomad,
   },
+  solutionsCount: 195,
   createdBy: "khanhvd",
   creatorLink: "https://github.com/KhanhNabule",
 };

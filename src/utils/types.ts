@@ -17,6 +17,7 @@ export interface CommunityLevel {
   size: number;
   colorRegions: string[][];
   regionColors: { [key: string]: string };
+  solutionsCount: number;
   createdBy: string;
   creatorLink?: string;
 }

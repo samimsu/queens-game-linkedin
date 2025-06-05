@@ -41,6 +41,7 @@ const level = {
     J: halfBaked,
     K: turquoiseBlue,
   },
+  solutionsCount: 104045,
   createdBy: "bigbert619",
 };
 
