@@ -104,5 +104,10 @@
   "COPY_DETAILS": "Copiar al portapapeles",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "¡Descubre niveles únicos creados por la comunidad! Juega, inspírate y construye los tuyos con el",
   "PLAY_SIZE": "Jugar {{playSize}}",
-  "NEW": "Nuevo"
+  "NEW": "Nuevo",
+  "UNIQUE_SOLUTIONS": "Soluciones únicas",
+  "MULTIPLE_SOLUTIONS": "Múltiples soluciones",
+  "COMPLETED": "Completado",
+  "NOT_COMPLETED": "No completado",
+  "CLEAR_ALL": "Borrar todo"
 }
