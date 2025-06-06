@@ -104,7 +104,7 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background shadow-lg rounded-b-lg p-4 z-20 lg:hidden">
+        <div className="absolute top-full left-0 right-0 bg-background shadow-lg rounded-b-lg p-4 z-50 lg:hidden">
           <ul className="space-y-2">
             {NAV_LINKS.map((link) => (
               <li key={link.to} className="relative">
