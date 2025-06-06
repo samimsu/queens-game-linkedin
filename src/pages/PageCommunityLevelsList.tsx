@@ -109,7 +109,6 @@ const PageCommunityLevelsList = () => {
         {filteredLevels.map((key) => {
           const levelId = Number(key.replace("level", ""));
           const hasMultipleSolutions = communityLevels[key].solutionsCount > 1;
-          console.log("communityLevels", communityLevels[key].solutionsCount);
           return (
             <LevelButton
               key={levelId}
