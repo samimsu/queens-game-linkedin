@@ -1,21 +1,20 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTheme } from "next-themes";
 import { patreon } from "@/data/links";
+import patreonIconBlack from "@/assets/patreon-black.svg";
+import patreonIconWhite from "@/assets/patreon-white.svg";
 
-type PatreonButtonProps = {};
-
-const PatreonButton: React.FC<PatreonButtonProps> = () => {
-  const { t } = useTranslation();
+const PatreonButton = () => {
+  const { theme } = useTheme();
+  console.log("theme", theme);
   return (
-    <a href={patreon} target="_blank" rel="noopener noreferrer">
-      <div className="bg-[#F96C51] pt-[7px] pl-[14px] pr-[10px] pb-[10px] rounded-[30px] w-full h-[35px] flex justify-between items-start">
-        <span className="w-[4px] h-[21px] bg-[#062A49]"></span>
-        <span className="w-[16px] h-[16px] bg-[white] rounded-[50%] ml-[2px] mr-[6px]"></span>
-        <span className="text-white text-[11px] uppercase mt-[-2px] font-medium tracking-wider leading-[12px] w-[107px]">
-          {t("SUPPORT_ME_ON_PATREON")}
-        </span>
-      </div>
-    </a>
+    <div>
+      <a href={patreon} target="_blank" rel="noopener noreferrer">
+        <img
+          src={theme === "dark" ? patreonIconWhite : patreonIconBlack}
+          className="h-4 sm:h-5"
+        />
+      </a>
+    </div>
   );
 };
 

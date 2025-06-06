@@ -1,10 +1,10 @@
-const DiscordIcon = () => {
+const DiscordIcon = ({ className = "" }) => {
   return (
     <svg
       id="Discord-Logo"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 126.644 96"
-      width="24"
+      className={className}
     >
       <defs>
         <style>{`.cls-1{fill:#5865f2;}`}</style>

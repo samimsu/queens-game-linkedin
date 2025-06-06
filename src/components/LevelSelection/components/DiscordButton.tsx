@@ -5,7 +5,7 @@ const DiscordButton = () => {
   return (
     <div>
       <a href={discord} target="_blank" rel="noopener noreferrer">
-        <DiscordIcon />
+        <DiscordIcon className="h-4 sm:h-5" />
       </a>
     </div>
   );
