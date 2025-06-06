@@ -101,5 +101,12 @@
   "SUBMIT_LEVEL": "提交级别",
   "OR": "或",
   "COPY_DETAILS": "复制详情",
-  "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "发现社区创建的独特级别！游玩、获得灵感，并使用"
+  "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "发现社区创建的独特级别！游玩、获得灵感，并使用",
+  "PLAY_SIZE": "玩 {{playSize}}",
+  "NEW": "新",
+  "UNIQUE_SOLUTIONS": "唯一解",
+  "MULTIPLE_SOLUTIONS": "多解",
+  "COMPLETED": "已完成",
+  "NOT_COMPLETED": "未完成",
+  "CLEAR_ALL": "全部清除"
 }
