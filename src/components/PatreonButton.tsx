@@ -5,7 +5,6 @@ import patreonIconWhite from "@/assets/patreon-white.svg";
 
 const PatreonButton = () => {
   const { theme } = useTheme();
-  console.log("theme", theme);
   return (
     <div>
       <a href={patreon} target="_blank" rel="noopener noreferrer">
