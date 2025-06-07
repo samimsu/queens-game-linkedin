@@ -34,7 +34,6 @@ const level402 = {
     H: nomad,
     I: altoMain,
   },
-  isNew: true,
 };
 
 export default level402;
