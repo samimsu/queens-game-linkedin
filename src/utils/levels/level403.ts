@@ -34,7 +34,6 @@ const level403 = {
     H: lightOrchid,
     I: nomad,
   },
-  isNew: true,
 };
 
 export default level403;
