@@ -140,9 +140,8 @@ const CommunityLevel = ({
       <div className="flex flex-col items-center">
         <div>
           <div
-            className={`flex items-center space-x-0 justify-between py-1 w-full min-w-72 ${
-              showClock ? "mb-0" : "mb-2"
-            }`}
+            className={`flex items-center space-x-0 justify-between py-1 w-full min-w-72 ${showClock ? "mb-0" : "mb-2"
+              }`}
           >
             <Link to={previousPage} className="flex-none">
               <button className="border border-slate-500 rounded-full p-2">
@@ -166,9 +165,8 @@ const CommunityLevel = ({
               <div className="flex items-center">
                 <Queen
                   size="24"
-                  className={`fill-yellow-400 mr-2 ${
-                    completed ? "visible" : "invisible"
-                  }`}
+                  className={`fill-yellow-400 mr-2 ${completed ? "visible" : "invisible"
+                    }`}
                 />
                 <button
                   onClick={() => {
@@ -196,9 +194,8 @@ const CommunityLevel = ({
           </div>
 
           <div
-            className={`flex mb-1 ${
-              level.solutionsCount > 1 ? "justify-between" : "justify-end"
-            }`}
+            className={`flex mb-1 ${level.solutionsCount > 1 ? "justify-between" : "justify-end"
+              }`}
           >
             {level.solutionsCount > 1 && <Tag>{t("MULTIPLE_SOLUTIONS")}</Tag>}
             <Timer
