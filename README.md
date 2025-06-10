@@ -94,6 +94,9 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ampyroteuthis-infernalis"><img src="https://avatars.githubusercontent.com/u/214874963?v=4?s=100" width="100px;" alt="ampyroteuthis-infernalis"/><br /><sub><b>ampyroteuthis-infernalis</b></sub></a><br /><a href="#content-ampyroteuthis-infernalis" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/zadirioz"><img src="https://avatars.githubusercontent.com/u/212766297?v=4?s=100" width="100px;" alt="zadirioz"/><br /><sub><b>zadirioz</b></sub></a><br /><a href="#content-zadirioz" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/egill8000"><img src="https://avatars.githubusercontent.com/u/214648138?v=4?s=100" width="100px;" alt="egill8000"/><br /><sub><b>egill8000</b></sub></a><br /><a href="#content-egill8000" title="Content">🖋</a></td>
+    </tr>
   </tbody>
 </table>
 
