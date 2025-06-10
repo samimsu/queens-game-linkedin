@@ -389,7 +389,7 @@ const LevelBuilder = () => {
 
       // This would typically use authentication
       // For demonstration purposes, users would need to open the GitHub issue manually
-      const issueURL = `https://github.com/${GITHUB_REPO}/issues/new?title=${encodeURIComponent(
+      const issueURL = `https://github.com/${GITHUB_REPO}/discussions/new?category=levels&title=${encodeURIComponent(
         `Level Submission: ${formData.levelType} by ${formData.createdBy}`
       )}&body=${encodeURIComponent(issueBody)}`;
 
