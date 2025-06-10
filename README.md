@@ -96,6 +96,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/egill8000"><img src="https://avatars.githubusercontent.com/u/214648138?v=4?s=100" width="100px;" alt="egill8000"/><br /><sub><b>egill8000</b></sub></a><br /><a href="#content-egill8000" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/n-faro"><img src="https://avatars.githubusercontent.com/u/192931214?v=4?s=100" width="100px;" alt="n-faro"/><br /><sub><b>n-faro</b></sub></a><br /><a href="#content-n-faro" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
