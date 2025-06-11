@@ -1,5 +1,6 @@
 {
   "LANGUAGE_NAME": "Français",
+  "DATE_FORMAT": "DD/MM/YYYY",
   "LEVEL": "Niveau",
   "AVAILABLE_LEVELS_ONLY": "Niveaux disponibles",
   "HELP_IN_FINDING_NEW_LEVELS": "J'ai ajouté tous les niveaux que j'ai pu trouver. Toute aide pour trouver les niveaux manquants est la bienvenue.",
@@ -101,5 +102,12 @@
   "SUBMIT_LEVEL": "Envoyer le niveau",
   "OR": "ou",
   "COPY_DETAILS": "Copier les informations",
-  "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Découvrez des niveaux uniques créés par la communauté ! Jouez, soyez inspirez et créez votre propre niveau avec le"
+  "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Découvrez des niveaux uniques créés par la communauté ! Jouez, soyez inspirez et créez votre propre niveau avec le",
+  "PLAY_SIZE": "Jouer un {{playSize}}",
+  "NEW": "Nouveau",
+  "UNIQUE_SOLUTIONS": "Solution unique",
+  "MULTIPLE_SOLUTIONS": "Solutions multiples",
+  "COMPLETED": "Complété(s)",
+  "NOT_COMPLETED": "Non complété(s)",
+  "CLEAR_ALL": "Tout supprimer"
 }
