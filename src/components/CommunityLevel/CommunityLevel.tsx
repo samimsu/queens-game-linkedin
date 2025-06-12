@@ -16,8 +16,9 @@ import SettingsDialog from "./components/SettingsDialog";
 import Timer from "./components/Timer";
 import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
-import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import useGameLogic from "@/hooks/useGameLogic";
+import { CommunityLevel as CommunityLevelType } from "@/utils/types";
+import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import Tag from "../Tag";
 
 interface CommunityLevelProps {
@@ -256,7 +257,7 @@ const CommunityLevel = ({
             emitMetadata="0"
             inputPosition="bottom"
             theme={theme}
-            lang={i18n.language}
+            lang={getGiscusLanguage(i18n.language) || i18n.language}
             loading="lazy"
           />
         </div>

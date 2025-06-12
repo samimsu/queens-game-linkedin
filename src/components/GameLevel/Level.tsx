@@ -16,10 +16,10 @@ import HowToPlay from "./components/HowToPlay";
 import SettingsDialog from "./components/SettingsDialog";
 import Timer from "./components/Timer";
 import getNavigationLevels from "@/utils/getNavigationLevels";
-
 import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
+import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 
 interface LevelProps {
   id: string;
@@ -237,7 +237,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
             emitMetadata="0"
             inputPosition="bottom"
             theme={theme}
-            lang={i18n.language}
+            lang={getGiscusLanguage(i18n.language) || i18n.language}
             loading="lazy"
           />
         </div>

@@ -18,6 +18,7 @@ import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
+import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 
 interface BonusLevelProps {
   id: string;
@@ -250,7 +251,7 @@ const BonusLevel = ({
             emitMetadata="0"
             inputPosition="bottom"
             theme={theme}
-            lang={i18n.language}
+            lang={getGiscusLanguage(i18n.language) || i18n.language}
             loading="lazy"
           />
         </div>
