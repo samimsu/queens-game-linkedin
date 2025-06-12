@@ -10,6 +10,7 @@ enum AutomationSteps {
   START = "start",
   CAPTURE = "capture",
   BUILDER = "builder",
+  LINKEDIN = "linkedin",
   UPLOAD = "upload",
   NAME = "name",
   GENERATE = "generate",
@@ -194,6 +195,25 @@ async function uploadScreenshot(
   }
 }
 
+async function selectLinkedInButton(page: Page): Promise<void> {
+  console.log("Selecting LinkedIn...");
+  try {
+    const button = await page.waitForSelector(
+      '[data-testid="linkedin-button"]',
+      {
+        timeout: 15000,
+      }
+    );
+    await button.click();
+    console.log("LinkedIn selected.");
+  } catch (error) {
+    console.log(
+      "Error selecting LinkedIn:",
+      error instanceof Error ? error.message : String(error)
+    );
+  }
+}
+
 async function setLevelName(page: Page, levelNumber: number): Promise<void> {
   console.log("Setting level name...");
   try {
@@ -251,6 +271,15 @@ async function createLevelFile(
   console.log("Creating level file...");
   const levelFile: string = `level${levelNumber}.ts`;
   await fs.writeFile(path.join(levelsDir, levelFile), generatedCode);
+}
+
+async function updatePreviousLevelFile(levelsDir: string, levelNumber: number) {
+  console.log("Updating previous level file...");
+  const levelFile: string = `level${levelNumber - 1}.ts`;
+  const previousFileDir = path.join(levelsDir, levelFile);
+  let levelContent: string = await fs.readFile(previousFileDir, "utf8");
+  levelContent = levelContent.replace("\n  isNew: true,", "");
+  await fs.writeFile(previousFileDir, levelContent);
 }
 
 async function updateLevelsFile(
@@ -366,11 +395,15 @@ async function addNewLevel(
     await uploadScreenshot(page, screenshotPath);
     if (stopStep === AutomationSteps.UPLOAD) return;
 
-    // Step 6: Set level name
+    // Step 6: Select LinkedIn level type
+    await selectLinkedInButton(page);
+    if (stopStep === AutomationSteps.LINKEDIN) return;
+
+    // Step 7: Set level name
     await setLevelName(page, levelNumber);
     if (stopStep === AutomationSteps.NAME) return;
 
-    // Step 7: Generate and copy code
+    // Step 8: Generate and copy code
     const generatedCode = await generateAndCopyCode(page);
     if (stopStep === AutomationSteps.GENERATE) return;
 
@@ -381,20 +414,23 @@ async function addNewLevel(
 
     await fs.mkdir(levelsDir, { recursive: true });
 
-    // Step 8: Create level file
+    // Step 9: Create level file
     await createLevelFile(levelsDir, levelNumber, generatedCode);
     if (stopStep === AutomationSteps.FILE) return;
 
-    // Step 9: Update levels file
+    // Step 10: Update previous level file
+    await updatePreviousLevelFile(levelsDir, levelNumber);
+
+    // Step 11: Update levels file
     await updateLevelsFile(levelsFile, levelNumber);
     if (stopStep === AutomationSteps.LEVELS) return;
 
-    // Step 10: Update README
+    // Step 12: Update README
     const readmePath: string = path.join(projectRoot, "README.md");
     await updateReadme(readmePath, levelNumber);
     if (stopStep === AutomationSteps.README) return;
 
-    // Step 11: Complete
+    // Step 13: Complete
     console.log(`Level ${levelNumber} added successfully!`);
   } catch (error) {
     console.error(

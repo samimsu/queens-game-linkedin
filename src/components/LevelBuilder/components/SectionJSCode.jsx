@@ -24,7 +24,14 @@ const SectionJSCode = ({
       <div className="flex justify-between space-x-2 w-full mb-3">
         <button
           onClick={() => {
-            const code = generateLevelJSCode(levelName, board, regionColors);
+            const code = generateLevelJSCode(
+              levelName,
+              board,
+              regionColors,
+              null,
+              null,
+              true
+            );
             setJsCode(code);
           }}
           className="border border-slate-500 rounded-full py-1 px-3"

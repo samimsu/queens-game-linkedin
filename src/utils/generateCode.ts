@@ -11,7 +11,8 @@ const generateLevelJSCode = (
   board: Board,
   regionColors: RegionColors,
   createdBy?: string,
-  personalLink?: string
+  personalLink?: string,
+  isNew?: boolean
 ): string => {
   // Get the unique regions used in the board
   const usedRegions = new Set(board.flat().filter(Boolean));
@@ -54,9 +55,9 @@ ${colorRegionsFormatted}
   ],
   regionColors: {
 ${regionColorsEntries},
-  },${createdBy ? `\n  createdBy: "${createdBy}",` : ""}${
-    personalLink ? `\n  creatorLink: "${personalLink}",` : ""
-  }
+  },${isNew ? `\n  isNew: true,` : ""}${
+    createdBy ? `\n  createdBy: "${createdBy}",` : ""
+  }${personalLink ? `\n  creatorLink: "${personalLink}",` : ""}
 };
 
 export default level${levelNumber ? levelNumber : ""};

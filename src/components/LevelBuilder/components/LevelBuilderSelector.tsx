@@ -32,6 +32,7 @@ const LevelBuilderSelector = ({
               : "border-gray-500"
           } rounded-lg p-2 w-56 text-left hover:border-primary transition-all duration-300 hover:-translate-y-1`}
           onClick={() => handleSelection("community")}
+          data-testid="community-button"
         >
           <div>
             <h2
@@ -54,6 +55,7 @@ const LevelBuilderSelector = ({
               : "border-gray-500"
           } rounded-lg p-2 w-56 text-left hover:border-primary transition-all duration-300 hover:-translate-y-1`}
           onClick={() => handleSelection("linkedin")}
+          data-testid="linkedin-button"
         >
           <div>
             <h2
