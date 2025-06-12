@@ -1,6 +1,6 @@
 {
   "LANGUAGE_NAME": "Français",
-  "DATE_FORMAT": "DD/MM/YYYY",
+  "DATE_FORMAT": "MMM d, yyyy",
   "LEVEL": "Niveau",
   "AVAILABLE_LEVELS_ONLY": "Niveaux disponibles",
   "HELP_IN_FINDING_NEW_LEVELS": "J'ai ajouté tous les niveaux que j'ai pu trouver. Toute aide pour trouver les niveaux manquants est la bienvenue.",
