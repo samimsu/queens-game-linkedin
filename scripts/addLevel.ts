@@ -22,9 +22,7 @@ enum AutomationSteps {
 
 async function navigateToGame(page: Page): Promise<void> {
   console.log("Navigating to Queens game...");
-  await page.goto("https://www.linkedin.com/games/queens/", {
-    waitUntil: "networkidle",
-  });
+  await page.goto("https://www.linkedin.com/games/queens/");
 }
 
 async function startGameIfNeeded(page: Page): Promise<void> {
