@@ -7,3 +7,5 @@ export const queensGameRepoNewIssue =
 export const officialLinkedInQueensGamePage =
   "https://www.linkedin.com/showcase/queens-game";
 export const discord = "https://discord.gg/dr49fthwSb";
+export const patreon5LevelPackPost =
+  "https://www.patreon.com/posts/5-level-pack-131358752";

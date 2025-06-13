@@ -1,5 +1,5 @@
 import { Trans } from "react-i18next";
-import { patreon } from "@/data/links";
+import { patreon5LevelPackPost } from "@/data/links";
 
 const Note = () => {
   return (
@@ -10,7 +10,7 @@ const Note = () => {
           Want more? Get <span className="font-bold">5 levels/month</span> for
           $5 on Patreon
           <a
-            href={patreon}
+            href={patreon5LevelPackPost}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 text-nowrap"
