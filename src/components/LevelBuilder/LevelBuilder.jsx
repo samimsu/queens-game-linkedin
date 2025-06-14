@@ -240,7 +240,7 @@ const LevelBuilder = () => {
     }
   };
 
-  const validateCommunityForm = () => {
+  const validateCommunityForm = (submitVia) => {
     const newErrors = {};
     let firstErrorField = null;
 
@@ -255,7 +255,9 @@ const LevelBuilder = () => {
       board,
       regionColors,
       formData.createdBy,
-      formData.personalLink
+      formData.personalLink,
+      null,
+      submitVia
     );
 
     // Validate board for emptiness, completeness, and color usage
@@ -380,21 +382,19 @@ const LevelBuilder = () => {
       setIsSubmitting(true);
 
       // Create the issue body content
-      const issueBody =
+      const discussionBody =
         `## Level Submission\n\n` +
         `**Level Type:** ${formData.levelType}\n` +
         `**Created By:** ${formData.createdBy}\n` +
         `**Personal Link:** ${formData.personalLink}\n` +
         `### Level\n\`\`\`\n${formData.level}\n\`\`\``;
 
-      // This would typically use authentication
-      // For demonstration purposes, users would need to open the GitHub issue manually
-      const issueURL = `https://github.com/${GITHUB_REPO}/discussions/new?category=levels&title=${encodeURIComponent(
+      const discussionURL = `https://github.com/${GITHUB_REPO}/discussions/new?category=levels&title=${encodeURIComponent(
         `Level Submission: ${formData.levelType} by ${formData.createdBy}`
-      )}&body=${encodeURIComponent(issueBody)}`;
+      )}&body=${encodeURIComponent(discussionBody)}`;
 
-      // Open GitHub issue creation page in a new tab
-      window.open(issueURL, "_blank");
+      // Open GitHub discussion creation page in a new tab
+      window.open(discussionURL, "_blank");
 
       setIsSubmitting(false);
     } catch (error) {
@@ -409,15 +409,19 @@ const LevelBuilder = () => {
   const handleCommunityFormSubmit = (e) => {
     e.preventDefault();
 
+    const isViaEmail = formData.submitVia === "email";
+    const isViaGitHub = formData.submitVia === "github";
+    const submitVia = isViaEmail ? "email" : isViaGitHub ? "github" : "";
+
     // Validate the form
-    if (!validateCommunityForm()) {
+    if (!validateCommunityForm(submitVia)) {
       return; // Don't proceed if validation fails
     }
 
-    if (formData.submitVia === "email") {
+    if (isViaEmail) {
       // Create and open mailto link
       window.location.href = createEmailEncodedContent();
-    } else if (formData.submitVia === "github") {
+    } else if (isViaGitHub) {
       submitToGitHub();
     }
   };

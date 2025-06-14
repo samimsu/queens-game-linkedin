@@ -12,7 +12,8 @@ const generateLevelJSCode = (
   regionColors: RegionColors,
   createdBy?: string,
   personalLink?: string,
-  isNew?: boolean
+  isNew?: boolean,
+  submitVia?: "email" | "github"
 ): string => {
   // Get the unique regions used in the board
   const usedRegions = new Set(board.flat().filter(Boolean));
@@ -48,7 +49,9 @@ const generateLevelJSCode = (
   // Generate the JS file content
   const jsContent = `${importStatement}
 
-const level${levelNumber ? levelNumber : ""} = {
+const level${levelNumber ? levelNumber : ""} = {${
+    submitVia ? `\n  path: "/community-level/",` : ""
+  }
   size: ${board.length},
   colorRegions: [
 ${colorRegionsFormatted}
@@ -56,8 +59,14 @@ ${colorRegionsFormatted}
   regionColors: {
 ${regionColorsEntries},
   },${isNew ? `\n  isNew: true,` : ""}${
-    createdBy ? `\n  createdBy: "${createdBy}",` : ""
-  }${personalLink ? `\n  creatorLink: "${personalLink}",` : ""}
+    submitVia ? "\nsolutionsCount: -1," : ""
+  }${createdBy ? `\n  createdBy: "${createdBy}",` : ""}${
+    personalLink
+      ? `\n  creatorLink: "${personalLink}",`
+      : submitVia === "github"
+      ? `\n  creatorLink: "https://github.com/x",`
+      : ""
+  }
 };
 
 export default level${levelNumber ? levelNumber : ""};
