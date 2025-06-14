@@ -59,7 +59,7 @@ ${colorRegionsFormatted}
   regionColors: {
 ${regionColorsEntries},
   },${isNew ? `\n  isNew: true,` : ""}${
-    submitVia ? "\nsolutionsCount: -1," : ""
+    submitVia ? "\n  solutionsCount: -1," : ""
   }${createdBy ? `\n  createdBy: "${createdBy}",` : ""}${
     personalLink
       ? `\n  creatorLink: "${personalLink}",`
