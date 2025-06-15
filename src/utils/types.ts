@@ -10,6 +10,7 @@ export interface BonusLevel {
   size: number;
   colorRegions: string[][];
   regionColors: { [key: string]: string };
+  isNew?: boolean;
 }
 
 export interface CommunityLevel {

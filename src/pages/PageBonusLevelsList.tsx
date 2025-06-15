@@ -6,6 +6,7 @@ import { bonusLevels } from "@/utils/bonusLevels";
 import { isBonusLevelCompleted } from "@/utils/localStorage";
 import Queen from "@/components/Queen";
 import PageTitle from "@/components/PageTitle";
+import NewBadge from "@/components/NewBadge";
 
 const PlayButton = () => {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ const PageBonusLevelsList = () => {
     const startDate = parse(dateStr, "yyyyMMdd", new Date());
 
     const dateFormat = t("DATE_FORMAT", "MMM d, yyyy");
-    
+
     const weekOfDate = format(startDate, dateFormat);
     // Format dates for display and ID
     const displayRange = t("WEEK_OF", { weekOfDate });
@@ -49,7 +50,10 @@ const PageBonusLevelsList = () => {
                 key={key}
                 className="flex space-x-14 sm:space-x-24 w-full max-w-96 justify-between items-center border border-transparent hover:border-primary px-2 py-1 rounded"
               >
-                <div>{displayRange}</div>
+                <div className="flex space-x-2 items-center">
+                  <div>{displayRange}</div>
+                  {bonusLevels[key].isNew && <NewBadge />}
+                </div>
                 <div className="relative flex space-x-2 items-center">
                   {completed && (
                     <Queen className="fill-yellow-400 absolute right-full top-1/2 transform -translate-y-1/2" />
