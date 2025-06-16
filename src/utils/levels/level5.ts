@@ -40,7 +40,6 @@ const level5 = {
     J: celadon,
     K: lightWisteria,
   },
-  isNew: true,
 };
 
 export default level5;

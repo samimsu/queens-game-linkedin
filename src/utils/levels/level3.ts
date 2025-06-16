@@ -31,7 +31,6 @@ const level3 = {
     G: lightOrchid,
     H: lightWisteria,
   },
-  isNew: true,
 };
 
 export default level3;
