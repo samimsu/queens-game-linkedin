@@ -100,6 +100,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/bbenyak"><img src="https://avatars.githubusercontent.com/u/56327957?v=4?s=100" width="100px;" alt="bbenyak"/><br /><sub><b>bbenyak</b></sub></a><br /><a href="#content-bbenyak" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Quickpoisons"><img src="https://avatars.githubusercontent.com/u/216229378?v=4?s=100" width="100px;" alt="Quickpoisons"/><br /><sub><b>Quickpoisons</b></sub></a><br /><a href="#content-Quickpoisons" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ev1lKn1gh7"><img src="https://avatars.githubusercontent.com/u/216703926?v=4?s=100" width="100px;" alt="Ev1lKn1gh7"/><br /><sub><b>Ev1lKn1gh7</b></sub></a><br /><a href="#content-Ev1lKn1gh7" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/leurosa"><img src="https://avatars.githubusercontent.com/u/49928102?v=4?s=100" width="100px;" alt="leurosa"/><br /><sub><b>leurosa</b></sub></a><br /><a href="#content-leurosa" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
