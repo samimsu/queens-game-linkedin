@@ -8,7 +8,7 @@ import {
 } from "../colors";
 
 const level = {
-  path: "/community-level/",
+  path: "/community-level/69",
   size: 6,
   colorRegions: [
     ["D", "D", "D", "D", "D", "D"],
