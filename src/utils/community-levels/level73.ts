@@ -5,7 +5,6 @@ import {
   celadon,
   chardonnay,
   lightWisteria,
-  nomad,
   saharaSand,
 } from "../colors";
 
