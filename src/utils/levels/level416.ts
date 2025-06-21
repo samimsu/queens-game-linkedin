@@ -33,8 +33,7 @@ const level416 = {
     G: chardonnay,
     H: altoMain,
     I: lightWisteria,
-  },
-  isNew: true,
+  },
 };
 
 export default level416;
