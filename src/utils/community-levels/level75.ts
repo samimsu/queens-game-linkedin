@@ -38,7 +38,7 @@ const level = {
     I: lightOrchid,
     J: halfBaked,
   },
-  solutionsCount: 0,
+  solutionsCount: 1,
   createdBy: "qwerty",
   creatorLink: "",
 };
