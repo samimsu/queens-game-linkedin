@@ -6,6 +6,7 @@ import level20250525 from "./bonus-levels/2025-05-25";
 import level20250601 from "./bonus-levels/2025-06-01";
 import level20250608 from "./bonus-levels/2025-06-08";
 import level20250615 from "./bonus-levels/2025-06-15";
+import level20250622 from "./bonus-levels/2025-06-22";
 
 export const bonusLevels: { [key: string]: BonusLevel } = {
   level20250504,
@@ -15,4 +16,5 @@ export const bonusLevels: { [key: string]: BonusLevel } = {
   level20250601,
   level20250608,
   level20250615,
+  level20250622,
 };
