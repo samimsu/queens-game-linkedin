@@ -1,0 +1,9 @@
+This is a placeholder for a 1024x1024 pixel PNG icon image.
+
+Since this is a binary file, actual binary content cannot be provided in text format.
+
+To create this icon:
+1. Create a 1024x1024px square PNG image
+2. Design a simple placeholder icon representing the Queens Game (perhaps a chess queen symbol)
+3. Save it as "icon.png" in the assets directory
+4. Ensure the file is referenced correctly in app.json (which it already is at "./assets/icon.png")

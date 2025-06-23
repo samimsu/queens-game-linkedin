@@ -1,0 +1,11 @@
+This is a placeholder for a 1242x2436 pixel PNG splash screen image.
+
+Since this is a binary file, actual binary content cannot be provided in text format.
+
+To create this splash screen:
+1. Create a 1242x2436px PNG image
+2. Design a simple placeholder splash screen with the Queens Game logo/title centered
+3. Use white background color as specified in app.json
+4. Ensure the image will look good with "contain" resizeMode
+5. Save it as "splash.png" in the assets directory
+6. Ensure the file is referenced correctly in app.json (which it already is at "./assets/splash.png")

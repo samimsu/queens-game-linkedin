@@ -128,3 +128,20 @@ yarn-error.log*
 
 scripts/*.png
 .vscode
+
+# Clacky configuration
+.1024*
+!.1024
+.breakpoints
+
+# Vite build artifacts
+dist-ssr
+*.local
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

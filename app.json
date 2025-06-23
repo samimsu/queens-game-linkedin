@@ -1,0 +1,93 @@
+{
+  "expo": {
+    "name": "Queens Game",
+    "slug": "queens-game",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "url": "https://u.expo.dev/fa5358c5-8446-481c-9a50-bd3d530dd6f8"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.queensgame.app",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "fetch"
+        ],
+        "NSPhotoLibraryUsageDescription": "Allow Queens Game to access your photos to improve your gaming experience.",
+        "NSCameraUsageDescription": "Allow Queens Game to access your camera to take photos for custom levels."
+      },
+      "entitlements": {
+        "com.apple.developer.networking.wifi-info": true
+      },
+      "associatedDomains": [
+        "applinks:queensgame.app"
+      ]
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.queensgame.app",
+      "versionCode": 1,
+      "permissions": [
+        "VIBRATE",
+        "android.permission.INTERNET",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ],
+          "data": {
+            "scheme": "queensgame",
+            "host": "app"
+          }
+        }
+      ]
+    },
+    "web": {
+      "favicon": "./public/favicon.ico"
+    },
+    "plugins": [
+      "expo-updates"
+    ],
+    "permissions": [
+      "VIBRATE"
+    ],
+    "owner": "queensgame",
+    "projectId": "fa5358c5-8446-481c-9a50-bd3d530dd6f8",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fa5358c5-8446-481c-9a50-bd3d530dd6f8"
+      }
+    },
+    "scheme": "queensgame",
+    "developmentClient": {
+      "silentLaunch": false
+    },
+    "jsEngine": "hermes"
+  }
+}

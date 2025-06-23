@@ -1,0 +1,2 @@
+compile_command: npm install --legacy-peer-deps
+run_command: npm run start

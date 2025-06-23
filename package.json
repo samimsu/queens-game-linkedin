@@ -15,6 +15,9 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "expo": "^50.0.0",
+    "expo-status-bar": "~1.11.1",
+    "expo-updates": "~0.24.11",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
     "lucide-react": "^0.454.0",
@@ -24,8 +27,14 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-github-btn": "^1.4.0",
-    "react-helmet-async": "^2.0.5",
+    "react-helmet-async": "^3.0.0",
     "react-i18next": "^15.4.1",
+    "react-native": "0.73.4",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-reanimated": "~3.6.2",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.29.0",
+    "react-native-web": "~0.19.10",
     "react-router-dom": "^6.27.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
@@ -44,7 +53,30 @@
     "ptr:c": "npx prettier ./src --check",
     "ptr:w": "npx prettier ./src --write",
     "ptr:c:levels": "npx prettier ./src/utils/levels --check",
-    "ptr:w:levels": "npx prettier ./src/utils/levels --write"
+    "ptr:w:levels": "npx prettier ./src/utils/levels --write",
+    "expo": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "eas:build": "eas build",
+    "eas:build:android": "eas build --platform android",
+    "eas:build:ios": "eas build --platform ios",
+    "eas:build:preview": "eas build --profile preview",
+    "eas:build:production": "eas build --profile production",
+    "eas:update": "eas update",
+    "eas:update:preview": "eas update --channel preview",
+    "eas:update:production": "eas update --channel production",
+    "eas:submit": "eas submit",
+    "eas:device": "eas device:create",
+    "eas:login": "eas login",
+    "eas:logout": "eas logout",
+    "eas:configure": "eas update:configure",
+    "expo:publish": "expo publish",
+    "expo:doctor": "expo doctor",
+    "expo:upgrade": "expo upgrade",
+    "expo:prebuild": "expo prebuild",
+    "expo:clear": "expo start -c"
   },
   "eslintConfig": {
     "extends": [
@@ -65,18 +97,67 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.13.14",
+    "@types/react-native": "~0.73.0",
     "@types/yargs": "^17.0.33",
     "@vitejs/plugin-react": "^4.1.1",
     "autoprefixer": "^10.4.20",
+    "eas-cli": "^5.9.3",
+    "expo-cli": "^6.3.10",
     "jsdom": "^22.1.0",
+    "metro-react-native-babel-preset": "^0.77.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.8.3",
     "vite": "^4.5.5",
     "vitest": "^0.34.6"
+  },
+  "expo": {
+    "name": "Queens Game",
+    "slug": "queens-game",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "url": "https://u.expo.dev/fa5358c5-8446-481c-9a50-bd3d530dd6f8"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.queensgame.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.queensgame.app"
+    },
+    "web": {
+      "favicon": "./public/favicon.ico"
+    },
+    "plugins": [
+      "expo-updates"
+    ],
+    "owner": "queensgame",
+    "projectId": "fa5358c5-8446-481c-9a50-bd3d530dd6f8",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }
