@@ -32,7 +32,7 @@ const level = {
     G: saharaSand,
     H: halfBaked,
   },
-  solutionsCount: 0,
+  solutionsCount: 1,
   createdBy: "dumpemout",
   creatorLink: "",
 };
