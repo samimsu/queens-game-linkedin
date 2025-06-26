@@ -85,6 +85,8 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
           disabled={previousDisabled}
           onClick={() => {
             setBoard(createEmptyBoard(levels[`level${previousLevel}`].size));
+            setHasWon(false);
+            setShowWinningScreen(false);
           }}
           className={className}
         >
@@ -104,6 +106,8 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
           disabled={nextDisabled}
           onClick={() => {
             setBoard(createEmptyBoard(levels[`level${nextLevel}`].size));
+            setHasWon(false);
+            setShowWinningScreen(false);
           }}
           className={className}
         >
@@ -195,7 +199,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
           <div className="game relative">
             {showWinningScreen && (
               <WinningScreen
-                timer={showClock && timer}
+                timer={showClock ? timer : 0}
                 previousLevel={previousLevel}
                 nextLevel={nextLevel}
                 level={id}
@@ -212,6 +216,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
               regionColors={regionColors}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
+              disabled={hasWon}
             />
           </div>
           <Button
