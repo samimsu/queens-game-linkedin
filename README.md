@@ -107,6 +107,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/peroellanoesr"><img src="https://avatars.githubusercontent.com/u/204201134?v=4?s=100" width="100px;" alt="peroellanoesr"/><br /><sub><b>peroellanoesr</b></sub></a><br /><a href="#content-peroellanoesr" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylejenx7"><img src="https://avatars.githubusercontent.com/u/211223980?v=4?s=100" width="100px;" alt="kylejenx7"/><br /><sub><b>kylejenx7</b></sub></a><br /><a href="#content-kylejenx7" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tarushi1601"><img src="https://avatars.githubusercontent.com/u/209466742?v=4?s=100" width="100px;" alt="tarushi1601"/><br /><sub><b>tarushi1601</b></sub></a><br /><a href="#content-tarushi1601" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jsikali"><img src="https://avatars.githubusercontent.com/u/120147133?v=4?s=100" width="100px;" alt="jay"/><br /><sub><b>jay</b></sub></a><br /><a href="#content-jsikali" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
