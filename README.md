@@ -112,6 +112,9 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lorrington"><img src="https://avatars.githubusercontent.com/u/218807893?v=4?s=100" width="100px;" alt="Lorrington"/><br /><sub><b>Lorrington</b></sub></a><br /><a href="#content-Lorrington" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ravishankardatalogy"><img src="https://avatars.githubusercontent.com/u/165248999?v=4?s=100" width="100px;" alt="Ravi Shankar"/><br /><sub><b>Ravi Shankar</b></sub></a><br /><a href="#content-ravishankardatalogy" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lalmeida32"><img src="https://avatars.githubusercontent.com/u/41928177?v=4?s=100" width="100px;" alt="Lucas Almeida"/><br /><sub><b>Lucas Almeida</b></sub></a><br /><a href="#content-lalmeida32" title="Content">🖋</a></td>
+    </tr>
   </tbody>
 </table>
 
