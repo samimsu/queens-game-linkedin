@@ -34,7 +34,6 @@ const level431 = {
     H: nomad,
     I: altoMain,
   },
-  isNew: true,
 };
 
 export default level431;
