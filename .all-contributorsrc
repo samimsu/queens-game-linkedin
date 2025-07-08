@@ -397,6 +397,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "aditAtSinTask",
+      "name": "Aditya Wikardiyan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24765664?v=4",
+      "profile": "https://www.npmjs.com/~adityawk",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
