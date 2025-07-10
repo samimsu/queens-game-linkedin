@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import Board from "./components/Board";
+import GameBoard from "../shared/GameBoard";
 import { createEmptyBoard } from "../../utils/board";
 import { levels } from "../../utils/levels";
 import BackIcon from "../icons/BackIcon";
@@ -12,10 +12,10 @@ import NextIcon from "../icons/NextIcon";
 import ResetIcon from "../icons/ResetIcon";
 import WinningScreen from "./components/WinningScreen";
 import Queen from "../Queen";
-import HowToPlay from "./components/HowToPlay";
-import SettingsDialog from "./components/SettingsDialog";
-import Timer from "./components/Timer";
-import getNavigationLevels from "@/utils/getNavigationLevels";
+import GameHowToPlay from "../shared/GameHowToPlay";
+import GameSettingsDialog from "../shared/GameSettingsDialog";
+import GameTimer from "../shared/GameTimer";
+
 import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
@@ -34,8 +34,16 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
   const { t, i18n } = useTranslation();
   const isVisible = useVisibility();
 
-  const { previousLevel, nextLevel, previousDisabled, nextDisabled } =
-    getNavigationLevels(id, level);
+  // Navigation logic
+  const maxLevel = Math.max(
+    ...Object.keys(levels).map((key) => parseInt(key.replace("level", ""), 10))
+  );
+
+  const currentLevelNumber = parseInt(id, 10);
+  const previousLevel = currentLevelNumber > 1 ? currentLevelNumber - 1 : null;
+  const nextLevel = currentLevelNumber < maxLevel ? currentLevelNumber + 1 : null;
+  const previousDisabled = !previousLevel;
+  const nextDisabled = !nextLevel;
 
   const boardSize = levelSize;
   const colorRegions = levels[level].colorRegions;
@@ -170,7 +178,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                 >
                   <ResetIcon size="18" />
                 </button>
-                <SettingsDialog
+                <GameSettingsDialog
                   showClashingQueens={showClashingQueens}
                   toggleShowClashingQueens={toggleClashingQueens}
                   showInstructions={showInstructions}
@@ -185,7 +193,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
           </div>
 
           <div className="flex justify-end">
-            <Timer
+            <GameTimer
               run={timerRunning}
               onTimeUpdate={handleTimeUpdate}
               showTimer={showClock}
@@ -202,7 +210,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                 close={() => setShowWinningScreen(false)}
               />
             )}
-            <Board
+            <GameBoard
               board={board}
               handleSquareClick={handleSquareClick}
               handleSquareMouseEnter={handleDrag}
@@ -212,6 +220,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
               regionColors={regionColors}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
+              gridSizeVariant="small"
             />
           </div>
           <Button
@@ -223,7 +232,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
           </Button>
         </div>
 
-        {showInstructions && <HowToPlay />}
+        {showInstructions && <GameHowToPlay />}
 
         <div className="w-full px-2">
           <Giscus

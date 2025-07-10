@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import Board from "./components/Board";
+import GameBoard from "../shared/GameBoard";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
 import PreviousIcon from "../icons/PreviousIcon";
@@ -11,9 +11,9 @@ import NextIcon from "../icons/NextIcon";
 import ResetIcon from "../icons/ResetIcon";
 import WinningScreen from "./components/WinningScreen";
 import Queen from "../Queen";
-import HowToPlay from "./components/HowToPlay";
-import SettingsDialog from "./components/SettingsDialog";
-import Timer from "./components/Timer";
+import GameHowToPlay from "../shared/GameHowToPlay";
+import GameSettingsDialog from "../shared/GameSettingsDialog";
+import GameTimer from "../shared/GameTimer";
 import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
@@ -180,7 +180,7 @@ const BonusLevel = ({
                 >
                   <ResetIcon size="18" />
                 </button>
-                <SettingsDialog
+                <GameSettingsDialog
                   showClashingQueens={showClashingQueens}
                   toggleShowClashingQueens={toggleClashingQueens}
                   showInstructions={showInstructions}
@@ -195,7 +195,7 @@ const BonusLevel = ({
           </div>
 
           <div className="flex justify-end">
-            <Timer
+            <GameTimer
               run={timerRunning}
               onTimeUpdate={handleTimeUpdate}
               showTimer={showClock}
@@ -217,7 +217,7 @@ const BonusLevel = ({
                 close={() => setShowWinningScreen(false)}
               />
             )}
-            <Board
+            <GameBoard
               board={board}
               handleSquareClick={handleSquareClick}
               handleSquareMouseEnter={handleDrag}
@@ -226,6 +226,7 @@ const BonusLevel = ({
               regionColors={regionColors}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
+              gridSizeVariant="small"
             />
           </div>
           <Button
@@ -237,7 +238,7 @@ const BonusLevel = ({
           </Button>
         </div>
 
-        {showInstructions && <HowToPlay />}
+        {showInstructions && <GameHowToPlay />}
 
         <div className="w-full px-2">
           <Giscus
