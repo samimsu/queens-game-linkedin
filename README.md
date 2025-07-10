@@ -118,6 +118,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mattsemar"><img src="https://avatars.githubusercontent.com/u/184792?v=4?s=100" width="100px;" alt="Matt Semar"/><br /><sub><b>Matt Semar</b></sub></a><br /><a href="#content-mattsemar" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/eyad81"><img src="https://avatars.githubusercontent.com/u/58361368?v=4?s=100" width="100px;" alt="eyad81"/><br /><sub><b>eyad81</b></sub></a><br /><a href="#content-eyad81" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Gabyazz"><img src="https://avatars.githubusercontent.com/u/6808341?v=4?s=100" width="100px;" alt="Gaby Azzopardi"/><br /><sub><b>Gaby Azzopardi</b></sub></a><br /><a href="#content-Gabyazz" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/newcorntender"><img src="https://avatars.githubusercontent.com/u/209778302?v=4?s=100" width="100px;" alt="newcorntender"/><br /><sub><b>newcorntender</b></sub></a><br /><a href="#content-newcorntender" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
