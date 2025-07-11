@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Required from "@/components/Required";
+import Tag from "@/components/Tag";
 
 type LevelType = "linkedin" | "community";
 
@@ -45,6 +46,7 @@ const LevelBuilderSelector = ({
             <p className="text-gray-600 dark:text-gray-100 text-sm">
               {t("COMMUNITY_LEVELS_DESCRIPTION")}
             </p>
+            <Tag className="w-fit mt-2">{t("ONE_FREE_LEVEL")}</Tag>
           </div>
         </button>
 
