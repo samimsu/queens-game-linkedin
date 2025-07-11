@@ -7,7 +7,9 @@ type TagProps = {
 
 const Tag = ({ children, className = "" }: TagProps) => {
   return (
-    <div className={`rounded-full bg-[#FFC992] px-2 py-1 text-xs ${className}`}>
+    <div
+      className={`rounded-full bg-[#FFC992] px-2 py-1 text-xs text-background ${className}`}
+    >
       {children}
     </div>
   );
