@@ -123,6 +123,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/T-Khanna"><img src="https://avatars.githubusercontent.com/u/16167554?v=4?s=100" width="100px;" alt="Tanmay Khanna"/><br /><sub><b>Tanmay Khanna</b></sub></a><br /><a href="#content-T-Khanna" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tim-ackermann"><img src="https://avatars.githubusercontent.com/u/155793213?v=4?s=100" width="100px;" alt="tim-ackermann"/><br /><sub><b>tim-ackermann</b></sub></a><br /><a href="#content-tim-ackermann" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
