@@ -1,8 +1,8 @@
 import { useTranslation, Trans } from "react-i18next";
-import Queen from "../../Queen";
+import Queen from "../Queen";
 import { useDirection } from "@/hooks/useDirection";
 
-const HowToPlay = () => {
+const GameHowToPlay = () => {
   const { t } = useTranslation();
   const direction = useDirection();
 
@@ -36,4 +36,4 @@ const HowToPlay = () => {
   );
 };
 
-export default HowToPlay;
+export default GameHowToPlay;

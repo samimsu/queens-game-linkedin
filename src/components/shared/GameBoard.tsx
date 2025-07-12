@@ -1,29 +1,31 @@
 import React, { useState } from "react";
-import Square from "./Square";
-import useGridSize from "../../../hooks/useGridSize";
+import GameSquare from "./GameSquare";
+import useGridSize from "../../hooks/useGridSize";
 
-interface BoardProps {
+interface GameBoardProps {
   board: string[][];
   handleSquareClick: (row: number, col: number) => void;
   handleSquareMouseEnter: (squares: number[][]) => void;
-  level: string;
   boardSize: number;
   colorRegions: string[][];
   regionColors: { [key: string]: string };
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
+  level?: string; // Prop opcional para GameLevel
+  gridSizeVariant?: "small" | "medium" | "large"; // Para diferentes tamaños
 }
 
-const Board: React.FC<BoardProps> = ({
+const GameBoard: React.FC<GameBoardProps> = ({
   board,
   handleSquareClick,
   handleSquareMouseEnter,
-  level,
   boardSize,
   colorRegions,
   regionColors,
   showClashingQueens,
   clashingQueens,
+  level,
+  gridSizeVariant = "medium",
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
     undefined
@@ -33,7 +35,7 @@ const Board: React.FC<BoardProps> = ({
   );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
-  const { gridSize } = useGridSize(board.length, "small");
+  const { gridSize } = useGridSize(board.length, gridSizeVariant);
 
   return (
     <div
@@ -45,7 +47,7 @@ const Board: React.FC<BoardProps> = ({
     >
       {board.map((row, rowIndex) =>
         row.map((square, colIndex) => (
-          <Square
+          <GameSquare
             key={`${rowIndex}-${colIndex}`}
             row={rowIndex}
             col={colIndex}
@@ -104,4 +106,4 @@ const Board: React.FC<BoardProps> = ({
   );
 };
 
-export default Board;
+export default GameBoard;

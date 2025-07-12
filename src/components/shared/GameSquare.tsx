@@ -1,7 +1,8 @@
-import Queen from "../../Queen";
-import Cross from "./Cross";
+import React from "react";
+import Queen from "../Queen";
+import GameCross from "./GameCross";
 
-interface SquareProps {
+interface GameSquareProps {
   row: number;
   col: number;
   value: string | null;
@@ -9,6 +10,7 @@ interface SquareProps {
   onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
   onPointerEnter: (e: React.PointerEvent<HTMLDivElement>) => void;
   onPointerUp: () => void;
+  level?: string; // Prop opcional para GameLevel
   boardSize: number;
   colorRegions: string[][];
   regionColors: { [key: string]: string };
@@ -17,7 +19,7 @@ interface SquareProps {
 }
 
 // Square component with color regions and toggling between 'X', 'Q', and empty
-const Square = ({
+const GameSquare: React.FC<GameSquareProps> = ({
   row,
   col,
   value,
@@ -25,12 +27,13 @@ const Square = ({
   onPointerDown,
   onPointerEnter,
   onPointerUp,
+  level,
   boardSize,
   colorRegions,
   regionColors,
   isClashing,
   ...props
-}: SquareProps) => {
+}) => {
   // Function to determine border classes
   const getBorderClasses = () => {
     const borderClasses: string[] = [];
@@ -74,9 +77,9 @@ const Square = ({
       draggable="false"
       {...props}
     >
-      {value === "Q" ? <Queen /> : value === "X" ? <Cross /> : value}
+      {value === "Q" ? <Queen /> : value === "X" ? <GameCross /> : value}
     </div>
   );
 };
 
-export default Square;
+export default GameSquare;
