@@ -36,7 +36,9 @@ const getNavigationLevels = (levelId: string, level: string) => {
       ? availableLevels.indexOf(Number(levelId))
       : -1;
     const previousLevel =
-      levelIndex > 0 ? availableLevels[levelIndex - 1] : null;
+      Array.isArray(availableLevels) && levelIndex > 0
+        ? availableLevels[levelIndex - 1]
+        : null;
     const nextLevel =
       Array.isArray(availableLevels) && levelIndex < availableLevels.length - 1
         ? availableLevels[levelIndex + 1]

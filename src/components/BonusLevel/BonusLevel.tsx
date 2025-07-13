@@ -205,7 +205,7 @@ const BonusLevel = ({
           <div className="game relative flex justify-center">
             {showWinningScreen && (
               <WinningScreen
-                {...(showClock && { timer })}
+                timer={timer}
                 previousLink={{
                   path: previousLevel?.path || "",
                   text: t("PREVIOUS_LEVEL"),

@@ -195,7 +195,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
           <div className="game relative">
             {showWinningScreen && (
               <WinningScreen
-                timer={showClock && timer}
+                timer={timer}
                 previousLevel={previousLevel}
                 nextLevel={nextLevel}
                 level={id}
