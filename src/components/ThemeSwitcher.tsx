@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon, ChevronLeft, Settings } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
 
-  const handleThemeChange = (themeName) => {
+  const handleThemeChange = (themeName: string) => {
     setTheme(themeName);
   };
 
@@ -23,10 +22,7 @@ const ThemeSwitcher = () => {
       onClick={() => handleThemeChange(currentTheme.toggleTo)}
       className="p-2 rounded-md transition-colors hover:bg-gray-300 bg-opacity-20 dark:hover:bg-gray-700 dark:hover:bg-opacity-20"
     >
-      <currentTheme.icon
-        size={18}
-        classname="mr-2"
-      />
+      <currentTheme.icon size={18} />
     </button>
   );
 };
