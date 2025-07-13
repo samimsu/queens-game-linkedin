@@ -1,4 +1,4 @@
-const Cross = () => {
+const GameCross = () => {
   return (
     <span className="cell-input cell-input--cross">
       <svg
@@ -18,4 +18,4 @@ const Cross = () => {
   );
 };
 
-export default Cross;
+export default GameCross;

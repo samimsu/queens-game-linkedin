@@ -6,92 +6,21 @@ import CommunityLevel from "@/components/CommunityLevel/CommunityLevel";
 import { communityLevels } from "@/utils/communityLevels";
 import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import PageNotFound from "./PageNotFound";
-
-// Function to parse the ID and find the current level
-function findLevelById(
-  id: string,
-  communityLevels: { [key: string]: CommunityLevelType }
-) {
-  // Iterate through communityLevels keys
-  for (const levelKey of Object.keys(communityLevels)) {
-    if (levelKey === `level${id}`) {
-      return { key: levelKey, level: communityLevels[levelKey] };
-    }
-  }
-
-  return null; // Return null if no match is found
-}
-
-// Function to find the previous level
-function findPreviousLevel(
-  currentLevelKey: string,
-  communityLevels: { [key: string]: CommunityLevelType }
-): CommunityLevelType | null {
-  if (!currentLevelKey) {
-    return null;
-  }
-
-  // Get all level keys
-  const levelKeys = Object.keys(communityLevels);
-
-  // Find the index of the current level
-  const currentIndex = levelKeys.indexOf(currentLevelKey);
-
-  // If the current level is the first one or not found, return null
-  if (currentIndex === -1 || currentIndex === 0) {
-    return null;
-  }
-
-  // Return the previous level
-  const previousKey = levelKeys[currentIndex - 1];
-  return communityLevels[previousKey];
-}
-
-// Function to find the next level
-function findNextLevel(
-  currentLevelKey: string,
-  communityLevels: { [key: string]: CommunityLevelType }
-): CommunityLevelType | null {
-  if (!currentLevelKey) {
-    return null;
-  }
-
-  // Get all level keys and sort by date
-  const levelKeys = Object.keys(communityLevels);
-
-  // Find the index of the current level
-  const currentIndex = levelKeys.indexOf(currentLevelKey);
-
-  // If the current level is the last one or not found, return null
-  if (currentIndex === -1 || currentIndex === levelKeys.length - 1) {
-    return null;
-  }
-
-  // Return the next level
-  const nextKey = levelKeys[currentIndex + 1];
-  return communityLevels[nextKey];
-}
+import { useCommunityLevelNavigation } from "@/hooks/useLevelNavigation";
 
 const PageCommunityLevel = () => {
   const { id } = useParams();
   const { t } = useTranslation();
+  const { currentLevel, previousLevel, nextLevel } = useCommunityLevelNavigation<CommunityLevelType>(communityLevels, id);
 
   if (!id) return;
 
-  const level = findLevelById(id, communityLevels);
-
-  if (!level) {
+  if (!currentLevel) {
     return <PageNotFound />;
   }
 
-  const previousLevel = level
-    ? findPreviousLevel(level.key, communityLevels)
-    : null;
-
-  const nextLevel = level ? findNextLevel(level.key, communityLevels) : null;
-
-  const createdBy = level.level.createdBy;
-  const creatorLink = level.level.creatorLink;
+  const createdBy = currentLevel.level.createdBy;
+  const creatorLink = currentLevel.level.creatorLink;
 
   return (
     <RootLayout>
@@ -111,10 +40,10 @@ const PageCommunityLevel = () => {
       </div>
 
       <CommunityLevel
-        key={level.key}
-        id={level.key}
+        key={currentLevel.key}
+        id={currentLevel.key}
         title={`${t("LEVEL")} ${id}`}
-        level={level.level}
+        level={currentLevel.level}
         previousLevel={previousLevel}
         nextLevel={nextLevel}
       />

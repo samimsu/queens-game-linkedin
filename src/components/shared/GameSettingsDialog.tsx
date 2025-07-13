@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 
-interface SettingsDialogProps {
+interface GameSettingsDialogProps {
   showClashingQueens: boolean;
   toggleShowClashingQueens: (checked: boolean) => void;
   showInstructions: boolean;
@@ -20,7 +20,7 @@ interface SettingsDialogProps {
   toggleShowClock: (checked: boolean) => void;
 }
 
-const SettingsDialog: React.FC<SettingsDialogProps> = ({
+const GameSettingsDialog: React.FC<GameSettingsDialogProps> = ({
   showClashingQueens,
   toggleShowClashingQueens,
   showInstructions,
@@ -72,4 +72,4 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
   );
 };
 
-export default SettingsDialog;
+export default GameSettingsDialog;
