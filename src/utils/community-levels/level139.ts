@@ -26,9 +26,9 @@ const level = {
     E: altoMain,
     F: bittersweet,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "MScarcia88",
-  creatorLink: "https://github.com/x",
+  creatorLink: "https://github.com/MScarcia88",
 };
 
 export default level;
