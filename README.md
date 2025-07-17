@@ -128,6 +128,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/PavelMGs"><img src="https://avatars.githubusercontent.com/u/67228385?v=4?s=100" width="100px;" alt="PavelMGs"/><br /><sub><b>PavelMGs</b></sub></a><br /><a href="#content-PavelMGs" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/leoancab"><img src="https://avatars.githubusercontent.com/u/93136013?v=4?s=100" width="100px;" alt="Leonel Cabrera"/><br /><sub><b>Leonel Cabrera</b></sub></a><br /><a href="#content-leoancab" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MScarcia88"><img src="https://avatars.githubusercontent.com/u/220600458?v=4?s=100" width="100px;" alt="MScarcia88"/><br /><sub><b>MScarcia88</b></sub></a><br /><a href="#content-MScarcia88" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jadhav-kunal"><img src="https://avatars.githubusercontent.com/u/54142448?v=4?s=100" width="100px;" alt="Kunal Jadhav"/><br /><sub><b>Kunal Jadhav</b></sub></a><br /><a href="#content-jadhav-kunal" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
