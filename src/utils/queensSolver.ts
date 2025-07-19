@@ -5,7 +5,6 @@ export function solveQueens(board: Board, colorRegions: string[][]): Board[] {
     const n = board.length;
     const allSolutions: Board[] = [];
 
-    // Find all solutions starting from every possible position
     findAllSolutions(colorRegions, n, allSolutions);
 
     return allSolutions;
@@ -38,7 +37,7 @@ function backtrackAllSolutions(
     allSolutions: Board[]
 ): void {
     if (row === n) {
-        // All queens placed successfully - save this solution
+        // All queens placed successfully, save this solution
         const solutionBoard: Board = Array(n).fill(null).map(() => Array(n).fill(null));
         for (let r = 0; r < n; r++) {
             for (let c = 0; c < n; c++) {
@@ -57,7 +56,7 @@ function backtrackAllSolutions(
             status[row][col] = true;
             usedColors.add(colorRegions[row][col]);
 
-            // Recurse to find all solutions from this state
+            // Recurse
             backtrackAllSolutions(colorRegions, status, row + 1, n, usedColors, allSolutions);
 
             // Backtrack
@@ -68,7 +67,7 @@ function backtrackAllSolutions(
 }
 
 /**
- * Legacy function for backward compatibility - returns first solution or null
+ * Old function that returns first solution found
  */
 export function solveQueensLegacy(board: Board, colorRegions: string[][]): Board | null {
     const n = board.length;
@@ -94,7 +93,7 @@ export function solveQueensLegacy(board: Board, colorRegions: string[][]): Board
 }
 
 /**
- * Backtracking algorithm to find queen placements (legacy - finds first solution only)
+ * Old backtracking algorithm that finds first solution encoutnered only 
  */
 function backtrack(
     colorRegions: string[][],

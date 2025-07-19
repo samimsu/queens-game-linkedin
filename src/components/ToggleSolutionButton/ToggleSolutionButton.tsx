@@ -28,7 +28,6 @@ const ToggleSolutionButton: React.FC<ToggleSolutionButtonProps> = ({
     const handleToggleSolution = () => {
         try {
             if (!isShowingSolution) {
-                // Show solution
                 let solutions = cachedSolutions;
 
                 if (!solutions) {
@@ -58,7 +57,7 @@ const ToggleSolutionButton: React.FC<ToggleSolutionButtonProps> = ({
                     console.log("No solution found for this puzzle");
                 }
             } else {
-                // Hide solution - restore original board
+                // Hide solution, restore original board
                 if (originalBoardRef.current) {
                     setIsShowingSolution(false);
                     console.log("Hiding solution");
