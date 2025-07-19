@@ -1,7 +1,76 @@
 export type BoardCell = string | null;
 export type Board = BoardCell[][];
 
-export function solveQueens(board: Board, colorRegions: string[][]): Board | null {
+export function solveQueens(board: Board, colorRegions: string[][]): Board[] {
+    const n = board.length;
+    const allSolutions: Board[] = [];
+
+    // Find all solutions starting from every possible position
+    findAllSolutions(colorRegions, n, allSolutions);
+
+    return allSolutions;
+}
+
+/**
+ * Find all possible solutions by trying to start from every position
+ */
+function findAllSolutions(
+    colorRegions: string[][],
+    n: number,
+    allSolutions: Board[]
+): void {
+    const status: boolean[][] = Array(n).fill(null).map(() => Array(n).fill(false));
+    const usedColors = new Set<string>();
+
+    // Start the backtracking process
+    backtrackAllSolutions(colorRegions, status, 0, n, usedColors, allSolutions);
+}
+
+/**
+ * Backtracking algorithm to find all queen placements
+ */
+function backtrackAllSolutions(
+    colorRegions: string[][],
+    status: boolean[][],
+    row: number,
+    n: number,
+    usedColors: Set<string>,
+    allSolutions: Board[]
+): void {
+    if (row === n) {
+        // All queens placed successfully - save this solution
+        const solutionBoard: Board = Array(n).fill(null).map(() => Array(n).fill(null));
+        for (let r = 0; r < n; r++) {
+            for (let c = 0; c < n; c++) {
+                if (status[r][c]) {
+                    solutionBoard[r][c] = 'Q';
+                }
+            }
+        }
+        allSolutions.push(solutionBoard);
+        return;
+    }
+
+    for (let col = 0; col < n; col++) {
+        if (isValidPlacement(colorRegions, status, row, col, n, usedColors)) {
+            // Place queen
+            status[row][col] = true;
+            usedColors.add(colorRegions[row][col]);
+
+            // Recurse to find all solutions from this state
+            backtrackAllSolutions(colorRegions, status, row + 1, n, usedColors, allSolutions);
+
+            // Backtrack
+            status[row][col] = false;
+            usedColors.delete(colorRegions[row][col]);
+        }
+    }
+}
+
+/**
+ * Legacy function for backward compatibility - returns first solution or null
+ */
+export function solveQueensLegacy(board: Board, colorRegions: string[][]): Board | null {
     const n = board.length;
     const status: boolean[][] = Array(n).fill(null).map(() => Array(n).fill(false));
     const usedColors = new Set<string>();
@@ -25,7 +94,7 @@ export function solveQueens(board: Board, colorRegions: string[][]): Board | nul
 }
 
 /**
- * Backtracking algorithm to find queen placements
+ * Backtracking algorithm to find queen placements (legacy - finds first solution only)
  */
 function backtrack(
     colorRegions: string[][],
