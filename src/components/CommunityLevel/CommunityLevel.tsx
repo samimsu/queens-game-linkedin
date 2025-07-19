@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
@@ -15,6 +15,7 @@ import HowToPlay from "./components/HowToPlay";
 import SettingsDialog from "./components/SettingsDialog";
 import Timer from "./components/Timer";
 import Button from "../Button";
+import ToggleSolutionButton from "../ToggleSolutionButton";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { CommunityLevel as CommunityLevelType } from "@/utils/types";
@@ -43,6 +44,9 @@ const CommunityLevel = ({
   const previousPage = "/community-levels";
 
   const levelSize = level.size;
+
+  // State to track when solution is being shown
+  const [isShowingSolution, setIsShowingSolution] = useState(false);
 
   const boardSize = levelSize;
   const colorRegions = level.colorRegions;
@@ -175,7 +179,8 @@ const CommunityLevel = ({
                     setShowWinningScreen(false);
                     history.current = [];
                   }}
-                  className="border border-slate-500 rounded-full p-2 mr-2"
+                  disabled={isShowingSolution}
+                  className="border border-slate-500 rounded-full p-2 mr-2 disabled:opacity-50"
                 >
                   <ResetIcon size="18" />
                 </button>
@@ -205,7 +210,7 @@ const CommunityLevel = ({
             />
           </div>
 
-          <div className="game relative flex justify-center">
+          <div className={`game relative flex justify-center ${isShowingSolution ? 'pointer-events-none opacity-75' : ''}`}>
             {showWinningScreen && (
               <WinningScreen
                 timer={timer}
@@ -222,8 +227,8 @@ const CommunityLevel = ({
             )}
             <Board
               board={board}
-              handleSquareClick={handleSquareClick}
-              handleSquareMouseEnter={handleDrag}
+              handleSquareClick={isShowingSolution ? () => { } : handleSquareClick}
+              handleSquareMouseEnter={isShowingSolution ? () => { } : handleDrag}
               boardSize={boardSize}
               colorRegions={colorRegions}
               regionColors={regionColors}
@@ -234,10 +239,22 @@ const CommunityLevel = ({
           <Button
             className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
             onClick={handleUndo}
-            disabled={hasWon || !history.current.length}
+            disabled={hasWon || !history.current.length || isShowingSolution}
           >
             {t("UNDO")}
           </Button>
+          <ToggleSolutionButton
+            hasWon={hasWon}
+            className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
+            board={board}
+            colorRegions={colorRegions}
+            onBoardChange={(newBoard: (string | null)[][]) => {
+              setBoard(newBoard);
+            }}
+            onSolutionToggle={(showing: boolean) => {
+              setIsShowingSolution(showing);
+            }}
+          />
         </div>
 
         {showInstructions && <HowToPlay />}

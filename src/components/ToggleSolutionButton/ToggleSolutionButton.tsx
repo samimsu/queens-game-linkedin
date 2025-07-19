@@ -22,6 +22,7 @@ const ToggleSolutionButton: React.FC<ToggleSolutionButtonProps> = ({
     const [isShowingSolution, setIsShowingSolution] = useState(false);
     const [cachedSolutions, setCachedSolutions] = useState<(string | null)[][][] | null>(null);
     const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
+    const [lastViewedSolutionIndex, setLastViewedSolutionIndex] = useState(0);
     const originalBoardRef = useRef<(string | null)[][] | null>(null);
 
     const handleToggleSolution = () => {
@@ -41,11 +42,14 @@ const ToggleSolutionButton: React.FC<ToggleSolutionButtonProps> = ({
                     // Save current board state before showing solution
                     originalBoardRef.current = board.map(row => [...row]);
                     setIsShowingSolution(true);
-                    setCurrentSolutionIndex(0);
-                    console.log(`Found ${solutions.length} solution(s)`);
+
+                    // Use the last viewed solution index, or 0 if it's the first time
+                    const solutionIndexToShow = lastViewedSolutionIndex < solutions.length ? lastViewedSolutionIndex : 0;
+                    setCurrentSolutionIndex(solutionIndexToShow);
+                    console.log(`Found ${solutions.length} solution(s), showing solution ${solutionIndexToShow + 1}`);
 
                     if (onBoardChange) {
-                        onBoardChange(solutions[0]);
+                        onBoardChange(solutions[solutionIndexToShow]);
                     }
                     if (onSolutionToggle) {
                         onSolutionToggle(true);
@@ -76,6 +80,7 @@ const ToggleSolutionButton: React.FC<ToggleSolutionButtonProps> = ({
         if (cachedSolutions && cachedSolutions.length > 0) {
             const newIndex = currentSolutionIndex > 0 ? currentSolutionIndex - 1 : cachedSolutions.length - 1;
             setCurrentSolutionIndex(newIndex);
+            setLastViewedSolutionIndex(newIndex);
             if (onBoardChange) {
                 onBoardChange(cachedSolutions[newIndex]);
             }
@@ -86,6 +91,7 @@ const ToggleSolutionButton: React.FC<ToggleSolutionButtonProps> = ({
         if (cachedSolutions && cachedSolutions.length > 0) {
             const newIndex = currentSolutionIndex < cachedSolutions.length - 1 ? currentSolutionIndex + 1 : 0;
             setCurrentSolutionIndex(newIndex);
+            setLastViewedSolutionIndex(newIndex);
             if (onBoardChange) {
                 onBoardChange(cachedSolutions[newIndex]);
             }
