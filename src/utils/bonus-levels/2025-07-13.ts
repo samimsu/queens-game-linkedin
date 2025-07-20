@@ -41,7 +41,6 @@ const level = {
     J: anakiwa,
     K: turquoiseBlue,
   },
-  isNew: true,
 };
 
 export default level;
