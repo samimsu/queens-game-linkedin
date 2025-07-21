@@ -37,7 +37,6 @@ const level446 = {
     I: altoMain,
     J: lightWisteria,
   },
-  isNew: true,
 };
 
 export default level446;
