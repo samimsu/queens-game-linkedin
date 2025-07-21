@@ -154,6 +154,8 @@ import level152 from "./community-levels/level152";
 import level153 from "./community-levels/level153";
 import level154 from "./community-levels/level154";
 import level155 from "./community-levels/level155";
+import level156 from "./community-levels/level156";
+import level157 from "./community-levels/level157";
 
 export const communityLevels: { [key: string]: CommunityLevel } = {
   level1,
@@ -311,4 +313,6 @@ export const communityLevels: { [key: string]: CommunityLevel } = {
   level153,
   level154,
   level155,
+  level156,
+  level157,
 };
