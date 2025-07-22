@@ -29,7 +29,7 @@ const level = {
     F: bittersweet,
     G: saharaSand,
   },
-  solutionsCount: 0,
+  solutionsCount: 1,
   createdBy: "ITShchen",
   creatorLink: "https://www.linkedin.com/in/itshchen",
 };
