@@ -41,7 +41,7 @@ const level = {
     J: halfBaked,
     K: lavenderRose,
   },
-  solutionsCount: 0,
+  solutionsCount: 1,
   createdBy: "NameOfMe",
   creatorLink: "",
 };
