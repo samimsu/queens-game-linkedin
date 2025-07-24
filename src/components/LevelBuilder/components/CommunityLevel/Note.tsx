@@ -1,5 +1,5 @@
 import { Trans } from "react-i18next";
-import { patreon5LevelPackPost } from "@/data/links";
+import { patreonLevelPacks } from "@/data/links";
 
 const Note = () => {
   return (
@@ -7,10 +7,10 @@ const Note = () => {
       <span className="text-sm font-medium">
         <Trans i18nKey="COMMUNITY_LEVEL_NOTE">
           Note: You can create <span className="font-bold">1 free level</span>.
-          Want more? Get <span className="font-bold">5 levels/month</span> for
-          $5 on Patreon
+          Want more? Check out the{" "}
+          <span className="font-bold">level packs</span> on Patreon
           <a
-            href={patreon5LevelPackPost}
+            href={patreonLevelPacks}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 text-nowrap"

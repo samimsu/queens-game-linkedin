@@ -9,3 +9,4 @@ export const officialLinkedInQueensGamePage =
 export const discord = "https://discord.gg/dr49fthwSb";
 export const patreon5LevelPackPost =
   "https://www.patreon.com/posts/5-level-pack-131358752";
+export const patreonLevelPacks = "https://www.patreon.com/samimsu/shop";
