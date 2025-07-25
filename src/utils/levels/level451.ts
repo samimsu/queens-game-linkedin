@@ -9,17 +9,17 @@ import {
   saharaSand,
 } from "../colors";
 
-const level450 = {
+const level451 = {
   size: 8,
   colorRegions: [
+    ["A", "A", "B", "B", "B", "C", "C", "C"],
+    ["A", "A", "A", "B", "D", "C", "D", "C"],
+    ["A", "A", "A", "B", "D", "D", "D", "A"],
     ["A", "A", "A", "A", "A", "A", "A", "A"],
-    ["A", "A", "A", "A", "A", "B", "A", "A"],
-    ["C", "C", "C", "A", "A", "D", "D", "D"],
-    ["E", "C", "F", "A", "A", "F", "D", "G"],
-    ["E", "C", "F", "F", "F", "F", "D", "G"],
-    ["C", "C", "C", "F", "F", "D", "D", "D"],
-    ["H", "H", "F", "F", "H", "H", "H", "H"],
-    ["H", "H", "H", "H", "H", "H", "H", "H"],
+    ["A", "E", "E", "E", "A", "F", "F", "A"],
+    ["A", "E", "G", "E", "G", "F", "H", "H"],
+    ["A", "A", "G", "G", "G", "F", "F", "H"],
+    ["A", "A", "A", "A", "A", "A", "H", "H"],
   ],
   regionColors: {
     A: lightWisteria,
@@ -31,6 +31,7 @@ const level450 = {
     G: saharaSand,
     H: nomad,
   },
+  isNew: true,
 };
 
-export default level450;
+export default level451;
