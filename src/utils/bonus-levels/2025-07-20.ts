@@ -38,7 +38,6 @@ const level = {
     I: altoMain,
     J: lightOrchid,
   },
-  isNew: true,
 };
 
 export default level;
