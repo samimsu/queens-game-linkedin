@@ -132,6 +132,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Abishethvarman"><img src="https://avatars.githubusercontent.com/u/57715922?v=4?s=100" width="100px;" alt="Abishethvarman V"/><br /><sub><b>Abishethvarman V</b></sub></a><br /><a href="#content-Abishethvarman" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/OtsoHellman"><img src="https://avatars.githubusercontent.com/u/35035388?v=4?s=100" width="100px;" alt="OtsoHellman"/><br /><sub><b>OtsoHellman</b></sub></a><br /><a href="#content-OtsoHellman" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
