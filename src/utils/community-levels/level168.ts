@@ -35,7 +35,7 @@ const level = {
     H: nomad,
     I: lightOrchid,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "otsohellman",
   creatorLink: "https://github.com/OtsoHellman/",
 };
