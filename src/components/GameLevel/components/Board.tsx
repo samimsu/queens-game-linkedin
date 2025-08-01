@@ -12,6 +12,7 @@ interface BoardProps {
   regionColors: { [key: string]: string };
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
+  disabled?: boolean;
 }
 
 const Board: React.FC<BoardProps> = ({
