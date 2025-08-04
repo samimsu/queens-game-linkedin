@@ -36,8 +36,7 @@ const level460 = {
     H: nomad,
     I: chardonnay,
     J: lightWisteria,
-  },
-  isNew: true,
+  },
 };
 
 export default level460;
