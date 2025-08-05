@@ -134,6 +134,7 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Abishethvarman"><img src="https://avatars.githubusercontent.com/u/57715922?v=4?s=100" width="100px;" alt="Abishethvarman V"/><br /><sub><b>Abishethvarman V</b></sub></a><br /><a href="#content-Abishethvarman" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/OtsoHellman"><img src="https://avatars.githubusercontent.com/u/35035388?v=4?s=100" width="100px;" alt="OtsoHellman"/><br /><sub><b>OtsoHellman</b></sub></a><br /><a href="#content-OtsoHellman" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://lattes.cnpq.br/2344750517585884"><img src="https://avatars.githubusercontent.com/u/1430252?v=4?s=100" width="100px;" alt="guilherme mainieri"/><br /><sub><b>guilherme mainieri</b></sub></a><br /><a href="#content-gmainieri" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://loukis-13.github.io/"><img src="https://avatars.githubusercontent.com/u/67355353?v=4?s=100" width="100px;" alt="Loukis-13"/><br /><sub><b>Loukis-13</b></sub></a><br /><a href="#content-Loukis-13" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
