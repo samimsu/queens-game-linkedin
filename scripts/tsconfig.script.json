@@ -1,0 +1,15 @@
+// tsconfig.script.json
+{
+  "compilerOptions": {
+    "target": "ES2020", // Or "ES2022" if you prefer, both are fine
+    "module": "CommonJS", // Node.js scripts typically use CommonJS modules
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    // Ensure standard library types are available for Map iteration and other modern features
+    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  },
+  "include": [],
+  "exclude": ["node_modules"]
+}
