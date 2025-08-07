@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
+import { Shuffle } from "lucide-react";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
@@ -20,6 +21,7 @@ import useGameLogic from "@/hooks/useGameLogic";
 import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import Tag from "../Tag";
+import { communityLevels } from "@/utils/communityLevels";
 
 interface CommunityLevelProps {
   id: string;
@@ -79,6 +81,45 @@ const CommunityLevel = ({
     colorRegions,
     levelType: "community",
   });
+
+  const getRandomLevel = (): CommunityLevelType | null => {
+    const levelKeys = Object.keys(communityLevels);
+    if (levelKeys.length > 1) {
+      // Filter out the current level key
+      const otherLevelKeys = levelKeys.filter((key) => key !== id);
+      if (otherLevelKeys.length === 0) return null;
+      const randomIndex = Math.floor(Math.random() * otherLevelKeys.length);
+      const randomKey = otherLevelKeys[randomIndex];
+      return communityLevels[randomKey];
+    }
+    return null;
+  };
+
+  const randomLevel = useMemo(() => getRandomLevel(), [id]);
+
+  const RandomLevelButton: React.FC<{
+    children: React.ReactNode;
+    className: string;
+  }> = ({ children, className }) => {
+    return (
+      <Link to={randomLevel?.path || ""} className="flex">
+        <button
+          disabled={!randomLevel?.path}
+          onClick={() => {
+            if (randomLevel) {
+              setBoard(createEmptyBoard(randomLevel.size));
+              setHasWon(false);
+              setShowWinningScreen(false);
+              history.current = [];
+            }
+          }}
+          className={className}
+        >
+          {children}
+        </button>
+      </Link>
+    );
+  };
 
   const PreviousLevelButton: React.FC<{
     children: React.ReactNode;
@@ -145,7 +186,7 @@ const CommunityLevel = ({
             }`}
           >
             <Link to={previousPage} className="flex-none">
-              <button className="border border-slate-500 rounded-full p-2">
+              <button className="border border-slate-500 rounded-full p-2 mr-2">
                 <BackIcon />
               </button>
             </Link>
@@ -157,7 +198,7 @@ const CommunityLevel = ({
 
               <h2 className="text-xl text-center">{title}</h2>
 
-              <NextLevelButton className="disabled:opacity-50">
+              <NextLevelButton className="disabled:opacity-50 mr-2">
                 <NextIcon />
               </NextLevelButton>
             </div>
@@ -170,6 +211,9 @@ const CommunityLevel = ({
                     completed ? "visible" : "invisible"
                   }`}
                 />
+                <RandomLevelButton className="border border-slate-500 rounded-full p-2 mr-2">
+                  {<Shuffle size="18" />}
+                </RandomLevelButton>
                 <button
                   onClick={() => {
                     setBoard(createEmptyBoard(levelSize));
@@ -220,6 +264,7 @@ const CommunityLevel = ({
                   path: nextLevel?.path || "",
                   text: t("NEXT_LEVEL"),
                 }}
+                randomLink={{ path: randomLevel?.path || "" }}
                 close={() => setShowWinningScreen(false)}
               />
             )}

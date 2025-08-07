@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
+import { Shuffle } from "lucide-react";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
@@ -19,6 +20,7 @@ import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
+import { bonusLevels } from "@/utils/bonusLevels";
 
 interface BonusLevelProps {
   id: string;
@@ -78,6 +80,45 @@ const BonusLevel = ({
     colorRegions,
     levelType: "bonus",
   });
+
+  const getRandomLevel = (): BonusLevelType | null => {
+    const levelKeys = Object.keys(bonusLevels);
+    if (levelKeys.length > 1) {
+      // Filter out the current level key
+      const otherLevelKeys = levelKeys.filter((key) => key !== id);
+      if (otherLevelKeys.length === 0) return null;
+      const randomIndex = Math.floor(Math.random() * otherLevelKeys.length);
+      const randomKey = otherLevelKeys[randomIndex];
+      return bonusLevels[randomKey];
+    }
+    return null;
+  };
+
+  const randomLevel = useMemo(() => getRandomLevel(), [id]);
+
+  const RandomLevelButton: React.FC<{
+    children: React.ReactNode;
+    className: string;
+  }> = ({ children, className }) => {
+    return (
+      <Link to={randomLevel?.path || ""} className="flex">
+        <button
+          disabled={!randomLevel?.path}
+          onClick={() => {
+            if (randomLevel) {
+              setBoard(createEmptyBoard(randomLevel.size));
+              setHasWon(false);
+              setShowWinningScreen(false);
+              history.current = [];
+            }
+          }}
+          className={className}
+        >
+          {children}
+        </button>
+      </Link>
+    );
+  };
 
   const PreviousLevelButton: React.FC<{
     children: React.ReactNode;
@@ -169,6 +210,9 @@ const BonusLevel = ({
                     completed ? "visible" : "invisible"
                   }`}
                 />
+                <RandomLevelButton className="border border-slate-500 rounded-full p-2 mr-2">
+                  {<Shuffle size="18" />}
+                </RandomLevelButton>
                 <button
                   onClick={() => {
                     setBoard(createEmptyBoard(levelSize));
@@ -214,6 +258,7 @@ const BonusLevel = ({
                   path: nextLevel?.path || "",
                   text: t("NEXT_LEVEL"),
                 }}
+                randomLink={{ path: randomLevel?.path || "" }}
                 close={() => setShowWinningScreen(false)}
               />
             )}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Shuffle } from "lucide-react";
 import CloseIcon from "@/components/icons/CloseIcon";
 import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
@@ -14,6 +15,9 @@ interface WinningScreenProps {
     path: string;
     text: string;
   };
+  randomLink: {
+    path: string;
+  };
   close: () => void;
   timer: number;
 }
@@ -21,6 +25,7 @@ interface WinningScreenProps {
 const WinningScreen = ({
   previousLink,
   nextLink,
+  randomLink,
   close,
   timer,
 }: WinningScreenProps) => {
@@ -62,6 +67,11 @@ const WinningScreen = ({
           text={nextLink.text}
           isTextSmall={true}
         />
+        <Link to={randomLink?.path} className="absolute right-3 bottom-3">
+          <button onClick={close}>
+            <Shuffle />
+          </button>
+        </Link>
       </div>
     </div>
   );
