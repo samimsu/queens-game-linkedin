@@ -2,6 +2,12 @@
 
 This folder contains automation scripts for the Queens game clone project. The primary script is `addLevel.ts`, which automates the process of adding new levels to the game.
 
+#### Scripts
+
+- [addLevel.ts](#addLevel.ts)
+- [solveAllCommunityLevels.ts](#solveAllCommunityLevels.ts)
+- [findDuplicates.ts](#findDuplicates.ts)
+
 ## addLevel.ts
 
 This TypeScript script uses Playwright to automate adding a new level to the Queens game clone. It captures a screenshot from the LinkedIn Queens game and integrates it into your local level builder.
@@ -70,3 +76,31 @@ Run with `--show-steps` to see the list. Current steps include:
 - levels
 - readme
 - complete
+
+## solveAllCommunityLevels.ts
+
+#### Running directly with ts-node
+
+```bash
+# Solve all community levels
+ts-node solveAllCommunityLevels.ts
+
+# Solve all levels from a particular level onwards
+ts-node solveAllCommunityLevels.ts <levelNumber>
+```
+
+#### Examples
+
+```bash
+# Solve all levels from level 50 and greater
+ts-node solveAllCommunityLevels.ts 50
+```
+
+## findDuplicates.ts
+
+#### Running directly with ts-node
+
+```bash
+# Find any duplicate levels regardless of color
+ts-node --project tsconfig.script.json findDuplicates.ts
+```
