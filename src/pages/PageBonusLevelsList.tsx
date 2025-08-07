@@ -1,12 +1,15 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { format, parse } from "date-fns";
 import { useTranslation } from "react-i18next";
+import { Shuffle } from "lucide-react";
 import RootLayout from "@/layouts/RootLayout";
 import { bonusLevels } from "@/utils/bonusLevels";
 import { isBonusLevelCompleted } from "@/utils/localStorage";
 import Queen from "@/components/Queen";
 import PageTitle from "@/components/PageTitle";
 import NewBadge from "@/components/NewBadge";
+import { BonusLevel as BonusLevelType } from "@/utils/types";
 
 const PlayButton = () => {
   const { t } = useTranslation();
@@ -38,10 +41,27 @@ const PageBonusLevelsList = () => {
     return { key, id, displayRange };
   });
 
+  const getRandomLevel = (): BonusLevelType | null => {
+    const levelKeys = Object.keys(bonusLevels);
+    if (levelKeys.length > 1) {
+      const randomIndex = Math.floor(Math.random() * levelKeys.length);
+      const randomKey = levelKeys[randomIndex];
+      return bonusLevels[randomKey];
+    }
+    return null;
+  };
+
+  const randomLevel = useMemo(() => getRandomLevel(), []);
+
   return (
     <RootLayout>
       <PageTitle title={t("BONUS_LEVELS")} />
       <div className="w-full px-4">
+        <Link to={randomLevel?.path || ""} className="flex justify-center mb-3">
+          <button>
+            <Shuffle />
+          </button>
+        </Link>
         <div className="flex flex-col w-full">
           {levelList.map(({ key, id, displayRange }) => {
             const completed = isBonusLevelCompleted(key);

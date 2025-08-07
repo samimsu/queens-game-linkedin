@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import RootLayout from "@/layouts/RootLayout";
@@ -13,6 +13,8 @@ import {
 import { communityLevels } from "@/utils/communityLevels";
 import PageTitle from "@/components/PageTitle";
 import CommunityLevelsFilters from "@/components/CommunityLevelsList/CommunityLevelsFilters";
+import { Shuffle } from "lucide-react";
+import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 
 interface LevelButtonProps {
   level: number;
@@ -79,6 +81,18 @@ const PageCommunityLevelsList = () => {
     return true;
   });
 
+  const getRandomLevel = (): CommunityLevelType | null => {
+    const levelKeys = Object.keys(communityLevels);
+    if (levelKeys.length > 1) {
+      const randomIndex = Math.floor(Math.random() * levelKeys.length);
+      const randomKey = levelKeys[randomIndex];
+      return communityLevels[randomKey];
+    }
+    return null;
+  };
+
+  const randomLevel = useMemo(() => getRandomLevel(), []);
+
   return (
     <RootLayout>
       <PageTitle title={t("COMMUNITY_LEVELS")} />
@@ -106,6 +120,13 @@ const PageCommunityLevelsList = () => {
       />
 
       <div className="grid grid-cols-8 sm:grid-cols-10 gap-1 p-1 text-sm w-fit mx-auto">
+        <div className="flex justify-end mb-1 col-span-8 sm:col-span-10">
+          <Link to={randomLevel?.path || ""}>
+            <button>
+              <Shuffle />
+            </button>
+          </Link>
+        </div>
         {filteredLevels.map((key) => {
           const levelId = Number(key.replace("level", ""));
           const hasMultipleSolutions = communityLevels[key].solutionsCount > 1;

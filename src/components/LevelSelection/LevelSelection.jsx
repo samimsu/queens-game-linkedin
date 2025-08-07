@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { Shuffle } from "lucide-react";
 import LevelSelectionFilters from "./components/LevelSelectionFilters";
 import LevelsCollection from "./components/LevelsCollection";
 import LinkedInNote from "./components/LinkedInNote";
@@ -11,6 +13,8 @@ import {
 } from "@/utils/localStorage";
 import GroupIcon from "../icons/GroupIcon";
 import UngroupIcon from "../icons/UngroupIcon";
+
+import { levels } from "@/utils/levels";
 
 const LevelSelection = () => {
   const [showOnlyAvailableLevels, setShowOnlyAvailableLevels] = useState(false);
@@ -40,6 +44,18 @@ const LevelSelection = () => {
     setGroupingPreference(newSetting);
   };
 
+  const getRandomLevel = () => {
+    const levelKeys = Object.keys(levels);
+    if (levelKeys.length > 1) {
+      const randomIndex = Math.floor(Math.random() * levelKeys.length);
+      const randomKey = levelKeys[randomIndex];
+      return randomKey.replace(/level/, "");
+    }
+    return null;
+  };
+
+  const randomLevel = useMemo(() => getRandomLevel(), []);
+
   return (
     <div className="flex flex-col justify-center items-center w-fit mx-auto">
       <div className="flex w-full justify-between mb-2">
@@ -52,7 +68,13 @@ const LevelSelection = () => {
           }
           onCompletedLevelsChange={toggleHideCompletedLevels}
         />
+
         <div className="flex items-center space-x-3 mx-1">
+          <Link to={`/level/${randomLevel}` || ""} className="flex">
+            <button>
+              <Shuffle />
+            </button>
+          </Link>
           <ResetAllProgressDialog
             onReset={() => setResetTrigger((prev) => !prev)}
           />
