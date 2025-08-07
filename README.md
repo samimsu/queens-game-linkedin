@@ -39,11 +39,21 @@ Note: If anyone could help in finding the missing levels, I'd really appreciate 
 
 ## Build Levels
 
-If you would like to help me build levels you can use the [Level Builder](https://queensgame.vercel.app/level-builder). You can either paste the image of the level or manually build it.
+If you would like to help me build LinkedIn's levels or build your own level you can use the [Level Builder](https://queensgame.vercel.app/level-builder). You can either paste the image of the level or manually build it.
 
 ### By pasting image
 
 https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
+
+### Community Levels
+
+To build a community level make sure the "Community Level" level type is selected. Then build the level using the board.
+
+#### Restrictions
+
+1. Levels should have only 1 solution.
+2. 1 free level per person. For more levels you can buy a [level pack](https://www.patreon.com/c/samimsu/shop) or subscribe to my [Patreon](https://www.patreon.com/samimsu).
+3. Levels may not be a duplicate of an existing level.
 
 ## Local Development
 
