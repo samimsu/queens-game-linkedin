@@ -20,9 +20,8 @@ const LevelNavigationButton = ({
   <Link to={!level ? "#" : `/level/${level}`} className="flex">
     <button
       disabled={!level}
-      className={`${
-        isTextSmall ? "text-lg" : "text-xl"
-      } min-w-36 rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
+      className={`${isTextSmall ? "text-lg" : "text-xl"
+        } min-w-36 rounded border px-3 py-1 w-full border-white disabled:border-white/50 disabled:text-white/50`}
     >
       {text}
     </button>
@@ -88,7 +87,10 @@ const WinningScreen = ({
   }
 
   return (
-    <div className="absolute flex flex-col items-center justify-center text-center rounded-lg bg-purple text-white text-xl w-72 h-80 max-h-full max-w-full font-bold p-2 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+    <div
+      className={`absolute flex flex-col items-center justify-center text-center rounded-lg bg-purple text-white text-xl w-72 ${timer ? "h-80" : "h-72"
+        } max-h-full max-w-full font-bold p-2 select-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10`}
+    >
       <button className="absolute right-3 top-3" onClick={close}>
         <CloseIcon />
       </button>
