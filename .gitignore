@@ -128,3 +128,6 @@ yarn-error.log*
 
 scripts/*.png
 .vscode
+
+/src/utils/community-levels/pending
+scripts/solutions.json
