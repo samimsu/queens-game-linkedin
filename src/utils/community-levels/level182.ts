@@ -13,7 +13,7 @@ import {
 } from "../colors";
 
 const level = {
-  path: "/community-level/",
+  path: "/community-level/182",
   size: 11,
   colorRegions: [
     ["F", "F", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
