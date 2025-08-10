@@ -34,7 +34,6 @@ const level466 = {
     H: altoMain,
     I: saharaSand,
   },
-  isNew: true,
 };
 
 export default level466;
