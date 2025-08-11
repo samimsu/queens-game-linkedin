@@ -2,27 +2,18 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createInitialBoardForBuilder } from "../../utils/board";
 import {
-  alto,
   altoMain,
   anakiwa,
   bittersweet,
-  canCan,
-  carnation,
   celadon,
   chardonnay,
-  coldPurple,
   colorNames,
-  feijoa,
   halfBaked,
   lavenderRose,
   lightOrchid,
   lightWisteria,
-  macNCheese,
-  malibu,
-  manz,
   nomad,
   saharaSand,
-  tallow,
   turquoiseBlue,
 } from "../../utils/colors";
 import LevelNameInput from "./components/LevelNameInput";
@@ -81,26 +72,17 @@ const LevelBuilder = () => {
 
   const colorOptions = useMemo(
     () => [
-      { name: t("COLOR.ALTO"), value: alto },
-      { name: t("COLOR.ALTO_MAIN"), value: altoMain },
+      { name: t("COLOR.ALTO"), value: altoMain },
       { name: t("COLOR.ANAKIWA"), value: anakiwa },
       { name: t("COLOR.BITTERSWEET"), value: bittersweet },
-      { name: t("COLOR.CAN_CAN"), value: canCan },
-      { name: t("COLOR.CARNATION"), value: carnation },
       { name: t("COLOR.CELADON"), value: celadon },
       { name: t("COLOR.CHARDONNAY"), value: chardonnay },
-      { name: t("COLOR.COLD_PURPLE"), value: coldPurple },
-      { name: t("COLOR.FEIJOA"), value: feijoa },
       { name: t("COLOR.HALF_BAKED"), value: halfBaked },
       { name: t("COLOR.LAVENDER_ROSE"), value: lavenderRose },
       { name: t("COLOR.LIGHT_ORCHID"), value: lightOrchid },
       { name: t("COLOR.LIGHT_WISTERIA"), value: lightWisteria },
-      { name: t("COLOR.MAC_N_CHEESE"), value: macNCheese },
-      { name: t("COLOR.MALIBU"), value: malibu },
-      { name: t("COLOR.MANZ"), value: manz },
       { name: t("COLOR.NOMAD"), value: nomad },
       { name: t("COLOR.SAHARA_SAND"), value: saharaSand },
-      { name: t("COLOR.TALLOW"), value: tallow },
       { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
     ],
     []
