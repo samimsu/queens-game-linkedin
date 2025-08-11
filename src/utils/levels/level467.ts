@@ -34,7 +34,6 @@ const level467 = {
     H: lightWisteria,
     I: anakiwa,
   },
-  isNew: true,
 };
 
 export default level467;
