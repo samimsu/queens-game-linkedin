@@ -110,5 +110,6 @@
   "COMPLETED": "Completed",
   "NOT_COMPLETED": "Not completed",
   "CLEAR_ALL": "Clear all",
-  "ONE_FREE_LEVEL": "1 free level"
+  "ONE_FREE_LEVEL": "1 free level",
+  "CHANGE_COLOR_SCHEME": "Change color scheme"
 }

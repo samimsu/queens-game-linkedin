@@ -330,7 +330,7 @@ const CommunityLevel = ({
             <button
               onClick={() => setUseDefaultColors(!useDefaultColors)}
               className="border border-slate-500 rounded-full p-2"
-              title={t("CHANGE_TO_DEFAULT_COLORS")}
+              title={t("CHANGE_COLOR_SCHEME")}
             >
               <Palette size="18" />
             </button>
