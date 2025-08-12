@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import { Shuffle } from "lucide-react";
+import { Shuffle, Palette } from "lucide-react";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
@@ -22,6 +22,19 @@ import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import Tag from "../Tag";
 import { communityLevels } from "@/utils/communityLevels";
+import {
+  altoMain,
+  anakiwa,
+  bittersweet,
+  celadon,
+  chardonnay,
+  halfBaked,
+  lightOrchid,
+  lightWisteria,
+  nomad,
+  saharaSand,
+  turquoiseBlue,
+} from "@/utils/colors";
 
 interface CommunityLevelProps {
   id: string;
@@ -41,6 +54,7 @@ const CommunityLevel = ({
   const { theme } = useTheme();
   const { t, i18n } = useTranslation();
   const isVisible = useVisibility();
+  const [useDefaultColors, setUseDefaultColors] = useState(false);
 
   const previousPage = "/community-levels";
 
@@ -48,7 +62,32 @@ const CommunityLevel = ({
 
   const boardSize = levelSize;
   const colorRegions = level.colorRegions;
-  const regionColors = level.regionColors;
+  const defaultRegionColors = level.regionColors;
+
+  const alternateRegionColors = useMemo(() => {
+    const colorMap: { [key: string]: string } = {
+      A: lightWisteria,
+      B: chardonnay,
+      C: anakiwa,
+      D: celadon,
+      E: altoMain,
+      F: bittersweet,
+      G: saharaSand,
+      H: nomad,
+      I: lightOrchid,
+      J: halfBaked,
+      K: turquoiseBlue,
+    };
+    const newColors: { [key: string]: string } = {};
+    Object.keys(defaultRegionColors).forEach((region) => {
+      newColors[region] = colorMap[region] || defaultRegionColors[region];
+    });
+    return newColors;
+  }, [defaultRegionColors]);
+
+  const regionColors = useDefaultColors
+    ? alternateRegionColors
+    : defaultRegionColors;
 
   const {
     board,
@@ -279,13 +318,23 @@ const CommunityLevel = ({
               clashingQueens={clashingQueens}
             />
           </div>
-          <Button
-            className="border border-slate-500 rounded-full p-2 mr-2 w-full mt-[16px]"
-            onClick={handleUndo}
-            disabled={hasWon || !history.current.length}
-          >
-            {t("UNDO")}
-          </Button>
+
+          <div className="flex justify-between items-center mt-2">
+            <Button
+              className="border border-slate-500 rounded-full p-2 mr-2 w-full max-w-64"
+              onClick={handleUndo}
+              disabled={hasWon || !history.current.length}
+            >
+              {t("UNDO")}
+            </Button>
+            <button
+              onClick={() => setUseDefaultColors(!useDefaultColors)}
+              className="border border-slate-500 rounded-full p-2"
+              title={t("CHANGE_TO_DEFAULT_COLORS")}
+            >
+              <Palette size="18" />
+            </button>
+          </div>
         </div>
 
         {showInstructions && <HowToPlay />}
