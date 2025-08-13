@@ -37,7 +37,6 @@ const level469 = {
     I: celadon,
     J: altoMain,
   },
-  isNew: true,
 };
 
 export default level469;
