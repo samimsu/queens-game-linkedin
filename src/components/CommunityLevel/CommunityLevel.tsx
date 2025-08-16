@@ -25,10 +25,12 @@ import { communityLevels } from "@/utils/communityLevels";
 import {
   altoMain,
   anakiwa,
+  atomicTangerine,
   bittersweet,
   celadon,
   chardonnay,
   halfBaked,
+  lightGreen,
   lightOrchid,
   lightWisteria,
   nomad,
@@ -78,6 +80,8 @@ const CommunityLevel = ({
       I: lightOrchid,
       J: halfBaked,
       K: turquoiseBlue,
+      L: atomicTangerine,
+      M: lightGreen,
     };
     const newColors: { [key: string]: string } = {};
     Object.keys(defaultRegionColors).forEach((region) => {
