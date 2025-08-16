@@ -111,5 +111,8 @@
   "NOT_COMPLETED": "Not completed",
   "CLEAR_ALL": "Clear all",
   "ONE_FREE_LEVEL": "1 free level",
-  "CHANGE_COLOR_SCHEME": "Change color scheme"
+  "CHANGE_COLOR_SCHEME": "Change color scheme",
+  "ZOOM_IN": "Zoom in",
+  "ZOOM_OUT": "Zoom out",
+  "RESET_ZOOM": "Reset zoom"
 }
