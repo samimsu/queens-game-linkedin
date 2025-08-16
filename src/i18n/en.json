@@ -114,5 +114,6 @@
   "CHANGE_COLOR_SCHEME": "Change color scheme",
   "ZOOM_IN": "Zoom in",
   "ZOOM_OUT": "Zoom out",
-  "RESET_ZOOM": "Reset zoom"
+  "RESET_ZOOM": "Reset zoom",
+  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors"
 }

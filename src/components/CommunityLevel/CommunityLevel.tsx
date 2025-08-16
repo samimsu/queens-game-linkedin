@@ -58,6 +58,7 @@ const CommunityLevel = ({
   const isVisible = useVisibility();
   const [useDefaultColors, setUseDefaultColors] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [notification, setNotification] = useState<string | null>(null);
 
   const previousPage = "/community-levels";
 
@@ -89,6 +90,15 @@ const CommunityLevel = ({
     });
     return newColors;
   }, [defaultRegionColors]);
+
+  const areColorsEqual = useMemo(() => {
+    const defaultKeys = Object.keys(defaultRegionColors);
+    const alternateKeys = Object.keys(alternateRegionColors);
+    if (defaultKeys.length !== alternateKeys.length) return false;
+    return defaultKeys.every(
+      (key) => defaultRegionColors[key] === alternateRegionColors[key]
+    );
+  }, [defaultRegionColors, alternateRegionColors]);
 
   const regionColors = useDefaultColors
     ? alternateRegionColors
@@ -233,6 +243,20 @@ const CommunityLevel = ({
     setZoomLevel(1);
   };
 
+  const showNotification = (message: string) => {
+    setNotification(message);
+    setTimeout(() => setNotification(null), 3000);
+  };
+
+  const handleColorSchemeToggle = () => {
+    if (!useDefaultColors && areColorsEqual) {
+      // Trying to switch to alternate colors, but they are the same as default
+      showNotification(t("DEFAULT_COLORS_ALREADY_USED"));
+    } else {
+      setUseDefaultColors(!useDefaultColors);
+    }
+  };
+
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
@@ -372,13 +396,23 @@ const CommunityLevel = ({
                 <RotateCcw size="18" />
               </button>
             </div>
-            <button
-              onClick={() => setUseDefaultColors(!useDefaultColors)}
-              className="border border-slate-500 rounded-full p-2"
-              title={t("CHANGE_COLOR_SCHEME")}
-            >
-              <Palette size="18" />
-            </button>
+            <div className="relative">
+              <button
+                onClick={handleColorSchemeToggle}
+                className="border border-slate-500 rounded-full p-2"
+                title={t("CHANGE_COLOR_SCHEME")}
+              >
+                <Palette size="18" />
+              </button>
+              {notification && (
+                <div
+                  className="absolute top-full mt-2 right-0 bg-slate-800 text-white text-sm px-3 py-1 rounded shadow text-nowrap"
+                  aria-live="polite"
+                >
+                  {notification}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
