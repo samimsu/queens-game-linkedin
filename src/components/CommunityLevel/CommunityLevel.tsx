@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import { Shuffle, Palette } from "lucide-react";
+import { Shuffle, Palette, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
@@ -55,6 +55,7 @@ const CommunityLevel = ({
   const { t, i18n } = useTranslation();
   const isVisible = useVisibility();
   const [useDefaultColors, setUseDefaultColors] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
 
   const previousPage = "/community-levels";
 
@@ -204,6 +205,7 @@ const CommunityLevel = ({
     setBoard(createEmptyBoard(levelSize));
     setHasWon(false);
     setShowWinningScreen(false);
+    setZoomLevel(1);
   }, [id]);
 
   useEffect(() => {
@@ -214,6 +216,18 @@ const CommunityLevel = ({
       setTimerRunning(true);
     }
   }, [isVisible, hasWon]);
+
+  const handleZoomIn = () => {
+    setZoomLevel((prevZoom) => Math.min(prevZoom + 0.1, 1.5));
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel((prevZoom) => Math.max(prevZoom - 0.1, 0.5));
+  };
+
+  const handleZoomReset = () => {
+    setZoomLevel(1);
+  };
 
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
@@ -316,17 +330,44 @@ const CommunityLevel = ({
               regionColors={regionColors}
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
+              zoomLevel={zoomLevel}
             />
           </div>
 
           <div className="flex justify-between items-center mt-2">
             <Button
-              className="border border-slate-500 rounded-full p-2 mr-2 w-full max-w-64"
+              className="border border-slate-500 rounded-full py-2 px-10 mr-2"
               onClick={handleUndo}
               disabled={hasWon || !history.current.length}
             >
               {t("UNDO")}
             </Button>
+            <div className="flex space-x-2">
+              <button
+                className="border border-slate-500 rounded-full p-2 disabled:opacity-50"
+                onClick={handleZoomIn}
+                title={t("ZOOM_IN")}
+                disabled={zoomLevel >= 1.5}
+              >
+                <ZoomIn size="18" />
+              </button>
+              <button
+                className="border border-slate-500 rounded-full p-2 disabled:opacity-50"
+                onClick={handleZoomOut}
+                title={t("ZOOM_OUT")}
+                disabled={zoomLevel <= 0.5}
+              >
+                <ZoomOut size="18" />
+              </button>
+              <button
+                className="border border-slate-500 rounded-full p-2 disabled:opacity-50"
+                onClick={handleZoomReset}
+                title={t("RESET_ZOOM")}
+                disabled={zoomLevel === 1}
+              >
+                <RotateCcw size="18" />
+              </button>
+            </div>
             <button
               onClick={() => setUseDefaultColors(!useDefaultColors)}
               className="border border-slate-500 rounded-full p-2"

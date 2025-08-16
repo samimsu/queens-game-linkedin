@@ -11,6 +11,7 @@ interface BoardProps {
   regionColors: { [key: string]: string };
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
+  zoomLevel: number;
 }
 
 const Board: React.FC<BoardProps> = ({
@@ -22,6 +23,7 @@ const Board: React.FC<BoardProps> = ({
   regionColors,
   showClashingQueens,
   clashingQueens,
+  zoomLevel,
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
     undefined
@@ -37,8 +39,12 @@ const Board: React.FC<BoardProps> = ({
     <div
       className="board"
       style={{
-        gridTemplateColumns: `repeat(${board.length}, ${gridSize})`,
-        gridTemplateRows: `repeat(${board.length}, ${gridSize})`,
+        gridTemplateColumns: `repeat(${board.length}, ${
+          parseFloat(gridSize) * zoomLevel
+        }px)`,
+        gridTemplateRows: `repeat(${board.length}, ${
+          parseFloat(gridSize) * zoomLevel
+        }px)`,
       }}
     >
       {board.map((row, rowIndex) =>
@@ -94,6 +100,7 @@ const Board: React.FC<BoardProps> = ({
             }
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
+            queenSize={(24 * zoomLevel).toString()}
           />
         ))
       )}

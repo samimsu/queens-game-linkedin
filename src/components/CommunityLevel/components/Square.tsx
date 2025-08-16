@@ -13,6 +13,7 @@ interface SquareProps {
   colorRegions: string[][];
   regionColors: { [key: string]: string };
   isClashing: boolean;
+  queenSize?: string;
   [key: string]: any; // For additional props
 }
 
@@ -29,6 +30,7 @@ const Square = ({
   colorRegions,
   regionColors,
   isClashing,
+  queenSize = "24",
   ...props
 }: SquareProps) => {
   // Function to determine border classes
@@ -74,7 +76,13 @@ const Square = ({
       draggable="false"
       {...props}
     >
-      {value === "Q" ? <Queen /> : value === "X" ? <Cross /> : value}
+      {value === "Q" ? (
+        <Queen size={queenSize} />
+      ) : value === "X" ? (
+        <Cross />
+      ) : (
+        value
+      )}
     </div>
   );
 };
