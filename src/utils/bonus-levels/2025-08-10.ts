@@ -41,7 +41,6 @@ const level = {
     J: lightWisteria,
     K: turquoiseBlue,
   },
-  isNew: true,
 };
 
 export default level;
