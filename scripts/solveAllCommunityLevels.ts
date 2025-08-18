@@ -1,5 +1,6 @@
 import { communityLevels } from "../src/utils/communityLevels";
 import { getSolutions } from "../src/utils/solveQueens";
+import { getSolutionsSMT } from "../src/utils/solveQueensSMT";
 import * as fs from "fs/promises";
 
 async function solveAllCommunityLevels() {
@@ -22,7 +23,8 @@ async function solveAllCommunityLevels() {
       let count = 0;
       const solutionsArr = [];
       // Run the solver and collect solutions
-      const solutions = await getSolutions(board, async (solution) => {
+      const fn = board.length >= 12 ? getSolutionsSMT : getSolutions;
+      const solutions = await fn(board, async (solution) => {
         count++;
         solutionsArr.push(solution);
         process.stdout.write(`${count} `);
