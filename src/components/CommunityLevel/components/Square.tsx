@@ -13,6 +13,7 @@ interface SquareProps {
   colorRegions: string[][];
   regionColors: { [key: string]: string };
   isClashing: boolean;
+  showLetter: boolean;
   queenSize?: string;
   [key: string]: any; // For additional props
 }
@@ -30,6 +31,7 @@ const Square = ({
   colorRegions,
   regionColors,
   isClashing,
+  showLetter,
   queenSize = "24",
   ...props
 }: SquareProps) => {
@@ -80,6 +82,8 @@ const Square = ({
         <Queen size={queenSize} />
       ) : value === "X" ? (
         <Cross />
+      ) : showLetter ? (
+        region
       ) : (
         value
       )}

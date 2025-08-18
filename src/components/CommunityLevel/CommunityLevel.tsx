@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import { Shuffle, Palette, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import {
+  Shuffle,
+  Palette,
+  ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  CaseUpper,
+} from "lucide-react";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
@@ -59,6 +66,7 @@ const CommunityLevel = ({
   const [useDefaultColors, setUseDefaultColors] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [notification, setNotification] = useState<string | null>(null);
+  const [showRegionLetters, setShowRegionLetters] = useState<boolean>(false);
 
   const previousPage = "/community-levels";
 
@@ -220,6 +228,7 @@ const CommunityLevel = ({
     setHasWon(false);
     setShowWinningScreen(false);
     setZoomLevel(1);
+    setShowRegionLetters(false);
   }, [id]);
 
   useEffect(() => {
@@ -246,6 +255,10 @@ const CommunityLevel = ({
   const showNotification = (message: string) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 3000);
+  };
+
+  const handleRegionLettersToggle = () => {
+    setShowRegionLetters(!showRegionLetters);
   };
 
   const handleColorSchemeToggle = () => {
@@ -359,18 +372,19 @@ const CommunityLevel = ({
               showClashingQueens={showClashingQueens}
               clashingQueens={clashingQueens}
               zoomLevel={zoomLevel}
+              showLetters={showRegionLetters}
             />
           </div>
 
           <div className="flex justify-between items-center mt-2">
             <Button
-              className="border border-slate-500 rounded-full py-2 px-10 mr-2"
+              className="border border-slate-500 rounded-full py-2 px-10 mr-4"
               onClick={handleUndo}
               disabled={hasWon || !history.current.length}
             >
               {t("UNDO")}
             </Button>
-            <div className="flex space-x-2">
+            <div className="flex space-x-2 mr-4">
               <button
                 className="border border-slate-500 rounded-full p-2 disabled:opacity-50"
                 onClick={handleZoomIn}
@@ -396,22 +410,33 @@ const CommunityLevel = ({
                 <RotateCcw size="18" />
               </button>
             </div>
-            <div className="relative">
-              <button
-                onClick={handleColorSchemeToggle}
-                className="border border-slate-500 rounded-full p-2"
-                title={t("CHANGE_COLOR_SCHEME")}
-              >
-                <Palette size="18" />
-              </button>
-              {notification && (
-                <div
-                  className="absolute top-full mt-2 right-0 bg-slate-800 text-white text-sm px-3 py-1 rounded shadow text-nowrap"
-                  aria-live="polite"
+            <div className="flex gap-2">
+              <div>
+                <button
+                  onClick={handleRegionLettersToggle}
+                  className="border border-slate-500 rounded-full p-2"
+                  title={t("SHOW_HIDE_LETTERS")}
                 >
-                  {notification}
-                </div>
-              )}
+                  <CaseUpper size="18" />
+                </button>
+              </div>
+              <div className="relative">
+                <button
+                  onClick={handleColorSchemeToggle}
+                  className="border border-slate-500 rounded-full p-2"
+                  title={t("CHANGE_COLOR_SCHEME")}
+                >
+                  <Palette size="18" />
+                </button>
+                {notification && (
+                  <div
+                    className="absolute top-full mt-2 right-0 bg-slate-800 text-white text-sm px-3 py-1 rounded shadow text-nowrap"
+                    aria-live="polite"
+                  >
+                    {notification}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

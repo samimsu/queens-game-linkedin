@@ -12,6 +12,7 @@ interface BoardProps {
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
   zoomLevel: number;
+  showLetters: boolean;
 }
 
 const Board: React.FC<BoardProps> = ({
@@ -24,7 +25,9 @@ const Board: React.FC<BoardProps> = ({
   showClashingQueens,
   clashingQueens,
   zoomLevel,
+  showLetters,
 }) => {
+  console.log("showLetters", showLetters);
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
     undefined
   );
@@ -101,6 +104,7 @@ const Board: React.FC<BoardProps> = ({
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
             queenSize={(24 * zoomLevel).toString()}
+            showLetter={showLetters}
           />
         ))
       )}
