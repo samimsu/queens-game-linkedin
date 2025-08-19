@@ -27,7 +27,6 @@ const Board: React.FC<BoardProps> = ({
   zoomLevel,
   showLetters,
 }) => {
-  console.log("showLetters", showLetters);
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
     undefined
   );
