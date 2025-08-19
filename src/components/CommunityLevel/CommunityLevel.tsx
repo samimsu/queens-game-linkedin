@@ -227,7 +227,12 @@ const CommunityLevel = ({
     setBoard(createEmptyBoard(levelSize));
     setHasWon(false);
     setShowWinningScreen(false);
-    setZoomLevel(1);
+    // Adjust zoom based on level size
+    // zoom = 1 for level sizes up to 11, but subtract 0.1 for each increment above that down to a minimum of 0.5
+    const autoZoom = Math.max(Math.min(1, 1 - ((levelSize - 11) * 0.1)), 0.5);
+
+    setZoomLevel(autoZoom);
+
     setShowRegionLetters(false);
   }, [id]);
 
