@@ -30,7 +30,8 @@
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "web-vitals": "^3.1.0",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "z3-solver": "^4.15.3"
   },
   "overrides": {
     "@svgr/webpack": "^8.0.1",
