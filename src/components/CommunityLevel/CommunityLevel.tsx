@@ -36,11 +36,13 @@ import {
   bittersweet,
   celadon,
   chardonnay,
+  emerald,
   halfBaked,
   lightGreen,
   lightOrchid,
   lightWisteria,
   nomad,
+  periwinkle,
   saharaSand,
   turquoiseBlue,
 } from "@/utils/colors";
@@ -91,6 +93,8 @@ const CommunityLevel = ({
       K: turquoiseBlue,
       L: atomicTangerine,
       M: lightGreen,
+      N: emerald,
+      O: periwinkle,
     };
     const newColors: { [key: string]: string } = {};
     Object.keys(defaultRegionColors).forEach((region) => {
@@ -229,7 +233,7 @@ const CommunityLevel = ({
     setShowWinningScreen(false);
     // Adjust zoom based on level size
     // zoom = 1 for level sizes up to 11, but subtract 0.1 for each increment above that down to a minimum of 0.5
-    const autoZoom = Math.max(Math.min(1, 1 - ((levelSize - 11) * 0.1)), 0.5);
+    const autoZoom = Math.max(Math.min(1, 1 - (levelSize - 11) * 0.1), 0.5);
 
     setZoomLevel(autoZoom);
 

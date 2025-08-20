@@ -1,0 +1,52 @@
+import {
+  altoMain,
+  anakiwa,
+  bittersweet,
+  celadon,
+  chardonnay,
+  halfBaked,
+  lightOrchid,
+  lightWisteria,
+  malibu,
+  nomad,
+  saharaSand,
+  turquoiseBlue,
+} from "../colors";
+
+const level = {
+  path: "/community-level/204",
+  size: 12,
+  colorRegions: [
+    ["A", "A", "A", "B", "B", "B", "C", "C", "C", "D", "D", "D"],
+    ["A", "B", "B", "B", "C", "C", "C", "C", "C", "D", "D", "D"],
+    ["A", "A", "A", "C", "C", "C", "C", "C", "C", "D", "E", "D"],
+    ["F", "F", "A", "C", "C", "C", "C", "C", "C", "D", "E", "D"],
+    ["F", "A", "A", "G", "G", "G", "G", "C", "G", "E", "E", "E"],
+    ["F", "F", "F", "F", "G", "E", "G", "G", "G", "E", "E", "E"],
+    ["F", "F", "F", "F", "G", "E", "E", "G", "E", "E", "E", "E"],
+    ["H", "H", "F", "F", "G", "E", "E", "G", "E", "E", "E", "E"],
+    ["H", "H", "I", "F", "F", "E", "E", "E", "E", "E", "E", "E"],
+    ["H", "H", "I", "I", "I", "I", "I", "I", "E", "J", "J", "J"],
+    ["H", "H", "H", "I", "K", "I", "K", "I", "E", "E", "J", "L"],
+    ["H", "H", "H", "I", "K", "K", "K", "I", "E", "J", "J", "J"],
+  ],
+  regionColors: {
+    A: malibu,
+    B: halfBaked,
+    C: lightWisteria,
+    D: anakiwa,
+    E: saharaSand,
+    F: nomad,
+    G: bittersweet,
+    H: altoMain,
+    I: celadon,
+    J: lightOrchid,
+    K: chardonnay,
+    L: turquoiseBlue,
+  },
+  solutionsCount: 1,
+  createdBy: "mattsemar",
+  creatorLink: "https://github.com/mattsemar",
+};
+
+export default level;
