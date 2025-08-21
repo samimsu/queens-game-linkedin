@@ -147,6 +147,7 @@ To build a community level make sure the "Community Level" level type is selecte
       <td align="center" valign="top" width="14.28%"><a href="https://loukis-13.github.io/"><img src="https://avatars.githubusercontent.com/u/67355353?v=4?s=100" width="100px;" alt="Loukis-13"/><br /><sub><b>Loukis-13</b></sub></a><br /><a href="#content-Loukis-13" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Remu716"><img src="https://avatars.githubusercontent.com/u/225016272?v=4?s=100" width="100px;" alt="Remu716"/><br /><sub><b>Remu716</b></sub></a><br /><a href="#content-Remu716" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/LimeAndLimpidGreen"><img src="https://avatars.githubusercontent.com/u/225787377?v=4?s=100" width="100px;" alt="LimeAndLimpidGreen"/><br /><sub><b>LimeAndLimpidGreen</b></sub></a><br /><a href="#content-LimeAndLimpidGreen" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/didiri1337"><img src="https://avatars.githubusercontent.com/u/227887482?v=4?s=100" width="100px;" alt="didiri1337"/><br /><sub><b>didiri1337</b></sub></a><br /><a href="#content-didiri1337" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
