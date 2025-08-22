@@ -32,7 +32,7 @@ const level = {
     G: saharaSand,
     H: nomad,
   },
-  solutionsCount: 0,
+  solutionsCount: 1,
   createdBy: "Abdulaziz",
   creatorLink: "",
 };
