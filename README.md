@@ -149,6 +149,9 @@ To build a community level make sure the "Community Level" level type is selecte
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/LimeAndLimpidGreen"><img src="https://avatars.githubusercontent.com/u/225787377?v=4?s=100" width="100px;" alt="LimeAndLimpidGreen"/><br /><sub><b>LimeAndLimpidGreen</b></sub></a><br /><a href="#content-LimeAndLimpidGreen" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/didiri1337"><img src="https://avatars.githubusercontent.com/u/227887482?v=4?s=100" width="100px;" alt="didiri1337"/><br /><sub><b>didiri1337</b></sub></a><br /><a href="#content-didiri1337" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nick4bean"><img src="https://avatars.githubusercontent.com/u/121414103?v=4?s=100" width="100px;" alt="nick4bean"/><br /><sub><b>nick4bean</b></sub></a><br /><a href="#content-nick4bean" title="Content">🖋</a></td>
+    </tr>
   </tbody>
 </table>
 
