@@ -14,6 +14,7 @@ export const nomad = "#B9B29E";
 export const periwinkle = "#C9C9EE";
 export const saharaSand = "#E6F388";
 export const turquoiseBlue = "#55EBE2";
+export const white = "#FFFFFF";
 
 // Avoid using the following colors since they are similar
 // to some of the colors above.
@@ -54,4 +55,5 @@ export const colorNames = {
   "#E6F388": "saharaSand",
   "#ADA68E": "tallow",
   "#55EBE2": "turquoiseBlue",
+  "#FFFFFF": "white",
 };
