@@ -1,0 +1,52 @@
+import {
+  altoMain,
+  anakiwa,
+  atomicTangerine,
+  bittersweet,
+  celadon,
+  chardonnay,
+  halfBaked,
+  lightOrchid,
+  lightWisteria,
+  nomad,
+  saharaSand,
+  turquoiseBlue,
+} from "../colors";
+
+const level = {
+  path: "/community-level/223",
+  size: 12,
+  colorRegions: [
+    ["A", "A", "B", "B", "B", "B", "B", "B", "B", "C", "C", "D"],
+    ["A", "A", "B", "B", "B", "B", "B", "B", "B", "C", "C", "D"],
+    ["A", "A", "A", "A", "B", "B", "B", "B", "E", "E", "E", "D"],
+    ["A", "A", "A", "F", "B", "B", "B", "B", "B", "E", "E", "E"],
+    ["G", "A", "H", "F", "F", "F", "F", "F", "B", "B", "B", "E"],
+    ["G", "A", "H", "I", "I", "I", "J", "F", "B", "F", "B", "B"],
+    ["G", "G", "H", "I", "I", "I", "J", "F", "F", "F", "F", "F"],
+    ["G", "G", "G", "I", "I", "I", "I", "F", "F", "F", "F", "F"],
+    ["G", "G", "G", "I", "I", "I", "I", "F", "F", "F", "I", "F"],
+    ["G", "G", "G", "G", "I", "I", "I", "I", "I", "I", "I", "I"],
+    ["G", "G", "G", "G", "I", "K", "K", "K", "K", "L", "L", "L"],
+    ["G", "G", "G", "G", "G", "G", "K", "K", "K", "L", "L", "L"],
+  ],
+  regionColors: {
+    A: lightWisteria,
+    B: chardonnay,
+    C: anakiwa,
+    D: celadon,
+    E: altoMain,
+    F: bittersweet,
+    G: saharaSand,
+    H: nomad,
+    I: lightOrchid,
+    J: halfBaked,
+    K: turquoiseBlue,
+    L: atomicTangerine,
+  },
+  solutionsCount: 1,
+  createdBy: "mattsemar",
+  creatorLink: "https://github.com/mattsemar",
+};
+
+export default level;
