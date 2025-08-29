@@ -204,6 +204,18 @@ const PageCommunityLevelsList = () => {
           );
         })}
       </div>
+        <br/>
+        <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 sm:px-0 max-w-[348px] sm:max-w-[436px] text-sm w-full mx-auto">
+            {t("TRY_RANDOMLY_GENERATED_LEVEL")}{" "}
+            <Link
+                to="/random-level"
+                className="text-blue-600 font-semibold hover:underline"
+            >
+                {t("LEVEL_GENERATOR")}
+            </Link>
+            .
+        </div>
+
     </RootLayout>
   );
 };

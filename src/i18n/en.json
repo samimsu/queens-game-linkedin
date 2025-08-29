@@ -29,6 +29,7 @@
   "GENERATE_CODE": "Generate code",
   "CLEAR_CODE": "Clear code",
   "COPY_CODE": "Copy code",
+  "COPY_LINK": "Copy link",
   "COPIED": "Copied",
   "ADD_THIS_CODE_TO": "Add this code to",
   "PAST_IMAGE_MSG": "Try pasting an image. The bigger and as specific the image, the better.",
@@ -47,6 +48,7 @@
   "COLOR": {
     "ALTO": "Slate Dark",
     "ALTO_MAIN": "Slate Medium",
+    "ATOMIC_TANGERINE": "Atomic Tangerine",
     "ANAKIWA": "Boston Blue",
     "BITTERSWEET": "Valencia",
     "CAN_CAN": "Wine Muted",
@@ -54,18 +56,22 @@
     "CELADON": "Moss Green",
     "CHARDONNAY": "Koromiko",
     "COLD_PURPLE": "Deep Lavender",
+    "EMERALD": "Emerald",
     "FEIJOA": "Olive Muted",
     "HALF_BAKED": "Tradewind",
     "LAVENDER_ROSE": "Heather Purple",
+    "LIGHT_GREEN": "Light Green",
     "LIGHT_ORCHID": "Jaffa",
     "LIGHT_WISTERIA": "Butterfly Bush",
     "MAC_N_CHEESE": "Bronze",
     "MALIBU": "Steel Blue",
     "MANZ": "Gold Muted",
     "NOMAD": "Stone",
+    "PERIWINKLE": "Periwinkle",
     "SAHARA_SAND": "Sandwisp",
     "TALLOW": "Earth Muted",
-    "TURQUOISE_BLUE": "Ocean Muted"
+    "TURQUOISE_BLUE": "Ocean Muted",
+    "WHITE": "White"
   },
   "YES": "Yes",
   "THEME": {
@@ -101,6 +107,16 @@
   "OR": "or",
   "COPY_DETAILS": "Copy Details",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Discover unique levels created by the community! Play, get inspired, and build your own with the",
+  "TRY_RANDOMLY_GENERATED_LEVEL": "Finished all of the community levels? Try a randomly generated one using the ",
+  "GENERATE_LEVELS": "Generate random levels. Choose the size and let the algorithm create a unique puzzle for you",
+  "TIMED_OUT": "Timed out generating a {{size}}x{{size}} level, click the button to try again",
+  "SHARE_LINK_TO_LEVEL": "Found a good level? Include a link when sharing.",
+  "FOUND_VALID_LEVEL": "Found a valid level, attempting to improve difficulty for up to 90 seconds...",
+  "GENERATING_LEVEL": "Generating {{size}}x{{size}} level...",
+  "LEVEL_GENERATOR": "Level Generator",
+  "GENERATED_TYPE": "Generated {{size}}x{{size}}",
+  "GENERATED_SAMPLES_TEXT": "These are examples of randomly generated levels. They are not guaranteed to be fun or challenging",
+  "GENERATED_SAMPLES_TITLE": "Samples",
   "PLAY_SIZE": "Play {{playSize}}",
   "NEW": "New",
   "UNIQUE_SOLUTIONS": "Unique solutions",
@@ -116,4 +132,6 @@
   "RESET_ZOOM": "Reset zoom",
   "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
   "ONLY_1_SOLUTION": "It has only 1 solution."
+  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
+  "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "May require multiple attempts, please be patient"
 }
