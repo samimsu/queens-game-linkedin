@@ -37,7 +37,6 @@ const level485 = {
     I: bittersweet,
     J: halfBaked,
   },
-  isNew: true,
 };
 
 export default level485;
