@@ -18,6 +18,7 @@ const NAV_LINKS = [
   { to: "/", labelKey: "HOME" },
   { to: "/bonus-levels", labelKey: "BONUS_LEVELS" },
   { to: "/community-levels", labelKey: "COMMUNITY_LEVELS" },
+  { to: "/random-level", labelKey: "LEVEL_GENERATOR", isNew: false },
   { to: "/level-builder", labelKey: "LEVEL_BUILDER" },
 ];
 
