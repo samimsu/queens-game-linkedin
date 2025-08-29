@@ -57,3 +57,24 @@ export const colorNames = {
   "#55EBE2": "turquoiseBlue",
   "#FFFFFF": "white",
 };
+
+export const defaultColorMap: { [key: string]: string } = {
+  A: lightWisteria,
+  B: chardonnay,
+  C: anakiwa,
+  D: celadon,
+  E: altoMain,
+  F: bittersweet,
+  G: saharaSand,
+  H: nomad,
+  I: lightOrchid,
+  J: halfBaked,
+  K: turquoiseBlue,
+  L: atomicTangerine,
+  M: lightGreen,
+  N: emerald,
+  O: periwinkle,
+  P: coldPurple,
+  Q: macNCheese,
+  R: white,
+};
