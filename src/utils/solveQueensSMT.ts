@@ -1,6 +1,6 @@
 // Adapted from the implementation described here:
 // https://buttondown.com/hillelwayne/archive/solving-linkedin-queens-with-smt/
-export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solution: number[][]) => Promise<boolean>) {
+export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solution: number[][]) => Promise<boolean>, maxSolutions = -1) {
   const { init } = require('z3-solver');
   const { Context } = await init();
   const { Solver, And, Or, Distinct, Int } = new Context('main');
@@ -68,6 +68,9 @@ export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solu
       }
 
       solutions.push(solution);
+      if (solutions.length >= maxSolutions) {
+        break;
+      }
       if (onSolutionFound) {
         const shouldStop = await onSolutionFound(solution);
         if (shouldStop) return true;
