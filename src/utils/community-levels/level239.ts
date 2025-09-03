@@ -53,7 +53,7 @@ const level = {
     N: emerald,
     O: periwinkle,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "mattsemar",
   creatorLink: "https://github.com/mattsemar",
 };
