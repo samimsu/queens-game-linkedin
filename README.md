@@ -154,6 +154,7 @@ To build a community level make sure the "Community Level" level type is selecte
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Alexallos"><img src="https://avatars.githubusercontent.com/u/228964262?v=4?s=100" width="100px;" alt="Alexallos"/><br /><sub><b>Alexallos</b></sub></a><br /><a href="#content-Alexallos" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gabelenoll"><img src="https://avatars.githubusercontent.com/u/157846425?v=4?s=100" width="100px;" alt="Mathias Gabele-Noll"/><br /><sub><b>Mathias Gabele-Noll</b></sub></a><br /><a href="#content-gabelenoll" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Futrion"><img src="https://avatars.githubusercontent.com/u/229791297?v=4?s=100" width="100px;" alt="Futrion"/><br /><sub><b>Futrion</b></sub></a><br /><a href="#content-Futrion" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/FrostyPink"><img src="https://avatars.githubusercontent.com/u/229561800?v=4?s=100" width="100px;" alt="FrostyPink"/><br /><sub><b>FrostyPink</b></sub></a><br /><a href="#content-FrostyPink" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
