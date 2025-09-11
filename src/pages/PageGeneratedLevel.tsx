@@ -29,6 +29,7 @@ import { useTheme } from "next-themes";
 import { decodeLevelRegions } from "@/utils/generated/levelEncoder.ts";
 import WinningScreen from "@/components/LevelBuilder/components/TestLevel/components/WinningScreen.tsx";
 import { Button } from "@/components/ui/button.tsx";
+import CopyLink from "@/components/GeneratedLevel/components/CopyLink.tsx";
 
 interface RandomLevel {
   size: number;
@@ -285,8 +286,12 @@ const PageGeneratedLevel = () => {
         </div>
 
         {showInstructions && <HowToPlay />}
+
         <div className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2">
-          <div className="font-medium mb-3">{t("SHARE_LINK_TO_LEVEL")}</div>
+          <div className="font-sm mb-2 text-gray-500">
+            {t("SHARE_LINK_TO_LEVEL")}
+            <CopyLink href={window.location.href} />
+          </div>
         </div>
         <div className="w-full px-2">
           <Giscus
