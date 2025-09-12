@@ -1,14 +1,47 @@
+const ALL_LABELS = Object.freeze(
+  Array.from({ length: 15 }, (_, i) =>
+    String.fromCharCode("A".charCodeAt(0) + i),
+  ),
+);
+
+type Board = string[][];
+
+function findCoordsForColor(
+  color: string,
+  board: Board,
+): { row: number; col: number }[] {
+  const result: { row: number; col: number }[] = [];
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+      if (board[row][col] === color) {
+        result.push({ row, col });
+      }
+    }
+  }
+  return result;
+}
+
 export async function getSolutions(
   board: string[][],
-  onSolutionFound?: (solution: number[][]) => Promise<boolean>
+  onSolutionFound?: (solution: number[][]) => Promise<boolean>,
 ) {
   const N = board.length;
-  const solutions = [];
+  const solutions: number[][][] = [];
+  const labels = ALL_LABELS.slice(0, N);
+  const colorCoords = new Map<string, { row: number; col: number }[]>();
+  const coordColors = new Map<string, string>();
+  for (const label of labels) {
+    const coordsForColor = findCoordsForColor(label, board);
+    colorCoords.set(label, coordsForColor);
+    for (const { row, col } of coordsForColor) {
+      coordColors.set(`${row},${col}`, label);
+    }
+  }
 
   // Create a copy of the input board to work with
   const colorBoard = board.map((row) => [...row]);
 
-  function isSafe(tempBoard, row, col) {
+  function isSafe(tempBoard: number[][], row: number, col: number) {
     // Check same column
     for (let i = 0; i < row; i++) {
       if (tempBoard[i][col] === 1) {
@@ -30,11 +63,22 @@ export async function getSolutions(
         return false;
       }
     }
+    // color at row column
+    const color = coordColors.get(`${row},${col}`);
+    // see if any other of this color have a 1
+    const coordsForColor = colorCoords.get(color!);
+    if (coordsForColor) {
+      for (const { row, col } of coordsForColor) {
+        if (tempBoard[row][col] === 1) {
+          return false;
+        }
+      }
+    }
 
     return true;
   }
 
-  async function backtrack(row, tempBoard) {
+  async function backtrack(row: number, tempBoard: number[][]) {
     if (row === N) {
       // Collect queen positions
       const solution = [];

@@ -102,5 +102,13 @@
   "OR": "ou",
   "COPY_DETAILS": "Copiar detalhes",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Descubra níveis únicos criados pela comunidade! Jogue, inspire-se e construa o seu próprio com o",
+  "TRY_RANDOMLY_GENERATED_LEVEL": "Terminou todos os níveis da comunidade? Experimente um gerado aleatoriamente usando o ",
+  "GENERATE_LEVELS": "Gere níveis aleatórios. Escolha o tamanho e deixe o algoritmo criar um quebra-cabeça único para você.",
+  "TIMED_OUT": "Tempo esgotado gerando um nível {{size}}x{{size}}, clique no botão para tentar novamente",
+  "SHARE_LINK_TO_LEVEL": "Encontrou um bom nível? Certifique-se de incluir o link em sua postagem",
+  "FOUND_VALID_LEVEL": "Encontrado 1 nível válido até agora. Buscando por mais alguns segundos para tentar melhorar a dificuldade...",
+  "GENERATING_LEVEL": "Gerando nível {{size}}x{{size}}...",
+  "LEVEL_GENERATOR": "Gerador de Níveis",
+  "GENERATED_TYPE": "Gerado {{size}}x{{size}}",
   "PLAY_SIZE": "Jogar {{playSize}}"
 }
