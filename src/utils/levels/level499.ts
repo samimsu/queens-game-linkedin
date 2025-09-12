@@ -34,7 +34,6 @@ const level499 = {
     H: bittersweet,
     I: nomad,
   },
-  isNew: true,
 };
 
 export default level499;
