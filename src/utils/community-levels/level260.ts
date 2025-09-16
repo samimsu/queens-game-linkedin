@@ -43,7 +43,7 @@ const level = {
   },
   solutionsCount: 1,
   createdBy: "BBNBLB",
-  creatorLink: "https://en.m.wikipedia.org/wiki/Mark_Ingram_II",
+  creatorLink: "",
 };
 
 export default level;
