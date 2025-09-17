@@ -40,7 +40,6 @@ const level504 = {
     J: halfBaked,
     K: turquoiseBlue,
   },
-  isNew: true,
 };
 
 export default level504;
