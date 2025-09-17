@@ -12,7 +12,7 @@ import {
   turquoiseBlue,
 } from "../colors";
 
-const level1 = {
+const level505 = {
   size: 11,
   colorRegions: [
     ["A", "B", "C", "B", "D", "D", "D", "E", "E", "E", "F"],
