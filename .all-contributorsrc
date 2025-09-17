@@ -632,6 +632,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "thewmking",
+      "name": "Matthew King",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16358044?v=4",
+      "profile": "http://matthewk.ing",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
