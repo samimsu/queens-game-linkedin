@@ -40,7 +40,6 @@ const level506 = {
     J: celadon,
     K: saharaSand,
   },
-  isNew: true,
 };
 
 export default level506;
