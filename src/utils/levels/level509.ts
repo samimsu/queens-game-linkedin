@@ -37,7 +37,6 @@ const level509 = {
     I: lightOrchid,
     J: celadon,
   },
-  isNew: true,
 };
 
 export default level509;
