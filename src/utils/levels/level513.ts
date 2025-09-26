@@ -37,7 +37,6 @@ const level513 = {
     I: lightWisteria,
     J: halfBaked,
   },
-  isNew: true,
 };
 
 export default level513;
