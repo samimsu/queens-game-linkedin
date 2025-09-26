@@ -1,4 +1,5 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from '@dr.pogodin/react-helmet';
+
 
 interface PageTitleProps {
   title?: string;
