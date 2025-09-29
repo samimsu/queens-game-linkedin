@@ -13,7 +13,7 @@ const GameLevel = () => {
   const { t } = useTranslation();
 
   const maxLevel = Math.max(
-    ...Object.keys(levels).map((key) => parseInt(key.replace("level", ""), 10))
+    ...Object.keys(levels).map((key) => parseInt(key.replace("level", ""), 10)),
   );
 
   if (!levels[level] && Number(id) < maxLevel) {

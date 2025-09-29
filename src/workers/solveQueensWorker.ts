@@ -30,7 +30,7 @@ self.onmessage = async (e) => {
 
     async function backtrack(
       row: number,
-      tempBoard: number[][]
+      tempBoard: number[][],
     ): Promise<boolean> {
       if (row === N) {
         const solution: number[][] = [];

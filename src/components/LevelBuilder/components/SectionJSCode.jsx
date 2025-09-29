@@ -30,7 +30,7 @@ const SectionJSCode = ({
               regionColors,
               null,
               null,
-              true
+              true,
             );
             setJsCode(code);
           }}
