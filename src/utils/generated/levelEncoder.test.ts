@@ -1,8 +1,8 @@
 import { describe, expect, test } from "vitest";
 import {
-  decodeLevelRegions,
-  encodeLevelRegions,
-  EncodingMode,
+    decodeLevelRegions,
+    encodeLevelRegions,
+    EncodingMode, getHashForLevelId,
 } from "@/utils/generated/levelEncoder.ts";
 
 const size7EncodedLevel = "EEAAAAAEAAAAFFEDAFFFFEDDFFBFEDDFFBFEDDFCCFEFFFGGG";
@@ -138,5 +138,9 @@ describe("levelEncoder", () => {
       const reDecoded = decodeLevelRegions(reEncoded);
       expect(reDecoded).toEqual(levelRegions);
     });
+    test("Hash 10x10", () => {
+        const r = getHashForLevelId("0I4A5K2I4A6KI3A8I4A2H2A3I2J3A2H4I3JGA2H4C2I2GAB2H3C2I2GAB2H3FC2IG3BH3FC2I2G2BD2HFCI4E5");
+        expect(r).toEqual("-1051207928");
+    })
   });
 });
