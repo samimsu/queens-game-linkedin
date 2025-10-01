@@ -1,3 +1,5 @@
+import { getHashForLevelId } from "@/utils/generated/levelEncoder.ts";
+
 export const markLevelAsCompleted = (levelNumber: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedLevels") as string) || [];
@@ -17,15 +19,60 @@ export const markCommunityLevelAsCompleted = (levelId: string) => {
     completedLevels.push(levelId);
     localStorage.setItem(
       "completedCommunityLevels",
-      JSON.stringify(completedLevels)
+      JSON.stringify(completedLevels),
     );
   }
+};
+
+export const markRandomLevelAsCompleted = (id: string, timer: number) => {
+  if (getRandomLevelCompletionTimeInSeconds(id)) {
+    if (timer > (getRandomLevelCompletionTimeInSeconds(id) ?? 1000000)) {
+      return;
+    }
+  }
+  const levelHash = getHashForLevelId(id);
+  localStorage.setItem(`rnd_${levelHash}`, JSON.stringify({ time: timer }));
 };
 
 export const isLevelCompleted = (levelNumber: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedLevels") as string) || [];
   return completedLevels.includes(levelNumber);
+};
+
+export const isRandomLevelCompleted = (id: string) => {
+  const levelHash = getHashForLevelId(id);
+  const r = localStorage.getItem(`rnd_${levelHash}`);
+  if (!r) {
+    return false;
+  }
+  return JSON.parse(r as string).time !== undefined;
+};
+
+export const getRandomLevelCompletionTimeWithLabel = (id: string) => {
+  const timeInSeconds = getRandomLevelCompletionTimeInSeconds(id);
+  if (timeInSeconds) {
+    return `${timeInSeconds} seconds`;
+  }
+};
+
+export const getRandomLevelCompletionTimeInSeconds = (id: string) => {
+  const levelHash = getHashForLevelId(id);
+  const r = localStorage.getItem(`rnd_${levelHash}`);
+  if (!r) {
+    return undefined;
+  }
+  const { time } = JSON.parse(r as string);
+  if (time) {
+    return Number.parseInt(time);
+  }
+  return undefined;
+};
+
+export const isBonusLevelCompleted = (levelId: string) => {
+  const completedLevels =
+    JSON.parse(localStorage.getItem("completedBonusLevels") as string) || [];
+  return completedLevels.includes(levelId);
 };
 
 export const isCommunityLevelCompleted = (levelId: string) => {
@@ -131,24 +178,24 @@ export const setShowCompletedCommunityLevelsPreference = (enabled: boolean) => {
 export const getShowCompletedCommunityLevelsPreference = () => {
   return (
     JSON.parse(
-      localStorage.getItem("showCompletedCommunityLevels") as string
+      localStorage.getItem("showCompletedCommunityLevels") as string,
     ) ?? false
   ); // Default to false
 };
 
 export const setShowNotCompletedCommunityLevelsPreference = (
-  enabled: boolean
+  enabled: boolean,
 ) => {
   localStorage.setItem(
     "showNotCompletedCommunityLevels",
-    JSON.stringify(enabled)
+    JSON.stringify(enabled),
   );
 };
 
 export const getShowNotCompletedCommunityLevelsPreference = () => {
   return (
     JSON.parse(
-      localStorage.getItem("showNotCompletedCommunityLevels") as string
+      localStorage.getItem("showNotCompletedCommunityLevels") as string,
     ) ?? false
   ); // Default to false
 };
