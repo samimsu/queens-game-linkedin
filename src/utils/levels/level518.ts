@@ -28,7 +28,6 @@ const level518 = {
     F: bittersweet,
     G: altoMain,
   },
-  isNew: true,
 };
 
 export default level518;
