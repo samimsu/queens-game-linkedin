@@ -2,8 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
     decodeLevelRegions,
     encodeLevelRegions,
-    EncodingMode,
-    getHashForLevelId,
+    EncodingMode, getHashForLevelId,
 } from "@/utils/generated/levelEncoder.ts";
 
 const size7EncodedLevel = "EEAAAAAEAAAAFFEDAFFFFEDDFFBFEDDFFBFEDDFCCFEFFFGGG";
