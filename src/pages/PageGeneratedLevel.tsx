@@ -30,6 +30,8 @@ import { decodeLevelRegions } from "@/utils/generated/levelEncoder.ts";
 import WinningScreen from "@/components/LevelBuilder/components/TestLevel/components/WinningScreen.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import CopyLink from "@/components/GeneratedLevel/components/CopyLink.tsx";
+import Queen from "@/components/Queen.tsx";
+import { getRandomLevelCompletionTimeWithLabel } from "@/utils/localStorage.ts";
 
 interface RandomLevel {
   size: number;
@@ -71,11 +73,12 @@ const PageGeneratedLevel = () => {
     toggleShowClock,
     toggleAutoPlaceXs,
     history,
+    completed,
   } = useGameLogic({
-    id: "random",
+    id: id,
     boardSize: level?.size || 9,
     colorRegions: level?.colorRegions || [],
-    levelType: undefined,
+    levelType: "random",
   });
 
   useEffect(() => {
@@ -161,12 +164,22 @@ const PageGeneratedLevel = () => {
               </Link>
               <div>
                 <div className="text-lg text-gray-500">
-                  {t("GENERATED_TYPE", { size: level.size })}
+                  {level.size > 6
+                    ? t("GENERATED_TYPE", { size: level.size })
+                    : `${level.size}x${level.size}`}
                 </div>
               </div>
 
               <div className="flex flex-none justify-end">
                 <div className="flex items-center space-x-2">
+                  <Queen
+                    title={getRandomLevelCompletionTimeWithLabel(id as string)}
+                    size="18"
+                    className={`fill-yellow-400 mr-2 ${
+                      completed ? "visible" : "invisible"
+                    }`}
+                  />
+
                   <Link
                     to={"/random-level?size=" + level.size}
                     className={

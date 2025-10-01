@@ -17,8 +17,8 @@ const LevelsCollection: React.FC<LevelsCollectionProps> = ({
   return (
     <div className={`text-sm ${className}`}>
       {
-        groupBySize 
-          ? <GroupedLevelsGrid showOnlyAvailableLevels={showOnlyAvailableLevels} hideCompletedLevels={hideCompletedLevels} /> 
+        groupBySize
+          ? <GroupedLevelsGrid showOnlyAvailableLevels={showOnlyAvailableLevels} hideCompletedLevels={hideCompletedLevels} />
           : <UngroupedLevelsGrid showOnlyAvailableLevels={showOnlyAvailableLevels} hideCompletedLevels={hideCompletedLevels} className={className} />
       }
     </div>
