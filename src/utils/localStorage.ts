@@ -1,4 +1,9 @@
-import { getHashForLevelId } from "@/utils/generated/levelEncoder.ts";
+import {
+  getLevelNameFromId,
+  getSizeForLevelId,
+} from "@/utils/generated/levelEncoder.ts";
+import formatDuration from "@/utils/formatDuration.ts";
+import { createEmptyBoard } from "@/utils/board.ts";
 
 export const markLevelAsCompleted = (levelNumber: number) => {
   const completedLevels =
@@ -24,14 +29,29 @@ export const markCommunityLevelAsCompleted = (levelId: string) => {
   }
 };
 
-export const markRandomLevelAsCompleted = (id: string, timer: number) => {
-  if (getRandomLevelCompletionTimeInSeconds(id)) {
-    if (timer > (getRandomLevelCompletionTimeInSeconds(id) ?? 1000000)) {
+export const recordRandomLevelState = (
+  id: string,
+  timer: number,
+  state: string[][],
+  completed: boolean,
+) => {
+  const currentState = getRandomBoardState(id);
+  const wasPreviouslyCompleted = isRandomLevelCompleted(id);
+  if (completed && wasPreviouslyCompleted) {
+    if (currentState.timeInSeconds < timer) {
+      // Don't overwrite since the previous time was better
       return;
     }
   }
-  const levelHash = getHashForLevelId(id);
-  localStorage.setItem(`rnd_${levelHash}`, JSON.stringify({ time: timer }));
+
+  const newState = {
+    time: timer,
+    state: state,
+    completed,
+    bestTimeInSeconds: completed ? timer : currentState?.bestTimeInSeconds,
+    id,
+  };
+  localStorage.setItem(getLevelNameFromId(id), JSON.stringify(newState));
 };
 
 export const isLevelCompleted = (levelNumber: number) => {
@@ -41,32 +61,92 @@ export const isLevelCompleted = (levelNumber: number) => {
 };
 
 export const isRandomLevelCompleted = (id: string) => {
-  const levelHash = getHashForLevelId(id);
-  const r = localStorage.getItem(`rnd_${levelHash}`);
-  if (!r) {
-    return false;
-  }
-  return JSON.parse(r as string).time !== undefined;
+  const { bestTimeInSeconds, completed } = getRandomBoardState(id);
+  return completed || bestTimeInSeconds !== undefined;
 };
 
 export const getRandomLevelCompletionTimeWithLabel = (id: string) => {
   const timeInSeconds = getRandomLevelCompletionTimeInSeconds(id);
   if (timeInSeconds) {
-    return `${timeInSeconds} seconds`;
+    return formatDuration(timeInSeconds);
   }
+  return undefined;
 };
 
 export const getRandomLevelCompletionTimeInSeconds = (id: string) => {
-  const levelHash = getHashForLevelId(id);
-  const r = localStorage.getItem(`rnd_${levelHash}`);
+  const { bestTimeInSeconds, completed, timeInSeconds } =
+    getRandomBoardState(id);
+  if (bestTimeInSeconds !== undefined) {
+    return Number(bestTimeInSeconds);
+  }
+  return completed ? timeInSeconds : undefined;
+};
+
+export const getRandomBoardState = (
+  id: string,
+): {
+  timeInSeconds: number;
+  completed: boolean;
+  state: string[][];
+  bestTimeInSeconds: number | undefined;
+  savedDataFound: boolean;
+} => {
+  const r = localStorage.getItem(getLevelNameFromId(id));
   if (!r) {
-    return undefined;
+    return {
+      completed: false,
+      timeInSeconds: 0,
+      state: createEmptyBoard(getSizeForLevelId(id)),
+      bestTimeInSeconds: undefined,
+      savedDataFound: false,
+    };
   }
-  const { time } = JSON.parse(r as string);
-  if (time) {
-    return Number.parseInt(time);
-  }
-  return undefined;
+  const { time, completed, state, bestTimeInSeconds } = JSON.parse(r as string);
+  return {
+    completed: completed === true,
+    state: state ?? createEmptyBoard(getSizeForLevelId(id)),
+    timeInSeconds: time ? Number.parseInt(time) : 0,
+    bestTimeInSeconds: bestTimeInSeconds
+      ? Number.parseInt(bestTimeInSeconds)
+      : undefined,
+    savedDataFound: true,
+  };
+};
+
+export const getInProgressLevels = () => {
+  const result = Object.keys(localStorage)
+    .filter((k) => k.startsWith("rnd_"))
+    .filter((k) => JSON.parse(localStorage.getItem(k) ?? "{}").id)
+    .map((k) => JSON.parse(localStorage.getItem(k) ?? "{}"))
+    .map((itm) => {
+      return {
+        id: itm.id,
+        timeInSeconds: itm.time,
+        size: getSizeForLevelId(itm.id),
+        completed: itm.completed,
+      };
+    })
+    .filter((itm) => !itm.completed);
+  result.sort((a, b) => a.size - b.size);
+  return result;
+};
+
+export const getCompletedLevels = () => {
+  const result = Object.keys(localStorage)
+    .filter((k) => k.startsWith("rnd_"))
+    .filter((k) => JSON.parse(localStorage.getItem(k) ?? "{}").id)
+    .map((k) => JSON.parse(localStorage.getItem(k) ?? "{}"))
+    .map((itm) => {
+      return {
+        id: itm.id,
+        timeInSeconds: itm.time,
+        size: getSizeForLevelId(itm.id),
+        completed: itm.completed,
+      };
+    })
+    .filter((itm) => itm.completed);
+  result.sort((a, b) => a.size - b.size);
+  return result;
 };
 
 export const isBonusLevelCompleted = (levelId: string) => {

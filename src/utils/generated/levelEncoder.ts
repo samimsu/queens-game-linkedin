@@ -121,3 +121,12 @@ export function getHashForLevelId(levelId: string): string {
   const hash = hashCode(levelRegions);
   return hash.toString();
 }
+
+export function getSizeForLevelId(levelId: string): number {
+  const levelRegions = encodeLevelRegionsBasic(decodeLevelRegions(levelId));
+  return Math.floor(Math.sqrt(levelRegions.length));
+}
+
+export function getLevelNameFromId(id: string): string {
+  return `rnd_${getHashForLevelId(id)}`;
+}

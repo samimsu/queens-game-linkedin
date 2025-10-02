@@ -11,6 +11,10 @@ import {
 } from "@/utils/generated/levelEncoder.ts";
 import { preGeneratedSamples } from "@/utils/generated/preGenerated.ts";
 import PrecomputedButton from "@/components/GeneratedLevel/components/PrecomputedLink.tsx";
+import {
+  getCompletedLevels,
+  getInProgressLevels,
+} from "@/utils/localStorage.ts";
 
 const PageGeneratedLevelSizeSelection = () => {
   const { t } = useTranslation();
@@ -168,6 +172,32 @@ const PageGeneratedLevelSizeSelection = () => {
       <br />
       <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 sm:px-0 max-w-[348px] sm:max-w-[436px] text-sm w-full mx-auto">
         {t("GENERATED_SAMPLES_TEXT")}
+      </div>
+      <br />
+      {t("In-progress levels")}
+      <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
+        {getInProgressLevels().map((level) => {
+          return (
+            <PrecomputedButton
+              boardSize={level.size}
+              href={level.id || ""}
+              key={"key" + level.id}
+            />
+          );
+        })}
+      </div>
+      <br />
+      {t("Completed levels")}
+      <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
+        {getCompletedLevels().map((level) => {
+          return (
+            <PrecomputedButton
+              boardSize={level.size}
+              href={level.id || ""}
+              key={"key" + level.id}
+            />
+          );
+        })}
       </div>
     </RootLayout>
   );
