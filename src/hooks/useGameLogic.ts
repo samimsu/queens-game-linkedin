@@ -187,7 +187,9 @@ const useGameLogic = ({
       return;
     }
     if (!isClear) {
-      return handleDrag(squares);
+      handleDrag(squares);
+      recordState();
+      return;
     }
 
     console.log("handleDragToClear", squares);
