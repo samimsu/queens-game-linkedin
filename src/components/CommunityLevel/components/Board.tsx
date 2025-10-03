@@ -6,7 +6,7 @@ interface BoardProps {
   board: string[][];
   handleSquareClick: (row: number, col: number) => void;
   handleSquareMouseEnter: (squares: number[][]) => void;
-  handleDrags: (isClear: boolean, squares: number[][]) => void | undefined;
+  handleDrags?: (isClear: boolean, squares: number[][]) => void | undefined;
   boardSize: number;
   colorRegions: string[][];
   regionColors: { [key: string]: string };

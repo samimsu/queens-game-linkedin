@@ -8,6 +8,7 @@ import {
   ZoomIn,
   ZoomOut,
   RotateCcw,
+  DiscAlbum,
 } from "lucide-react";
 import Board from "../components/CommunityLevel/components/Board";
 import { createEmptyBoard, isCompletedBoard } from "../utils/board";
@@ -34,6 +35,7 @@ import Queen from "@/components/Queen.tsx";
 import {
   getRandomBoardState,
   getRandomLevelCompletionTimeWithLabel,
+  markRandomBoardCompleted,
 } from "@/utils/localStorage.ts";
 
 interface RandomLevel {
@@ -203,6 +205,19 @@ const PageGeneratedLevel = () => {
                       completed ? "visible" : "invisible"
                     }`}
                   />
+                  <button
+                    onClick={() => {
+                      markRandomBoardCompleted(id || "UNKNOWN");
+                    }}
+                    hidden={!completed}
+                    className="border border-slate-500 rounded-full p-2"
+                    title="Mark Completed"
+                  >
+                    <DiscAlbum
+                      size="18"
+                      className={loading ? "animate-spin" : ""}
+                    />
+                  </button>
 
                   <Link
                     to={"/random-level?size=" + level.size}

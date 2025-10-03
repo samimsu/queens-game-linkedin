@@ -165,6 +165,7 @@ const PageGeneratedLevelSizeSelection = () => {
                 boardSize={size}
                 href={preGeneratedSamples[size] || ""}
                 key={"key" + size}
+                previousBest={0}
               />
             );
           })}
@@ -183,6 +184,7 @@ const PageGeneratedLevelSizeSelection = () => {
               boardSize={level.size}
               href={level.id || ""}
               key={"key" + level.id}
+              previousBest={level.previousBest}
             />
           );
         })}
