@@ -15,6 +15,7 @@ import {
   getCompletedLevels,
   getInProgressLevels,
 } from "@/utils/localStorage.ts";
+import Completed from "@/components/GeneratedLevel/components/Completed.tsx";
 
 const PageGeneratedLevelSizeSelection = () => {
   const { t } = useTranslation();
@@ -188,13 +189,14 @@ const PageGeneratedLevelSizeSelection = () => {
       </div>
       <br />
       {t("Completed levels")}
-      <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
+      <div className="col-span-7 sm:col-span-10 grid grid-cols-3 sm:grid-cols-3 gap-1">
         {getCompletedLevels().map((level) => {
           return (
-            <PrecomputedButton
+            <Completed
               boardSize={level.size}
               href={level.id || ""}
               key={"key" + level.id}
+              timeInSeconds={level.timeInSeconds}
             />
           );
         })}
