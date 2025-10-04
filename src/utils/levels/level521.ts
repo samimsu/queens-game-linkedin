@@ -34,7 +34,6 @@ const level521 = {
     H: bittersweet,
     I: lightOrchid,
   },
-  isNew: true,
 };
 
 export default level521;
