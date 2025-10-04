@@ -115,7 +115,7 @@
   "GENERATING_LEVEL": "Generating {{size}}x{{size}} level...",
   "LEVEL_GENERATOR": "Level Generator",
   "GENERATED_TYPE": "Generated {{size}}x{{size}}",
-  "GENERATED_SAMPLES_TEXT": "These are examples of randomly generated levels. They are not guaranteed to be fun or challenging",
+  "GENERATED_SAMPLES_TEXT": "Includes sample levels",
   "GENERATED_SAMPLES_TITLE": "Samples",
   "PLAY_SIZE": "Play {{playSize}}",
   "NEW": "New",

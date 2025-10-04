@@ -4,6 +4,8 @@ import {
 } from "@/utils/generated/levelEncoder.ts";
 import formatDuration from "@/utils/formatDuration.ts";
 import { createEmptyBoard } from "@/utils/board.ts";
+import { preGeneratedSamples } from "@/utils/generated/preGenerated.ts";
+import { PersistedGeneratedLevel } from "@/utils/types.ts";
 
 export const markLevelAsCompleted = (levelNumber: number) => {
   const completedLevels =
@@ -131,31 +133,25 @@ export const getRandomBoardState = (
   };
 };
 
+export const hasInProgressLevels = () => {
+  return getInProgressLevels().length > 0;
+};
+
 export const getInProgressLevels = () => {
-  const result = Object.keys(localStorage)
-    .filter((k) => k.startsWith("rnd_"))
-    .filter((k) => JSON.parse(localStorage.getItem(k) ?? "{}").id)
-    .map((k) => JSON.parse(localStorage.getItem(k) ?? "{}"))
-    .map((itm) => {
-      return {
-        id: itm.id,
-        timeInSeconds: itm.time,
-        size: getSizeForLevelId(itm.id),
-        completed: itm.completed,
-        previousBest: itm.bestTimeInSeconds,
-        state: itm.state ?? [],
-      };
-    })
-    .filter((itm) => itm.state.length);
-  result.sort((a, b) => a.size - b.size);
-  return result;
+  return getStoredGeneratedLevels().filter((itm) => itm.state.length);
 };
 
 export const getCompletedLevels = () => {
+  return getStoredGeneratedLevels().filter(
+    (itm) => !itm.state.length || itm.completed,
+  );
+};
+
+export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
   const result = Object.keys(localStorage)
     .filter((k) => k.startsWith("rnd_"))
     .filter((k) => JSON.parse(localStorage.getItem(k) ?? "{}").id)
-    .map((k) => JSON.parse(localStorage.getItem(k) ?? "{}"))
+    .map((k) => ({ ...JSON.parse(localStorage.getItem(k) ?? "{}"), name: k }))
     .map((itm) => {
       return {
         id: itm.id,
@@ -163,11 +159,48 @@ export const getCompletedLevels = () => {
         size: getSizeForLevelId(itm.id),
         completed: itm.completed,
         state: itm.state ?? [],
+        name: itm.name,
       };
-    })
-    .filter((itm) => !itm.state.length || itm.completed);
+    });
+
+  for (const i of Object.keys(preGeneratedSamples)) {
+    const fromStorage = localStorage.getItem(
+      getLevelNameFromId(preGeneratedSamples[Number(i)]),
+    );
+    if (fromStorage) {
+      continue;
+    }
+    const pregen = {
+      id: preGeneratedSamples[Number(i)],
+      completed: isRandomLevelCompleted(preGeneratedSamples[Number(i)]),
+      timeInSeconds: getRandomLevelCompletionTimeInSeconds(
+        preGeneratedSamples[Number(i)],
+      ),
+      size: getSizeForLevelId(preGeneratedSamples[Number(i)]),
+      state: getRandomBoardState(preGeneratedSamples[Number(i)]).state,
+      name: getLevelNameFromId(preGeneratedSamples[Number(i)]),
+    };
+    if (pregen.completed) {
+      result.push(pregen);
+    }
+  }
   result.sort((a, b) => a.size - b.size);
-  return result;
+  const seenIds = new Set<string>();
+  return result.filter((itm) => {
+    const seen = seenIds.has(itm.id);
+    if (seen) {
+      console.log(
+        "Duplicate level id",
+        itm.id,
+        "should delete",
+        itm.name,
+        "from storage",
+      );
+      return false;
+    }
+    seenIds.add(itm.id);
+    return true;
+  });
 };
 
 export const isBonusLevelCompleted = (levelId: string) => {

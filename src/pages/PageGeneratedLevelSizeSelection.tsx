@@ -8,14 +8,16 @@ import { RefreshCw } from "lucide-react";
 import {
   encodeLevelRegions,
   EncodingMode,
+  getHashForLevelId,
 } from "@/utils/generated/levelEncoder.ts";
-import { preGeneratedSamples } from "@/utils/generated/preGenerated.ts";
-import PrecomputedButton from "@/components/GeneratedLevel/components/PrecomputedLink.tsx";
 import {
   getCompletedLevels,
   getInProgressLevels,
+  hasInProgressLevels,
 } from "@/utils/localStorage.ts";
-import Completed from "@/components/GeneratedLevel/components/Completed.tsx";
+import RandomLevelButton from "@/components/GeneratedLevel/components/RandomLevelButton.tsx";
+import { PersistedGeneratedLevel } from "@/utils/types.ts";
+import formatDuration from "@/utils/formatDuration.ts";
 
 const PageGeneratedLevelSizeSelection = () => {
   const { t } = useTranslation();
@@ -25,7 +27,6 @@ const PageGeneratedLevelSizeSelection = () => {
   const [timedOut, setTimedOut] = useState(false);
   const [generatingSize, setGeneratingSize] = useState(1);
   const workerRef = useRef<Worker | null>(null);
-
   const createGeneratedBoard = (size: number) => {
     setGeneratingLevel(true);
     setTimedOut(false);
@@ -81,6 +82,14 @@ const PageGeneratedLevelSizeSelection = () => {
     .filter((i) => i >= 6)
     .filter((i) => i <= 13);
 
+  const formatHover = (level: PersistedGeneratedLevel) => {
+    if (!level) return "";
+    if (level.completed && level.timeInSeconds) {
+      return `Completed in ${formatDuration(level.timeInSeconds)}`;
+    }
+    return "";
+  };
+
   return (
     <RootLayout>
       <PageTitle title={t("LEVEL_GENERATOR")} />
@@ -88,11 +97,11 @@ const PageGeneratedLevelSizeSelection = () => {
         {t("GENERATE_LEVELS")}
       </div>
 
-      <div className="col-span-7 sm:col-span-10 grid grid-cols-3 sm:grid-cols-4 gap-1">
-        <div className="flex justify-center mb-1 col-span-8 sm:col-span-8">
+      <div className="grid grid-cols-8 sm:grid-cols-10 gap-1 p-1 text-sm w-fit mx-auto">
+        <div className="flex justify-center mb-1 col-span-8 sm:col-span-10">
           {t("BOARD_SIZE")}
         </div>
-        <div className="col-span-7 sm:col-span-8 grid grid-cols-3 sm:grid-cols-4 gap-1">
+        <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
           {sizes.map((size) => {
             return (
               <GenerateButton
@@ -153,55 +162,44 @@ const PageGeneratedLevelSizeSelection = () => {
         {" "}
         {t("TIMED_OUT", { size: generatingSize })}{" "}
       </div>
-      <div className="grid grid-cols-8 sm:grid-cols-10 gap-1 p-1 text-sm w-fit mx-auto">
-        <div className="flex justify-center mb-1 col-span-8 sm:col-span-10">
-          {t("GENERATED_SAMPLES_TITLE")}
-        </div>
 
+      <br />
+
+      <div
+        className="grid grid-cols-8 sm:grid-cols-10 gap-1 p-1 text-sm w-fit mx-auto"
+        hidden={!hasInProgressLevels()}
+      >
+        <div className="flex justify-center mb-1 col-span-8 sm:col-span-10">
+          {hasInProgressLevels() ? t("In-progress levels") : ""}
+        </div>
         <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
-          {sizes.map((size) => {
+          {getInProgressLevels().map((level) => {
             return (
-              <PrecomputedButton
-                boardSize={size}
-                href={preGeneratedSamples[size] || ""}
-                key={"key" + size}
-                previousBest={0}
+              <RandomLevelButton
+                level={level.id}
+                isNew={false}
+                key={getHashForLevelId(level.id)}
               />
             );
           })}
         </div>
-      </div>
-      <br />
-      <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 sm:px-0 max-w-[348px] sm:max-w-[436px] text-sm w-full mx-auto">
-        {t("GENERATED_SAMPLES_TEXT")}
-      </div>
-      <br />
-      {t("In-progress levels")}
-      <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
-        {getInProgressLevels().map((level) => {
-          return (
-            <PrecomputedButton
-              boardSize={level.size}
-              href={level.id || ""}
-              key={"key" + level.id}
-              previousBest={level.previousBest}
-            />
-          );
-        })}
-      </div>
-      <br />
-      {t("Completed levels")}
-      <div className="col-span-7 sm:col-span-10 grid grid-cols-3 sm:grid-cols-3 gap-1">
-        {getCompletedLevels().map((level) => {
-          return (
-            <Completed
-              boardSize={level.size}
-              href={level.id || ""}
-              key={"key" + level.id}
-              timeInSeconds={level.timeInSeconds}
-            />
-          );
-        })}
+
+        <br />
+        <div className="flex justify-center mb-1 col-span-8 sm:col-span-10">
+          {t("Completed levels")}
+        </div>
+        <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
+          {getCompletedLevels().map((level) => {
+            return (
+              <RandomLevelButton
+                isNew={false}
+                level={level.id}
+                title={formatHover(level)}
+                key={getHashForLevelId(level.id)}
+              />
+            );
+          })}
+        </div>
       </div>
     </RootLayout>
   );

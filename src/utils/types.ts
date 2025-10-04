@@ -20,3 +20,11 @@ export interface TestLevel {
   colorRegions: string[][];
   regionColors: { [key: string]: string };
 }
+
+export type PersistedGeneratedLevel = {
+  id: string;
+  timeInSeconds: number;
+  completed: boolean;
+  state: string[][];
+  size: number;
+};

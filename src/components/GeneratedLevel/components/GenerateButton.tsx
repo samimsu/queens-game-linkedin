@@ -1,4 +1,6 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getFormattedSizeForLevel } from "@/utils/generated/levelEncoder.ts";
+import { preGeneratedSamples } from "@/utils/generated/preGenerated.ts";
 
 interface GenerateButtonProps {
   boardSize: number;
@@ -9,15 +11,17 @@ interface GenerateButtonProps {
 
 const GenerateButton = (input: GenerateButtonProps) => {
   return (
-      <Link to={`/random-level?size=${input.boardSize}`} key={input.boardSize} onClick={input.onClick} title={input.title}>
-          <button
-              className={`rounded p-1 w-full text-white bg-[#F96C51] ${
-                  input.disabled ? "opacity-75" : ""
-              }`}
-          >
-              {input.boardSize}x{input.boardSize}
-          </button>
-      </Link>
+    <Link
+      onClick={input.onClick}
+      to={`/random-level?size=${input.boardSize}`}
+      key={input.boardSize}
+      className="relative"
+      title={input.boardSize.toString()}
+    >
+      <button className={"relative rounded p-2 w-full text-white bg-[#F96C51]"}>
+        {getFormattedSizeForLevel(preGeneratedSamples[input.boardSize])}
+      </button>
+    </Link>
   );
 };
 

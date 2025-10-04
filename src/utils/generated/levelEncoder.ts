@@ -127,6 +127,12 @@ export function getSizeForLevelId(levelId: string): number {
   return Math.floor(Math.sqrt(levelRegions.length));
 }
 
+export function getFormattedSizeForLevel(levelId: string): string {
+  const levelRegions = encodeLevelRegionsBasic(decodeLevelRegions(levelId));
+  const dimension = Math.floor(Math.sqrt(levelRegions.length)).toString();
+  return `${dimension.padStart(2, " ")}x${dimension.padEnd(2, " ")}`;
+}
+
 export function getLevelNameFromId(id: string): string {
   return `rnd_${getHashForLevelId(id)}`;
 }
