@@ -184,7 +184,12 @@ export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
       result.push(pregen);
     }
   }
-  result.sort((a, b) => a.size - b.size);
+  result.sort((a, b) => {
+      if (a.size !== b.size) {
+          return a.size - b.size
+      }
+      return b.timeInSeconds - a.timeInSeconds;
+  });
   const seenIds = new Set<string>();
   return result.filter((itm) => {
     const seen = seenIds.has(itm.id);
@@ -198,7 +203,6 @@ export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
       );
       return false;
     }
-    console.log("Adding level", itm.name, "to storage");
     seenIds.add(itm.id);
     return true;
   });
