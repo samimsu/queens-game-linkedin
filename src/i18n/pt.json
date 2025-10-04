@@ -46,6 +46,7 @@
   "COLOR": {
     "ALTO": "Alto",
     "ALTO_MAIN": "Cinza",
+    "ATOMIC_TANGERINE": "Atomic Tangerine",
     "ANAKIWA": "Azul",
     "BITTERSWEET": "Coral",
     "CAN_CAN": "Can Can",
@@ -53,18 +54,22 @@
     "CELADON": "Verde",
     "CHARDONNAY": "Laranjinha",
     "COLD_PURPLE": "Cold Purple",
+    "EMERALD": "Emerald",
     "FEIJOA": "Feijoa",
     "HALF_BAKED": "Azul celeste",
     "LAVENDER_ROSE": "Lavender Rose",
+    "LIGHT_GREEN": "Light Green",
     "LIGHT_ORCHID": "Rosa",
     "LIGHT_WISTERIA": "Lilás",
     "MAC_N_CHEESE": "Mac n Cheese",
     "MALIBU": "Malibu",
     "MANZ": "Manz",
     "NOMAD": "Prata",
+    "PERIWINKLE": "Periwinkle",
     "SAHARA_SAND": "Limão",
     "TALLOW": "Tallow",
-    "TURQUOISE_BLUE": "Ciano"
+    "TURQUOISE_BLUE": "Ciano",
+    "WHITE": "White"
   },
   "YES": "Sim",
   "THEME": {
@@ -102,5 +107,16 @@
   "OR": "ou",
   "COPY_DETAILS": "Copiar detalhes",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Descubra níveis únicos criados pela comunidade! Jogue, inspire-se e construa o seu próprio com o",
-  "PLAY_SIZE": "Jogar {{playSize}}"
+  "TRY_RANDOMLY_GENERATED_LEVEL": "Terminou todos os níveis da comunidade? Experimente um gerado aleatoriamente usando o ",
+  "GENERATE_LEVELS": "Gere níveis aleatórios. Escolha o tamanho e deixe o algoritmo criar um quebra-cabeça único para você.",
+  "TIMED_OUT": "Tempo esgotado gerando um nível {{size}}x{{size}}, clique no botão para tentar novamente",
+  "SHARE_LINK_TO_LEVEL": "Encontrou um bom nível? Certifique-se de incluir o link em sua postagem",
+  "FOUND_VALID_LEVEL": "Encontrado 1 nível válido até agora. Buscando por mais alguns segundos para tentar melhorar a dificuldade...",
+  "GENERATING_LEVEL": "Gerando nível {{size}}x{{size}}...",
+  "LEVEL_GENERATOR": "Gerador de Níveis",
+  "GENERATED_TYPE": "Gerado {{size}}x{{size}}",
+  "GENERATED_SAMPLES_TEXT": "Estes são exemplos de níveis gerados aleatoriamente. Não é garantido que sejam divertidos ou desafiadores",
+  "GENERATED_SAMPLES_TITLE": "Amostras",
+  "PLAY_SIZE": "Jogar {{playSize}}",
+  "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "Pode exigir várias tentativas, seja paciente"
 }
