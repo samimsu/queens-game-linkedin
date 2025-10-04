@@ -138,7 +138,7 @@ export const hasInProgressLevels = () => {
 };
 
 export const getInProgressLevels = () => {
-  return getStoredGeneratedLevels().filter((itm) => itm.state.length);
+  return getStoredGeneratedLevels().filter((itm) => itm.state.length || !itm.completed);
 };
 
 export const getCompletedLevels = () => {
@@ -180,7 +180,7 @@ export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
       state: getRandomBoardState(preGeneratedSamples[Number(i)]).state,
       name: getLevelNameFromId(preGeneratedSamples[Number(i)]),
     };
-    if (pregen.completed) {
+    if (!result.find(i => i.id === pregen.id)) {
       result.push(pregen);
     }
   }
@@ -198,6 +198,7 @@ export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
       );
       return false;
     }
+    console.log("Adding level", itm.name, "to storage");
     seenIds.add(itm.id);
     return true;
   });
