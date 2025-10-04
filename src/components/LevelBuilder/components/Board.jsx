@@ -49,7 +49,7 @@ const Board = ({
               data-col={colIndex} // Add data attributes for touch handling
             />
           );
-        })
+        }),
       )}
     </div>
   );

@@ -23,7 +23,7 @@ const LevelSelection = () => {
     setOnlyAvailableLevelsSwitchDisable,
   ] = useState(false);
   const [hideCompletedLevels, setHideCompletedLevels] = useState(
-    getHideCompletedLevelsPreference
+    getHideCompletedLevelsPreference,
   );
   const [groupBySize, setGroupBySize] = useState(getGroupingPreference);
   const [resetTrigger, setResetTrigger] = useState(false);
