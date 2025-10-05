@@ -110,14 +110,21 @@ const PageGeneratedLevel = () => {
         setBoard(createEmptyBoard(level.size));
         setHasWon(false);
         setShowWinningScreen(false);
-        setLevelSize(level.size);
         setLevel(level);
+        setLevelSize(levelRegions.length);
         setLoading(false);
+        // Adjust zoom based on level size
+        // zoom = 1 for level sizes up to 11, but subtract 0.1 for each increment above that down to a minimum of 0.5
+        const autoZoom = Math.max(
+          Math.min(1, 1 - (levelRegions.length - 12) * 0.1),
+          0.5,
+        );
+        setZoomLevel(autoZoom);
       }
     } catch (e) {
       console.error("Error decoding level from path:", e);
     }
-  }, []);
+  }, [levelSize, id]);
 
   useEffect(() => {
     if (hasSavedState) {
