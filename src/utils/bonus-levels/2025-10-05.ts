@@ -13,6 +13,7 @@ import {
 } from "../colors";
 
 const level = {
+  path: "/bonus-level/2025-10-05",
   size: 11,
   colorRegions: [
     ["A", "A", "A", "A", "B", "B", "B", "C", "D", "D", "E"],
