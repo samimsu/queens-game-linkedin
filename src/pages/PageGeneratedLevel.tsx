@@ -124,7 +124,7 @@ const PageGeneratedLevel = () => {
     } catch (e) {
       console.error("Error decoding level from path:", e);
     }
-  }, [levelSize, id]);
+  }, []);
 
   useEffect(() => {
     if (hasSavedState) {
