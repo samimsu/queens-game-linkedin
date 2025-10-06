@@ -12,7 +12,7 @@ import {
   turquoiseBlue,
 } from "../colors";
 
-const level1 = {
+const level = {
   path: "/bonus-level/2025-09-28",
   size: 11,
   colorRegions: [
@@ -41,7 +41,6 @@ const level1 = {
     J: halfBaked,
     K: chardonnay,
   },
-  isNew: true,
 };
 
-export default level1;
+export default level;
