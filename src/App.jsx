@@ -10,7 +10,6 @@ import PageCommunityLevelsList from "./pages/PageCommunityLevelsList";
 import PageCommunityLevel from "./pages/PageCommunityLevel";
 import PageLevelBuilder from "./pages/PageLevelBuilder";
 import PageNotFound from "./pages/PageNotFound";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 import "./App.css";
 import "./i18n";
 
@@ -36,7 +35,6 @@ const App = () => {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>
-        <ThemeSwitcher />
       </ThemeProvider>
     </HelmetProvider>
   );
