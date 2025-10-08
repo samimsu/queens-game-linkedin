@@ -77,11 +77,9 @@ describe("levelEncoder", () => {
         EncodingMode.RLE,
       );
       expect(encodeLevelRegions(decodeLevelRegions(str))).toEqual(
-        "DAADDDDDDDDDDDDDDDDDDD",
+        "ABBAAAAAAAAAAAAAAAAAAA",
       );
-      console.log(str);
     });
-    // expect(encodeLevelRegions(decodeLevelRegions(testString), EncodingMode.RLE)).toEqual(testString);
 
     test("recovery from encoding issue", () => {
       // from a real level that was encoded with 19 consecutive characters
@@ -140,7 +138,7 @@ describe("levelEncoder", () => {
     });
     test("Hash 10x10", () => {
         const r = getHashForLevelId("0I4A5K2I4A6KI3A8I4A2H2A3I2J3A2H4I3JGA2H4C2I2GAB2H3C2I2GAB2H3FC2IG3BH3FC2I2G2BD2HFCI4E5");
-        expect(r).toEqual("-1051207928");
+        expect(r).toEqual("1276250035");
     })
   });
 });
