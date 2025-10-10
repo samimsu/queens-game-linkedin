@@ -677,6 +677,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "ssisaias",
+      "name": "Isaias S. Silva",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3528085?v=4",
+      "profile": "https://showcase.isaiasdevlog.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
