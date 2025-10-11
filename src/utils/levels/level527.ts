@@ -31,7 +31,6 @@ const level527 = {
     G: saharaSand,
     H: nomad,
   },
-  isNew: true,
 };
 
 export default level527;
