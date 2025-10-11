@@ -1,4 +1,5 @@
 import {
+  fixLevelId,
   getLevelNameFromId,
   getSizeForLevelId,
 } from "@/utils/generated/levelEncoder.ts";
@@ -112,7 +113,7 @@ export const getRandomBoardState = (
   const r = localStorage.getItem(getLevelNameFromId(id));
   if (!r) {
     return {
-      id: id,
+      id: fixLevelId(id),
       completed: false,
       timeInSeconds: 0,
       state: createEmptyBoard(getSizeForLevelId(id)),
@@ -138,7 +139,9 @@ export const hasInProgressLevels = () => {
 };
 
 export const getInProgressLevels = () => {
-  return getStoredGeneratedLevels().filter((itm) => itm.state.length || !itm.completed);
+  return getStoredGeneratedLevels().filter(
+    (itm) => itm.state.length || !itm.completed,
+  );
 };
 
 export const getCompletedLevels = () => {
@@ -148,6 +151,32 @@ export const getCompletedLevels = () => {
 };
 
 export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
+  const allKeys = Object.keys(localStorage).filter((k) => k.startsWith("rnd_"));
+  for (const key of allKeys) {
+    if (!localStorage.getItem(key)) {
+      continue;
+    }
+    const parsedItem = JSON.parse(localStorage.getItem(key) ?? "{}");
+    if (!parsedItem.id) {
+      continue;
+    }
+    if (getLevelNameFromId(parsedItem.id) !== key) {
+      console.log("Need to fix level name for key", parsedItem, key);
+      const correctLevelName = getLevelNameFromId(parsedItem.id);
+      localStorage.removeItem(key);
+      localStorage.setItem(
+        correctLevelName,
+        JSON.stringify({ ...parsedItem, id: fixLevelId(parsedItem.id) }),
+      );
+      continue;
+    }
+    if (fixLevelId(parsedItem.id) !== parsedItem.id) {
+      localStorage.setItem(
+        key,
+        JSON.stringify({ ...parsedItem, id: fixLevelId(parsedItem.id) }),
+      );
+    }
+  }
   const result = Object.keys(localStorage)
     .filter((k) => k.startsWith("rnd_"))
     .filter((k) => JSON.parse(localStorage.getItem(k) ?? "{}").id)
@@ -180,15 +209,15 @@ export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
       state: getRandomBoardState(preGeneratedSamples[Number(i)]).state,
       name: getLevelNameFromId(preGeneratedSamples[Number(i)]),
     };
-    if (!result.find(i => i.id === pregen.id)) {
+    if (!result.find((i) => i.id === pregen.id)) {
       result.push(pregen);
     }
   }
   result.sort((a, b) => {
-      if (a.size !== b.size) {
-          return a.size - b.size
-      }
-      return b.timeInSeconds - a.timeInSeconds;
+    if (a.size !== b.size) {
+      return a.size - b.size;
+    }
+    return b.timeInSeconds - a.timeInSeconds;
   });
   const seenIds = new Set<string>();
   return result.filter((itm) => {

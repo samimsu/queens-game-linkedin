@@ -154,3 +154,7 @@ export function getFormattedSizeForLevel(levelId: string): string {
 export function getLevelNameFromId(id: string): string {
   return `rnd_${getHashForLevelId(id)}`;
 }
+
+export function fixLevelId(id: string): string {
+  return encodeLevelRegionsBasic(decodeLevelRegions(id));
+}
