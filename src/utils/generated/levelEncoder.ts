@@ -156,5 +156,5 @@ export function getLevelNameFromId(id: string): string {
 }
 
 export function fixLevelId(id: string): string {
-  return encodeLevelRegionsBasic(decodeLevelRegions(id));
+  return encodeLevelRegions(decodeLevelRegions(id), EncodingMode.RLE);
 }
