@@ -27,7 +27,10 @@ import { getGiscusLanguage } from "@/utils/getGiscusLanguage.ts";
 import i18n from "i18next";
 import { defaultColorMap } from "@/utils/colors.ts";
 import { useTheme } from "next-themes";
-import { decodeLevelRegions } from "@/utils/generated/levelEncoder.ts";
+import {
+  decodeLevelRegions,
+  fixLevelId,
+} from "@/utils/generated/levelEncoder.ts";
 import WinningScreen from "@/components/LevelBuilder/components/TestLevel/components/WinningScreen.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import CopyLink from "@/components/GeneratedLevel/components/CopyLink.tsx";
@@ -107,6 +110,11 @@ const PageGeneratedLevel = () => {
           colorRegions: levelRegions,
           size: levelRegions.length,
         };
+        const fixedId = fixLevelId(id);
+        if (fixedId !== id) {
+          window.history.pushState(null, "", `/random-level/${fixedId}`);
+          window.location.reload();
+        }
         setBoard(createEmptyBoard(level.size));
         setHasWon(false);
         setShowWinningScreen(false);
