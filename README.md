@@ -21,7 +21,7 @@
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
-## Levels Added (523/531)
+## Levels Added (524/532)
 
 - [x] 1-3
 - [ ] 4
@@ -43,7 +43,7 @@ If you would like to help me build LinkedIn's levels or build your own level you
 
 ### By pasting image
 
-https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
+<https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569>
 
 ### Community Levels
 
