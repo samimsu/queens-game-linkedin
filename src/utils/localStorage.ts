@@ -150,6 +150,19 @@ export const getCompletedLevels = () => {
   );
 };
 
+export const groupGeneratedLevelsBySize = (
+  levels: PersistedGeneratedLevel[],
+): Record<number, PersistedGeneratedLevel[]> => {
+  const result: Record<number, PersistedGeneratedLevel[]> = {};
+  for (const level of levels) {
+    const size = level.size;
+    if (!result[size]) {
+      result[size] = [];
+    }
+    result[size].push(level);
+  }
+  return result;
+};
 export const getStoredGeneratedLevels = (): PersistedGeneratedLevel[] => {
   const allKeys = Object.keys(localStorage).filter((k) => k.startsWith("rnd_"));
   for (const key of allKeys) {

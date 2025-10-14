@@ -1,8 +1,10 @@
 import { describe, expect, test } from "vitest";
 import {
-    decodeLevelRegions,
-    encodeLevelRegions,
-    EncodingMode, getHashForLevelId,
+  decodeLevelRegions,
+  encodeLevelRegions,
+  EncodingMode,
+  getHashForLevelId,
+  getLevelNameFromId,
 } from "@/utils/generated/levelEncoder.ts";
 
 const size7EncodedLevel = "EEAAAAAEAAAAFFEDAFFFFEDDFFBFEDDFFBFEDDFCCFEFFFGGG";
@@ -137,8 +139,16 @@ describe("levelEncoder", () => {
       expect(reDecoded).toEqual(levelRegions);
     });
     test("Hash 10x10", () => {
-        const r = getHashForLevelId("0I4A5K2I4A6KI3A8I4A2H2A3I2J3A2H4I3JGA2H4C2I2GAB2H3C2I2GAB2H3FC2IG3BH3FC2I2G2BD2HFCI4E5");
-        expect(r).toEqual("1276250035");
-    })
+      const r = getHashForLevelId(
+        "0I4A5K2I4A6KI3A8I4A2H2A3I2J3A2H4I3JGA2H4C2I2GAB2H3C2I2GAB2H3FC2IG3BH3FC2I2G2BD2HFCI4E5",
+      );
+      expect(r).toEqual("1276250035");
+    });
+    test("Get name", () => {
+      const r = getLevelNameFromId(
+        "0AB5C9DA2B4C2EC4D3FA2B2C2E3C3DG2F2ABC2E2HE2CD2G2FA2BCE2H3E2IDG2A2B2CI3HI4D3AC6I3C5DC2J2C3J2CKC8J5C2K2C7LJ3LC2MK2C5L6CM3K2C4LC2NL2C2MK2C7N3C3K2C3OC3N5C2KC4OC2N2C3N2C4P2OCcP3O",
+      );
+      expect(r).toEqual("rnd_-1483228415");
+    });
   });
 });

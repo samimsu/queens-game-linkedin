@@ -13,6 +13,7 @@ import {
 import {
   getCompletedLevels,
   getInProgressLevels,
+  groupGeneratedLevelsBySize,
   hasInProgressLevels,
 } from "@/utils/localStorage.ts";
 import RandomLevelButton from "@/components/GeneratedLevel/components/RandomLevelButton.tsx";
@@ -81,7 +82,6 @@ const PageGeneratedLevelSizeSelection = () => {
     .map((i) => i + 6)
     .filter((i) => i >= 6)
     .filter((i) => i <= 13);
-
   const formatHover = (level: PersistedGeneratedLevel) => {
     if (!level) return "";
     if (level.completed && level.timeInSeconds) {
@@ -89,6 +89,9 @@ const PageGeneratedLevelSizeSelection = () => {
     }
     return "";
   };
+  const completedLevelsBySize =
+    groupGeneratedLevelsBySize(getCompletedLevels());
+  console.log(completedLevelsBySize);
 
   return (
     <RootLayout>
@@ -188,18 +191,29 @@ const PageGeneratedLevelSizeSelection = () => {
         <div className="flex justify-center mb-1 col-span-8 sm:col-span-10">
           {t("Completed levels")}
         </div>
-        <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
-          {getCompletedLevels().map((level) => {
-            return (
-              <RandomLevelButton
-                isNew={false}
-                level={level.id}
-                title={formatHover(level)}
-                key={getHashForLevelId(level.id)}
-              />
-            );
-          })}
-        </div>
+        {Object.entries(completedLevelsBySize).map(([size, levels]) => {
+          return (
+            <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1">
+              <div key={`completed-${size}`} className="mb-1 p-1">
+                <h3 className="font-medium mb-1 text-center text-sm">
+                  {size}x{size}
+                </h3>
+              </div>
+              <div className="col-span-7 sm:col-span-10 grid grid-cols-4 sm:grid-cols-4 gap-1 text-center">
+                {levels.map((level) => {
+                  return (
+                    <RandomLevelButton
+                      isNew={false}
+                      level={level.id}
+                      title={formatHover(level)}
+                      key={getHashForLevelId(level.id)}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </RootLayout>
   );
