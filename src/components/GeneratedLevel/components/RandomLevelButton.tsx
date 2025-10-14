@@ -9,7 +9,6 @@ import {
   getFormattedSizeForLevel,
   getHashForLevelId,
 } from "@/utils/generated/levelEncoder.ts";
-import formatDuration from "@/utils/formatDuration.ts";
 
 const RandomLevelButton = ({
   level,
