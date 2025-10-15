@@ -301,6 +301,16 @@ export const getAutoPlaceXsPreference = () => {
   return JSON.parse(localStorage.getItem("autoPlaceXs") as string) ?? false; // Default to false
 };
 
+export const setDragToClearPreference = (enabled: boolean) => {
+  localStorage.setItem("dragToClearEnabled", JSON.stringify(enabled));
+};
+
+export const getDragToClearPreference = () => {
+  return (
+    JSON.parse(localStorage.getItem("dragToClearEnabled") as string) ?? false
+  ); // Default to false
+};
+
 export const setGroupingPreference = (enabled: boolean) => {
   localStorage.setItem("groupBySize", JSON.stringify(enabled));
 };

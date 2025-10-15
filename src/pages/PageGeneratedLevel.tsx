@@ -80,7 +80,7 @@ const PageGeneratedLevel = () => {
     setShowWinningScreen,
     setTimerRunning,
     handleSquareClick,
-    handleDragToClear,
+
     handleUndo,
     handleTimeUpdate,
     toggleClashingQueens,
@@ -89,6 +89,9 @@ const PageGeneratedLevel = () => {
     toggleAutoPlaceXs,
     history,
     completed,
+    dragToClearXs,
+    toggleDragToClear,
+    handleDragToClear,
   } = useGameLogic({
     id: id,
     boardSize: level?.size || 9,
@@ -272,6 +275,8 @@ const PageGeneratedLevel = () => {
                       toggleShowClock={toggleShowClock}
                       autoPlaceXs={autoPlaceXs}
                       toggleAutoPlaceXs={toggleAutoPlaceXs}
+                      toggleDragToUncheck={toggleDragToClear}
+                      dragToUncheck={dragToClearXs}
                     />
                   </div>
                 </div>

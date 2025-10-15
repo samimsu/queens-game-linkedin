@@ -12,7 +12,7 @@ import {
   CaseUpper,
 } from "lucide-react";
 import Board from "./components/Board";
-import { createEmptyBoard } from "../../utils/board";
+import { createEmptyBoard } from "@/utils/board.ts";
 import BackIcon from "../icons/BackIcon";
 import PreviousIcon from "../icons/PreviousIcon";
 import NextIcon from "../icons/NextIcon";
@@ -112,7 +112,7 @@ const CommunityLevel = ({
     const alternateKeys = Object.keys(alternateRegionColors);
     if (defaultKeys.length !== alternateKeys.length) return false;
     return defaultKeys.every(
-      (key) => defaultRegionColors[key] === alternateRegionColors[key]
+      (key) => defaultRegionColors[key] === alternateRegionColors[key],
     );
   }, [defaultRegionColors, alternateRegionColors]);
 
@@ -130,6 +130,7 @@ const CommunityLevel = ({
     showInstructions,
     showClock,
     autoPlaceXs,
+    dragToClearXs,
     timerRunning,
     completed,
     history,
@@ -145,6 +146,8 @@ const CommunityLevel = ({
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    toggleDragToClear,
+    handleDragToClear,
   } = useGameLogic({
     id,
     boardSize,
@@ -363,6 +366,8 @@ const CommunityLevel = ({
                   toggleShowClock={toggleShowClock}
                   autoPlaceXs={autoPlaceXs}
                   toggleAutoPlaceXs={toggleAutoPlaceXs}
+                  dragToUncheck={dragToClearXs}
+                  toggleDragToUncheck={toggleDragToClear}
                 />
               </div>
             </div>
@@ -401,6 +406,7 @@ const CommunityLevel = ({
               board={board}
               handleSquareClick={handleSquareClick}
               handleSquareMouseEnter={handleDrag}
+              handleDrags={handleDragToClear}
               boardSize={boardSize}
               colorRegions={colorRegions}
               regionColors={regionColors}

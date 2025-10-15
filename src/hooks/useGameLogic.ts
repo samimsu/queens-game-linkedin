@@ -3,6 +3,7 @@ import { createEmptyBoard } from "@/utils/board";
 import {
   getAutoPlaceXsPreference,
   getClashingQueensPreference,
+  getDragToClearPreference,
   getShowClockPreference,
   getShowInstructionsPreference,
   isCommunityLevelCompleted,
@@ -11,6 +12,7 @@ import {
   recordRandomLevelState,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
+  setDragToClearPreference,
   setShowClockPreference,
   setShowInstructionsPreference,
 } from "@/utils/localStorage";
@@ -47,6 +49,10 @@ const useGameLogic = ({
   const [showClock, setShowClock] = useState<boolean>(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState<boolean>(
     getAutoPlaceXsPreference,
+  );
+
+  const [dragToClearXs, setDragToClearXs] = useState<boolean>(
+    getDragToClearPreference,
   );
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
@@ -186,13 +192,11 @@ const useGameLogic = ({
     if (squares.length === 0) {
       return;
     }
-    if (!isClear) {
+    if (!isClear || !dragToClearXs) {
       handleDrag(squares);
       recordState();
       return;
     }
-
-    console.log("handleDragToClear", squares);
 
     const newBoard = structuredClone(board);
     for (const [row, col] of squares) {
@@ -361,6 +365,12 @@ const useGameLogic = ({
     setAutoPlaceXsPreference(newSetting);
   };
 
+  const toggleDragToClear = () => {
+    const newSetting = !dragToClearXs;
+    setDragToClearXs(newSetting);
+    setDragToClearPreference(newSetting);
+  };
+
   const handleTimeUpdate = (time: number) => {
     setTimer(time);
   };
@@ -428,6 +438,8 @@ const useGameLogic = ({
     toggleShowClock,
     toggleAutoPlaceXs,
     handleTimeUpdate,
+    toggleDragToClear,
+    dragToClearXs,
   };
 };
 
