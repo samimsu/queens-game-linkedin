@@ -165,6 +165,7 @@ To build a community level make sure the "Community Level" level type is selecte
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/michniks2001"><img src="https://avatars.githubusercontent.com/u/57420719?v=4?s=100" width="100px;" alt="Sam Michnik"/><br /><sub><b>Sam Michnik</b></sub></a><br /><a href="#content-michniks2001" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://showcase.isaiasdevlog.com/"><img src="https://avatars.githubusercontent.com/u/3528085?v=4?s=100" width="100px;" alt="Isaias S. Silva"/><br /><sub><b>Isaias S. Silva</b></sub></a><br /><a href="#code-ssisaias" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Fayssalmekk"><img src="https://avatars.githubusercontent.com/u/65515527?v=4?s=100" width="100px;" alt="EL MEKKAOUI Fayssal"/><br /><sub><b>EL MEKKAOUI Fayssal</b></sub></a><br /><a href="#content-Fayssalmekk" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ocus"><img src="https://avatars.githubusercontent.com/u/950379?v=4?s=100" width="100px;" alt="Matthieu Honel"/><br /><sub><b>Matthieu Honel</b></sub></a><br /><a href="#content-ocus" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
