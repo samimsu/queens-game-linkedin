@@ -686,6 +686,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Fayssalmekk",
+      "name": "EL MEKKAOUI Fayssal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65515527?v=4",
+      "profile": "https://github.com/Fayssalmekk",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "ocus",
+      "name": "Matthieu Honel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/950379?v=4",
+      "profile": "https://github.com/ocus",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "heyJatin",
+      "name": "Jatin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22865560?v=4",
+      "profile": "https://exact.codes",
+      "contributions": [
+        "content"
+      ]
     }
   ]
 }
