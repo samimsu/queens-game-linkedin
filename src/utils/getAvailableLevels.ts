@@ -3,7 +3,7 @@ import { levels } from "./levels";
 export const getOrderedLevels = () => {
   const levelKeys = Object.keys(levels);
   const availableLevels = levelKeys.map((key) =>
-    parseInt(key.replace("level", ""), 10)
+    parseInt(key.replace("level", ""), 10),
   );
 
   return availableLevels;
