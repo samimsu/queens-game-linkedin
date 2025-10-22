@@ -713,6 +713,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "hiichbindermax",
+      "name": "Maximilian Hell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23661067?v=4",
+      "profile": "https://github.com/hiichbindermax",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
