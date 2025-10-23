@@ -41,6 +41,10 @@ Note: If anyone could help in finding the missing levels, I'd really appreciate 
 
 If you would like to help me build LinkedIn's levels or build your own level you can use the [Level Builder](https://queensgame.vercel.app/level-builder). You can either paste the image of the level or manually build it.
 
+### LinkedIn levels
+
+Easiest way is to use the automated script to build the levels. Click [here](https://github.com/samimsu/queens-game-linkedin/blob/main/scripts/README.md) for more info.
+
 ### By pasting image
 
 https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
