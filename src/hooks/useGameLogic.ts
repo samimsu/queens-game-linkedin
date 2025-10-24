@@ -3,16 +3,20 @@ import { createEmptyBoard } from "@/utils/board";
 import {
   getAutoPlaceXsPreference,
   getClashingQueensPreference,
+  getDragToClearPreference,
   getShowClockPreference,
   getShowInstructionsPreference,
   isBonusLevelCompleted,
   isCommunityLevelCompleted,
   isLevelCompleted,
+  isRandomLevelCompleted,
   markBonusLevelAsCompleted,
   markCommunityLevelAsCompleted,
   markLevelAsCompleted,
+  recordRandomLevelState,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
+  setDragToClearPreference,
   setShowClockPreference,
   setShowInstructionsPreference,
 } from "@/utils/localStorage";
@@ -22,7 +26,7 @@ interface useGameLogicProps {
   id?: string;
   boardSize: number;
   colorRegions: string[][];
-  levelType?: "bonus" | "community";
+  levelType?: "bonus" | "community" | "random";
 }
 
 const useGameLogic = ({
@@ -33,6 +37,7 @@ const useGameLogic = ({
 }: useGameLogicProps) => {
   const isBonusLevel = levelType === "bonus";
   const isCommunityLevel = levelType === "community";
+  const isRandomLevel = levelType === "random";
 
   const [board, setBoard] = useState(createEmptyBoard(boardSize));
   const [, setQueenGeneratedXs] = useState<Record<string, Set<string>>>({});
@@ -41,32 +46,40 @@ const useGameLogic = ({
   const [showWinningScreen, setShowWinningScreen] = useState(false);
   const [clashingQueens, setClashingQueens] = useState<Set<string>>(new Set());
   const [showClashingQueens, setShowClashingQueens] = useState<boolean>(
-    getClashingQueensPreference
+    getClashingQueensPreference,
   );
   const [showInstructions, setShowInstructions] = useState<boolean>(
-    getShowInstructionsPreference
+    getShowInstructionsPreference,
   );
   const [showClock, setShowClock] = useState<boolean>(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState<boolean>(
-    getAutoPlaceXsPreference
+    getAutoPlaceXsPreference,
+  );
+
+  const [dragToClearXs, setDragToClearXs] = useState<boolean>(
+    getDragToClearPreference,
   );
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
   const history = useRef<{ row: number; col: number; symbol: string | null }[]>(
-    []
+    [],
   );
   const completed = id
     ? isBonusLevel
       ? isBonusLevelCompleted(id)
       : isCommunityLevel
-      ? isCommunityLevelCompleted(id)
-      : isLevelCompleted(Number(id))
-    : false;
+        ? isCommunityLevelCompleted(id)
+        : isRandomLevel
+          ? isRandomLevelCompleted(id)
+          : isLevelCompleted(Number(id))
+    : isRandomLevel
+      ? isRandomLevelCompleted(id ?? "UNKNOWN")
+      : false;
 
   const getQueenPositionForGivenX = (
     xRow: number,
     xCol: number,
-    newBoard: (string | null)[][]
+    newBoard: (string | null)[][],
   ) => {
     const directions = [
       [-1, 0],
@@ -136,6 +149,9 @@ const useGameLogic = ({
       removeQueen(newBoard, row, col);
       addToHistory({ row, col, symbol: null });
     }
+    if (isRandomLevel && id) {
+      recordRandomLevelState(id, timer, newBoard, false);
+    }
 
     // Check for win condition after updating the board
     if (checkWinCondition(newBoard, boardSize, colorRegions)) {
@@ -149,6 +165,8 @@ const useGameLogic = ({
           markBonusLevelAsCompleted(id);
         } else if (isCommunityLevel) {
           markCommunityLevelAsCompleted(id);
+        } else if (isRandomLevel) {
+          recordRandomLevelState(id, timer, board, true);
         } else {
           markLevelAsCompleted(Number(id));
         }
@@ -162,10 +180,10 @@ const useGameLogic = ({
     const clashingPositions = getClashingQueens(
       newBoard,
       boardSize,
-      colorRegions
+      colorRegions,
     );
     const clashingSet = new Set(
-      clashingPositions.map(({ row, col }) => `${row},${col}`)
+      clashingPositions.map(({ row, col }) => `${row},${col}`),
     );
     setClashingQueens(clashingSet);
 
@@ -183,10 +201,31 @@ const useGameLogic = ({
     setBoard(newBoard);
   };
 
+  const handleDragToClear = (isClear: boolean, squares: number[][]) => {
+    if (squares.length === 0) {
+      return;
+    }
+    if (!isClear || !dragToClearXs) {
+      handleDrag(squares);
+      recordState();
+      return;
+    }
+
+    const newBoard = structuredClone(board);
+    for (const [row, col] of squares) {
+      if (newBoard[row][col] !== "Q") {
+        newBoard[row][col] = null;
+        addToHistory({ row, col, symbol: null });
+      }
+    }
+    setBoard(newBoard);
+    recordState();
+  };
+
   const placeQueen = (
     newBoard: (string | null)[][],
     row: number,
-    col: number
+    col: number,
   ) => {
     newBoard[row][col] = "Q"; // Place the queen
 
@@ -263,7 +302,7 @@ const useGameLogic = ({
   const removeQueen = (
     newBoard: (string | null)[][],
     row: number,
-    col: number
+    col: number,
   ) => {
     newBoard[row][col] = null; // Remove the queen
 
@@ -339,8 +378,21 @@ const useGameLogic = ({
     setAutoPlaceXsPreference(newSetting);
   };
 
+  const toggleDragToClear = () => {
+    const newSetting = !dragToClearXs;
+    setDragToClearXs(newSetting);
+    setDragToClearPreference(newSetting);
+  };
+
   const handleTimeUpdate = (time: number) => {
     setTimer(time);
+  };
+
+  const recordState = () => {
+    if (!isRandomLevel || !id) {
+      return;
+    }
+    recordRandomLevelState(id, timer, board, hasWon);
   };
 
   const handleUndo = () => {
@@ -368,7 +420,7 @@ const useGameLogic = ({
     // Update clashing queens
     const clashingPositions = getClashingQueens(board, boardSize, colorRegions);
     const clashingSet = new Set(
-      clashingPositions.map(({ row, col }) => `${row},${col}`)
+      clashingPositions.map(({ row, col }) => `${row},${col}`),
     );
     setClashingQueens(clashingSet);
   }, [board]);
@@ -392,12 +444,15 @@ const useGameLogic = ({
     history,
     handleSquareClick,
     handleDrag,
+    handleDragToClear,
     handleUndo,
     toggleClashingQueens,
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
     handleTimeUpdate,
+    toggleDragToClear,
+    dragToClearXs,
   };
 };
 

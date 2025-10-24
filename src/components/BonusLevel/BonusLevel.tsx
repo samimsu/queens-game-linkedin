@@ -74,6 +74,9 @@ const BonusLevel = ({
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    dragToClearXs,
+    toggleDragToClear,
+    handleDragToClear,
   } = useGameLogic({
     id,
     boardSize,
@@ -233,6 +236,8 @@ const BonusLevel = ({
                   toggleShowClock={toggleShowClock}
                   autoPlaceXs={autoPlaceXs}
                   toggleAutoPlaceXs={toggleAutoPlaceXs}
+                  toggleDragToUncheck={toggleDragToClear}
+                  dragToUncheck={dragToClearXs}
                 />
               </div>
             </div>
@@ -266,6 +271,7 @@ const BonusLevel = ({
               board={board}
               handleSquareClick={handleSquareClick}
               handleSquareMouseEnter={handleDrag}
+              handleDrags={dragToClearXs ? handleDragToClear : undefined}
               boardSize={boardSize}
               colorRegions={colorRegions}
               regionColors={regionColors}
