@@ -8,6 +8,7 @@ const TEN_HOURS_IN_SECONDS = 36000;
 interface TimerProps {
   run: boolean;
   onTimeUpdate: (time: number) => void;
+  setTime?: () => { newTime: number | undefined };
   showTimer: boolean;
   className?: string;
 }
@@ -17,6 +18,7 @@ const Timer = ({
   onTimeUpdate,
   showTimer,
   className = "",
+  setTime,
 }: TimerProps) => {
   const [seconds, setSeconds] = useState(0);
 
@@ -38,6 +40,12 @@ const Timer = ({
   }, [run]);
 
   useEffect(() => {
+    if (setTime) {
+      const time = setTime();
+      if (time && time.newTime !== undefined) {
+        setSeconds(time.newTime);
+      }
+    }
     onTimeUpdate(seconds);
   }, [seconds]);
 
@@ -53,8 +61,8 @@ const Timer = ({
           seconds < ONE_HOUR_IN_SECONDS
             ? "w-10"
             : seconds < TEN_HOURS_IN_SECONDS
-            ? "w-14"
-            : "w-full"
+              ? "w-14"
+              : "w-full"
         }`}
       >
         {formatDuration(seconds)}

@@ -11,12 +11,15 @@ interface BoardProps {
   regionColors: { [key: string]: string };
   showClashingQueens: boolean;
   clashingQueens: Set<string>;
+  handleDrags?: (isClear: boolean, squares: number[][]) => void | undefined;
 }
 
 const Board: React.FC<BoardProps> = ({
   board,
   handleSquareClick,
   handleSquareMouseEnter,
+  handleDrags,
+
   boardSize,
   colorRegions,
   regionColors,
@@ -24,10 +27,14 @@ const Board: React.FC<BoardProps> = ({
   clashingQueens,
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
+  const [initialSquareWasClear, setInitialSquareWasClear] = useState<
+    boolean | undefined
+  >(undefined);
+
   const [previousSquare, setPreviousSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
@@ -53,6 +60,7 @@ const Board: React.FC<BoardProps> = ({
               const currentSquare = `${rowIndex},${colIndex}`;
               setInitialSquare(currentSquare);
               setInitialSquareHandled(false);
+              setInitialSquareWasClear(board[rowIndex][colIndex] !== "X");
               // otherwise the PointerUp event will have the row and col of the initial PointerDown event
               (e.target as HTMLElement).releasePointerCapture(e.pointerId);
             }}
@@ -68,8 +76,13 @@ const Board: React.FC<BoardProps> = ({
                   squares.push(initialSquare.split(",").map(Number));
                   setInitialSquareHandled(true);
                 }
+                if (!handleDrags) {
+                  handleSquareMouseEnter(squares);
+                }
 
-                handleSquareMouseEnter(squares);
+                if (handleDrags && initialSquareWasClear !== undefined) {
+                  handleDrags(!initialSquareWasClear, squares);
+                }
                 setPreviousSquare(currentSquare);
               }
             }}
@@ -95,7 +108,7 @@ const Board: React.FC<BoardProps> = ({
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
           />
-        ))
+        )),
       )}
     </div>
   );
