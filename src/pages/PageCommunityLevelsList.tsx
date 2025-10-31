@@ -56,16 +56,16 @@ const PageCommunityLevelsList = () => {
   const { t } = useTranslation();
 
   const [showUnique, setShowUnique] = useState(
-    getShowUniqueCommunityLevelsPreference
+    getShowUniqueCommunityLevelsPreference,
   );
   const [showMultiple, setShowMultiple] = useState(
-    getShowMultipleCommunityLevelsPreference
+    getShowMultipleCommunityLevelsPreference,
   );
   const [showCompleted, setShowCompleted] = useState(
-    getShowCompletedCommunityLevelsPreference
+    getShowCompletedCommunityLevelsPreference,
   );
   const [showNotCompleted, setShowNotCompleted] = useState(
-    getShowNotCompletedCommunityLevelsPreference
+    getShowNotCompletedCommunityLevelsPreference,
   );
 
   const filteredLevels = Object.keys(communityLevels).filter((key) => {

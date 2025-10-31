@@ -24,7 +24,7 @@ const getUngroupedLevelFiltered = ({
     filterLevel(level, orderedLevels, {
       showOnlyAvailableLevels,
       hideCompletedLevels,
-    })
+    }),
   );
 };
 
@@ -40,7 +40,7 @@ const UngroupedLevelsGrid: React.FC<UngroupedLevelsGridProps> = ({
         showOnlyAvailableLevels,
         hideCompletedLevels,
       }),
-    [showOnlyAvailableLevels, hideCompletedLevels]
+    [showOnlyAvailableLevels, hideCompletedLevels],
   );
   return (
     <>
