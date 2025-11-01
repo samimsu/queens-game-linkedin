@@ -30,7 +30,7 @@ const level548 = {
     F: bittersweet,
     G: saharaSand,
     H: nomad,
-  },
+  },
 };
 
 export default level548;
