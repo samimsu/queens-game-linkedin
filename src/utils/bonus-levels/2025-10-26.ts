@@ -41,7 +41,6 @@ const level = {
     J: chardonnay,
     K: lightWisteria,
   },
-  isNew: true,
 };
 
 export default level;
