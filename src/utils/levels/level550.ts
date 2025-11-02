@@ -34,7 +34,6 @@ const level550 = {
     H: bittersweet,
     I: celadon,
   },
-  isNew: true,
 };
 
 export default level550;
