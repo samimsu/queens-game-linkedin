@@ -43,22 +43,22 @@ const useGridSize = (boardSize: number, variant?: "large" | "small") => {
     boardSize < 8
       ? gridSizes.extraSmallScreen[8]
       : boardSize < 9
-      ? gridSizes.extraSmallScreen[9]
-      : boardSize < 10
-      ? gridSizes.extraSmallScreen[10]
-      : boardSize < 11
-      ? gridSizes.extraSmallScreen[11]
-      : gridSizes.extraSmallScreen[12];
+        ? gridSizes.extraSmallScreen[9]
+        : boardSize < 10
+          ? gridSizes.extraSmallScreen[10]
+          : boardSize < 11
+            ? gridSizes.extraSmallScreen[11]
+            : gridSizes.extraSmallScreen[12];
   const smallScreenGridSize =
     boardSize < 8
       ? gridSizes.smallScreen[8]
       : boardSize < 9
-      ? gridSizes.smallScreen[9]
-      : boardSize < 10
-      ? gridSizes.smallScreen[10]
-      : boardSize < 11
-      ? gridSizes.smallScreen[11]
-      : gridSizes.smallScreen[12];
+        ? gridSizes.smallScreen[9]
+        : boardSize < 10
+          ? gridSizes.smallScreen[10]
+          : boardSize < 11
+            ? gridSizes.smallScreen[11]
+            : gridSizes.smallScreen[12];
 
   const largeScreenGridSize = gridSizes.largeScreen;
 
@@ -80,7 +80,7 @@ const useGridSize = (boardSize: number, variant?: "large" | "small") => {
     // Media query lists for different screen widths
     const largeScreenQuery = window.matchMedia("(min-width: 480px)");
     const smallScreenQuery = window.matchMedia(
-      "(min-width: 345px) and (max-width: 479px)"
+      "(min-width: 345px) and (max-width: 479px)",
     );
     const extraSmallScreenQuery = window.matchMedia("(max-width: 344px)");
 

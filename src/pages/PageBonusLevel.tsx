@@ -11,7 +11,7 @@ import PageNotFound from "./PageNotFound";
 // Function to parse the ID and find the current level
 function findLevelById(
   id: string,
-  bonusLevels: { [key: string]: BonusLevelType }
+  bonusLevels: { [key: string]: BonusLevelType },
 ) {
   // Extract start and end dates from ID (e.g., "4-may-2025-10-may-2025")
   const match = id.match(/^\d{4}-\d{2}-\d{2}$/);
@@ -54,7 +54,7 @@ function getDatesFromId(id: string) {
 // Function to find the previous level
 function findPreviousLevel(
   currentLevelKey: string,
-  bonusLevels: { [key: string]: BonusLevelType }
+  bonusLevels: { [key: string]: BonusLevelType },
 ): BonusLevelType | null {
   if (!currentLevelKey) {
     return null;
@@ -83,7 +83,7 @@ function findPreviousLevel(
 // Function to find the next level
 function findNextLevel(
   currentLevelKey: string,
-  bonusLevels: { [key: string]: BonusLevelType }
+  bonusLevels: { [key: string]: BonusLevelType },
 ): BonusLevelType | null {
   if (!currentLevelKey) {
     return null;
