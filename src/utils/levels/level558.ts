@@ -34,7 +34,6 @@ const level558 = {
     H: nomad,
     I: lightWisteria,
   },
-  isNew: true,
 };
 
 export default level558;
