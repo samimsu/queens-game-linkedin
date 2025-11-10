@@ -41,7 +41,7 @@ const level = {
     J: halfBaked,
     K: turquoiseBlue,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "Alexallos",
   creatorLink: "https://github.com/Alexallos",
 };

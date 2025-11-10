@@ -44,7 +44,7 @@ const level = {
     K: turquoiseBlue,
     L: atomicTangerine,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "mattsemar",
   creatorLink: "https://github.com/mattsemar",
 };

@@ -46,7 +46,7 @@ const level = {
     L: atomicTangerine,
     M: coldPurple,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "mattsemar",
   creatorLink: "https://github.com/mattsemar",
 };

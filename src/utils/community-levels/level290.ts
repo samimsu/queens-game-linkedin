@@ -38,7 +38,7 @@ const level = {
     I: lightOrchid,
     J: halfBaked,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "Fayssalmekk",
   creatorLink: "https://github.com/Fayssalmekk",
 };

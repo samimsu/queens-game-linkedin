@@ -56,7 +56,7 @@ const level = {
     O: periwinkle,
     P: white,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "mattsemar",
   creatorLink: "https://github.com/mattsemar",
 };

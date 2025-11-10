@@ -59,7 +59,7 @@ const level = {
     P: white,
     Q: macNCheese,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "mattsemar",
   creatorLink: "https://github.com/mattsemar",
 };
