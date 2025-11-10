@@ -174,6 +174,7 @@ To build a community level make sure the "Community Level" level type is selecte
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://exact.codes"><img src="https://avatars.githubusercontent.com/u/22865560?v=4?s=100" width="100px;" alt="Jatin"/><br /><sub><b>Jatin</b></sub></a><br /><a href="#content-heyJatin" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hiichbindermax"><img src="https://avatars.githubusercontent.com/u/23661067?v=4?s=100" width="100px;" alt="Maximilian Hell"/><br /><sub><b>Maximilian Hell</b></sub></a><br /><a href="#code-hiichbindermax" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/OscarNoguero"><img src="https://avatars.githubusercontent.com/u/119408687?v=4?s=100" width="100px;" alt="OscarNoguero"/><br /><sub><b>OscarNoguero</b></sub></a><br /><a href="#content-OscarNoguero" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
