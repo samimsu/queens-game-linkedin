@@ -21,7 +21,7 @@
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
-## Levels Added (552/560)
+## Levels Added (553/561)
 
 - [x] 1-3
 - [ ] 4
@@ -33,7 +33,7 @@
 - [ ] 13-14
 - [x] 15-17
 - [ ] 18-20
-- [x] 21-560
+- [x] 21-561
 
 Note: If anyone could help in finding the missing levels, I'd really appreciate it.
 
