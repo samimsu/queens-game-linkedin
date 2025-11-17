@@ -10,3 +10,6 @@ export const createInitialBoardForBuilder = (size: number, fill?: string) => {
     .fill(fill)
     .map(() => Array(size).fill(fill)); // Create an empty board based on the size parameter
 };
+
+export const isCompletedBoard = (board: string[][]) =>
+  board.every((row) => row.every((cell) => cell !== null));
