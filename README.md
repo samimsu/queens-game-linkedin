@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <a href="https://trexwe.github.io/queens-game-linkedin/">
-      Queens
+      Queens - Educational Puzzle Game
     </a>
   </h1>
 </div>
@@ -12,95 +12,181 @@
 
 <div align="center">
   <div>
-    An open-source, educational puzzle game based on the
+    A <strong>completely free, open-source educational puzzle game</strong> that teaches coding concepts to children through strategic gameplay. Based on the
     <a href="https://www.linkedin.com/showcase/queens-game">
-      Queens game by LinkedIn</a
-    >. Play it <a href="https://trexwe.github.io/queens-game-linkedin/"> here</a>!
+      Queens game by LinkedIn</a>.
   </div>
+  <br />
+  <div>
+    🎮 <a href="https://trexwe.github.io/queens-game-linkedin/"><strong>Play Now</strong></a> |
+    📚 <a href="CLAUDE.md"><strong>Project Vision</strong></a> |
+    🛠️ <a href="https://trexwe.github.io/queens-game-linkedin/level-builder"><strong>Level Builder</strong></a>
+  </div>
+  <br />
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
 
-## Project Vision
+---
 
-This is a completely free, open-source educational platform that teaches coding concepts through puzzle-solving. See [CLAUDE.md](CLAUDE.md) for our complete vision and roadmap.
+## 🎯 Project Mission
 
-## Levels Added (562/570)
+This project transforms the Queens puzzle game into an **educational platform** focused on:
 
-- [x] 1-3
-- [ ] 4
-- [x] 5-6
-- [ ] 7
-- [x] 8
-- [ ] 9
-- [x] 10-12
-- [ ] 13-14
-- [x] 15-17
-- [ ] 18-20
-- [x] 21-570
+- 🧩 **Teaching coding concepts** through puzzle-solving
+- 👶 **Making programming accessible** to children and beginners
+- 🆓 **100% free and open-source** - no paywalls, no monetization
+- 🌍 **Community-driven** development and unlimited level creation
+- 📖 **Learning by doing** - future features will include hints, tutorials, and code exploration
 
-Note: If anyone could help in finding the missing levels, I'd really appreciate it.
+**Read the full vision:** [CLAUDE.md](CLAUDE.md)
 
-## Build Levels
+---
 
-If you would like to help me build LinkedIn's levels or build your own level you can use the [Level Builder](https://queensgame.vercel.app/level-builder). You can either paste the image of the level or manually build it.
+## ✨ Current Features
 
-### LinkedIn levels
+### ✅ Completed Goals
 
-Easiest way is to use the automated script to build the levels. Click [here](https://github.com/samimsu/queens-game-linkedin/blob/main/scripts/README.md) for more info.
+- **🚀 GitHub Pages Deployment** - Automated CI/CD with GitHub Actions
+- **💰 Zero Monetization** - No Patreon, no sponsors, no paywalls
+- **🎨 570+ Puzzle Levels** - Recreated from LinkedIn's Queens game
+- **🏗️ Community Levels** - Unlimited free level creation for everyone
+- **🌓 Dark Mode** - Full theme support
+- **🌍 Multi-language** - 8 languages supported
+- **🎲 Bonus Levels** - Weekly challenges and special puzzles
+- **🛠️ Level Builder** - Create and share your own puzzles
 
-### By pasting image
+### 🚧 Upcoming Features
 
-https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
+See [CLAUDE.md](CLAUDE.md) for the complete roadmap:
 
-### Community Levels
+- **📚 Educational Mode** - Learn coding concepts while playing
+- **🤖 Level Generator** - Infinite puzzles of any size and difficulty
+- **💡 Smart Hints** - Learn problem-solving strategies, not just answers
+- **🎓 Code Tutorials** - Understand how the game works under the hood
 
-To build a community level make sure the "Community Level" level type is selected. Then build the level using the board.
+---
 
-#### Guidelines
+## 🎮 How to Play
 
-1. Levels should have only 1 solution.
-2. Create unlimited levels - share your puzzles with the community!
-3. Levels should not be duplicates of existing levels.
+Place queens on the board following these rules:
+1. Each colored region must contain exactly one queen
+2. No two queens can attack each other (same row, column, or diagonal adjacency)
+3. Complete all 570 levels, or create your own!
 
-## Deployment
+---
 
-This project uses GitHub Actions for continuous deployment to GitHub Pages.
+## 🛠️ Level Builder
+
+Create your own puzzle levels using our built-in [Level Builder](https://trexwe.github.io/queens-game-linkedin/level-builder)!
+
+### Creating Levels
+
+1. **LinkedIn Levels** - Help recreate missing LinkedIn levels using the manual builder or image import
+2. **Community Levels** - Design and share unlimited custom puzzles with the community
+3. **Image Import** - Paste a screenshot and let the builder detect the puzzle
+
+### Community Guidelines
+
+1. Levels should have exactly **1 unique solution**
+2. **Create unlimited levels** - no restrictions!
+3. Avoid duplicates of existing levels
+4. Share your creativity with the community
+
+---
+
+## 💻 Local Development
+
+### Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/trexwe/queens-game-linkedin.git
+cd queens-game-linkedin
+
+# Install dependencies
+npm install --legacy-peer-deps
+
+# Start development server
+npm start
+```
+
+The app will run at `http://localhost:3000`
+
+### Available Scripts
+
+```bash
+npm start          # Start development server
+npm run build      # Build for production
+npm run preview    # Preview production build
+npm test           # Run tests
+npm run ptr:w      # Format code with Prettier
+```
+
+### Tech Stack
+
+- **React 19** - UI framework
+- **TypeScript 5.8** - Type safety
+- **Vite 4.5** - Build tool
+- **Tailwind CSS** - Styling
+- **i18next** - Internationalization (8 languages)
+- **z3-solver** - SMT solver for puzzle validation
+
+---
+
+## 🚀 Deployment
+
+This project uses **GitHub Actions** for automated deployment to **GitHub Pages**.
 
 ### Automatic Deployment
 
-Every push to the `main` branch automatically:
-1. Runs tests to ensure code quality
-2. Builds the production bundle
-3. Deploys to GitHub Pages
+Every push to `main` triggers:
+1. ✅ Test suite execution
+2. 📦 Production build
+3. 🚀 Deployment to GitHub Pages
 
-The live site is available at: [https://trexwe.github.io/queens-game-linkedin/](https://trexwe.github.io/queens-game-linkedin/)
+**Live Site:** [https://trexwe.github.io/queens-game-linkedin/](https://trexwe.github.io/queens-game-linkedin/)
 
-### Manual Deployment
+### Fork Your Own Version
 
-You can also trigger a deployment manually from the [Actions tab](../../actions) using the "Deploy to GitHub Pages" workflow.
+1. Fork this repository
+2. Go to **Settings → Pages**
+3. Under "Build and deployment", select **GitHub Actions**
+4. Push to `main` and your site will deploy automatically!
 
-### GitHub Pages Configuration
+---
 
-To enable GitHub Pages for your fork:
-1. Go to your repository's Settings → Pages
-2. Under "Build and deployment", select "GitHub Actions" as the source
-3. The workflow will automatically deploy on the next push to `main`
+## 🤝 Contributing
 
-## Local Development
+We welcome contributions from everyone, especially those interested in:
 
-1. Clone this repository: `gh repo clone trexwe/queens-game-linkedin` (You will need [GitHub CLI](https://cli.github.com/))
-2. Install dependencies: `npm install --legacy-peer-deps`
-3. Run the development server: `npm start`
-4. Build for production: `npm run build`
-5. Preview production build: `npm run preview`
+- 🎓 **Educational features** - Tutorials, hints, learning modes
+- 🎨 **Level design** - Create interesting community puzzles
+- 🌍 **Translations** - Help make the game accessible globally
+- 🐛 **Bug fixes** - Improve stability and performance
+- 📝 **Documentation** - Make the codebase more understandable
 
-### Development Notes
+See our [Project Vision](CLAUDE.md) for planned features and ways to contribute.
 
-- The app runs on `http://localhost:3000` in development mode
-- Changes are hot-reloaded automatically
-- The production build uses `/queens-game-linkedin/` as the base path for GitHub Pages
+---
+
+## 📜 License & Attribution
+
+This project is a fork of the [original Queens game recreation](https://github.com/samimsu/queens-game-linkedin) by [Sami](https://github.com/samimsu), reimagined as a free educational platform.
+
+**Key Differences from Original:**
+- ✅ Self-hosted on GitHub Pages (no Vercel)
+- ✅ Completely free with no monetization
+- ✅ Focus on education and teaching coding concepts
+- ✅ Unlimited community level creation
+- ✅ Planned features: hints, level generator, educational mode
+
+We gratefully acknowledge all contributors who helped build the original project and continue to contribute to this educational fork.
+
+---
 
 ## Contributors
+
+Thank you to all the amazing people who have contributed to this project!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -109,7 +195,7 @@ To enable GitHub Pages for your fork:
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/nightpool"><img src="https://avatars.githubusercontent.com/u/233815?v=4?s=100" width="100px;" alt="nightpool"/><br /><sub><b>nightpool</b></sub></a><br /><a href="#code-nightpool" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MARCxGAMBIT"><img src="https://avatars.githubusercontent.com/u/147161757?v=4?s=100" width="100px;" alt="M̷̱̥̳͔̖̠̙͈̫͕͔̳͉̱̣̭̮̠̰̄͊̒̈͛͗̈̇͆͗͆͋̾̋̅ͅͅẠ̴̡̬̭͓̟̠̣̤̓̽͛̋̌̆̆̔́̊̋́͜Ŕ̶͈̹̯̹͈̠̮̰̓̈́̐̊͐̕̕͝C̷̨̡̖̱̭͉̞̗̳͈̩͚̏͛̓̃͂͌̀̆͊̅̃̒̄͐̿̽̚͝"/><br /><sub><b>M̷̱̥̳͔̖̠̙͈̫͕͔̳͉̱̣̭̮̠̰̄͊̒̈͛͗̈̇͆͗͆͋̾̋̅ͅͅẠ̴̡̬̭͓̟̠̣̤̓̽͛̋̌̆̆̔́̊̋́͜Ŕ̶͈̹̯̹͈̠̮̰̓̈́̐̊͐̕̕͝C̷̨̡̖̱̭͉̞̗̳͈̩͚̏͛̓̃͂͌̀̆͊̅̃̒̄͐̿̽̚͝</b></sub></a><br /><a href="#code-MARCxGAMBIT" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MARCxGAMBIT"><img src="https://avatars.githubusercontent.com/u/147161757?v=4?s=100" width="100px;" alt="M̷̱̥̳͔̖̠̙͈̫͕͔̳͉̱̣̭̮̠̰̄͊̒̈͛͗̈̇͆͗͆͋̾̋̅ͅͅẠ̴̡̬̭͓̟̠̣̤̓̽͛̋̌̆̆̔́̊̋́͜Ŕ̶͈̹̯̹͈̠̮̰̓̈́̐̊͐̕̕͝C̷̨̡̖̱̭͉̞̗̳͈̩͚̏͛̓̃͂͌̀̆͊̅̃̒̄͐̿̽̚͝"/><br /><sub><b>M̷̱̥̳͔̖̠̙͈̫͕͔̳͉̱̣̭̮̠̰̄͊̒̈͛͗̈̇͆͗͆͋̾̋̅ͅͅẠ̴̡̬̭͓̟̠̣̤̓̽͛̋̌̆̆̔́̊̋́͜Ŕ̶͈̹̯̹͈̠̮̰̓̈́̐̊͐̕̕͝C̷̨̡̖̱̭͉̞̗̳͈̩͚̏͛̓̃͂͌̀̆͊̅̃̒̄͐̿̽̚͝</b></sub></a><br /><a href="#code-MARCxGAMBIT" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Salzie"><img src="https://avatars.githubusercontent.com/u/32619234?v=4?s=100" width="100px;" alt="Salzie"/><br /><sub><b>Salzie</b></sub></a><br /><a href="#code-Salzie" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/monardo12"><img src="https://avatars.githubusercontent.com/u/5551940?v=4?s=100" width="100px;" alt="Carlos Fernando Ruiz Nieto"/><br /><sub><b>Carlos Fernando Ruiz Nieto</b></sub></a><br /><a href="#code-monardo12" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/preet717"><img src="https://avatars.githubusercontent.com/u/175558786?v=4?s=100" width="100px;" alt="preet717"/><br /><sub><b>preet717</b></sub></a><br /><a href="#code-preet717" title="Code">💻</a></td>
@@ -118,7 +204,7 @@ To enable GitHub Pages for your fork:
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yll0rd"><img src="https://avatars.githubusercontent.com/u/114886588?v=4?s=100" width="100px;" alt="Youmbi Leo (Why-Lord)"/><br /><sub><b>Youmbi Leo (Why-Lord)</b></sub></a><br /><a href="#code-yll0rd" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://www.infoinnova.es"><img src="https://avatars.githubusercontent.com/u/29180676?v=4?s=100" width="100px;" alt="@̵̩͖͉̒̉̔̂͗̐T̷̛̬̠̘͎̊̅͐͗͘r̴̖͎̫͋y̵̡̪̙͎̝̣̓̊͐̽̕s̶̥̖̦͎̊̈́͋͊̋̇t̵̹̤̓͌̒͜͝ắ̵͕͈̙̠͈̥̑̋̚n̷̛͚̓̔̇4̷̩͎̖̤̥̐8̵̡̟̙̜̒̀̆͆̆̇̓6̷̱͈͎̲̰͔̇1̸̣̥̺̾̀̄͘"/><br /><sub><b>@̵̩͖͉̒̉̔̂͗̐T̷̛̬̠̘͎̊̅͐͗͘r̴̖͎̫͋y̵̡̪̙͎̝̣̓̊͐̽̕s̶̥̖̦͎̊̈́͋͊̋̇t̵̹̤̓͌̒͜͝ắ̵͕͈̙̠͈̥̑̋̚n̷̛͚̓̔̇4̷̩͎̖̤̥̐8̵̡̟̙̜̒̀̆͆̆̇̓6̷̱͈͎̲̰͔̇1̸̣̥̺̾̀̄͘</b></sub></a><br /><a href="#code-Trystan4861" title="Code">💻</a> <a href="#content-Trystan4861" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.infoinnova.es"><img src="https://avatars.githubusercontent.com/u/29180676?v=4?s=100" width="100px;" alt="@̵̩͖͉̒̉̔̂͗̐T̷̛̬̠̘͎̊̅͐͗͘r̴̖͎̫͋y̵̡̪̙͎̝̣̓̊͐̽̕s̶̥̖̦͎̊̈́͋͊̋̇t̵̹̤̓͌̒͜͝ắ̵͕͈̙̠͈̥̑̋̚n̷̛͚̓̔̇4̷̩͎̖̤̥̐8̵̡̟̙̜̒̀̆͆̆̇̓6̷̱͈͎̲̰͔̇1̸̣̥̺̾̀̄͘"/><br /><sub><b>@̵̩͖͉̒̉̔̂͗̐T̷̛̬̠̘͎̊̅͐͗͘r̴̖͎̫͋y̵̡̪̙͎̝̣̓̊͐̽̕s̶̥̖̦͎̊̈́͋͊̋̇t̵̹̤̓͌̒͜͝ắ̵͕͈̙̠͈̥̑̋̚n̷̛͚̓̔̇4̷̩͎̖̤̥̐8̵̡̟̙̜̒̀̆͆̆̇̓6̷̱͈͎̲̰͔̇1̸̣̥̺̾̀̄͘</b></sub></a><br /><a href="#code-Trystan4861" title="Code">💻</a> <a href="#content-Trystan4861" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/tamerhn/"><img src="https://avatars.githubusercontent.com/u/10697961?v=4?s=100" width="100px;" alt="Tamer H. Naana"/><br /><sub><b>Tamer H. Naana</b></sub></a><br /><a href="#code-TamerHN" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/krinklie"><img src="https://avatars.githubusercontent.com/u/136399636?v=4?s=100" width="100px;" alt="krinklie"/><br /><sub><b>krinklie</b></sub></a><br /><a href="#content-krinklie" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/claramirandaal"><img src="https://avatars.githubusercontent.com/u/207726891?v=4?s=100" width="100px;" alt="claramirandaal"/><br /><sub><b>claramirandaal</b></sub></a><br /><a href="#translation-claramirandaal" title="Translation">🌍</a></td>
@@ -220,5 +306,3 @@ To enable GitHub Pages for your fork:
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-Note: If I've forgotten to mention someone, please let me know.
