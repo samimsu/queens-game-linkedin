@@ -1,25 +1,28 @@
 <div align="center">
   <h1>
-    <a href="https://queensgame.vercel.app/">
+    <a href="https://trexwe.github.io/queens-game-linkedin/">
       Queens
     </a>
   </h1>
 </div>
 
-[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/samimsu/queens-game-linkedin)](https://github.com/samimsu/queens-game-linkedin/issues)
-[![GitHub stars](https://img.shields.io/github/stars/samimsu/queens-game-linkedin?style=flat-square&label=github%20stars)](https://github.com/samimsu/queens-game-linkedin/stargazers)
-[![All Contributors](https://img.shields.io/github/all-contributors/samimsu/queens-game-linkedin?color=ee8449&style=flat-square)](#contributors)
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://www.patreon.com/c/samimsu)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/trexwe/queens-game-linkedin)](https://github.com/trexwe/queens-game-linkedin/issues)
+[![GitHub stars](https://img.shields.io/github/stars/trexwe/queens-game-linkedin?style=flat-square&label=github%20stars)](https://github.com/trexwe/queens-game-linkedin/stargazers)
+[![All Contributors](https://img.shields.io/github/all-contributors/trexwe/queens-game-linkedin?color=ee8449&style=flat-square)](#contributors)
 
 <div align="center">
   <div>
-    A collection of playable levels from the game
+    An open-source, educational puzzle game based on the
     <a href="https://www.linkedin.com/showcase/queens-game">
-      Queens, by LinkedIn</a
-    >. Play it <a href="https://queensgame.vercel.app/"> here</a>!
+      Queens game by LinkedIn</a
+    >. Play it <a href="https://trexwe.github.io/queens-game-linkedin/"> here</a>!
   </div>
   <img src="https://github.com/user-attachments/assets/6fda1818-21f7-4d65-a288-75c9a4f30f65" width="50%" alt="queens game mockup">
 </div>
+
+## Project Vision
+
+This is a completely free, open-source educational platform that teaches coding concepts through puzzle-solving. See [CLAUDE.md](CLAUDE.md) for our complete vision and roadmap.
 
 ## Levels Added (562/570)
 
@@ -53,11 +56,11 @@ https://github.com/user-attachments/assets/9a7be10f-87c2-4311-a7bf-f0103581f569
 
 To build a community level make sure the "Community Level" level type is selected. Then build the level using the board.
 
-#### Restrictions
+#### Guidelines
 
 1. Levels should have only 1 solution.
-2. 1 free level per person. For more levels you can buy a [level pack](https://www.patreon.com/c/samimsu/shop) or subscribe to my [Patreon](https://www.patreon.com/samimsu).
-3. Levels may not be a duplicate of an existing level.
+2. Create unlimited levels - share your puzzles with the community!
+3. Levels should not be duplicates of existing levels.
 
 ## Deployment
 

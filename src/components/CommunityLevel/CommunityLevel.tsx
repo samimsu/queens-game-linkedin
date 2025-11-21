@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import {
@@ -26,7 +25,6 @@ import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { CommunityLevel as CommunityLevelType } from "@/utils/types";
-import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import Tag from "../Tag";
 import { communityLevels } from "@/utils/communityLevels";
 import {
@@ -451,23 +449,6 @@ const CommunityLevel = ({
         </div>
 
         {showInstructions && <HowToPlay />}
-
-        <div className="w-full px-2">
-          <Giscus
-            repo="samimsu/queens-game-linkedin"
-            repoId="R_kgDONCfeAg"
-            category="Announcements"
-            categoryId="DIC_kwDONCfeAs4CnIas"
-            mapping="pathname"
-            strict="1"
-            reactionsEnabled="1"
-            emitMetadata="0"
-            inputPosition="bottom"
-            theme={theme}
-            lang={getGiscusLanguage(i18n.language) || i18n.language}
-            loading="lazy"
-          />
-        </div>
       </div>
     </div>
   );

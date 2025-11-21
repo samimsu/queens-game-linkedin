@@ -12,7 +12,6 @@ import {
   setBonusLevelsClicked,
   setCommunityLevelsClicked,
 } from "@/utils/localStorage";
-import PatreonButton from "./PatreonButton";
 
 const NAV_LINKS = [
   { to: "/", labelKey: "HOME" },
@@ -87,7 +86,6 @@ const Navbar = () => {
           <LanguageDropdown />
           <div className="flex items-center space-x-4 sm:space-x-5">
             <DiscordButton />
-            <PatreonButton />
             <span className="relative inline-flex">
               <button className="lg:hidden" onClick={toggleMenu}>
                 {(!bonusLevelsClicked || !communityLevelsClicked) && (
