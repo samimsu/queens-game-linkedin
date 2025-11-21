@@ -1,5 +1,4 @@
 import GithubStarButton from "./GithubStarButton";
-import { portfolioSite } from "@/data/links";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
@@ -11,16 +10,18 @@ const Footer = () => {
           <GithubStarButton />
         </div>
       </div>
-      <div className="mx-auto w-fit flex items-center divide-x divide-slate-700 space-x-3">
+      <div className="mx-auto w-fit flex items-center space-x-3 text-sm text-muted-foreground">
         <div>
-          {t("CREATED_BY")}{" "}
+          {t("EDUCATIONAL_PROJECT") || "An open-source educational project"}
+        </div>
+        <div className="border-l border-slate-700 pl-3">
           <a
-            href={portfolioSite}
+            href="https://github.com/trexwe/queens-game-linkedin"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline font-medium"
+            className="underline font-medium hover:text-foreground transition-colors"
           >
-            Sami
+            {t("CONTRIBUTE") || "Contribute on GitHub"}
           </a>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import { Shuffle } from "lucide-react";
@@ -20,7 +19,6 @@ import getNavigationLevels from "@/utils/getNavigationLevels";
 import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
-import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 
 interface LevelProps {
   id: string;
@@ -268,23 +266,6 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
         </div>
 
         {showInstructions && <HowToPlay />}
-
-        <div className="w-full px-2">
-          <Giscus
-            repo="samimsu/queens-game-linkedin"
-            repoId="R_kgDONCfeAg"
-            category="Announcements"
-            categoryId="DIC_kwDONCfeAs4CnIas"
-            mapping="pathname"
-            strict="1"
-            reactionsEnabled="1"
-            emitMetadata="0"
-            inputPosition="bottom"
-            theme={theme}
-            lang={getGiscusLanguage(i18n.language) || i18n.language}
-            loading="lazy"
-          />
-        </div>
       </div>
     </div>
   );
