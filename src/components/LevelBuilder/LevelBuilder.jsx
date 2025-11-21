@@ -7,7 +7,6 @@ import {
   bittersweet,
   celadon,
   chardonnay,
-  colorNames,
   halfBaked,
   lavenderRose,
   lightOrchid,
@@ -30,7 +29,6 @@ import generateLevelJSCode from "@/utils/generateCode";
 import Note from "./components/CommunityLevel/Note";
 import CreatedByInput from "./components/CommunityLevel/CreatedByInput";
 import PersonalLinkInput from "./components/CommunityLevel/PersonalLinkInput";
-import SubmitViaSection from "./components/CommunityLevel/SubmitViaSection";
 import SubmitButton from "./components/CommunityLevel/SubmitButton";
 import TestLevelDialog from "./components/TestLevelDialog";
 
@@ -54,7 +52,6 @@ const LevelBuilder = () => {
     createdBy: "",
     personalLink: "",
     level: "",
-    submitVia: "email",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
@@ -110,7 +107,6 @@ const LevelBuilder = () => {
   );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
-  const [copiedEmailDetails, setCopiedEmailDetails] = useState("");
   const [hideRegionValues, setHideRegionValues] = useState(false);
 
   useImageGridProcessing({
@@ -222,7 +218,7 @@ const LevelBuilder = () => {
     }
   };
 
-  const validateCommunityForm = (submitVia) => {
+  const validateCommunityForm = () => {
     const newErrors = {};
     let firstErrorField = null;
 
@@ -239,7 +235,7 @@ const LevelBuilder = () => {
       formData.createdBy,
       formData.personalLink,
       null,
-      submitVia
+      "github"
     );
 
     // Validate board for emptiness, completeness, and color usage
@@ -318,45 +314,6 @@ const LevelBuilder = () => {
     }
   };
 
-  const createEmailEncodedContent = () => {
-    const subject = encodeURIComponent(
-      `Level Submission: ${formData.levelType} by ${formData.createdBy}`
-    );
-
-    let body = encodeURIComponent(
-      `Level Type: ${formData.levelType}\n` +
-        `Created By: ${formData.createdBy}\n` +
-        `Personal Link: ${formData.personalLink}\n\n` +
-        `Board:\n${board
-          .map((row) => `    [${row.map((cell) => `${cell}`).join(", ")}],`)
-          .join("\n")}\n\n` +
-        `Colors:\n${Object.entries(regionColors)
-          .map(([region, color]) => `${region}: ${colorNames[color]}`)
-          .join(", ")}\n\n` +
-        `Submitted via: Form Email Submission`
-    );
-
-    return `mailto:mohammadsamimsu@gmail.com?subject=${subject}&body=${body}`;
-  };
-
-  const createEmailContent = () => {
-    const subject = `Level Submission: ${formData.levelType} by ${formData.createdBy}`;
-
-    let body =
-      `Level Type: ${formData.levelType}\n` +
-      `Created By: ${formData.createdBy}\n` +
-      `Personal Link: ${formData.personalLink}\n\n` +
-      `Board:\n${board
-        .map((row) => `    [${row.map((cell) => `${cell}`).join(", ")}],`)
-        .join("\n")}\n\n` +
-      `Colors:\n${Object.entries(regionColors)
-        .map(([region, color]) => `${region}: ${colorNames[color]}`)
-        .join(", ")}\n\n` +
-      `Submitted via: Form Email Submission (Copied)`;
-
-    return `To: mohammadsamimsu@gmail.com\n\nSubject: ${subject}\n\nContent:\n\n${body}`;
-  };
-
   const submitToGitHub = async () => {
     const GITHUB_REPO = "trexwe/queens-game-linkedin";
 
@@ -391,40 +348,12 @@ const LevelBuilder = () => {
   const handleCommunityFormSubmit = (e) => {
     e.preventDefault();
 
-    const isViaEmail = formData.submitVia === "email";
-    const isViaGitHub = formData.submitVia === "github";
-    const submitVia = isViaEmail ? "email" : isViaGitHub ? "github" : "";
-
-    // Validate the form
-    if (!validateCommunityForm(submitVia)) {
-      return; // Don't proceed if validation fails
-    }
-
-    if (isViaEmail) {
-      // Create and open mailto link
-      window.location.href = createEmailEncodedContent();
-    } else if (isViaGitHub) {
-      submitToGitHub();
-    }
-  };
-
-  const handleCopyCommunityLevelEmailDetails = () => {
     // Validate the form
     if (!validateCommunityForm()) {
       return; // Don't proceed if validation fails
     }
 
-    const emailContent = createEmailContent();
-    navigator.clipboard.writeText(emailContent).then(
-      () => {
-        setCopiedEmailDetails(true);
-        setTimeout(() => setCopiedEmailDetails(false), 2000);
-      },
-      (err) => {
-        console.error("Could not copy text: ", err);
-        alert("Failed to copy email details. Please try again.");
-      }
-    );
+    submitToGitHub();
   };
 
   // Handle ctrl+v to paste image from clipboard
@@ -590,22 +519,11 @@ const LevelBuilder = () => {
           </div>
         </div>
 
-        {/* Submit Via */}
-        {isCommunityLevel && (
-          <SubmitViaSection
-            via={formData.submitVia}
-            handleInputChange={handleCommunityFormInputChange}
-          />
-        )}
-
         {/* Submit Button */}
         {isCommunityLevel && (
           <SubmitButton
             handleSubmit={handleCommunityFormSubmit}
             isSubmitting={isSubmitting}
-            via={formData.submitVia}
-            handleCopy={handleCopyCommunityLevelEmailDetails}
-            copied={copiedEmailDetails}
           />
         )}
       </div>
