@@ -14,9 +14,11 @@ import "./App.css";
 import "./i18n";
 
 const App = () => {
+  const basename = process.env.NODE_ENV === "production" ? "/queens-game-linkedin" : "";
+
   return (
     <ThemeProvider attribute="class" defaultTheme="light">
-      <Router>
+      <Router basename={basename}>
         <Routes>
           <Route path="/" element={<PageLevelSelection />} />
           <Route path="/level/:id" element={<PageGameLevel />} />

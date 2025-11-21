@@ -358,7 +358,7 @@ const LevelBuilder = () => {
   };
 
   const submitToGitHub = async () => {
-    const GITHUB_REPO = "samimsu/queens-game-linkedin";
+    const GITHUB_REPO = "trexwe/queens-game-linkedin";
 
     try {
       setIsSubmitting(true);
