@@ -46,7 +46,7 @@ If you would like to help me build LinkedIn's levels or build your own level you
 
 ### LinkedIn levels
 
-Easiest way is to use the automated script to build the levels. Click [here](https://github.com/samimsu/queens-game-linkedin/blob/main/scripts/README.md) for more info.
+Easiest way is to use the automated script to build the levels. Click [here](https://github.com/trexwe/queens-game-linkedin/blob/main/scripts/README.md) for more info.
 
 ### By pasting image
 
