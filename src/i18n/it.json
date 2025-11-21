@@ -79,5 +79,10 @@
   "BONUS_LEVELS": "Livelli Bonus",
   "WEEK_OF": "Settimana del {{weekOfDate}}",
   "PLAY": "Giocare",
-  "PLAY_SIZE": "Gioca {{playSize}}"
+  "PLAY_SIZE": "Gioca {{playSize}}",
+  "SHARE": "Condividi",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "Ho risolto {{levelLabel}} in {{time}}! Riesci a battere il mio tempo?",
+  "SHARE_COPIED_TO_CLIPBOARD": "Testo copiato negli appunti!",
+  "SHARE_COPY_MANUALLY": "Copia questo testo per condividere:"
 }

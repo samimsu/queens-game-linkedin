@@ -5,6 +5,7 @@ import CloseIcon from "@/components/icons/CloseIcon";
 import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
 import formatDuration from "@/utils/formatDuration";
+import ShareButton from "@/components/ShareButton";
 
 interface WinningScreenProps {
   previousLink: {
@@ -20,6 +21,8 @@ interface WinningScreenProps {
   };
   close: () => void;
   timer: number;
+  levelId: string;
+  levelName?: string;
 }
 
 const WinningScreen = ({
@@ -28,6 +31,8 @@ const WinningScreen = ({
   randomLink,
   close,
   timer,
+  levelId,
+  levelName,
 }: WinningScreenProps) => {
   const { t } = useTranslation();
 
@@ -57,6 +62,12 @@ const WinningScreen = ({
             <div className="font-medium text-sm">{t("SOLVE_TIME")}</div>
           </div>
         </div>
+        <ShareButton
+          levelType="bonus"
+          levelId={levelId}
+          timer={timer}
+          levelName={levelName}
+        />
         <LevelNavigationButton
           path={previousLink.path}
           text={previousLink.text}

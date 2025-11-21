@@ -108,5 +108,10 @@
   "MULTIPLE_SOLUTIONS": "多解",
   "COMPLETED": "已完成",
   "NOT_COMPLETED": "未完成",
-  "CLEAR_ALL": "全部清除"
+  "CLEAR_ALL": "全部清除",
+  "SHARE": "分享",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "我用 {{time}} 完成了 {{levelLabel}}！你能打破我的记录吗？",
+  "SHARE_COPIED_TO_CLIPBOARD": "文本已复制到剪贴板！",
+  "SHARE_COPY_MANUALLY": "复制此文本以分享："
 }

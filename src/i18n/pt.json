@@ -102,5 +102,10 @@
   "OR": "ou",
   "COPY_DETAILS": "Copiar detalhes",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Descubra níveis únicos criados pela comunidade! Jogue, inspire-se e construa o seu próprio com o",
-  "PLAY_SIZE": "Jogar {{playSize}}"
+  "PLAY_SIZE": "Jogar {{playSize}}",
+  "SHARE": "Compartilhar",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "Completei {{levelLabel}} em {{time}}! Consegue superar meu tempo?",
+  "SHARE_COPIED_TO_CLIPBOARD": "Texto copiado para a área de transferência!",
+  "SHARE_COPY_MANUALLY": "Copie este texto para compartilhar:"
 }

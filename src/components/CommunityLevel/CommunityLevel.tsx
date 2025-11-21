@@ -367,6 +367,8 @@ const CommunityLevel = ({
                 }}
                 randomLink={{ path: randomLevel?.path || "" }}
                 close={() => setShowWinningScreen(false)}
+                levelId={id}
+                levelName={title}
               />
             )}
             <Board
