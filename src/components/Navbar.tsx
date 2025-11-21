@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Queen from "@/components/Queen";
-import DiscordButton from "./LevelSelection/components/DiscordButton";
 import LanguageDropdown from "./LevelSelection/components/LanguageDropdown";
 import NewBadge from "./NewBadge";
 import { useTranslation } from "react-i18next";
@@ -85,7 +84,6 @@ const Navbar = () => {
         <div className="flex items-center space-x-2 sm:space-x-6">
           <LanguageDropdown />
           <div className="flex items-center space-x-4 sm:space-x-5">
-            <DiscordButton />
             <span className="relative inline-flex">
               <button className="lg:hidden" onClick={toggleMenu}>
                 {(!bonusLevelsClicked || !communityLevelsClicked) && (
