@@ -59,11 +59,43 @@ To build a community level make sure the "Community Level" level type is selecte
 2. 1 free level per person. For more levels you can buy a [level pack](https://www.patreon.com/c/samimsu/shop) or subscribe to my [Patreon](https://www.patreon.com/samimsu).
 3. Levels may not be a duplicate of an existing level.
 
+## Deployment
+
+This project uses GitHub Actions for continuous deployment to GitHub Pages.
+
+### Automatic Deployment
+
+Every push to the `main` branch automatically:
+1. Runs tests to ensure code quality
+2. Builds the production bundle
+3. Deploys to GitHub Pages
+
+The live site is available at: [https://trexwe.github.io/queens-game-linkedin/](https://trexwe.github.io/queens-game-linkedin/)
+
+### Manual Deployment
+
+You can also trigger a deployment manually from the [Actions tab](../../actions) using the "Deploy to GitHub Pages" workflow.
+
+### GitHub Pages Configuration
+
+To enable GitHub Pages for your fork:
+1. Go to your repository's Settings → Pages
+2. Under "Build and deployment", select "GitHub Actions" as the source
+3. The workflow will automatically deploy on the next push to `main`
+
 ## Local Development
 
-1. Clone this repository: `gh repo clone samimsu/queens-game-linkedin` (You will need [GitHub CLI](https://cli.github.com/))
-2. `npm install` to install the dependencies
-3. `npm start` to run the project locally
+1. Clone this repository: `gh repo clone trexwe/queens-game-linkedin` (You will need [GitHub CLI](https://cli.github.com/))
+2. Install dependencies: `npm install --legacy-peer-deps`
+3. Run the development server: `npm start`
+4. Build for production: `npm run build`
+5. Preview production build: `npm run preview`
+
+### Development Notes
+
+- The app runs on `http://localhost:3000` in development mode
+- Changes are hot-reloaded automatically
+- The production build uses `/queens-game-linkedin/` as the base path for GitHub Pages
 
 ## Contributors
 
