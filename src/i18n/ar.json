@@ -80,5 +80,10 @@
   "BONUS_LEVEL": " مستوى المكافأة",
   "BONUS_LEVELS": "مستويات المكافأة",
   "WEEK_OF": "أسبوع {{weekOfDate}}",
-  "PLAY": "العب"
+  "PLAY": "العب",
+  "SHARE": "مشاركة",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "أنهيت {{levelLabel}} في {{time}}! هل يمكنك التغلب على وقتي؟",
+  "SHARE_COPIED_TO_CLIPBOARD": "تم نسخ النص إلى الحافظة!",
+  "SHARE_COPY_MANUALLY": "انسخ هذا النص للمشاركة:"
 }

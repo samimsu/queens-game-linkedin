@@ -115,5 +115,10 @@
   "ZOOM_IN": "Zoom in",
   "ZOOM_OUT": "Zoom out",
   "RESET_ZOOM": "Reset zoom",
-  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors"
+  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
+  "SHARE": "Share",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "I solved {{levelLabel}} in {{time}}! Can you beat my time?",
+  "SHARE_COPIED_TO_CLIPBOARD": "Share text copied to clipboard!",
+  "SHARE_COPY_MANUALLY": "Copy this text to share:"
 }

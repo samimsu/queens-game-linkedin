@@ -6,6 +6,7 @@ import formatDuration from "@/utils/formatDuration";
 import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
 import { getLevelsBySize } from "@/utils/getAvailableLevels";
+import ShareButton from "@/components/ShareButton";
 
 interface LevelNavigationButtonProps {
   level: number | null;
@@ -118,6 +119,11 @@ const WinningScreen = ({
             <div className="font-medium text-sm">{t("SOLVE_TIME")}</div>
           </div>
         </div>
+        <ShareButton
+          levelType="level"
+          levelId={level}
+          timer={timer}
+        />
         <LevelNavigationButton
           level={updatedPreviousLevel}
           text={previousLevelText}

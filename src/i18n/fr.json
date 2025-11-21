@@ -109,5 +109,10 @@
   "MULTIPLE_SOLUTIONS": "Solutions multiples",
   "COMPLETED": "Complété(s)",
   "NOT_COMPLETED": "Non complété(s)",
-  "CLEAR_ALL": "Tout supprimer"
+  "CLEAR_ALL": "Tout supprimer",
+  "SHARE": "Partager",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "J'ai résolu {{levelLabel}} en {{time}} ! Peux-tu battre mon temps ?",
+  "SHARE_COPIED_TO_CLIPBOARD": "Texte copié dans le presse-papiers !",
+  "SHARE_COPY_MANUALLY": "Copiez ce texte pour partager :"
 }

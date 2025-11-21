@@ -110,5 +110,10 @@
   "COMPLETED": "Completado",
   "NOT_COMPLETED": "No completado",
   "CLEAR_ALL": "Borrar todo",
-  "ONE_FREE_LEVEL": "1 nivel gratis"
+  "ONE_FREE_LEVEL": "1 nivel gratis",
+  "SHARE": "Compartir",
+  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
+  "SHARE_TEXT": "¡Completé {{levelLabel}} en {{time}}! ¿Puedes superar mi tiempo?",
+  "SHARE_COPIED_TO_CLIPBOARD": "¡Texto copiado al portapapeles!",
+  "SHARE_COPY_MANUALLY": "Copia este texto para compartir:"
 }
