@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet-async";
-
+// React 19 natively supports document metadata
+// The <title> tag will be automatically hoisted to <head>
 interface PageTitleProps {
   title?: string;
   suffix?: string;
@@ -8,11 +8,7 @@ interface PageTitleProps {
 const PageTitle = ({ title, suffix = "Queens" }: PageTitleProps) => {
   const fullTitle = title ? `${title} - ${suffix}` : suffix;
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-    </Helmet>
-  );
+  return <title>{fullTitle}</title>;
 };
 
 export default PageTitle;
