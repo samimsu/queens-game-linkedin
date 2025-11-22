@@ -48,7 +48,7 @@ This project transforms the Queens puzzle game into an **educational platform** 
 
 - **🚀 GitHub Pages Deployment** - Automated CI/CD with GitHub Actions
 - **💰 Zero Monetization** - No Patreon, no sponsors, no paywalls
-- **🎨 571 Puzzle Levels** - Recreated from LinkedIn's Queens game
+- **🎨 500+ Puzzle Levels** - Recreated from LinkedIn's Queens game
 - **🏗️ Community Levels** - Unlimited free level creation for everyone
 - **🌓 Dark Mode** - Full theme support
 - **🌍 Multi-language** - 8 languages supported
@@ -71,7 +71,7 @@ See [CLAUDE.md](CLAUDE.md) for the complete roadmap:
 Place queens on the board following these rules:
 1. Each colored region must contain exactly one queen
 2. No two queens can attack each other (same row, column, or diagonal adjacency)
-3. Complete all 571 levels, or create your own!
+3. Complete all levels, or create your own!
 
 ---
 
