@@ -38,7 +38,6 @@ const level = {
     I: lightOrchid,
     J: saharaSand,
   },
-  isNew: true,
 };
 
 export default level;
