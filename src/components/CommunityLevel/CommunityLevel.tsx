@@ -127,6 +127,7 @@ const CommunityLevel = ({
     timerRunning,
     completed,
     history,
+    firstSolveTime,
     setBoard,
     setHasWon,
     setShowWinningScreen,
@@ -369,6 +370,7 @@ const CommunityLevel = ({
                 close={() => setShowWinningScreen(false)}
                 levelId={id}
                 levelName={title}
+                firstSolveTime={firstSolveTime}
               />
             )}
             <Board

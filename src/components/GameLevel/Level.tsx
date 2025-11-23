@@ -53,6 +53,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
     timerRunning,
     completed,
     history,
+    firstSolveTime,
     setBoard,
     setHasWon,
     setShowWinningScreen,
@@ -242,6 +243,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                 randomLink={{ path: `/level/${randomLevel}` || "" }}
                 level={id}
                 close={() => setShowWinningScreen(false)}
+                firstSolveTime={firstSolveTime}
               />
             )}
             <Board
