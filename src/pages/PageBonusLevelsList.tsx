@@ -11,16 +11,6 @@ import PageTitle from "@/components/PageTitle";
 import NewBadge from "@/components/NewBadge";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
 
-const PlayButton = () => {
-  const { t } = useTranslation();
-
-  return (
-    <button className="bg-primary text-primary-foreground rounded px-3 py-1">
-      {t("PLAY")}
-    </button>
-  );
-};
-
 const PageBonusLevelsList = () => {
   // Helps with rerendering dates when the language changes
   const { t } = useTranslation();
@@ -35,7 +25,7 @@ const PageBonusLevelsList = () => {
 
     const weekOfDate = format(startDate, dateFormat);
     // Format dates for display and ID
-    const displayRange = t("WEEK_OF", { weekOfDate });
+    const displayRange = weekOfDate;
     const id = bonusLevels[key as keyof typeof bonusLevels].path;
 
     return { key, id, displayRange };
@@ -62,27 +52,23 @@ const PageBonusLevelsList = () => {
             <Shuffle />
           </button>
         </Link>
-        <div className="flex flex-col w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 flex-col w-full gap-1">
           {levelList.map(({ key, id, displayRange }) => {
             const completed = isBonusLevelCompleted(key);
             return (
-              <div
-                key={key}
-                className="flex space-x-14 sm:space-x-24 w-full max-w-96 justify-between items-center border border-transparent hover:border-primary px-2 py-1 rounded"
-              >
-                <div className="flex space-x-2 items-center">
+              <Link key={key} to={`${id}`}>
+                <div className="flex space-x-2 w-full max-w-96 justify-between items-center border border-transparent hover:border-primary bg-primary text-primary-foreground rounded px-3 py-1">
                   <div>{displayRange}</div>
                   {bonusLevels[key].isNew && <NewBadge />}
+                  {
+                    <Queen
+                      className={`fill-yellow-400 ${
+                        completed ? "visible" : "invisible"
+                      }`}
+                    />
+                  }
                 </div>
-                <div className="relative flex space-x-2 items-center">
-                  {completed && (
-                    <Queen className="fill-yellow-400 absolute right-full top-1/2 transform -translate-y-1/2" />
-                  )}
-                  <Link to={`${id}`}>
-                    <PlayButton />
-                  </Link>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
