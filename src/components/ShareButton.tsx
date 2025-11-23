@@ -7,6 +7,7 @@ interface ShareButtonProps {
   levelId: string;
   timer: number;
   levelName?: string;
+  firstSolveTime: number | null;
 }
 
 const ShareButton = ({
@@ -14,6 +15,7 @@ const ShareButton = ({
   levelId,
   timer,
   levelName,
+  firstSolveTime,
 }: ShareButtonProps) => {
   const { t } = useTranslation();
 
@@ -43,10 +45,16 @@ const ShareButton = ({
     const levelUrl = `${baseUrl}${levelPath}`;
 
     const shareTitle = t("SHARE_TITLE", { levelLabel });
-    const shareText = t("SHARE_TEXT", {
-      levelLabel,
-      time: formattedTime,
-    });
+    const shareText = firstSolveTime !== null
+      ? t("SHARE_TEXT_WITH_FIRST_SOLVE", {
+          levelLabel,
+          time: formattedTime,
+          firstSolveTime: formatDuration(firstSolveTime),
+        })
+      : t("SHARE_TEXT", {
+          levelLabel,
+          time: formattedTime,
+        });
 
     const shareData = {
       title: shareTitle,

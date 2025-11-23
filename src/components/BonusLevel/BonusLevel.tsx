@@ -60,6 +60,7 @@ const BonusLevel = ({
     timerRunning,
     completed,
     history,
+    firstSolveTime,
     setBoard,
     setHasWon,
     setShowWinningScreen,
@@ -260,6 +261,7 @@ const BonusLevel = ({
                 close={() => setShowWinningScreen(false)}
                 levelId={id}
                 levelName={title}
+                firstSolveTime={firstSolveTime}
               />
             )}
             <Board

@@ -84,6 +84,8 @@
   "SHARE": "مشاركة",
   "SHARE_TITLE": "Queens Game - {{levelLabel}}",
   "SHARE_TEXT": "أنهيت {{levelLabel}} في {{time}}! هل يمكنك التغلب على وقتي؟",
+  "SHARE_TEXT_WITH_FIRST_SOLVE": "أنهيت {{levelLabel}} في {{time}}! (أول مرة: {{firstSolveTime}}) هل يمكنك التغلب على وقتي؟",
   "SHARE_COPIED_TO_CLIPBOARD": "تم نسخ النص إلى الحافظة!",
-  "SHARE_COPY_MANUALLY": "انسخ هذا النص للمشاركة:"
+  "SHARE_COPY_MANUALLY": "انسخ هذا النص للمشاركة:",
+  "FIRST_SOLVE": "أول مرة"
 }

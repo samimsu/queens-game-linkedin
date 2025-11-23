@@ -181,3 +181,43 @@ export const getShowNotCompletedCommunityLevelsPreference = () => {
     ) ?? false
   ); // Default to false
 };
+
+// First solve time tracking
+type LevelType = "level" | "bonus" | "community";
+
+interface LevelTimes {
+  level: Record<string, number>;
+  bonus: Record<string, number>;
+  community: Record<string, number>;
+}
+
+const getLevelTimes = (): LevelTimes => {
+  const stored = localStorage.getItem("levelTimes");
+  if (stored) {
+    return JSON.parse(stored);
+  }
+  return { level: {}, bonus: {}, community: {} };
+};
+
+export const saveLevelFirstSolveTime = (
+  levelType: LevelType,
+  levelId: string,
+  time: number
+): void => {
+  const levelTimes = getLevelTimes();
+
+  // Only save if no time exists (never overwrite first solve)
+  if (levelTimes[levelType][levelId] === undefined) {
+    levelTimes[levelType][levelId] = time;
+    localStorage.setItem("levelTimes", JSON.stringify(levelTimes));
+  }
+};
+
+export const getLevelFirstSolveTime = (
+  levelType: LevelType,
+  levelId: string
+): number | null => {
+  const levelTimes = getLevelTimes();
+  const time = levelTimes[levelType][levelId];
+  return time !== undefined ? time : null;
+};
