@@ -1,0 +1,7 @@
+# Custom merge drivers for automatic conflict resolution
+
+# Always keep our Vite glob imports for levels.ts
+src/utils/levels.ts merge=ours-levels
+
+# Auto-resolve README conflicts by removing hardcoded level counts
+README.md merge=clean-readme
