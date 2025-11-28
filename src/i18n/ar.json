@@ -46,6 +46,7 @@
   "COLOR": {
     "ALTO": "Alto",
     "ALTO_MAIN": "Alto Main",
+    "ATOMIC_TANGERINE": "Atomic Tangerine",
     "ANAKIWA": "Anakiwa",
     "BITTERSWEET": "Bittersweet",
     "CAN_CAN": "Can Can",
@@ -53,18 +54,22 @@
     "CELADON": "Celadon",
     "CHARDONNAY": "Chardonnay",
     "COLD_PURPLE": "Cold Purple",
+    "EMERALD": "Emerald",
     "FEIJOA": "Feijoa",
     "HALF_BAKED": "Half Baked",
     "LAVENDER_ROSE": "Lavender Rose",
+    "LIGHT_GREEN": "Light Green",
     "LIGHT_ORCHID": "Light Orchid",
     "LIGHT_WISTERIA": "Light Wisteria",
     "MAC_N_CHEESE": "Mac n Cheese",
     "MALIBU": "Malibu",
     "MANZ": "Manz",
     "NOMAD": "Nomad",
+    "PERIWINKLE": "Periwinkle",
     "SAHARA_SAND": "Sahara Sand",
     "TALLOW": "Tallow",
-    "TURQUOISE_BLUE": "Turquoise Blue"
+    "TURQUOISE_BLUE": "Turquoise Blue",
+    "WHITE": "White"
   },
   "YES": "نعم",
   "THEME": {
@@ -80,5 +85,16 @@
   "BONUS_LEVEL": " مستوى المكافأة",
   "BONUS_LEVELS": "مستويات المكافأة",
   "WEEK_OF": "أسبوع {{weekOfDate}}",
-  "PLAY": "العب"
+  "PLAY": "العب",
+  "TRY_RANDOMLY_GENERATED_LEVEL": "أنهيت جميع مستويات المجتمع؟ جرب مستوى مولَد عشوائياً باستخدام ",
+  "GENERATE_LEVELS": "أنشئ مستويات عشوائية. اختر الحجم ودع الخوارزمية تُنشئ لك لغزًا فريدًا.",
+  "TIMED_OUT": "انتهت المهلة المحددة لإنتاج مستوى {{size}}x{{size}}، انقر على الزر للمحاولة مرة أخرى",
+  "SHARE_LINK_TO_LEVEL": "عثرت على مستوى جيد؟ تأكد من تضمين الرابط في منشورك",
+  "FOUND_VALID_LEVEL": "تم العثور على مستوى صالح واحد حتى الآن. البحث لبضع ثوانٍ أخرى لمحاولة تحسين الصعوبة...",
+  "GENERATING_LEVEL": "جارٍ إنتاج مستوى {{size}}x{{size}}...",
+  "LEVEL_GENERATOR": "مولد المستويات",
+  "GENERATED_TYPE": "مولد {{size}}x{{size}}",
+  "GENERATED_SAMPLES_TEXT": "هذه أمثلة على مستويات مولدة عشوائياً. لا يُضمن أن تكون ممتعة أو تحدي",
+  "GENERATED_SAMPLES_TITLE": "أمثلة",
+  "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "قد يتطلب عدة محاولات، يرجى التحلي بالصبر"
 }
