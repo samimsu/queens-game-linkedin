@@ -1,0 +1,75 @@
+name: Auto-merge Upstream
+
+on:
+  schedule:
+    # Run daily at 2 PM UTC (after the existing sync at 1 PM)
+    - cron: '0 14 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/samimsu/queens-game-linkedin.git || true
+          git fetch upstream
+
+      - name: Check for updates
+        id: check
+        run: |
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "up_to_date=true" >> $GITHUB_OUTPUT
+            echo "Already up to date"
+          else
+            echo "up_to_date=false" >> $GITHUB_OUTPUT
+            COMMIT_COUNT=$(git rev-list --count HEAD..upstream/main)
+            echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
+            echo "Found $COMMIT_COUNT new commits"
+          fi
+
+      - name: Set up Node.js
+        if: steps.check.outputs.up_to_date == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        if: steps.check.outputs.up_to_date == 'false'
+        run: npm install --legacy-peer-deps
+
+      - name: Run auto-merge script
+        if: steps.check.outputs.up_to_date == 'false'
+        run: |
+          chmod +x scripts/auto-merge-upstream.sh
+          scripts/auto-merge-upstream.sh
+
+      - name: Push changes
+        if: steps.check.outputs.up_to_date == 'false'
+        run: |
+          git push origin ${{ github.ref_name }}
+
+      - name: Create summary
+        if: steps.check.outputs.up_to_date == 'false'
+        run: |
+          echo "### ✅ Auto-merge Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Merged ${{ steps.check.outputs.commit_count }} commit(s) from upstream" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**New commits:**" >> $GITHUB_STEP_SUMMARY
+          git log HEAD~${{ steps.check.outputs.commit_count }}..HEAD --oneline >> $GITHUB_STEP_SUMMARY
