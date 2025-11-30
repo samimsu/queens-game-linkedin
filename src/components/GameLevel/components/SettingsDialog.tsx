@@ -18,6 +18,8 @@ interface SettingsDialogProps {
   toggleAutoPlaceXs: (checked: boolean) => void;
   showClock: boolean;
   toggleShowClock: (checked: boolean) => void;
+  dragToUncheck: boolean;
+  toggleDragToUncheck: (checked: boolean) => void;
 }
 
 const SettingsDialog: React.FC<SettingsDialogProps> = ({
@@ -29,6 +31,8 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
   toggleAutoPlaceXs,
   showClock,
   toggleShowClock,
+  dragToUncheck,
+  toggleDragToUncheck,
 }) => {
   const { t } = useTranslation();
 
@@ -64,6 +68,13 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
             <Switch
               checked={showInstructions}
               onCheckedChange={toggleShowInstructions}
+            />
+          </div>
+          <div className="flex items-center justify-between space-x-3">
+            <div>{t("DRAG_TO_UNCHECK")}</div>
+            <Switch
+              checked={dragToUncheck}
+              onCheckedChange={toggleDragToUncheck}
             />
           </div>
         </div>

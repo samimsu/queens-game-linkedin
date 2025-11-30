@@ -67,6 +67,9 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    dragToClearXs,
+    toggleDragToClear,
+    handleDragToClear,
   } = useGameLogic({
     id,
     boardSize,
@@ -222,6 +225,8 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                   toggleShowClock={toggleShowClock}
                   autoPlaceXs={autoPlaceXs}
                   toggleAutoPlaceXs={toggleAutoPlaceXs}
+                  toggleDragToUncheck={toggleDragToClear}
+                  dragToUncheck={dragToClearXs}
                 />
               </div>
             </div>
@@ -249,6 +254,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
             <Board
               board={board}
               handleSquareClick={handleSquareClick}
+              handleDrags={handleDragToClear}
               handleSquareMouseEnter={handleDrag}
               level={level}
               boardSize={boardSize}
