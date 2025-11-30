@@ -32,7 +32,7 @@ const level = {
     G: saharaSand,
     H: nomad,
   },
-  solutionsCount: -1,
+  solutionsCount: 1,
   createdBy: "JWCC",
   creatorLink: "https://github.com/JhoelWCC",
 };
