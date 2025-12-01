@@ -177,7 +177,8 @@ To build a community level make sure the "Community Level" level type is selecte
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/OscarNoguero"><img src="https://avatars.githubusercontent.com/u/119408687?v=4?s=100" width="100px;" alt="OscarNoguero"/><br /><sub><b>OscarNoguero</b></sub></a><br /><a href="#content-OscarNoguero" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/emaureen"><img src="https://avatars.githubusercontent.com/u/241835627?v=4?s=100" width="100px;" alt="emaureen"/><br /><sub><b>emaureen</b></sub></a><br /><a href="#content-emaureen" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/pdidevich"><img src="https://avatars.githubusercontent.com/u/672723?v=4?s=100" width="100px;" alt="Peter Didevich"/><br /><sub><b>Peter Didevich</b></sub></a><br /><a href="#content-pdidevich" title="Content">🖋</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/markszutor"><img src="https://avatars.githubusercontent.com/u/112664262?v=4?s=100" width="100px;" alt="Mark Szutor"/><br /><sub><b>Mark Szutor</b></sub></a><br /><a href="#code-markszutor" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/markszutor"><img src="https://avatars.githubusercontent.com/u/112664262?v=4?s=100" width="100px;" alt="Mark Szutor"/><br /><sub><b>Mark Szutor</b></sub></a><br /><a href="#code-markszutor" title="Code">💻</a> <a href="#content-markszutor" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JhoelWCC"><img src="https://avatars.githubusercontent.com/u/197042981?v=4?s=100" width="100px;" alt="JhoelWCC"/><br /><sub><b>JhoelWCC</b></sub></a><br /><a href="#content-JhoelWCC" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>

@@ -756,7 +756,17 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/112664262?v=4",
       "profile": "https://github.com/markszutor",
       "contributions": [
-        "code"
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "JhoelWCC",
+      "name": "JhoelWCC",
+      "avatar_url": "https://avatars.githubusercontent.com/u/197042981?v=4",
+      "profile": "https://github.com/JhoelWCC",
+      "contributions": [
+        "content"
       ]
     }
   ]
