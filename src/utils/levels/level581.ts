@@ -8,16 +8,16 @@ import {
   saharaSand,
 } from "../colors";
 
-const level580 = {
+const level581 = {
   size: 7,
   colorRegions: [
     ["A", "A", "A", "A", "A", "A", "A"],
-    ["A", "A", "A", "A", "A", "A", "B"],
-    ["A", "A", "A", "C", "D", "E", "B"],
-    ["A", "A", "A", "C", "D", "E", "B"],
-    ["A", "A", "F", "C", "D", "E", "B"],
-    ["A", "G", "F", "C", "D", "E", "B"],
-    ["A", "G", "F", "C", "D", "E", "B"],
+    ["B", "B", "C", "A", "D", "D", "D"],
+    ["B", "E", "C", "A", "D", "D", "D"],
+    ["B", "E", "E", "A", "D", "D", "D"],
+    ["B", "E", "E", "A", "D", "D", "D"],
+    ["B", "E", "E", "A", "D", "F", "G"],
+    ["E", "E", "E", "A", "F", "F", "G"],
   ],
   regionColors: {
     A: lightWisteria,
@@ -28,6 +28,7 @@ const level580 = {
     F: bittersweet,
     G: saharaSand,
   },
+  isNew: true,
 };
 
-export default level580;
+export default level581;
