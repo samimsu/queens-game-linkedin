@@ -34,7 +34,6 @@ const level576 = {
     H: nomad,
     I: lightOrchid,
   },
-  isNew: true,
 };
 
 export default level576;

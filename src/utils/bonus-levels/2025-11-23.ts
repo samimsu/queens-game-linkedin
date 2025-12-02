@@ -41,7 +41,6 @@ const level = {
     J: halfBaked,
     K: bittersweet,
   },
-  isNew: true,
 };
 
 export default level;
