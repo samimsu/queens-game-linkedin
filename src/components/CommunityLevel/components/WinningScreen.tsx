@@ -23,6 +23,7 @@ interface WinningScreenProps {
   timer: number;
   levelId: string;
   levelName?: string;
+  firstSolveTime: number | null;
 }
 
 const WinningScreen = ({
@@ -33,6 +34,7 @@ const WinningScreen = ({
   timer,
   levelId,
   levelName,
+  firstSolveTime,
 }: WinningScreenProps) => {
   const { t } = useTranslation();
 
@@ -62,11 +64,17 @@ const WinningScreen = ({
             <div className="font-medium text-sm">{t("SOLVE_TIME")}</div>
           </div>
         </div>
+        {firstSolveTime !== null && (
+          <div className="text-sm font-medium">
+            {t("FIRST_SOLVE")}: {formatDuration(firstSolveTime)}
+          </div>
+        )}
         <ShareButton
           levelType="community"
           levelId={levelId}
           timer={timer}
           levelName={levelName}
+          firstSolveTime={firstSolveTime}
         />
         <LevelNavigationButton
           path={previousLink.path}

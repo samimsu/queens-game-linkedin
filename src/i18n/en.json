@@ -119,6 +119,8 @@
   "SHARE": "Share",
   "SHARE_TITLE": "Queens Game - {{levelLabel}}",
   "SHARE_TEXT": "I solved {{levelLabel}} in {{time}}! Can you beat my time?",
+  "SHARE_TEXT_WITH_FIRST_SOLVE": "I solved {{levelLabel}} in {{time}}! (First solve: {{firstSolveTime}}) Can you beat my time?",
   "SHARE_COPIED_TO_CLIPBOARD": "Share text copied to clipboard!",
-  "SHARE_COPY_MANUALLY": "Copy this text to share:"
+  "SHARE_COPY_MANUALLY": "Copy this text to share:",
+  "FIRST_SOLVE": "First solve"
 }

@@ -15,6 +15,8 @@ import {
   setClashingQueensPreference,
   setShowClockPreference,
   setShowInstructionsPreference,
+  saveLevelFirstSolveTime,
+  getLevelFirstSolveTime,
 } from "@/utils/localStorage";
 import { checkWinCondition, getClashingQueens } from "@/utils/gameLogic";
 
@@ -33,6 +35,18 @@ const useGameLogic = ({
 }: useGameLogicProps) => {
   const isBonusLevel = levelType === "bonus";
   const isCommunityLevel = levelType === "community";
+
+  // Determine the level type string for localStorage
+  const levelTypeKey = isBonusLevel
+    ? "bonus"
+    : isCommunityLevel
+    ? "community"
+    : "level";
+
+  // Get first solve time on mount (will be null if never completed)
+  const [firstSolveTime, setFirstSolveTime] = useState<number | null>(() =>
+    id ? getLevelFirstSolveTime(levelTypeKey, id) : null
+  );
 
   const [board, setBoard] = useState(createEmptyBoard(boardSize));
   const [, setQueenGeneratedXs] = useState<Record<string, Set<string>>>({});
@@ -152,6 +166,8 @@ const useGameLogic = ({
         } else {
           markLevelAsCompleted(Number(id));
         }
+        // Save first solve time (won't overwrite if already exists)
+        saveLevelFirstSolveTime(levelTypeKey, id, timer);
       }
     } else {
       setHasWon(false);
@@ -390,6 +406,7 @@ const useGameLogic = ({
     setTimerRunning,
     completed,
     history,
+    firstSolveTime,
     handleSquareClick,
     handleDrag,
     handleUndo,

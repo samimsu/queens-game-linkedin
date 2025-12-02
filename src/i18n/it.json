@@ -83,6 +83,8 @@
   "SHARE": "Condividi",
   "SHARE_TITLE": "Queens Game - {{levelLabel}}",
   "SHARE_TEXT": "Ho risolto {{levelLabel}} in {{time}}! Riesci a battere il mio tempo?",
+  "SHARE_TEXT_WITH_FIRST_SOLVE": "Ho risolto {{levelLabel}} in {{time}}! (Prima volta: {{firstSolveTime}}) Riesci a battere il mio tempo?",
   "SHARE_COPIED_TO_CLIPBOARD": "Testo copiato negli appunti!",
-  "SHARE_COPY_MANUALLY": "Copia questo testo per condividere:"
+  "SHARE_COPY_MANUALLY": "Copia questo testo per condividere:",
+  "FIRST_SOLVE": "Prima volta"
 }
