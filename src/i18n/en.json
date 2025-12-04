@@ -112,8 +112,10 @@
   "CLEAR_ALL": "Clear all",
   "ONE_FREE_LEVEL": "1 free level",
   "CHANGE_COLOR_SCHEME": "Change color scheme",
+  "SHOW_HIDE_LETTERS": "Show/hide letters",
   "ZOOM_IN": "Zoom in",
   "ZOOM_OUT": "Zoom out",
   "RESET_ZOOM": "Reset zoom",
-  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors"
+  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
+  "ONLY_1_SOLUTION": "It has only 1 solution."
 }
