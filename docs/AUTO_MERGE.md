@@ -21,17 +21,18 @@ When syncing with upstream (samimsu/queens-game-linkedin), two files consistentl
 ### 1. Custom Merge Drivers (.gitattributes)
 
 ```gitattributes
-src/utils/levels.ts merge=ours-levels
-README.md merge=clean-readme
+src/utils/levels.ts merge=ours
+README.md merge=ours
+package.json merge=ours
+package-lock.json merge=ours
 ```
 
-**Important:** These drivers are automatically configured in the GitHub Actions workflow:
+These files always keep **our** version on conflict. The "ours" driver is configured in the GitHub Actions workflow:
 ```yaml
-git config merge.ours-levels.driver "true"  # Always keep ours
-git config merge.clean-readme.driver "true" # Always keep ours
+git config merge.ours.driver "true"
 ```
 
-For local development, the merge script handles conflicts directly without relying on these drivers.
+For local development without drivers configured, the script falls back to `git checkout --ours`.
 
 ### 2. Automated Merge Script
 

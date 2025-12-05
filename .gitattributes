@@ -1,7 +1,12 @@
 # Custom merge drivers for automatic conflict resolution
+# These files always keep OUR version on conflict (driver configured in CI workflow)
 
-# Always keep our Vite glob imports for levels.ts
-src/utils/levels.ts merge=ours-levels
+# Keep our Vite glob imports (vs upstream's 1000+ line manual imports)
+src/utils/levels.ts merge=ours
 
-# Auto-resolve README conflicts by removing hardcoded level counts
-README.md merge=clean-readme
+# Keep our README (no hardcoded level counts)
+README.md merge=ours
+
+# Keep our package.json (we removed @giscus/react, @vercel/analytics)
+package.json merge=ours
+package-lock.json merge=ours
