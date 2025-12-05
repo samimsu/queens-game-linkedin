@@ -27,14 +27,20 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Ensure we're on the right branch
-          ref: ${{ github.ref }}
+          # Always merge into main branch
+          ref: main
 
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config pull.rebase false
+
+          # Configure custom merge drivers (CRITICAL: .gitattributes references these)
+          git config merge.ours-levels.name "Keep our glob imports for levels.ts"
+          git config merge.ours-levels.driver "true"  # Always succeed, keep ours
+          git config merge.clean-readme.name "Clean README merge"
+          git config merge.clean-readme.driver "true"  # Always succeed, keep ours
 
       - name: Add upstream remote
         run: |
@@ -142,7 +148,7 @@ jobs:
         run: |
           # Push with retry logic (network issues)
           for i in 1 2 3 4; do
-            if git push origin ${{ github.ref_name }}; then
+            if git push origin main; then
               echo "✅ Push successful"
               break
             else

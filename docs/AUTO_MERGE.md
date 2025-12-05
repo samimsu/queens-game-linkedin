@@ -25,9 +25,13 @@ src/utils/levels.ts merge=ours-levels
 README.md merge=clean-readme
 ```
 
-Configured in `.git/config`:
-- `ours-levels`: Always keeps our glob imports version
-- `clean-readme`: Removes hardcoded level counts before merging
+**Important:** These drivers are automatically configured in the GitHub Actions workflow:
+```yaml
+git config merge.ours-levels.driver "true"  # Always keep ours
+git config merge.clean-readme.driver "true" # Always keep ours
+```
+
+For local development, the merge script handles conflicts directly without relying on these drivers.
 
 ### 2. Automated Merge Script
 
@@ -52,13 +56,16 @@ Configured in `.git/config`:
 
 **Workflow**: `.github/workflows/auto-merge-upstream.yml`
 
-**Schedule**: Daily at 2 PM UTC (1 hour after upstream sync)
+**Schedule**: Daily at 2 PM UTC
 
 **What it does**:
-- Automatically detects new upstream commits
-- Runs the merge script
-- Pushes changes if successful
-- Creates summary of merged commits
+1. Checks out the `main` branch with full history
+2. Configures custom merge drivers for conflict-free files
+3. Fetches upstream and detects new commits
+4. Runs the auto-merge script
+5. Verifies build passes
+6. Pushes changes if successful
+7. Creates detailed summary of merged commits and new levels
 
 ## Manual Usage
 
@@ -144,11 +151,10 @@ Submit PR to upstream suggesting the glob imports approach. Benefits:
 
 ## Maintenance
 
-### Update Merge Drivers
+### Update Merge Logic
 If upstream changes file structure, update:
-- `.git-merge-drivers/merge-levels.sh`
-- `.git-merge-drivers/merge-readme.sh`
-- `scripts/auto-merge-upstream.sh`
+- `scripts/auto-merge-upstream.sh` - Main merge logic and conflict resolution
+- `.github/workflows/auto-merge-upstream.yml` - Workflow configuration
 
 ### Monitor Automation
 Check GitHub Actions runs:
