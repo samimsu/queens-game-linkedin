@@ -141,12 +141,22 @@ EOF
         git add README.md
     fi
 
-    # 3. Auto-resolve other common conflicts by taking upstream version
-    for conflict_file in src/utils/bonusLevels.ts .all-contributorsrc package.json package-lock.json; do
+    # 3. Auto-resolve other common conflicts
+    # Take upstream version for these (content files)
+    for conflict_file in src/utils/bonusLevels.ts .all-contributorsrc; do
         if git diff --name-only --diff-filter=U 2>/dev/null | grep -q "^${conflict_file}$"; then
             echo -e "${BLUE}  → Resolving $conflict_file (taking upstream version)...${NC}"
             git checkout MERGE_HEAD -- "$conflict_file" 2>/dev/null || git checkout --theirs "$conflict_file" 2>/dev/null || true
             git add "$conflict_file" 2>/dev/null || true
+        fi
+    done
+
+    # 4. Keep OUR package.json/lock (we removed @giscus/react, @vercel/analytics)
+    for conflict_file in package.json package-lock.json; do
+        if git diff --name-only --diff-filter=U 2>/dev/null | grep -q "^${conflict_file}$"; then
+            echo -e "${GREEN}  📝 Resolving $conflict_file (keeping our version - removed unwanted deps)...${NC}"
+            git checkout --ours "$conflict_file"
+            git add "$conflict_file"
         fi
     done
 
@@ -210,6 +220,7 @@ if [ "$MERGE_FAILED" = true ]; then
 Auto-resolved conflicts:
 - levels.ts: Kept Vite glob imports
 - README.md: Kept our version (no hardcoded counts)
+- package.json: Kept our version (removed @giscus, @vercel/analytics)
 
 New content:
 - Added ${NEW_LEVEL_COUNT} level file(s)"

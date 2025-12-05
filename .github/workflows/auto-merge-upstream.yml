@@ -2,7 +2,7 @@ name: Auto-merge Upstream
 
 on:
   schedule:
-    # Run daily at 2 PM UTC (after the existing sync at 1 PM)
+    # Run daily at 2 PM UTC
     - cron: '0 14 * * *'
   workflow_dispatch: # Allow manual trigger
     inputs:
