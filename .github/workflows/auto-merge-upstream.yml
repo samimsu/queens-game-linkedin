@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   auto-merge:
@@ -75,11 +76,13 @@ jobs:
         run: npm test -- --run
 
       - name: Push changes
+        id: push
         if: steps.check.outputs.up_to_date == 'false' && github.event.inputs.dry_run != 'true'
         run: |
           for i in 1 2 3 4; do
             if git push origin main; then
               echo "✅ Push successful"
+              echo "push_success=true" >> $GITHUB_OUTPUT
               echo "### ✅ Auto-merge Successful" >> $GITHUB_STEP_SUMMARY
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "Merge commit:" >> $GITHUB_STEP_SUMMARY
@@ -94,6 +97,15 @@ jobs:
             fi
             sleep $((2 ** i))
           done
+
+      - name: Trigger deploy workflow
+        if: steps.push.outputs.push_success == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Triggering deploy workflow..."
+          gh workflow run deploy.yml --ref main
+          echo "✅ Deploy workflow triggered" >> $GITHUB_STEP_SUMMARY
 
       - name: Dry run notice
         if: steps.check.outputs.up_to_date == 'false' && github.event.inputs.dry_run == 'true'
