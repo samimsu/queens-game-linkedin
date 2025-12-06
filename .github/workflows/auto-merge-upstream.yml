@@ -2,9 +2,9 @@ name: Auto-merge Upstream
 
 on:
   schedule:
-    # Run daily at 2 PM UTC (after the existing sync at 1 PM)
+    # Run daily at 2 PM UTC
     - cron: '0 14 * * *'
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
     inputs:
       dry_run:
         description: 'Dry run (show what would be merged without committing)'
@@ -14,7 +14,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   auto-merge:
@@ -27,50 +26,31 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Ensure we're on the right branch
-          ref: ${{ github.ref }}
+          ref: main
 
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config pull.rebase false
 
-      - name: Add upstream remote
-        run: |
-          if ! git remote | grep -q upstream; then
-            git remote add upstream https://github.com/samimsu/queens-game-linkedin.git
-          fi
-          git fetch upstream --prune
+          # Configure "ours" merge driver - keeps our version on conflict
+          # Used by .gitattributes for: levels.ts, README.md, package.json
+          git config merge.ours.name "Keep ours"
+          git config merge.ours.driver "true"
 
-      - name: Check for updates
+      - name: Check for upstream updates
         id: check
         run: |
+          git remote add upstream https://github.com/samimsu/queens-game-linkedin.git
+          git fetch upstream
+
           if git merge-base --is-ancestor upstream/main HEAD; then
             echo "up_to_date=true" >> $GITHUB_OUTPUT
             echo "✅ Already up to date with upstream"
           else
             echo "up_to_date=false" >> $GITHUB_OUTPUT
-
-            COMMIT_COUNT=$(git rev-list --count HEAD..upstream/main)
-            echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
-
-            # Check for new level files
-            NEW_LEVELS=$(git diff --name-only HEAD upstream/main | grep -c "src/utils/levels/level[0-9]*.ts" || echo "0")
-            echo "new_levels=$NEW_LEVELS" >> $GITHUB_OUTPUT
-
-            echo "📊 Found $COMMIT_COUNT new commit(s)"
-            echo "📊 Found $NEW_LEVELS new level file(s)"
-
-            # List what will be merged
             echo "### Commits to merge:" >> $GITHUB_STEP_SUMMARY
             git log HEAD..upstream/main --oneline >> $GITHUB_STEP_SUMMARY
-
-            if [ "$NEW_LEVELS" -gt 0 ]; then
-              echo "" >> $GITHUB_STEP_SUMMARY
-              echo "### New levels:" >> $GITHUB_STEP_SUMMARY
-              git diff --name-only HEAD upstream/main | grep "src/utils/levels/level[0-9]*.ts" | sed 's/.*\/level\([0-9]*\)\.ts$/- Level \1/' >> $GITHUB_STEP_SUMMARY
-            fi
           fi
 
       - name: Set up Node.js
@@ -83,115 +63,43 @@ jobs:
       - name: Install dependencies
         if: steps.check.outputs.up_to_date == 'false'
         run: npm ci --legacy-peer-deps
-        env:
-          NODE_ENV: development
 
-      - name: Run auto-merge script
+      - name: Run auto-merge
         if: steps.check.outputs.up_to_date == 'false'
-        id: merge
         run: |
           chmod +x scripts/auto-merge-upstream.sh
+          scripts/auto-merge-upstream.sh
 
-          # Capture script output
-          if scripts/auto-merge-upstream.sh 2>&1 | tee /tmp/merge-output.log; then
-            echo "merge_success=true" >> $GITHUB_OUTPUT
-
-            # Extract level info from commit
-            LEVELS_ADDED=$(git log -1 --pretty=%B | grep -oP 'levels: \K[0-9,]+' || echo "none")
-            echo "levels_added=$LEVELS_ADDED" >> $GITHUB_OUTPUT
-          else
-            echo "merge_success=false" >> $GITHUB_OUTPUT
-            echo "### ❌ Auto-merge Failed" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            cat /tmp/merge-output.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
-
-      - name: Verify merge commit
-        if: steps.check.outputs.up_to_date == 'false' && steps.merge.outputs.merge_success == 'true'
-        run: |
-          echo "### Verifying merge commit..."
-
-          # Check that we actually have a merge commit
-          if ! git rev-parse MERGE_HEAD 2>/dev/null; then
-            # If no MERGE_HEAD, check if HEAD is a merge commit
-            if ! git cat-file -p HEAD | grep -q "^parent.*parent"; then
-              echo "⚠️  Warning: Not a merge commit"
-            fi
-          fi
-
-          # Verify new level files are in the commit
-          COMMITTED_LEVELS=$(git diff --name-only HEAD~1 HEAD | grep -c "src/utils/levels/level[0-9]*.ts" || echo "0")
-          echo "✅ Committed $COMMITTED_LEVELS level files"
-
-          if [ "$COMMITTED_LEVELS" -ne "${{ steps.check.outputs.new_levels }}" ]; then
-            echo "⚠️  Warning: Expected ${{ steps.check.outputs.new_levels }} level files, got $COMMITTED_LEVELS"
-          fi
-
-          # Show what was actually committed
-          echo "Files in commit:"
-          git diff --name-only HEAD~1 HEAD | head -20
+      - name: Run tests
+        if: steps.check.outputs.up_to_date == 'false'
+        run: npm test -- --run
 
       - name: Push changes
-        if: |
-          steps.check.outputs.up_to_date == 'false' &&
-          steps.merge.outputs.merge_success == 'true' &&
-          github.event.inputs.dry_run != 'true'
+        if: steps.check.outputs.up_to_date == 'false' && github.event.inputs.dry_run != 'true'
         run: |
-          # Push with retry logic (network issues)
           for i in 1 2 3 4; do
-            if git push origin ${{ github.ref_name }}; then
+            if git push origin main; then
               echo "✅ Push successful"
-              break
-            else
-              if [ $i -eq 4 ]; then
-                echo "❌ Push failed after 4 attempts"
-                exit 1
-              fi
-              DELAY=$((2 ** i))
-              echo "⚠️  Push failed, retrying in ${DELAY}s..."
-              sleep $DELAY
+              echo "### ✅ Auto-merge Successful" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "Merge commit:" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              git log -1 --oneline >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              exit 0
             fi
+            if [ $i -eq 4 ]; then
+              echo "❌ Push failed after 4 attempts"
+              exit 1
+            fi
+            sleep $((2 ** i))
           done
 
-      - name: Create success summary
-        if: |
-          steps.check.outputs.up_to_date == 'false' &&
-          steps.merge.outputs.merge_success == 'true'
+      - name: Dry run notice
+        if: steps.check.outputs.up_to_date == 'false' && github.event.inputs.dry_run == 'true'
         run: |
-          echo "### ✅ Auto-merge Successful" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Statistics:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Merged commits: ${{ steps.check.outputs.commit_count }}" >> $GITHUB_STEP_SUMMARY
-          echo "- New level files: ${{ steps.check.outputs.new_levels }}" >> $GITHUB_STEP_SUMMARY
-
-          if [ -n "${{ steps.merge.outputs.levels_added }}" ] && [ "${{ steps.merge.outputs.levels_added }}" != "none" ]; then
-            echo "- Levels added: ${{ steps.merge.outputs.levels_added }}" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Merge commit:**" >> $GITHUB_STEP_SUMMARY
+          echo "### 🏃 Dry Run Complete" >> $GITHUB_STEP_SUMMARY
+          echo "Changes not pushed. Merge commit:" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          git log -1 --pretty=format:"%h - %s%n%b" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-
-          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**🏃 Dry run mode** - Changes not pushed" >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Notify on failure
-        if: failure()
-        run: |
-          echo "### ❌ Workflow Failed" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Check the logs above for details." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Manual steps:**" >> $GITHUB_STEP_SUMMARY
-          echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo "git fetch upstream" >> $GITHUB_STEP_SUMMARY
-          echo "./scripts/auto-merge-upstream.sh" >> $GITHUB_STEP_SUMMARY
-          echo "git push" >> $GITHUB_STEP_SUMMARY
+          git log -1 --oneline >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY

@@ -21,13 +21,18 @@ When syncing with upstream (samimsu/queens-game-linkedin), two files consistentl
 ### 1. Custom Merge Drivers (.gitattributes)
 
 ```gitattributes
-src/utils/levels.ts merge=ours-levels
-README.md merge=clean-readme
+src/utils/levels.ts merge=ours
+README.md merge=ours
+package.json merge=ours
+package-lock.json merge=ours
 ```
 
-Configured in `.git/config`:
-- `ours-levels`: Always keeps our glob imports version
-- `clean-readme`: Removes hardcoded level counts before merging
+These files always keep **our** version on conflict. The "ours" driver is configured in the GitHub Actions workflow:
+```yaml
+git config merge.ours.driver "true"
+```
+
+For local development without drivers configured, the script falls back to `git checkout --ours`.
 
 ### 2. Automated Merge Script
 
@@ -52,13 +57,16 @@ Configured in `.git/config`:
 
 **Workflow**: `.github/workflows/auto-merge-upstream.yml`
 
-**Schedule**: Daily at 2 PM UTC (1 hour after upstream sync)
+**Schedule**: Daily at 2 PM UTC
 
 **What it does**:
-- Automatically detects new upstream commits
-- Runs the merge script
-- Pushes changes if successful
-- Creates summary of merged commits
+1. Checks out the `main` branch with full history
+2. Configures custom merge drivers for conflict-free files
+3. Fetches upstream and detects new commits
+4. Runs the auto-merge script
+5. Verifies build passes
+6. Pushes changes if successful
+7. Creates detailed summary of merged commits and new levels
 
 ## Manual Usage
 
@@ -144,11 +152,10 @@ Submit PR to upstream suggesting the glob imports approach. Benefits:
 
 ## Maintenance
 
-### Update Merge Drivers
+### Update Merge Logic
 If upstream changes file structure, update:
-- `.git-merge-drivers/merge-levels.sh`
-- `.git-merge-drivers/merge-readme.sh`
-- `scripts/auto-merge-upstream.sh`
+- `scripts/auto-merge-upstream.sh` - Main merge logic and conflict resolution
+- `.github/workflows/auto-merge-upstream.yml` - Workflow configuration
 
 ### Monitor Automation
 Check GitHub Actions runs:
