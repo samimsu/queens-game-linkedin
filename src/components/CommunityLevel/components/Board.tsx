@@ -28,10 +28,10 @@ const Board: React.FC<BoardProps> = ({
   showLetters,
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [previousSquare, setPreviousSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
@@ -105,7 +105,7 @@ const Board: React.FC<BoardProps> = ({
             queenSize={(24 * zoomLevel).toString()}
             showLetter={showLetters}
           />
-        ))
+        )),
       )}
     </div>
   );

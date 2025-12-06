@@ -53,8 +53,8 @@ const Timer = ({
           seconds < ONE_HOUR_IN_SECONDS
             ? "w-10"
             : seconds < TEN_HOURS_IN_SECONDS
-            ? "w-14"
-            : "w-full"
+              ? "w-14"
+              : "w-full"
         }`}
       >
         {formatDuration(seconds)}
