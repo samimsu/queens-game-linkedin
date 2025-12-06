@@ -112,15 +112,10 @@
   "CLEAR_ALL": "Clear all",
   "ONE_FREE_LEVEL": "1 free level",
   "CHANGE_COLOR_SCHEME": "Change color scheme",
+  "SHOW_HIDE_LETTERS": "Show/hide letters",
   "ZOOM_IN": "Zoom in",
   "ZOOM_OUT": "Zoom out",
   "RESET_ZOOM": "Reset zoom",
   "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
-  "SHARE": "Share",
-  "SHARE_TITLE": "Queens Game - {{levelLabel}}",
-  "SHARE_TEXT": "I solved {{levelLabel}} in {{time}}! Can you beat my time?",
-  "SHARE_TEXT_WITH_FIRST_SOLVE": "I solved {{levelLabel}} in {{time}}! (First solve: {{firstSolveTime}}) Can you beat my time?",
-  "SHARE_COPIED_TO_CLIPBOARD": "Share text copied to clipboard!",
-  "SHARE_COPY_MANUALLY": "Copy this text to share:",
-  "FIRST_SOLVE": "First solve"
+  "ONLY_1_SOLUTION": "It has only 1 solution."
 }

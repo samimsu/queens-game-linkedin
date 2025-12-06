@@ -34,11 +34,13 @@ import {
   bittersweet,
   celadon,
   chardonnay,
+  coldPurple,
   emerald,
   halfBaked,
   lightGreen,
   lightOrchid,
   lightWisteria,
+  macNCheese,
   nomad,
   periwinkle,
   saharaSand,
@@ -93,6 +95,8 @@ const CommunityLevel = ({
       M: lightGreen,
       N: emerald,
       O: periwinkle,
+      P: coldPurple,
+      Q: macNCheese,
     };
     const newColors: { [key: string]: string } = {};
     Object.keys(defaultRegionColors).forEach((region) => {
