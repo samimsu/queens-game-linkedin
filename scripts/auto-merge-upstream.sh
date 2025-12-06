@@ -61,7 +61,7 @@ else
                     git checkout --ours "$file"
                     git add "$file"
                     ;;
-                src/utils/bonusLevels.ts|.all-contributorsrc)
+                src/utils/bonusLevels.ts|.all-contributorsrc|src/i18n/*)
                     echo "  Resolving $file (taking theirs)..."
                     git checkout --theirs "$file"
                     git add "$file"
