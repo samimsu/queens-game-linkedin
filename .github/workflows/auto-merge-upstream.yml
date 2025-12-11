@@ -104,7 +104,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo "Triggering deploy workflow..."
-          gh workflow run deploy.yml --ref main
+          gh workflow run deploy.yml --ref main -R ${{ github.repository }}
           echo "✅ Deploy workflow triggered" >> $GITHUB_STEP_SUMMARY
 
       - name: Dry run notice
