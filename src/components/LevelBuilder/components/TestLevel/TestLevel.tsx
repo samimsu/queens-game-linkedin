@@ -59,7 +59,7 @@ const TestLevel = ({ level }: TestLevelProps) => {
   const handleGetSolutions = () => {
     setFetchingSolutions(true);
     const worker = new Worker(
-      new URL("@/workers/solveQueensWorker.ts", import.meta.url)
+      new URL("@/workers/solveQueensWorker.ts", import.meta.url),
     );
     workerRef.current = worker;
     worker.onmessage = (e) => {
