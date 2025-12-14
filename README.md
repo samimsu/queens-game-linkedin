@@ -182,6 +182,9 @@ To build a community level make sure the "Community Level" level type is selecte
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/PrajwalMReddy"><img src="https://avatars.githubusercontent.com/u/48818107?v=4?s=100" width="100px;" alt="PrajwalMReddy"/><br /><sub><b>PrajwalMReddy</b></sub></a><br /><a href="#content-PrajwalMReddy" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/MaximeFauchereCollin"><img src="https://avatars.githubusercontent.com/u/183547561?v=4?s=100" width="100px;" alt="Maxime Fauchere--Collin"/><br /><sub><b>Maxime Fauchere--Collin</b></sub></a><br /><a href="#content-MaximeFauchereCollin" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/marcelo03h"><img src="https://avatars.githubusercontent.com/u/157755956?v=4?s=100" width="100px;" alt="marcelo03h"/><br /><sub><b>marcelo03h</b></sub></a><br /><a href="#content-marcelo03h" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/AllisonDobsonM"><img src="https://avatars.githubusercontent.com/u/89613069?v=4?s=100" width="100px;" alt="AllisonDobsonM"/><br /><sub><b>AllisonDobsonM</b></sub></a><br /><a href="#content-AllisonDobsonM" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
