@@ -93,7 +93,7 @@ ts-node solveAllCommunityLevels.ts <levelNumber>
 
 ```bash
 # Solve all levels from level 50 and greater
-ts-node solveAllCommunityLevels.ts 50
+ts-node --project tsconfig.script.json solveAllCommunityLevels.ts 50
 ```
 
 ## findDuplicates.ts
