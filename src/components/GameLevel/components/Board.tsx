@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Square from "./Square";
 import useGridSize from "../../../hooks/useGridSize";
-import { Console } from "console";
 
 interface BoardProps {
   board: string[][];
