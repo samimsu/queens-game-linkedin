@@ -10,7 +10,7 @@ import {
   saharaSand,
 } from "../colors";
 
-const level1 = {
+const level = {
   path: "/bonus-level/2025-12-14",
   size: 9,
   colorRegions: [
@@ -35,7 +35,6 @@ const level1 = {
     H: nomad,
     I: saharaSand,
   },
-  isNew: true,
 };
 
-export default level1;
+export default level;
