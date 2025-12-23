@@ -45,6 +45,7 @@ const Board = ({
               colorRegions={board}
               regionColors={regionColors}
               hideValues={hideRegionValues}
+              onContextMenu={(e) => {e.preventDefault();}} //prevents right click window from popping up
               data-row={rowIndex}
               data-col={colIndex} // Add data attributes for touch handling
             />
