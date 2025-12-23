@@ -5,6 +5,7 @@ import Queen from "@/components/Queen";
 import DiscordButton from "./LevelSelection/components/DiscordButton";
 import LanguageDropdown from "./LevelSelection/components/LanguageDropdown";
 import NewBadge from "./NewBadge";
+import ThemeSwitcher from "./ThemeSwitcher";
 import { useTranslation } from "react-i18next";
 import {
   getBonusLevelsClicked,
@@ -84,6 +85,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-6">
+          <ThemeSwitcher />
           <LanguageDropdown />
           <div className="flex items-center space-x-4 sm:space-x-5">
             <DiscordButton />
