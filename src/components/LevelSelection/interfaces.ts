@@ -1,4 +1,4 @@
 export type LevelSelectionFilters = {
-    showOnlyAvailableLevels: boolean;
-    hideCompletedLevels: boolean;
-  }
+  showOnlyAvailableLevels: boolean;
+  hideCompletedLevels: boolean;
+};

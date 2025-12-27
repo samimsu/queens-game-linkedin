@@ -1,9 +1,15 @@
-
 // @ts-ignore
-import { isLevelCompleted } from '@/utils/localStorage'
-import { LevelSelectionFilters } from '../../interfaces';
+import { isLevelCompleted } from "@/utils/localStorage";
+import { LevelSelectionFilters } from "../../interfaces";
 
-const filterLevel = (level: number, orderedLevels: number[], { showOnlyAvailableLevels = false, hideCompletedLevels = false }: LevelSelectionFilters): boolean => {
+const filterLevel = (
+  level: number,
+  orderedLevels: number[],
+  {
+    showOnlyAvailableLevels = false,
+    hideCompletedLevels = false,
+  }: LevelSelectionFilters,
+): boolean => {
   if (showOnlyAvailableLevels || hideCompletedLevels) {
     if (!orderedLevels.includes(level)) return false;
   }
@@ -15,4 +21,4 @@ const filterLevel = (level: number, orderedLevels: number[], { showOnlyAvailable
   return true;
 };
 
-export default filterLevel
+export default filterLevel;

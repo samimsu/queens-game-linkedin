@@ -26,10 +26,10 @@ const Board: React.FC<BoardProps> = ({
   clashingQueens,
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [previousSquare, setPreviousSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
@@ -98,7 +98,7 @@ const Board: React.FC<BoardProps> = ({
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
           />
-        ))
+        )),
       )}
     </div>
   );
