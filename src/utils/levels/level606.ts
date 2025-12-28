@@ -34,7 +34,6 @@ const level606 = {
     H: nomad,
     I: anakiwa,
   },
-  isNew: true,
 };
 
 export default level606;
