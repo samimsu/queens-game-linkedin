@@ -10,7 +10,7 @@ import PageNotFound from "./PageNotFound";
 // Function to parse the ID and find the current level
 function findLevelById(
   id: string,
-  communityLevels: { [key: string]: CommunityLevelType }
+  communityLevels: { [key: string]: CommunityLevelType },
 ) {
   // Iterate through communityLevels keys
   for (const levelKey of Object.keys(communityLevels)) {
@@ -25,7 +25,7 @@ function findLevelById(
 // Function to find the previous level
 function findPreviousLevel(
   currentLevelKey: string,
-  communityLevels: { [key: string]: CommunityLevelType }
+  communityLevels: { [key: string]: CommunityLevelType },
 ): CommunityLevelType | null {
   if (!currentLevelKey) {
     return null;
@@ -50,7 +50,7 @@ function findPreviousLevel(
 // Function to find the next level
 function findNextLevel(
   currentLevelKey: string,
-  communityLevels: { [key: string]: CommunityLevelType }
+  communityLevels: { [key: string]: CommunityLevelType },
 ): CommunityLevelType | null {
   if (!currentLevelKey) {
     return null;

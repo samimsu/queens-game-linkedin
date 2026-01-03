@@ -1,6 +1,6 @@
 export async function getSolutions(
   board: string[][],
-  onSolutionFound?: (solution: number[][]) => Promise<boolean>
+  onSolutionFound?: (solution: number[][]) => Promise<boolean>,
 ) {
   const N = board.length;
   const solutions = [];
