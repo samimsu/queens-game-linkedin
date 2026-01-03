@@ -29,6 +29,7 @@ import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import Tag from "../Tag";
 import { communityLevels } from "@/utils/communityLevels";
+import { getCommunityLevelTimeRecords } from "@/utils/localStorage";
 import {
   altoMain,
   anakiwa,
@@ -130,7 +131,9 @@ const CommunityLevel = ({
     showInstructions,
     showClock,
     autoPlaceXs,
+    resetButtonResetsTimer,
     timerRunning,
+    timerResetKey,
     completed,
     history,
     setBoard,
@@ -140,17 +143,21 @@ const CommunityLevel = ({
     handleSquareClick,
     handleDrag,
     handleUndo,
+    handleReset,
     handleTimeUpdate,
     toggleClashingQueens,
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    toggleResetButtonResetsTimer,
   } = useGameLogic({
     id,
     boardSize,
     colorRegions,
     levelType: "community",
   });
+
+  const timeRecords = getCommunityLevelTimeRecords(id);
 
   const getRandomLevel = (): CommunityLevelType | null => {
     const levelKeys = Object.keys(communityLevels);
@@ -284,7 +291,14 @@ const CommunityLevel = ({
   };
 
   return (
-    <div key={id} className="flex flex-col justify-center items-center pt-4">
+    <div key={id} className="flex flex-col justify-center items-center pt-2">
+      <div className="flex justify-between items-center mb-1">
+        <div className="flex items-center">
+          {level.solutionsCount > 1 && (
+          <Tag>{t("MULTIPLE_SOLUTIONS")}</Tag>
+          )}
+        </div>
+      </div>
       <div className="flex flex-col items-center">
         <div>
           <div
@@ -322,12 +336,7 @@ const CommunityLevel = ({
                   {<Shuffle size="18" />}
                 </RandomLevelButton>
                 <button
-                  onClick={() => {
-                    setBoard(createEmptyBoard(levelSize));
-                    setHasWon(false);
-                    setShowWinningScreen(false);
-                    history.current = [];
-                  }}
+                  onClick={handleReset}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >
                   <ResetIcon size="18" />
@@ -341,23 +350,24 @@ const CommunityLevel = ({
                   toggleShowClock={toggleShowClock}
                   autoPlaceXs={autoPlaceXs}
                   toggleAutoPlaceXs={toggleAutoPlaceXs}
+                  resetButtonResetsTimer={resetButtonResetsTimer}
+                  toggleResetButtonResetsTimer={toggleResetButtonResetsTimer}
                 />
               </div>
             </div>
           </div>
 
-          <div
-            className={`flex mb-1 ${
-              level.solutionsCount > 1 ? "justify-between" : "justify-end"
-            }`}
-          >
-            {level.solutionsCount > 1 && <Tag>{t("MULTIPLE_SOLUTIONS")}</Tag>}
-            <Timer
-              run={timerRunning}
-              onTimeUpdate={handleTimeUpdate}
-              showTimer={showClock}
-            />
-          </div>
+          {showClock && (
+            <div className="flex justify-end mb-1">
+              <Timer
+                key={timerResetKey}
+                run={timerRunning}
+                onTimeUpdate={handleTimeUpdate}
+                showTimer={showClock}
+                timeRecords={timeRecords}
+              />
+            </div>
+          )}
 
           <div className="game relative flex justify-center">
             {showWinningScreen && (
@@ -389,15 +399,15 @@ const CommunityLevel = ({
             />
           </div>
 
-          <div className="flex justify-between items-center mt-2">
+          <div className="flex flex-col gap-2 mt-2">
             <Button
-              className="border border-slate-500 rounded-full py-2 px-10 mr-4"
+              className="border border-slate-500 rounded-full py-3 px-4 w-full"
               onClick={handleUndo}
               disabled={hasWon || !history.current.length}
             >
               {t("UNDO")}
             </Button>
-            <div className="flex space-x-2 mr-4">
+            <div className="flex justify-end gap-2">
               <button
                 className="border border-slate-500 rounded-full p-2 disabled:opacity-50"
                 onClick={handleZoomIn}
@@ -422,17 +432,13 @@ const CommunityLevel = ({
               >
                 <RotateCcw size="18" />
               </button>
-            </div>
-            <div className="flex gap-2">
-              <div>
-                <button
-                  onClick={handleRegionLettersToggle}
-                  className="border border-slate-500 rounded-full p-2"
-                  title={t("SHOW_HIDE_LETTERS")}
-                >
-                  <CaseUpper size="18" />
-                </button>
-              </div>
+              <button
+                onClick={handleRegionLettersToggle}
+                className="border border-slate-500 rounded-full p-2"
+                title={t("SHOW_HIDE_LETTERS")}
+              >
+                <CaseUpper size="18" />
+              </button>
               <div className="relative">
                 <button
                   onClick={handleColorSchemeToggle}

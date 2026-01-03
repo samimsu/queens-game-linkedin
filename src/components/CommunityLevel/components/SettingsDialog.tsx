@@ -18,6 +18,8 @@ interface SettingsDialogProps {
   toggleAutoPlaceXs: (checked: boolean) => void;
   showClock: boolean;
   toggleShowClock: (checked: boolean) => void;
+  resetButtonResetsTimer: boolean;
+  toggleResetButtonResetsTimer: (checked: boolean) => void;
 }
 
 const SettingsDialog: React.FC<SettingsDialogProps> = ({
@@ -29,6 +31,8 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
   toggleAutoPlaceXs,
   showClock,
   toggleShowClock,
+  resetButtonResetsTimer,
+  toggleResetButtonResetsTimer,
 }) => {
   const { t } = useTranslation();
 
@@ -43,10 +47,17 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
         <DialogHeader>
           <DialogTitle className="mb-2">{t("SETTINGS")}</DialogTitle>
         </DialogHeader>
-        <div className="space-y-1 h-40">
+        <div className="space-y-1 h-48">
           <div className="flex items-center justify-between space-x-3">
             <div>{t("SHOW_CLOCK")}</div>
             <Switch checked={showClock} onCheckedChange={toggleShowClock} />
+          </div>
+          <div className="flex items-center justify-between space-x-3">
+            <div>{t("RESET_BUTTON_RESETS_TIMER")}</div>
+            <Switch
+              checked={resetButtonResetsTimer}
+              onCheckedChange={toggleResetButtonResetsTimer}
+            />
           </div>
           <div className="flex items-center justify-between space-x-3">
             <div>{t("AUTO_PLACE_XS")}</div>
