@@ -40,7 +40,7 @@
     "@adobe/css-tools": "^4.3.1"
   },
   "scripts": {
-    "start": "vite --port 3001 --host",
+    "start": "vite --port 3000 --host",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",

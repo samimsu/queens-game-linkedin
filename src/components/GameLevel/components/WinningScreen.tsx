@@ -7,6 +7,12 @@ import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
 import { getLevelsBySize } from "@/utils/getAvailableLevels";
 
+interface TimeRecords {
+  first?: number;
+  best?: number;
+  last?: number;
+}
+
 interface LevelNavigationButtonProps {
   level: number | null;
   text: string;
@@ -38,6 +44,7 @@ interface WinningScreenProps {
     path: string;
   };
   level: string;
+  timeRecords?: TimeRecords;
   close: () => void;
 }
 
@@ -47,9 +54,11 @@ const WinningScreen = ({
   nextLevel,
   randomLink,
   level,
+  timeRecords,
   close,
 }: WinningScreenProps) => {
   const { t } = useTranslation();
+  const bestTime = timeRecords?.best;
 
   const isGroupedBySize = localStorage.getItem("groupBySize") === "true";
 
@@ -111,11 +120,17 @@ const WinningScreen = ({
           <img
             src={goldenChicletBg}
             alt="Golden chiclet background"
-            className="rounded w-full h-16 object-cover"
+            className="rounded w-full h-20 object-cover"
           />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">
-            <div className="text-lg">{formatDuration(timer)}</div>
-            <div className="font-medium text-sm">{t("SOLVE_TIME")}</div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black w-full px-2">
+            <div className="text-base font-medium">
+              {t("TIME")}: {formatDuration(timer)}
+            </div>
+            {bestTime !== undefined && (
+              <div className="text-base font-medium mt-1">
+                {t("BEST_TIME")}: {formatDuration(bestTime)}
+              </div>
+            )}
           </div>
         </div>
         <LevelNavigationButton

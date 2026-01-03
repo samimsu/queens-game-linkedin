@@ -3,6 +3,7 @@ import { createEmptyBoard } from "@/utils/board";
 import {
   getAutoPlaceXsPreference,
   getClashingQueensPreference,
+  getResetButtonResetsTimerPreference,
   getShowClockPreference,
   getShowInstructionsPreference,
   isBonusLevelCompleted,
@@ -13,6 +14,7 @@ import {
   markLevelAsCompleted,
   setAutoPlaceXsPreference,
   setClashingQueensPreference,
+  setResetButtonResetsTimerPreference,
   setShowClockPreference,
   setShowInstructionsPreference,
 } from "@/utils/localStorage";
@@ -50,7 +52,10 @@ const useGameLogic = ({
   const [autoPlaceXs, setAutoPlaceXs] = useState<boolean>(
     getAutoPlaceXsPreference
   );
+  const [resetButtonResetsTimer, setResetButtonResetsTimer] =
+    useState<boolean>(getResetButtonResetsTimerPreference);
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
+  const [timerResetKey, setTimerResetKey] = useState<number>(0);
 
   const history = useRef<{ row: number; col: number; symbol: string | null }[]>(
     []
@@ -141,18 +146,19 @@ const useGameLogic = ({
     if (checkWinCondition(newBoard, boardSize, colorRegions)) {
       if (!hasWon) {
         setTimeout(() => setShowWinningScreen(true), 0);
-      }
-      setHasWon(true);
-
-      if (id) {
-        if (isBonusLevel) {
-          markBonusLevelAsCompleted(id);
-        } else if (isCommunityLevel) {
-          markCommunityLevelAsCompleted(id);
-        } else {
-          markLevelAsCompleted(Number(id));
+        
+        // Save the completion time only when first winning in this session
+        if (id) {
+          if (isBonusLevel) {
+            markBonusLevelAsCompleted(id, timer);
+          } else if (isCommunityLevel) {
+            markCommunityLevelAsCompleted(id, timer);
+          } else {
+            markLevelAsCompleted(Number(id), timer);
+          }
         }
       }
+      setHasWon(true);
     } else {
       setHasWon(false);
       setShowWinningScreen(false);
@@ -339,6 +345,13 @@ const useGameLogic = ({
     setAutoPlaceXsPreference(newSetting);
   };
 
+  const toggleResetButtonResetsTimer = () => {
+    setResetButtonResetsTimer((prev: boolean) => {
+      setResetButtonResetsTimerPreference(!prev);
+      return !prev;
+    });
+  };
+
   const handleTimeUpdate = (time: number) => {
     setTimer(time);
   };
@@ -357,6 +370,19 @@ const useGameLogic = ({
       placeQueen(newBoard, latest.row, latest.col);
     }
     setBoard(newBoard);
+  };
+
+  const handleReset = () => {
+    setBoard(createEmptyBoard(boardSize));
+    setHasWon(false);
+    setShowWinningScreen(false);
+    
+    // Reset timer if the setting is enabled
+    if (resetButtonResetsTimer) {
+      setTimerResetKey((prev) => prev + 1);
+    }
+    
+    history.current = [];
   };
 
   useEffect(() => {
@@ -386,17 +412,21 @@ const useGameLogic = ({
     showInstructions,
     showClock,
     autoPlaceXs,
+    resetButtonResetsTimer,
     timerRunning,
     setTimerRunning,
+    timerResetKey,
     completed,
     history,
     handleSquareClick,
     handleDrag,
     handleUndo,
+    handleReset,
     toggleClashingQueens,
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    toggleResetButtonResetsTimer,
     handleTimeUpdate,
   };
 };
