@@ -100,6 +100,7 @@ const Board: React.FC<BoardProps> = ({
               showClashingQueens &&
               clashingQueens.has(`${rowIndex},${colIndex}`)
             }
+            onContextMenu={(e: React.MouseEvent) => {e.preventDefault();}} //prevents right click window from popping up
             data-row={rowIndex} // Add data attributes for touch handling
             data-col={colIndex}
             queenSize={(24 * zoomLevel).toString()}
