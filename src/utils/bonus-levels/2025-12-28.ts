@@ -41,7 +41,6 @@ const level = {
     J: altoMain,
     K: turquoiseBlue,
   },
-  isNew: true,
 };
 
 export default level;
