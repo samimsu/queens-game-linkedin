@@ -1,4 +1,4 @@
-export const markLevelAsCompleted = (levelNumber: number) => {
+export const markLevelAsCompleted = (levelNumber: number, timeInSeconds?: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedLevels") as string) || [];
 
@@ -6,9 +6,14 @@ export const markLevelAsCompleted = (levelNumber: number) => {
     completedLevels.push(levelNumber);
     localStorage.setItem("completedLevels", JSON.stringify(completedLevels));
   }
+
+  // Update time records if time is provided
+  if (timeInSeconds !== undefined) {
+    updateLevelTimeRecords(levelNumber, timeInSeconds);
+  }
 };
 
-export const markBonusLevelAsCompleted = (levelId: string) => {
+export const markBonusLevelAsCompleted = (levelId: string, timeInSeconds?: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedBonusLevels") as string) || [];
 
@@ -19,9 +24,14 @@ export const markBonusLevelAsCompleted = (levelId: string) => {
       JSON.stringify(completedLevels)
     );
   }
+
+  // Update time records if time is provided
+  if (timeInSeconds !== undefined) {
+    updateBonusLevelTimeRecords(levelId, timeInSeconds);
+  }
 };
 
-export const markCommunityLevelAsCompleted = (levelId: string) => {
+export const markCommunityLevelAsCompleted = (levelId: string, timeInSeconds?: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedCommunityLevels") as string) ||
     [];
@@ -32,6 +42,11 @@ export const markCommunityLevelAsCompleted = (levelId: string) => {
       "completedCommunityLevels",
       JSON.stringify(completedLevels)
     );
+  }
+
+  // Update time records if time is provided
+  if (timeInSeconds !== undefined) {
+    updateCommunityLevelTimeRecords(levelId, timeInSeconds);
   }
 };
 
@@ -90,6 +105,14 @@ export const setAutoPlaceXsPreference = (enabled: boolean) => {
 
 export const getAutoPlaceXsPreference = () => {
   return JSON.parse(localStorage.getItem("autoPlaceXs") as string) ?? false; // Default to false
+};
+
+export const setResetButtonResetsTimerPreference = (enabled: boolean) => {
+  localStorage.setItem("resetButtonResetsTimer", JSON.stringify(enabled));
+};
+
+export const getResetButtonResetsTimerPreference = () => {
+  return JSON.parse(localStorage.getItem("resetButtonResetsTimer") as string) ?? true; // Default to true
 };
 
 export const setGroupingPreference = (enabled: boolean) => {
@@ -180,4 +203,115 @@ export const getShowNotCompletedCommunityLevelsPreference = () => {
       localStorage.getItem("showNotCompletedCommunityLevels") as string
     ) ?? false
   ); // Default to false
+};
+
+// Time records management
+interface TimeRecords {
+  first?: number;  // First win time in seconds
+  best?: number;   // Best time in seconds
+  last?: number;   // Last attempt time in seconds
+}
+
+interface LevelTimeRecords {
+  [levelId: string]: TimeRecords;
+}
+
+// Regular levels time records
+const updateLevelTimeRecords = (levelNumber: number, timeInSeconds: number) => {
+  const records: LevelTimeRecords = JSON.parse(
+    localStorage.getItem("levelTimeRecords") as string
+  ) || {};
+  
+  const levelKey = String(levelNumber);
+  const currentRecords = records[levelKey] || {};
+  
+  // Set first time if not exists
+  if (currentRecords.first === undefined) {
+    currentRecords.first = timeInSeconds;
+  }
+  
+  // Update best time
+  if (currentRecords.best === undefined || timeInSeconds < currentRecords.best) {
+    currentRecords.best = timeInSeconds;
+  }
+  
+  // Update last time
+  currentRecords.last = timeInSeconds;
+  
+  records[levelKey] = currentRecords;
+  localStorage.setItem("levelTimeRecords", JSON.stringify(records));
+};
+
+export const getLevelTimeRecords = (levelNumber: number): TimeRecords => {
+  const records: LevelTimeRecords = JSON.parse(
+    localStorage.getItem("levelTimeRecords") as string
+  ) || {};
+  
+  return records[String(levelNumber)] || {};
+};
+
+// Bonus levels time records
+const updateBonusLevelTimeRecords = (levelId: string, timeInSeconds: number) => {
+  const records: LevelTimeRecords = JSON.parse(
+    localStorage.getItem("bonusLevelTimeRecords") as string
+  ) || {};
+  
+  const currentRecords = records[levelId] || {};
+  
+  // Set first time if not exists
+  if (currentRecords.first === undefined) {
+    currentRecords.first = timeInSeconds;
+  }
+  
+  // Update best time
+  if (currentRecords.best === undefined || timeInSeconds < currentRecords.best) {
+    currentRecords.best = timeInSeconds;
+  }
+  
+  // Update last time
+  currentRecords.last = timeInSeconds;
+  
+  records[levelId] = currentRecords;
+  localStorage.setItem("bonusLevelTimeRecords", JSON.stringify(records));
+};
+
+export const getBonusLevelTimeRecords = (levelId: string): TimeRecords => {
+  const records: LevelTimeRecords = JSON.parse(
+    localStorage.getItem("bonusLevelTimeRecords") as string
+  ) || {};
+  
+  return records[levelId] || {};
+};
+
+// Community levels time records
+const updateCommunityLevelTimeRecords = (levelId: string, timeInSeconds: number) => {
+  const records: LevelTimeRecords = JSON.parse(
+    localStorage.getItem("communityLevelTimeRecords") as string
+  ) || {};
+  
+  const currentRecords = records[levelId] || {};
+  
+  // Set first time if not exists
+  if (currentRecords.first === undefined) {
+    currentRecords.first = timeInSeconds;
+  }
+  
+  // Update best time
+  if (currentRecords.best === undefined || timeInSeconds < currentRecords.best) {
+    currentRecords.best = timeInSeconds;
+  }
+  
+  // Update last time
+  currentRecords.last = timeInSeconds;
+  
+  records[levelId] = currentRecords;
+  localStorage.setItem("communityLevelTimeRecords", JSON.stringify(records));
+};
+
+export const getCommunityLevelTimeRecords = (levelId: string): TimeRecords => {
+  const records: LevelTimeRecords = JSON.parse(
+    localStorage.getItem("communityLevelTimeRecords") as string
+  ) || {};
+  
+  return records[levelId] || {};
 };

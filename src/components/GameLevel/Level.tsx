@@ -21,6 +21,7 @@ import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
+import { getLevelTimeRecords } from "@/utils/localStorage";
 
 interface LevelProps {
   id: string;
@@ -52,7 +53,9 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
     showInstructions,
     showClock,
     autoPlaceXs,
+    resetButtonResetsTimer,
     timerRunning,
+    timerResetKey,
     completed,
     history,
     setBoard,
@@ -62,11 +65,13 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
     handleSquareClick,
     handleDrag,
     handleUndo,
+    handleReset,
     handleTimeUpdate,
     toggleClashingQueens,
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    toggleResetButtonResetsTimer,
   } = useGameLogic({
     id,
     boardSize,
@@ -87,6 +92,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
   };
 
   const randomLevel = useMemo(() => getRandomLevel(), [id]);
+  const timeRecords = getLevelTimeRecords(Number(id));
 
   const RandomLevelButton: React.FC<{
     children: React.ReactNode;
@@ -203,12 +209,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                   {<Shuffle size="18" />}
                 </RandomLevelButton>
                 <button
-                  onClick={() => {
-                    setBoard(createEmptyBoard(levelSize));
-                    setHasWon(false);
-                    setShowWinningScreen(false);
-                    history.current = [];
-                  }}
+                  onClick={handleReset}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >
                   <ResetIcon size="18" />
@@ -222,6 +223,8 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                   toggleShowClock={toggleShowClock}
                   autoPlaceXs={autoPlaceXs}
                   toggleAutoPlaceXs={toggleAutoPlaceXs}
+                  resetButtonResetsTimer={resetButtonResetsTimer}
+                  toggleResetButtonResetsTimer={toggleResetButtonResetsTimer}
                 />
               </div>
             </div>
@@ -229,9 +232,11 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
 
           <div className="flex justify-end">
             <Timer
+              key={timerResetKey}
               run={timerRunning}
               onTimeUpdate={handleTimeUpdate}
               showTimer={showClock}
+              timeRecords={timeRecords}
             />
           </div>
 
@@ -243,6 +248,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                 nextLevel={nextLevel}
                 randomLink={{ path: `/level/${randomLevel}` || "" }}
                 level={id}
+                timeRecords={timeRecords}
                 close={() => setShowWinningScreen(false)}
               />
             )}

@@ -21,6 +21,7 @@ import useGameLogic from "@/hooks/useGameLogic";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import { bonusLevels } from "@/utils/bonusLevels";
+import { getBonusLevelTimeRecords } from "@/utils/localStorage";
 
 interface BonusLevelProps {
   id: string;
@@ -59,7 +60,9 @@ const BonusLevel = ({
     showInstructions,
     showClock,
     autoPlaceXs,
+    resetButtonResetsTimer,
     timerRunning,
+    timerResetKey,
     completed,
     history,
     setBoard,
@@ -69,17 +72,21 @@ const BonusLevel = ({
     handleSquareClick,
     handleDrag,
     handleUndo,
+    handleReset,
     handleTimeUpdate,
     toggleClashingQueens,
     toggleShowInstructions,
     toggleShowClock,
     toggleAutoPlaceXs,
+    toggleResetButtonResetsTimer,
   } = useGameLogic({
     id,
     boardSize,
     colorRegions,
     levelType: "bonus",
   });
+
+  const timeRecords = getBonusLevelTimeRecords(id);
 
   const getRandomLevel = (): BonusLevelType | null => {
     const levelKeys = Object.keys(bonusLevels);
@@ -214,12 +221,7 @@ const BonusLevel = ({
                   {<Shuffle size="18" />}
                 </RandomLevelButton>
                 <button
-                  onClick={() => {
-                    setBoard(createEmptyBoard(levelSize));
-                    setHasWon(false);
-                    setShowWinningScreen(false);
-                    history.current = [];
-                  }}
+                  onClick={handleReset}
                   className="border border-slate-500 rounded-full p-2 mr-2"
                 >
                   <ResetIcon size="18" />
@@ -233,6 +235,8 @@ const BonusLevel = ({
                   toggleShowClock={toggleShowClock}
                   autoPlaceXs={autoPlaceXs}
                   toggleAutoPlaceXs={toggleAutoPlaceXs}
+                  resetButtonResetsTimer={resetButtonResetsTimer}
+                  toggleResetButtonResetsTimer={toggleResetButtonResetsTimer}
                 />
               </div>
             </div>
@@ -240,9 +244,11 @@ const BonusLevel = ({
 
           <div className="flex justify-end">
             <Timer
+              key={timerResetKey}
               run={timerRunning}
               onTimeUpdate={handleTimeUpdate}
               showTimer={showClock}
+              timeRecords={timeRecords}
             />
           </div>
 
