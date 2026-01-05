@@ -1,16 +1,22 @@
 // @ts-ignore
-import AvailableLevelsFilter from './AvailableLevelsFilter'
-import CompletedLevelsSwitch from './CompletedLevelsSwitch'
+import AvailableLevelsFilter from "./AvailableLevelsFilter";
+import CompletedLevelsSwitch from "./CompletedLevelsSwitch";
 
 type LevelSelectionFiltersProps = {
-  availableLevelsChecked: boolean
-  completedLevelsChecked: boolean
-  availableLevelsDisabled: boolean
-  onAvailableLevelsChange: () => void
-  onCompletedLevelsChange: () => void
-}
+  availableLevelsChecked: boolean;
+  completedLevelsChecked: boolean;
+  availableLevelsDisabled: boolean;
+  onAvailableLevelsChange: () => void;
+  onCompletedLevelsChange: () => void;
+};
 
-const LevelSelectionFilters: React.FC<LevelSelectionFiltersProps> = ({ availableLevelsChecked, availableLevelsDisabled, completedLevelsChecked, onAvailableLevelsChange, onCompletedLevelsChange }) => {
+const LevelSelectionFilters: React.FC<LevelSelectionFiltersProps> = ({
+  availableLevelsChecked,
+  availableLevelsDisabled,
+  completedLevelsChecked,
+  onAvailableLevelsChange,
+  onCompletedLevelsChange,
+}) => {
   return (
     <div>
       <AvailableLevelsFilter

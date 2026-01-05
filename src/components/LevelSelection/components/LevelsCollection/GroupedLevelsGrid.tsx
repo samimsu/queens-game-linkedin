@@ -27,11 +27,11 @@ const GroupedLevelsGrid: React.FC<GroupedLevelsGridProps> = ({
           filterLevel(level, orderedLevels, {
             showOnlyAvailableLevels,
             hideCompletedLevels,
-          })
+          }),
         );
         return acc;
       },
-      {}
+      {},
     );
   }, [showOnlyAvailableLevels, hideCompletedLevels]);
 

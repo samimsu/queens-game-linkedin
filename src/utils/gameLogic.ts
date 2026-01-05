@@ -4,7 +4,7 @@ export const isSafeToPlaceQueen = (
   row: number,
   col: number,
   size: number,
-  colorRegions: string[][]
+  colorRegions: string[][],
 ) => {
   const region = colorRegions[row][col];
 
@@ -41,7 +41,7 @@ export const isSafeToPlaceQueen = (
 export const checkWinCondition = (
   board: string[][],
   size: number,
-  colorRegions: string[][]
+  colorRegions: string[][],
 ) => {
   let queensPerRow = Array(size).fill(0);
   let queensPerCol = Array(size).fill(0);
@@ -128,7 +128,7 @@ const hasAdjacent = (rowPositions: number[]) => {
 export const getClashingQueens = (
   board: string[][],
   size: number,
-  colorRegions: string[][]
+  colorRegions: string[][],
 ) => {
   const clashes = [];
   let queensPerRow = Array(size).fill(0);
@@ -191,7 +191,7 @@ export const getClashingQueens = (
 
   // Detect diagonal adjacency clashes
   const checkDiagonalClashes = (
-    diagonal: Record<number, { row: number; col: number }[]>
+    diagonal: Record<number, { row: number; col: number }[]>,
   ) => {
     Object.values(diagonal).forEach((positions) => {
       positions.forEach(({ row, col }, index) => {

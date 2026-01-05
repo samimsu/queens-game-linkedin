@@ -16,7 +16,7 @@ export const markBonusLevelAsCompleted = (levelId: string) => {
     completedLevels.push(levelId);
     localStorage.setItem(
       "completedBonusLevels",
-      JSON.stringify(completedLevels)
+      JSON.stringify(completedLevels),
     );
   }
 };
@@ -30,7 +30,7 @@ export const markCommunityLevelAsCompleted = (levelId: string) => {
     completedLevels.push(levelId);
     localStorage.setItem(
       "completedCommunityLevels",
-      JSON.stringify(completedLevels)
+      JSON.stringify(completedLevels),
     );
   }
 };
@@ -160,24 +160,24 @@ export const setShowCompletedCommunityLevelsPreference = (enabled: boolean) => {
 export const getShowCompletedCommunityLevelsPreference = () => {
   return (
     JSON.parse(
-      localStorage.getItem("showCompletedCommunityLevels") as string
+      localStorage.getItem("showCompletedCommunityLevels") as string,
     ) ?? false
   ); // Default to false
 };
 
 export const setShowNotCompletedCommunityLevelsPreference = (
-  enabled: boolean
+  enabled: boolean,
 ) => {
   localStorage.setItem(
     "showNotCompletedCommunityLevels",
-    JSON.stringify(enabled)
+    JSON.stringify(enabled),
   );
 };
 
 export const getShowNotCompletedCommunityLevelsPreference = () => {
   return (
     JSON.parse(
-      localStorage.getItem("showNotCompletedCommunityLevels") as string
+      localStorage.getItem("showNotCompletedCommunityLevels") as string,
     ) ?? false
   ); // Default to false
 };

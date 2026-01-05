@@ -1,13 +1,18 @@
 // Adapted from the implementation described here:
 // https://buttondown.com/hillelwayne/archive/solving-linkedin-queens-with-smt/
-export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solution: number[][]) => Promise<boolean>) {
-  const { init } = require('z3-solver');
+export async function getSolutionsSMT(
+  board: string[][],
+  onSolutionFound?: (solution: number[][]) => Promise<boolean>,
+) {
+  const { init } = require("z3-solver");
   const { Context } = await init();
-  const { Solver, And, Or, Distinct, Int } = new Context('main');
+  const { Solver, And, Or, Distinct, Int } = new Context("main");
   const solver = new Solver();
-  const queens = Array.from({length: board.length}, (_, i) => Int.const(`q${i}`))
+  const queens = Array.from({ length: board.length }, (_, i) =>
+    Int.const(`q${i}`),
+  );
   for (let i = 0; i < board.length; i++) {
-    solver.add(And(queens[i].ge( 0), queens[i].lt(board.length)));
+    solver.add(And(queens[i].ge(0), queens[i].lt(board.length)));
   }
 
   for (let i = 0; i < board.length - 1; i++) {
@@ -16,7 +21,7 @@ export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solu
     solver.add(And(q1.sub(q2).neq(1), q2.sub(q1).neq(1)));
   }
 
-  const regions = new Map<string, {row: number; col: number;}[]>();
+  const regions = new Map<string, { row: number; col: number }[]>();
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       const color = board[i][j];
@@ -34,14 +39,13 @@ export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solu
   solver.add(Distinct(...queens));
   const checkResult = await solver.check();
 
-  if (checkResult.toString() === 'sat') {
+  if (checkResult.toString() === "sat") {
     const model = solver.model();
     const solutions: number[][][] = [];
 
-
     const solution: number[][] = [];
     for (let i = 0; i < board.length; i++) {
-      const row =  Number(model.get(queens[i]).value());
+      const row = Number(model.get(queens[i]).value());
       solution.push([i, row]);
     }
 
@@ -54,10 +58,12 @@ export async function getSolutionsSMT(board: string[][], onSolutionFound?: (solu
     while (true) {
       // Block the current solution
       const model = solver.model();
-      const notSame = Or(...solution.map(([i]) => model.get(queens[i]).neq(queens[i])));
+      const notSame = Or(
+        ...solution.map(([i]) => model.get(queens[i]).neq(queens[i])),
+      );
       solver.add(notSame);
       const nextCheckResult = await solver.check();
-      if (nextCheckResult.toString() !== 'sat') {
+      if (nextCheckResult.toString() !== "sat") {
         break; // No more solutions
       }
 

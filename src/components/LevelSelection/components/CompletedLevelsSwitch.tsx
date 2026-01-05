@@ -3,12 +3,16 @@ import { useTranslation } from "react-i18next";
 import { Switch } from "@/components/ui/switch";
 
 type CompletedLevelsSwitchProps = {
-  checked: boolean
-  disabled: boolean
-  onCheckedChange: () => void
-}
+  checked: boolean;
+  disabled: boolean;
+  onCheckedChange: () => void;
+};
 
-const CompletedLevelsSwitch: React.FC<CompletedLevelsSwitchProps> = ({ checked, disabled, onCheckedChange }) => {
+const CompletedLevelsSwitch: React.FC<CompletedLevelsSwitchProps> = ({
+  checked,
+  disabled,
+  onCheckedChange,
+}) => {
   const { t } = useTranslation();
   return (
     <div

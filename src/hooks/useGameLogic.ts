@@ -41,32 +41,32 @@ const useGameLogic = ({
   const [showWinningScreen, setShowWinningScreen] = useState(false);
   const [clashingQueens, setClashingQueens] = useState<Set<string>>(new Set());
   const [showClashingQueens, setShowClashingQueens] = useState<boolean>(
-    getClashingQueensPreference
+    getClashingQueensPreference,
   );
   const [showInstructions, setShowInstructions] = useState<boolean>(
-    getShowInstructionsPreference
+    getShowInstructionsPreference,
   );
   const [showClock, setShowClock] = useState<boolean>(getShowClockPreference);
   const [autoPlaceXs, setAutoPlaceXs] = useState<boolean>(
-    getAutoPlaceXsPreference
+    getAutoPlaceXsPreference,
   );
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
   const history = useRef<{ row: number; col: number; symbol: string | null }[]>(
-    []
+    [],
   );
   const completed = id
     ? isBonusLevel
       ? isBonusLevelCompleted(id)
       : isCommunityLevel
-      ? isCommunityLevelCompleted(id)
-      : isLevelCompleted(Number(id))
+        ? isCommunityLevelCompleted(id)
+        : isLevelCompleted(Number(id))
     : false;
 
   const getQueenPositionForGivenX = (
     xRow: number,
     xCol: number,
-    newBoard: (string | null)[][]
+    newBoard: (string | null)[][],
   ) => {
     const directions = [
       [-1, 0],
@@ -162,10 +162,10 @@ const useGameLogic = ({
     const clashingPositions = getClashingQueens(
       newBoard,
       boardSize,
-      colorRegions
+      colorRegions,
     );
     const clashingSet = new Set(
-      clashingPositions.map(({ row, col }) => `${row},${col}`)
+      clashingPositions.map(({ row, col }) => `${row},${col}`),
     );
     setClashingQueens(clashingSet);
 
@@ -186,7 +186,7 @@ const useGameLogic = ({
   const placeQueen = (
     newBoard: (string | null)[][],
     row: number,
-    col: number
+    col: number,
   ) => {
     newBoard[row][col] = "Q"; // Place the queen
 
@@ -263,7 +263,7 @@ const useGameLogic = ({
   const removeQueen = (
     newBoard: (string | null)[][],
     row: number,
-    col: number
+    col: number,
   ) => {
     newBoard[row][col] = null; // Remove the queen
 
@@ -368,7 +368,7 @@ const useGameLogic = ({
     // Update clashing queens
     const clashingPositions = getClashingQueens(board, boardSize, colorRegions);
     const clashingSet = new Set(
-      clashingPositions.map(({ row, col }) => `${row},${col}`)
+      clashingPositions.map(({ row, col }) => `${row},${col}`),
     );
     setClashingQueens(clashingSet);
   }, [board]);

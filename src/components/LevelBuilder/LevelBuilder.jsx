@@ -85,7 +85,7 @@ const LevelBuilder = () => {
       { name: t("COLOR.SAHARA_SAND"), value: saharaSand },
       { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
     ],
-    []
+    [],
   );
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
@@ -105,8 +105,8 @@ const LevelBuilder = () => {
 
   const [regionColors, setRegionColors] = useState(
     Object.fromEntries(
-      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
-    )
+      regionKeys.split("").map((key) => [key, initialRegionColors[key]]),
+    ),
   );
   const [jsCode, setJsCode] = useState("");
   const [copied, setCopied] = useState("");
@@ -144,8 +144,8 @@ const LevelBuilder = () => {
       Object.fromEntries(
         updatedRegionKeys
           .split("")
-          .map((key) => [key, initialRegionColors[key]])
-      )
+          .map((key) => [key, initialRegionColors[key]]),
+      ),
     );
   };
 
@@ -166,7 +166,7 @@ const LevelBuilder = () => {
           return newDragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -190,7 +190,7 @@ const LevelBuilder = () => {
           return dragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -239,7 +239,7 @@ const LevelBuilder = () => {
       formData.createdBy,
       formData.personalLink,
       null,
-      submitVia
+      submitVia,
     );
 
     // Validate board for emptiness, completeness, and color usage
@@ -251,7 +251,7 @@ const LevelBuilder = () => {
       const isEmpty = board.every((row) =>
         row.every((cell) => {
           return !cell;
-        })
+        }),
       );
       if (isEmpty) {
         newErrors.level = "Board cannot be empty";
@@ -265,7 +265,7 @@ const LevelBuilder = () => {
         } else {
           // Check if board uses all colors (number of unique regions should equal board size)
           const uniqueRegions = new Set(
-            board.flat().filter((cell) => cell !== null)
+            board.flat().filter((cell) => cell !== null),
           );
           const boardSize = board.length; // Assuming rectangular board
           if (uniqueRegions.size !== boardSize) {
@@ -320,7 +320,7 @@ const LevelBuilder = () => {
 
   const createEmailEncodedContent = () => {
     const subject = encodeURIComponent(
-      `Level Submission: ${formData.levelType} by ${formData.createdBy}`
+      `Level Submission: ${formData.levelType} by ${formData.createdBy}`,
     );
 
     let body = encodeURIComponent(
@@ -333,7 +333,7 @@ const LevelBuilder = () => {
         `Colors:\n${Object.entries(regionColors)
           .map(([region, color]) => `${region}: ${colorNames[color]}`)
           .join(", ")}\n\n` +
-        `Submitted via: Form Email Submission`
+        `Submitted via: Form Email Submission`,
     );
 
     return `mailto:mohammadsamimsu@gmail.com?subject=${subject}&body=${body}`;
@@ -372,7 +372,7 @@ const LevelBuilder = () => {
         `### Level\n\`\`\`\n${formData.level}\n\`\`\``;
 
       const discussionURL = `https://github.com/${GITHUB_REPO}/discussions/new?category=levels&title=${encodeURIComponent(
-        `Level Submission: ${formData.levelType} by ${formData.createdBy}`
+        `Level Submission: ${formData.levelType} by ${formData.createdBy}`,
       )}&body=${encodeURIComponent(discussionBody)}`;
 
       // Open GitHub discussion creation page in a new tab
@@ -382,7 +382,7 @@ const LevelBuilder = () => {
     } catch (error) {
       console.error("Error creating GitHub issue:", error);
       alert(
-        "Could not create GitHub issue. Please try again or contact support."
+        "Could not create GitHub issue. Please try again or contact support.",
       );
       setIsSubmitting(false);
     }
@@ -423,7 +423,7 @@ const LevelBuilder = () => {
       (err) => {
         console.error("Could not copy text: ", err);
         alert("Failed to copy email details. Please try again.");
-      }
+      },
     );
   };
 
@@ -497,7 +497,7 @@ const LevelBuilder = () => {
                     <div className="mb-3">
                       <TestLevelDialog
                         disabled={board.some((row) =>
-                          row.some((cell) => !cell)
+                          row.some((cell) => !cell),
                         )}
                         level={{
                           size: boardSize,

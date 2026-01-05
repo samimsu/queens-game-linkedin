@@ -112,7 +112,7 @@ const CommunityLevel = ({
     const alternateKeys = Object.keys(alternateRegionColors);
     if (defaultKeys.length !== alternateKeys.length) return false;
     return defaultKeys.every(
-      (key) => defaultRegionColors[key] === alternateRegionColors[key]
+      (key) => defaultRegionColors[key] === alternateRegionColors[key],
     );
   }, [defaultRegionColors, alternateRegionColors]);
 

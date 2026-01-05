@@ -44,10 +44,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "ptr:c": "npx prettier ./src --check",
-    "ptr:w": "npx prettier ./src --write",
-    "ptr:c:levels": "npx prettier ./src/utils/levels --check",
-    "ptr:w:levels": "npx prettier ./src/utils/levels --write"
+    "ptr:c": "prettier ./src --check",
+    "ptr:w": "prettier ./src --write",
+    "ptr:c:levels": "prettier ./src/utils/levels --check",
+    "ptr:w:levels": "prettier ./src/utils/levels --write"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +67,11 @@
       "last 1 safari version"
     ]
   },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "all"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -78,6 +83,7 @@
     "autoprefixer": "^10.4.20",
     "jsdom": "^22.1.0",
     "postcss": "^8.4.47",
+    "prettier": "^3.6.2",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.8.3",
     "vite": "^4.5.5",
