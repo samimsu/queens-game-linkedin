@@ -4,7 +4,7 @@ import RootLayout from "@/layouts/RootLayout";
 import PageTitle from "@/components/PageTitle";
 import { Button } from "@/components/ui/button";
 import { queensGameRepoNewIssue } from "@/data/links";
-import { trackEvent } from "@/utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "@/utils/analytics";
 
 interface PageLevelNotFoundProps {
   level: string | undefined;
@@ -29,7 +29,7 @@ const PageLevelNotFound = ({ level }: PageLevelNotFoundProps) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
-                trackEvent("click_external_link", {
+                trackEvent(ANALYTICS_EVENTS.CLICK_EXTERNAL_LINK, {
                   link_url: queensGameRepoNewIssue,
                   link_name: "report_issue",
                 })

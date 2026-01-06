@@ -21,7 +21,7 @@ import useGameLogic from "@/hooks/useGameLogic";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import { bonusLevels } from "@/utils/bonusLevels";
-import { trackEvent } from "../../utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "../../utils/analytics";
 
 interface BonusLevelProps {
   id: string;
@@ -177,12 +177,15 @@ const BonusLevel = ({
   }, [isVisible, hasWon]);
 
   useEffect(() => {
-    trackEvent("level_start", { level_name: id, level_type: "bonus" });
+    trackEvent(ANALYTICS_EVENTS.LEVEL_START, {
+      level_name: id,
+      level_type: "bonus",
+    });
   }, [id]);
 
   useEffect(() => {
     if (hasWon) {
-      trackEvent("level_end", {
+      trackEvent(ANALYTICS_EVENTS.LEVEL_END, {
         level_name: id,
         level_type: "bonus",
         success: true,
@@ -231,7 +234,7 @@ const BonusLevel = ({
                 </RandomLevelButton>
                 <button
                   onClick={() => {
-                    trackEvent("level_reset", {
+                    trackEvent(ANALYTICS_EVENTS.LEVEL_RESET, {
                       level_name: id,
                       level_type: "bonus",
                     });

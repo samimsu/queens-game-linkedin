@@ -1,7 +1,7 @@
 import GithubStarButton from "./GithubStarButton";
 import { portfolioSite } from "@/data/links";
 import { useTranslation } from "react-i18next";
-import { trackEvent } from "@/utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "@/utils/analytics";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="underline font-medium"
             onClick={() =>
-              trackEvent("click_external_link", {
+              trackEvent(ANALYTICS_EVENTS.CLICK_EXTERNAL_LINK, {
                 link_url: portfolioSite,
                 link_name: "portfolio",
               })

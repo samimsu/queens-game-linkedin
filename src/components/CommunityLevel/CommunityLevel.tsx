@@ -48,7 +48,7 @@ import {
   saharaSand,
   turquoiseBlue,
 } from "@/utils/colors";
-import { trackEvent } from "../../utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "../../utils/analytics";
 
 interface CommunityLevelProps {
   id: string;
@@ -255,12 +255,15 @@ const CommunityLevel = ({
   }, [isVisible, hasWon]);
 
   useEffect(() => {
-    trackEvent("level_start", { level_name: id, level_type: "community" });
+    trackEvent(ANALYTICS_EVENTS.LEVEL_START, {
+      level_name: id,
+      level_type: "community",
+    });
   }, [id]);
 
   useEffect(() => {
     if (hasWon) {
-      trackEvent("level_end", {
+      trackEvent(ANALYTICS_EVENTS.LEVEL_END, {
         level_name: id,
         level_type: "community",
         success: true,
@@ -339,7 +342,7 @@ const CommunityLevel = ({
                 </RandomLevelButton>
                 <button
                   onClick={() => {
-                    trackEvent("level_reset", {
+                    trackEvent(ANALYTICS_EVENTS.LEVEL_RESET, {
                       level_name: id,
                       level_type: "community",
                     });

@@ -6,7 +6,7 @@ import CommunityLevel from "@/components/CommunityLevel/CommunityLevel";
 import { communityLevels } from "@/utils/communityLevels";
 import { CommunityLevel as CommunityLevelType } from "@/utils/types";
 import PageNotFound from "./PageNotFound";
-import { trackEvent } from "@/utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "@/utils/analytics";
 
 // Function to parse the ID and find the current level
 function findLevelById(
@@ -105,7 +105,7 @@ const PageCommunityLevel = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
-              trackEvent("click_external_link", {
+              trackEvent(ANALYTICS_EVENTS.CLICK_EXTERNAL_LINK, {
                 link_url: creatorLink,
                 link_name: "community_level_creator",
                 level_id: id,

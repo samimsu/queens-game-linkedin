@@ -1,6 +1,6 @@
 import DiscordIcon from "@/components/icons/DiscordIcon";
 import { discord } from "@/data/links";
-import { trackEvent } from "@/utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "@/utils/analytics";
 
 const DiscordButton = () => {
   return (
@@ -10,7 +10,7 @@ const DiscordButton = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() =>
-          trackEvent("click_external_link", {
+          trackEvent(ANALYTICS_EVENTS.CLICK_EXTERNAL_LINK, {
             link_url: discord,
             link_name: "discord",
           })

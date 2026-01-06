@@ -21,7 +21,7 @@ import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
-import { trackEvent } from "../../utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "../../utils/analytics";
 
 interface LevelProps {
   id: string;
@@ -164,12 +164,15 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
   }, [isVisible, hasWon]);
 
   useEffect(() => {
-    trackEvent("level_start", { level_name: id, level_type: "standard" });
+    trackEvent(ANALYTICS_EVENTS.LEVEL_START, {
+      level_name: id,
+      level_type: "standard",
+    });
   }, [id]);
 
   useEffect(() => {
     if (hasWon) {
-      trackEvent("level_end", {
+      trackEvent(ANALYTICS_EVENTS.LEVEL_END, {
         level_name: id,
         level_type: "standard",
         success: true,
@@ -220,7 +223,7 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                 </RandomLevelButton>
                 <button
                   onClick={() => {
-                    trackEvent("level_reset", {
+                    trackEvent(ANALYTICS_EVENTS.LEVEL_RESET, {
                       level_name: id,
                       level_type: "standard",
                     });

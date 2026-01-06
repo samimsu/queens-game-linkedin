@@ -1,7 +1,7 @@
 import React from "react";
 import { officialLinkedInQueensGamePage } from "@/data/links";
 import { useTranslation } from "react-i18next";
-import { trackEvent } from "@/utils/analytics";
+import { trackEvent, ANALYTICS_EVENTS } from "@/utils/analytics";
 
 const LinkedInIcon = ({ className = "" }) => {
   return (
@@ -26,7 +26,7 @@ const LinkedInNote = ({ className = "" }) => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() =>
-          trackEvent("click_external_link", {
+          trackEvent(ANALYTICS_EVENTS.CLICK_EXTERNAL_LINK, {
             link_url: officialLinkedInQueensGamePage,
             link_name: "linkedin_official_page",
           })
