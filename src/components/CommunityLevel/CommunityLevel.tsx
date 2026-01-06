@@ -19,7 +19,6 @@ import NextIcon from "../icons/NextIcon";
 import ResetIcon from "../icons/ResetIcon";
 import WinningScreen from "./components/WinningScreen";
 import Queen from "../Queen";
-import HowToPlay from "./components/HowToPlay";
 import SettingsDialog from "./components/SettingsDialog";
 import Timer from "./components/Timer";
 import Button from "../Button";
@@ -476,8 +475,6 @@ const CommunityLevel = ({
             </div>
           </div>
         </div>
-
-        {showInstructions && <HowToPlay />}
 
         <div className="w-full px-2">
           <Giscus

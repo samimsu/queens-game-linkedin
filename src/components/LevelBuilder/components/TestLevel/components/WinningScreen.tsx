@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import CloseIcon from "@/components/icons/CloseIcon";
-import goldCrown from "@/assets/gold-crown.svg";
 
 interface WinningScreenProps {
   close: () => void;
@@ -14,13 +13,6 @@ const WinningScreen = ({ close }: WinningScreenProps) => {
       <button className="absolute right-3 top-3" onClick={close}>
         <CloseIcon />
       </button>
-      <img
-        src={goldCrown}
-        alt="Crown"
-        className="align-items-center mb-3"
-        width="64"
-        height="64"
-      />
       <div className="text-2xl mb-6">{t("YOU_WIN")}</div>
 
       <div className="flex flex-col space-y-3"></div>

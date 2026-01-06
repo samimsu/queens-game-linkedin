@@ -59,13 +59,6 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
               onCheckedChange={toggleShowClashingQueens}
             />
           </div>
-          <div className="flex items-center justify-between space-x-3">
-            <div>{t("SHOW_INSTRUCTIONS")}</div>
-            <Switch
-              checked={showInstructions}
-              onCheckedChange={toggleShowInstructions}
-            />
-          </div>
         </div>
       </DialogContent>
     </Dialog>

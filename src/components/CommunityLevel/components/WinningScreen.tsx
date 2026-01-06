@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Shuffle } from "lucide-react";
 import CloseIcon from "@/components/icons/CloseIcon";
-import goldCrown from "@/assets/gold-crown.svg";
 import goldenChicletBg from "@/assets/golden-chiclet-bg.svg";
 import formatDuration from "@/utils/formatDuration";
 
@@ -36,13 +35,6 @@ const WinningScreen = ({
       <button className="absolute right-3 top-3" onClick={close}>
         <CloseIcon />
       </button>
-      <img
-        src={goldCrown}
-        alt="Crown"
-        className="align-items-center mb-1"
-        width="52"
-        height="52"
-      />
       <div className="text-xl mb-3">{t("YOU_WIN")}</div>
 
       <div className="flex flex-col space-y-3">
