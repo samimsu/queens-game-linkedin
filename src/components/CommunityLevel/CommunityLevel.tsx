@@ -478,7 +478,7 @@ const CommunityLevel = ({
 
         <div className="w-full px-2">
           <Giscus
-            repo="samimsu/queens-game-linkedin"
+            repo="samimsu/queens-game"
             repoId="R_kgDONCfeAg"
             category="Announcements"
             categoryId="DIC_kwDONCfeAs4CnIas"
