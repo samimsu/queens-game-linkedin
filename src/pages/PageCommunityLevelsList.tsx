@@ -96,14 +96,16 @@ const PageCommunityLevelsList = () => {
   return (
     <RootLayout>
       <PageTitle title={t("COMMUNITY_LEVELS")} />
-      <div className="mb-2 px-1 sm:px-4 max-w-[600px] text-sm w-full mx-auto p-3 bg-[#eff6ff] text-[#1c398e] font-semibold border border-[#1c398e] rounded-md mb-8">
-        <p>
-          We have updated our level library to focus exclusively on original,
-          community-contributed content. As part of this transition, previous
-          archival levels have been removed. We are committed to respecting
-          intellectual property rights and providing a unique platform for
-          puzzle enthusiasts.
-        </p>
+      <div className="px-4">
+        <div className="max-w-[600px] text-sm w-full sm:mx-auto p-3 bg-[#eff6ff] text-[#1c398e] font-semibold border border-[#1c398e] rounded-md mt-8 mb-8">
+          <p>
+            We have updated our level library to focus exclusively on original,
+            community-contributed content. As part of this transition, previous
+            archival levels have been removed. We are committed to respecting
+            intellectual property rights and providing a unique platform for
+            puzzle enthusiasts.
+          </p>
+        </div>
       </div>
       <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 sm:px-0 max-w-[348px] sm:max-w-[436px] text-sm w-full mx-auto">
         {t("DISCOVER_AND_BUILD_COMMUNITY_LEVELS")}{" "}
