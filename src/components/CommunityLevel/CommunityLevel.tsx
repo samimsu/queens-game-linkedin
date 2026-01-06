@@ -48,6 +48,7 @@ import {
   saharaSand,
   turquoiseBlue,
 } from "@/utils/colors";
+import { trackEvent } from "../../utils/analytics";
 
 interface CommunityLevelProps {
   id: string;
@@ -253,6 +254,21 @@ const CommunityLevel = ({
     }
   }, [isVisible, hasWon]);
 
+  useEffect(() => {
+    trackEvent("level_start", { level_name: id, level_type: "community" });
+  }, [id]);
+
+  useEffect(() => {
+    if (hasWon) {
+      trackEvent("level_end", {
+        level_name: id,
+        level_type: "community",
+        success: true,
+        time_taken: timer,
+      });
+    }
+  }, [hasWon, id, timer]);
+
   const handleZoomIn = () => {
     setZoomLevel((prevZoom) => Math.min(prevZoom + 0.1, 1.5));
   };
@@ -323,6 +339,10 @@ const CommunityLevel = ({
                 </RandomLevelButton>
                 <button
                   onClick={() => {
+                    trackEvent("level_reset", {
+                      level_name: id,
+                      level_type: "community",
+                    });
                     setBoard(createEmptyBoard(levelSize));
                     setHasWon(false);
                     setShowWinningScreen(false);

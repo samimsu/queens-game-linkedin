@@ -21,6 +21,7 @@ import useGameLogic from "@/hooks/useGameLogic";
 import { BonusLevel as BonusLevelType } from "@/utils/types";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
 import { bonusLevels } from "@/utils/bonusLevels";
+import { trackEvent } from "../../utils/analytics";
 
 interface BonusLevelProps {
   id: string;
@@ -175,6 +176,21 @@ const BonusLevel = ({
     }
   }, [isVisible, hasWon]);
 
+  useEffect(() => {
+    trackEvent("level_start", { level_name: id, level_type: "bonus" });
+  }, [id]);
+
+  useEffect(() => {
+    if (hasWon) {
+      trackEvent("level_end", {
+        level_name: id,
+        level_type: "bonus",
+        success: true,
+        time_taken: timer,
+      });
+    }
+  }, [hasWon, id, timer]);
+
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
@@ -215,6 +231,10 @@ const BonusLevel = ({
                 </RandomLevelButton>
                 <button
                   onClick={() => {
+                    trackEvent("level_reset", {
+                      level_name: id,
+                      level_type: "bonus",
+                    });
                     setBoard(createEmptyBoard(levelSize));
                     setHasWon(false);
                     setShowWinningScreen(false);

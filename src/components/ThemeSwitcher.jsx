@@ -3,6 +3,8 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, ChevronLeft, Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import { trackEvent } from "../utils/analytics";
+
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +16,10 @@ const ThemeSwitcher = () => {
   const handleThemeChange = (themeName) => {
     setTheme(themeName);
     setIsOpen(false); // Close after selection
+    trackEvent("select_content", {
+      content_type: "theme",
+      item_id: themeName,
+    });
   };
 
   // Handle click outside

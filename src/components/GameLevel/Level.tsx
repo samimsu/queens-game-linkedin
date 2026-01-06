@@ -21,6 +21,7 @@ import Button from "../Button";
 import useVisibility from "../../hooks/useVisibility";
 import useGameLogic from "@/hooks/useGameLogic";
 import { getGiscusLanguage } from "@/utils/getGiscusLanguage";
+import { trackEvent } from "../../utils/analytics";
 
 interface LevelProps {
   id: string;
@@ -162,6 +163,21 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
     }
   }, [isVisible, hasWon]);
 
+  useEffect(() => {
+    trackEvent("level_start", { level_name: id, level_type: "standard" });
+  }, [id]);
+
+  useEffect(() => {
+    if (hasWon) {
+      trackEvent("level_end", {
+        level_name: id,
+        level_type: "standard",
+        success: true,
+        time_taken: timer,
+      });
+    }
+  }, [hasWon, id, timer]);
+
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
       <div className="flex flex-col items-center">
@@ -204,6 +220,10 @@ const Level: React.FC<LevelProps> = ({ id, level }) => {
                 </RandomLevelButton>
                 <button
                   onClick={() => {
+                    trackEvent("level_reset", {
+                      level_name: id,
+                      level_type: "standard",
+                    });
                     setBoard(createEmptyBoard(levelSize));
                     setHasWon(false);
                     setShowWinningScreen(false);
