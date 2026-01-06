@@ -5,14 +5,6 @@ export interface Level {
   isNew?: boolean;
 }
 
-export interface BonusLevel {
-  path: string;
-  size: number;
-  colorRegions: string[][];
-  regionColors: { [key: string]: string };
-  isNew?: boolean;
-}
-
 export interface CommunityLevel {
   path: string;
   size: number;

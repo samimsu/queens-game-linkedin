@@ -8,19 +8,6 @@ export const markLevelAsCompleted = (levelNumber: number) => {
   }
 };
 
-export const markBonusLevelAsCompleted = (levelId: string) => {
-  const completedLevels =
-    JSON.parse(localStorage.getItem("completedBonusLevels") as string) || [];
-
-  if (!completedLevels.includes(levelId)) {
-    completedLevels.push(levelId);
-    localStorage.setItem(
-      "completedBonusLevels",
-      JSON.stringify(completedLevels)
-    );
-  }
-};
-
 export const markCommunityLevelAsCompleted = (levelId: string) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedCommunityLevels") as string) ||
@@ -39,12 +26,6 @@ export const isLevelCompleted = (levelNumber: number) => {
   const completedLevels =
     JSON.parse(localStorage.getItem("completedLevels") as string) || [];
   return completedLevels.includes(levelNumber);
-};
-
-export const isBonusLevelCompleted = (levelId: string) => {
-  const completedLevels =
-    JSON.parse(localStorage.getItem("completedBonusLevels") as string) || [];
-  return completedLevels.includes(levelId);
 };
 
 export const isCommunityLevelCompleted = (levelId: string) => {
@@ -98,16 +79,6 @@ export const setGroupingPreference = (enabled: boolean) => {
 
 export const getGroupingPreference = () => {
   return JSON.parse(localStorage.getItem("groupBySize") as string) ?? false; // Default to false
-};
-
-export const setBonusLevelsClicked = (clicked: boolean) => {
-  localStorage.setItem("bonusLevelsClicked", JSON.stringify(clicked));
-};
-
-export const getBonusLevelsClicked = () => {
-  return (
-    JSON.parse(localStorage.getItem("bonusLevelsClicked") as string) ?? false
-  ); // Default to false
 };
 
 export const setCommunityLevelsClicked = (clicked: boolean) => {

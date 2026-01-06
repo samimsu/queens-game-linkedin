@@ -213,9 +213,7 @@ async function findDuplicateColorRegions(directories: string[]) {
 // Define the directories where your level files are located.
 // IMPORTANT: Replace these paths with the actual paths on your system.
 const targetDirectories = [
-  "../src/utils/levels",
   "../src/utils/community-levels",
-  "../src/utils/bonus-levels",
   // Add more directories as needed, e.g., 'path/to/another/levels/folder'
 ];
 

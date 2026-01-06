@@ -8,10 +8,6 @@ This folder contains automation scripts for the Queens game clone project. The p
 - [solveAllCommunityLevels.ts](#solveAllCommunityLevels.ts)
 - [findDuplicates.ts](#findDuplicates.ts)
 
-## addLevel.ts
-
-This TypeScript script uses Playwright to automate adding a new level to the Queens game clone. It captures a screenshot from the LinkedIn Queens game and integrates it into your local level builder.
-
 ### Prerequisites
 
 - Node.js and npm installed
