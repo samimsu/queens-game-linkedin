@@ -1,6 +1,7 @@
 import GithubStarButton from "./GithubStarButton";
 import { portfolioSite } from "@/data/links";
 import { useTranslation } from "react-i18next";
+import { trackEvent } from "@/utils/analytics";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -19,6 +20,12 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="underline font-medium"
+            onClick={() =>
+              trackEvent("click_external_link", {
+                link_url: portfolioSite,
+                link_name: "portfolio",
+              })
+            }
           >
             Sami
           </a>

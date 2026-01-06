@@ -4,6 +4,7 @@ import RootLayout from "@/layouts/RootLayout";
 import PageTitle from "@/components/PageTitle";
 import { Button } from "@/components/ui/button";
 import { queensGameRepoNewIssue } from "@/data/links";
+import { trackEvent } from "@/utils/analytics";
 
 interface PageLevelNotFoundProps {
   level: string | undefined;
@@ -27,6 +28,12 @@ const PageLevelNotFound = ({ level }: PageLevelNotFoundProps) => {
               className="text-blue-500 hover:text-blue-600"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("click_external_link", {
+                  link_url: queensGameRepoNewIssue,
+                  link_name: "report_issue",
+                })
+              }
             >
               here
             </a>{" "}

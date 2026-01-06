@@ -1,6 +1,7 @@
 import React from "react";
 import { officialLinkedInQueensGamePage } from "@/data/links";
 import { useTranslation } from "react-i18next";
+import { trackEvent } from "@/utils/analytics";
 
 const LinkedInIcon = ({ className = "" }) => {
   return (
@@ -24,6 +25,12 @@ const LinkedInNote = ({ className = "" }) => {
         href={officialLinkedInQueensGamePage}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          trackEvent("click_external_link", {
+            link_url: officialLinkedInQueensGamePage,
+            link_name: "linkedin_official_page",
+          })
+        }
       >
         <LinkedInIcon className="w-5 text-[#0a66c2] hover:brightness-75" />
       </a>

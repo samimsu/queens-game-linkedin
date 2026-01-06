@@ -1,5 +1,6 @@
 import { Trans } from "react-i18next";
 import { patreonLevelPacks } from "@/data/links";
+import { trackEvent } from "@/utils/analytics";
 
 const Note = () => {
   return (
@@ -13,6 +14,12 @@ const Note = () => {
             href={patreonLevelPacks}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              trackEvent("click_external_link", {
+                link_url: patreonLevelPacks,
+                link_name: "patreon_level_packs",
+              })
+            }
             className="text-blue-500 text-nowrap"
           >
             here
