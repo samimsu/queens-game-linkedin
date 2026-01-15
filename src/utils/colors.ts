@@ -1,33 +1,33 @@
-export const altoMain = "#DFDFDF";
-export const anakiwa = "#96BEFF";
-export const atomicTangerine = "#FAA889";
-export const bittersweet = "#FF7B60";
-export const celadon = "#B3DFA0";
-export const chardonnay = "#FFC992";
-export const emerald = "#5BBA6F";
-export const halfBaked = "#95CBCF";
-export const lavenderRose = "#FE93F1";
-export const lightGreen = "#91F5AD";
-export const lightOrchid = "#DFA0BF";
-export const lightWisteria = "#BBA3E2";
-export const nomad = "#B9B29E";
-export const periwinkle = "#C9C9EE";
-export const saharaSand = "#E6F388";
-export const turquoiseBlue = "#55EBE2";
+export const altoMain = "#6C7A89";
+export const anakiwa = "#5F7A94";
+export const atomicTangerine = "#C06C84";
+export const bittersweet = "#995163";
+export const celadon = "#778C70";
+export const chardonnay = "#B78E5D";
+export const emerald = "#4B6B5F";
+export const halfBaked = "#5A8287";
+export const lavenderRose = "#8E6E8E";
+export const lightGreen = "#607D3B";
+export const lightOrchid = "#7D5A7A";
+export const lightWisteria = "#5A5B82";
+export const nomad = "#8E8875";
+export const periwinkle = "#4A5A77";
+export const saharaSand = "#ADA36D";
+export const turquoiseBlue = "#467A7D";
 export const white = "#FFFFFF";
 
 // Avoid using the following colors since they are similar
 // to some of the colors above.
 // They have been kept for compatibility.
-export const alto = "#D9D9D9";
-export const canCan = "#D895B2";
-export const carnation = "#F96C51";
-export const coldPurple = "#AF96DC";
-export const feijoa = "#A6D995";
-export const macNCheese = "#FBBF81";
-export const malibu = "#85B5FC";
-export const manz = "#DCF079";
-export const tallow = "#ADA68E";
+export const alto = "#4A525A";
+export const canCan = "#7D435D";
+export const carnation = "#8E3D30";
+export const coldPurple = "#665B82";
+export const feijoa = "#5E7A5A";
+export const macNCheese = "#A67A50";
+export const malibu = "#466B8E";
+export const manz = "#B5A642";
+export const tallow = "#6B6554";
 
 export const colorNames = {
   "#D9D9D9": "alto",
