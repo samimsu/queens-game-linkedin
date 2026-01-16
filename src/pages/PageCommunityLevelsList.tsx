@@ -52,9 +52,69 @@ const LevelButton = ({
   );
 };
 
+const Updates = () => {
+  const [isUpdatesOpen, setIsUpdatesOpen] = useState(true); // Control collapse
+
+  return (
+    <div className="px-4 mt-8 mb-8">
+      <div className="max-w-[600px] w-full sm:mx-auto border border-blue-200 rounded-lg overflow-hidden bg-blue-50">
+        <button
+          onClick={() => setIsUpdatesOpen(!isUpdatesOpen)}
+          className="w-full flex items-center justify-between p-3 text-blue-900 font-bold text-sm bg-blue-100 hover:bg-blue-200 transition-colors"
+        >
+          <span>LATEST SITE UPDATES</span>
+          {isUpdatesOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+        </button>
+
+        {isUpdatesOpen && (
+          <div className="p-4 space-y-4 text-sm text-blue-800">
+            {/* NEWEST UPDATE */}
+            <div className="border-l-4 border-blue-500 pl-3">
+              <p className="text-xs font-bold mb-1">JANUARY 16, 2026</p>
+              <p className="font-semibold text-blue-900">Palette Update #2</p>
+              <p className="mt-1 opacity-90">
+                Following feedback on yesterday's visual update, we've refined
+                our color palette once more. This new set should provide
+                improved contrast and better readability.
+              </p>
+            </div>
+
+            <div className="h-px bg-blue-200 w-full" />
+
+            {/* PREVIOUS UPDATES */}
+            <div className="pl-4 opacity-80">
+              <p className="text-xs font-bold mb-1">JANUARY 15, 2026</p>
+              <p className="font-semibold text-blue-900">
+                Visual Identity Refresh
+              </p>
+              <p className="mt-1">
+                We have updated our color palette to provide a unique and
+                distinct visual experience, moving away from pastel tones to a
+                custom design.
+              </p>
+            </div>
+
+            <div className="h-px bg-blue-200 w-full" />
+
+            <div className="pl-4 opacity-80">
+              <p className="text-xs font-bold mb-1">JANUARY 7, 2026</p>
+              <p className="">
+                We have updated our level library to focus exclusively on
+                original, community-contributed content. As part of this
+                transition, previous archival levels have been removed. We are
+                committed to respecting intellectual property rights and
+                providing a unique platform for puzzle enthusiasts.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const PageCommunityLevelsList = () => {
   const { t } = useTranslation();
-  const [isUpdatesOpen, setIsUpdatesOpen] = useState(true); // Control collapse
 
   const [showUnique, setShowUnique] = useState(
     getShowUniqueCommunityLevelsPreference
@@ -99,52 +159,7 @@ const PageCommunityLevelsList = () => {
       <PageTitle title={t("COMMUNITY_LEVELS")} />
       <div className="px-4">
         {/* COLLAPSIBLE UPDATES SECTION */}
-        <div className="px-4 mt-8 mb-8">
-          <div className="max-w-[600px] w-full sm:mx-auto border border-blue-200 rounded-lg overflow-hidden bg-blue-50">
-            <button
-              onClick={() => setIsUpdatesOpen(!isUpdatesOpen)}
-              className="w-full flex items-center justify-between p-3 text-blue-900 font-bold text-sm bg-blue-100 hover:bg-blue-200 transition-colors"
-            >
-              <span>LATEST SITE UPDATES</span>
-              {isUpdatesOpen ? (
-                <ChevronUp size={18} />
-              ) : (
-                <ChevronDown size={18} />
-              )}
-            </button>
-
-            {isUpdatesOpen && (
-              <div className="p-4 space-y-4 text-sm text-blue-800">
-                {/* NEWEST UPDATE */}
-                <div className="border-l-4 border-blue-500 pl-3">
-                  <p className="text-xs font-bold mb-1">JANUARY 15, 2026</p>
-                  <p className="font-semibold text-blue-900">
-                    Visual Identity Refresh
-                  </p>
-                  <p className="mt-1 opacity-90">
-                    We have updated our color palette to provide a unique and
-                    distinct visual experience, moving away from pastel tones to
-                    a custom design.
-                  </p>
-                </div>
-
-                <div className="h-px bg-blue-200 w-full" />
-
-                {/* PREVIOUS UPDATE */}
-                <div className="pl-4 opacity-80">
-                  <p className="text-xs font-bold mb-1">JANUARY 7, 2026</p>
-                  <p className="">
-                    We have updated our level library to focus exclusively on
-                    original, community-contributed content. As part of this
-                    transition, previous archival levels have been removed. We
-                    are committed to respecting intellectual property rights and
-                    providing a unique platform for puzzle enthusiasts.
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        <Updates />
       </div>
       <div className="text-gray-600 dark:text-gray-400 mb-2 px-1 sm:px-0 max-w-[348px] sm:max-w-[436px] text-sm w-full mx-auto">
         {t("DISCOVER_AND_BUILD_COMMUNITY_LEVELS")}{" "}

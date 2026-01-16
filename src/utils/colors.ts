@@ -1,18 +1,18 @@
 export const altoMain = "#6C7A89";
-export const anakiwa = "#5F7A94";
+export const anakiwa = "#3287BD"; // Boston Blue
 export const atomicTangerine = "#C06C84";
-export const bittersweet = "#995163";
-export const celadon = "#778C70";
-export const chardonnay = "#B78E5D";
+export const bittersweet = "#D53E4F"; // Valencia
+export const celadon = "#ACDDA5"; // Moss Green
+export const chardonnay = "#FDAE61"; // Koromiko
 export const emerald = "#4B6B5F";
-export const halfBaked = "#5A8287";
+export const halfBaked = "#65C2A5"; // Tradewind
 export const lavenderRose = "#8E6E8E";
 export const lightGreen = "#607D3B";
-export const lightOrchid = "#7D5A7A";
-export const lightWisteria = "#5A5B82";
+export const lightOrchid = "#F56D43"; // Jaffa
+export const lightWisteria = "#5E4FA2"; // Butterfly Bush
 export const nomad = "#8E8875";
 export const periwinkle = "#4A5A77";
-export const saharaSand = "#ADA36D";
+export const saharaSand = "#E6F598"; // Sandwisp
 export const turquoiseBlue = "#467A7D";
 export const white = "#FFFFFF";
 
