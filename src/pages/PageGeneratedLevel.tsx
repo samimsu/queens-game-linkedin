@@ -14,9 +14,7 @@ import Board from "../components/CommunityLevel/components/Board";
 import { createEmptyBoard, isCompletedBoard } from "../utils/board";
 import BackIcon from "../components/icons/BackIcon";
 
-import HowToPlay from "../components/GameLevel/components/HowToPlay";
 import SettingsDialog from "../components/CommunityLevel/components/SettingsDialog";
-import Timer from "../components/GameLevel/components/Timer";
 
 import useVisibility from "../hooks/useVisibility";
 import useGameLogic from "../hooks/useGameLogic";
@@ -40,6 +38,7 @@ import {
   getRandomLevelCompletionTimeWithLabel,
   markRandomBoardCompleted,
 } from "@/utils/localStorage.ts";
+import Timer from "@/components/CommunityLevel/components/Timer.tsx";
 
 interface RandomLevel {
   size: number;
@@ -56,9 +55,9 @@ const PageGeneratedLevel = () => {
   const [zoomLevel, setZoomLevel] = useState(1);
   const [loading, setLoading] = useState(true);
   const [levelSize, setLevelSize] = useState(8);
-  const [timeOverride, setTimeOverride] = useState<number | undefined>(
-    undefined,
-  );
+  // const [timeOverride, setTimeOverride] = useState<number | undefined>(
+  //   undefined,
+  // );
   const [showRegionLetters, setShowRegionLetters] = useState<boolean>(false);
   const hasSavedState = useMemo(() => {
     const state = getRandomBoardState(id ?? "UNKNOWN");
@@ -143,7 +142,7 @@ const PageGeneratedLevel = () => {
       if (state.savedDataFound && !isCompletedBoard(state?.state)) {
         history.current = [];
         setBoard(state?.state || createEmptyBoard(levelSize));
-        setTimeOverride(state?.timeInSeconds);
+        // setTimeOverride(state?.timeInSeconds);
       }
     }
   }, [hasSavedState]);
@@ -253,7 +252,7 @@ const PageGeneratedLevel = () => {
                       setHasWon(false);
                       setShowWinningScreen(false);
                       history.current = [];
-                      setTimeOverride(1);
+                      // setTimeOverride(1);
                     }}
                     disabled={loading}
                     className="border border-slate-500 rounded-full p-2"
@@ -288,14 +287,14 @@ const PageGeneratedLevel = () => {
                 run={timerRunning}
                 onTimeUpdate={handleTimeUpdate}
                 showTimer={showClock}
-                setTime={() => {
-                  if (timeOverride) {
-                    const tmpTime = timeOverride;
-                    setTimeOverride(undefined);
-                    return { newTime: tmpTime };
-                  }
-                  return { newTime: undefined };
-                }}
+                // setTime={() => {
+                //   if (timeOverride) {
+                //     const tmpTime = timeOverride;
+                //     setTimeOverride(undefined);
+                //     return { newTime: tmpTime };
+                //   }
+                //   return { newTime: undefined };
+                // }}
               />
             </div>
 
@@ -368,7 +367,7 @@ const PageGeneratedLevel = () => {
           </div>
         </div>
 
-        {showInstructions && <HowToPlay />}
+
 
         <div className="self-start mt-6 mb-16 max-w-md md:max-w-lg mx-2">
           <div className="font-sm mb-2 text-gray-500">

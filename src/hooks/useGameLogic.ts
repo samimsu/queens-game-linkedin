@@ -14,7 +14,7 @@ import {
   setClashingQueensPreference,
   setDragToClearPreference,
   setShowClockPreference,
-  setShowInstructionsPreference,
+  setShowInstructionsPreference, markLevelAsCompleted,
 } from "@/utils/localStorage";
 import { checkWinCondition, getClashingQueens } from "@/utils/gameLogic";
 

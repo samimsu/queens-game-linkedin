@@ -130,8 +130,7 @@
   "ZOOM_IN": "Zoom in",
   "ZOOM_OUT": "Zoom out",
   "RESET_ZOOM": "Reset zoom",
-  "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
-  "ONLY_1_SOLUTION": "It has only 1 solution."
+  "ONLY_1_SOLUTION": "It has only 1 solution.",
   "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
   "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "May require multiple attempts, please be patient",
   "DRAG_TO_UNCHECK": "Clear Xs by tapping and dragging starting on a square containing an X (matches LinkedIn behavior)"
