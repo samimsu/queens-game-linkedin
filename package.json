@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dr.pogodin/react-helmet": "^2.0.4",
     "@giscus/react": "^3.1.0",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-dialog": "^1.1.6",
@@ -17,7 +18,7 @@
     "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",
     "date-fns": "^4.1.0",
-    "i18next": "^24.2.2",
+    "i18next": "^25.4.2",
     "i18next-browser-languagedetector": "^8.0.4",
     "lucide-react": "^0.454.0",
     "next-themes": "^0.2.1",
@@ -26,14 +27,12 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-github-btn": "^1.4.0",
-    "react-helmet-async": "^2.0.5",
     "react-i18next": "^15.4.1",
     "react-router-dom": "^6.27.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "web-vitals": "^3.1.0",
-    "yargs": "^17.7.2",
-    "z3-solver": "^4.15.3"
+    "yargs": "^17.7.2"
   },
   "overrides": {
     "@svgr/webpack": "^8.0.1",
@@ -73,6 +72,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^22.13.14",
+    "@types/react": "^19.1.12",
     "@types/yargs": "^17.0.33",
     "@vitejs/plugin-react": "^4.1.1",
     "autoprefixer": "^10.4.20",

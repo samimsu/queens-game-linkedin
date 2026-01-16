@@ -15,6 +15,7 @@ import PatreonButton from "./PatreonButton";
 const NAV_LINKS = [
   { to: "/", labelKey: "HOME" },
   { to: "/level-builder", labelKey: "LEVEL_BUILDER" },
+  { to: "/random-level", labelKey: "LEVEL_GENERATOR", isNew: false },
 ];
 
 const Navbar = () => {

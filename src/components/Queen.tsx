@@ -1,4 +1,4 @@
-const Queen = ({ size = "24", className = "" }) => {
+const Queen = ({ size = "24", className = "", title = "Queen" }) => {
   return (
     <span role="img" aria-label="queen">
       <svg

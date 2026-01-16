@@ -47,6 +47,7 @@
   "COLOR": {
     "ALTO": "Slate Dark",
     "ALTO_MAIN": "Slate Medium",
+    "ATOMIC_TANGERINE": "Atomic Tangerine",
     "ANAKIWA": "Boston Blue",
     "BITTERSWEET": "Valencia",
     "CAN_CAN": "Wine Muted",
@@ -54,18 +55,22 @@
     "CELADON": "Moss Green",
     "CHARDONNAY": "Koromiko",
     "COLD_PURPLE": "Deep Lavender",
+    "EMERALD": "Emerald",
     "FEIJOA": "Olive Muted",
     "HALF_BAKED": "Tradewind",
     "LAVENDER_ROSE": "Heather Purple",
+    "LIGHT_GREEN": "Light Green",
     "LIGHT_ORCHID": "Jaffa",
     "LIGHT_WISTERIA": "Butterfly Bush",
     "MAC_N_CHEESE": "Bronze",
     "MALIBU": "Steel Blue",
     "MANZ": "Gold Muted",
     "NOMAD": "Stone",
+    "PERIWINKLE": "Periwinkle",
     "SAHARA_SAND": "Sandwisp",
     "TALLOW": "Earth Muted",
-    "TURQUOISE_BLUE": "Ocean Muted"
+    "TURQUOISE_BLUE": "Ocean Muted",
+    "WHITE": "White"
   },
   "YES": "Sí",
   "THEME": {
@@ -101,6 +106,16 @@
   "OR": "o",
   "COPY_DETAILS": "Copiar al portapapeles",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "¡Descubre niveles únicos creados por la comunidad! Juega, inspírate y construye los tuyos con el",
+  "TRY_RANDOMLY_GENERATED_LEVEL": "¿Terminaste todos los niveles de la comunidad? Prueba uno generado aleatoriamente usando el ",
+  "GENERATE_LEVELS": "Genera niveles aleatorios. Elige el tamaño y deja que el algoritmo cree un rompecabezas único para ti.",
+  "TIMED_OUT": "Se agotó el tiempo generando un nivel {{size}}x{{size}}, haz clic en el botón para intentar de nuevo",
+  "SHARE_LINK_TO_LEVEL": "¿Encontraste un buen nivel? Asegúrate de incluir el enlace en tu publicación",
+  "FOUND_VALID_LEVEL": "Se encontró 1 nivel válido hasta ahora. Buscando unos segundos más para intentar mejorar la dificultad...",
+  "GENERATING_LEVEL": "Generando nivel {{size}}x{{size}}...",
+  "LEVEL_GENERATOR": "Generador de Niveles",
+  "GENERATED_TYPE": "Generado {{size}}x{{size}}",
+  "GENERATED_SAMPLES_TEXT": "Estos son ejemplos de niveles generados aleatoriamente. No están garantizados de ser divertidos o desafiantes",
+  "GENERATED_SAMPLES_TITLE": "Ejemplos",
   "PLAY_SIZE": "Jugar {{playSize}}",
   "NEW": "Nuevo",
   "UNIQUE_SOLUTIONS": "Soluciones únicas",
@@ -108,5 +123,6 @@
   "COMPLETED": "Completado",
   "NOT_COMPLETED": "No completado",
   "CLEAR_ALL": "Borrar todo",
-  "ONE_FREE_LEVEL": "1 nivel gratis"
+  "ONE_FREE_LEVEL": "1 nivel gratis",
+  "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "Puede requerir múltiples intentos, ten paciencia"
 }

@@ -46,6 +46,7 @@
   "COLOR": {
     "ALTO": "Slate Dark",
     "ALTO_MAIN": "Slate Medium",
+    "ATOMIC_TANGERINE": "Atomic Tangerine",
     "ANAKIWA": "Boston Blue",
     "BITTERSWEET": "Valencia",
     "CAN_CAN": "Wine Muted",
@@ -53,18 +54,22 @@
     "CELADON": "Moss Green",
     "CHARDONNAY": "Koromiko",
     "COLD_PURPLE": "Deep Lavender",
+    "EMERALD": "Emerald",
     "FEIJOA": "Olive Muted",
     "HALF_BAKED": "Tradewind",
     "LAVENDER_ROSE": "Heather Purple",
+    "LIGHT_GREEN": "Light Green",
     "LIGHT_ORCHID": "Jaffa",
     "LIGHT_WISTERIA": "Butterfly Bush",
     "MAC_N_CHEESE": "Bronze",
     "MALIBU": "Steel Blue",
     "MANZ": "Gold Muted",
     "NOMAD": "Stone",
+    "PERIWINKLE": "Periwinkle",
     "SAHARA_SAND": "Sandwisp",
     "TALLOW": "Earth Muted",
-    "TURQUOISE_BLUE": "Ocean Muted"
+    "TURQUOISE_BLUE": "Ocean Muted",
+    "WHITE": "White"
   },
   "YES": "Sim",
   "THEME": {
@@ -100,5 +105,16 @@
   "OR": "ou",
   "COPY_DETAILS": "Copiar detalhes",
   "DISCOVER_AND_BUILD_COMMUNITY_LEVELS": "Descubra níveis únicos criados pela comunidade! Jogue, inspire-se e construa o seu próprio com o",
-  "PLAY_SIZE": "Jogar {{playSize}}"
+  "TRY_RANDOMLY_GENERATED_LEVEL": "Terminou todos os níveis da comunidade? Experimente um gerado aleatoriamente usando o ",
+  "GENERATE_LEVELS": "Gere níveis aleatórios. Escolha o tamanho e deixe o algoritmo criar um quebra-cabeça único para você.",
+  "TIMED_OUT": "Tempo esgotado gerando um nível {{size}}x{{size}}, clique no botão para tentar novamente",
+  "SHARE_LINK_TO_LEVEL": "Encontrou um bom nível? Certifique-se de incluir o link em sua postagem",
+  "FOUND_VALID_LEVEL": "Encontrado 1 nível válido até agora. Buscando por mais alguns segundos para tentar melhorar a dificuldade...",
+  "GENERATING_LEVEL": "Gerando nível {{size}}x{{size}}...",
+  "LEVEL_GENERATOR": "Gerador de Níveis",
+  "GENERATED_TYPE": "Gerado {{size}}x{{size}}",
+  "GENERATED_SAMPLES_TEXT": "Estes são exemplos de níveis gerados aleatoriamente. Não é garantido que sejam divertidos ou desafiadores",
+  "GENERATED_SAMPLES_TITLE": "Amostras",
+  "PLAY_SIZE": "Jogar {{playSize}}",
+  "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "Pode exigir várias tentativas, seja paciente"
 }
