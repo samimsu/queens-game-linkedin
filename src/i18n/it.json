@@ -46,6 +46,7 @@
   "COLOR": {
     "ALTO": "Slate Dark",
     "ALTO_MAIN": "Slate Medium",
+    "ATOMIC_TANGERINE": "Atomic Tangerine",
     "ANAKIWA": "Boston Blue",
     "BITTERSWEET": "Valencia",
     "CAN_CAN": "Wine Muted",
@@ -53,18 +54,22 @@
     "CELADON": "Moss Green",
     "CHARDONNAY": "Koromiko",
     "COLD_PURPLE": "Deep Lavender",
+    "EMERALD": "Emerald",
     "FEIJOA": "Olive Muted",
     "HALF_BAKED": "Tradewind",
     "LAVENDER_ROSE": "Heather Purple",
+    "LIGHT_GREEN": "Light Green",
     "LIGHT_ORCHID": "Jaffa",
     "LIGHT_WISTERIA": "Butterfly Bush",
     "MAC_N_CHEESE": "Bronze",
     "MALIBU": "Steel Blue",
     "MANZ": "Gold Muted",
     "NOMAD": "Stone",
+    "PERIWINKLE": "Periwinkle",
     "SAHARA_SAND": "Sandwisp",
     "TALLOW": "Earth Muted",
-    "TURQUOISE_BLUE": "Ocean Muted"
+    "TURQUOISE_BLUE": "Ocean Muted",
+    "WHITE": "White"
   },
   "YES": "Sì",
   "THEME": {
@@ -79,5 +84,16 @@
   "BONUS_LEVELS": "Livelli Bonus",
   "WEEK_OF": "Settimana del {{weekOfDate}}",
   "PLAY": "Giocare",
-  "PLAY_SIZE": "Gioca {{playSize}}"
+  "PLAY_SIZE": "Gioca {{playSize}}",
+  "TRY_RANDOMLY_GENERATED_LEVEL": "Hai finito tutti i livelli della comunità? Prova uno generato casualmente usando il ",
+  "GENERATE_LEVELS": "Genera livelli casuali. Scegli la dimensione e lascia che l'algoritmo crei un puzzle unico per te.",
+  "TIMED_OUT": "Timeout generando un livello {{size}}x{{size}}, clicca il pulsante per riprovare",
+  "SHARE_LINK_TO_LEVEL": "Trovato un buon livello? Assicurati di includere il link nel tuo post",
+  "FOUND_VALID_LEVEL": "Trovato 1 livello valido finora. Ricerca per qualche secondo in più per migliorare la difficoltà...",
+  "GENERATING_LEVEL": "Generando livello {{size}}x{{size}}...",
+  "LEVEL_GENERATOR": "Generatore di Livelli",
+  "GENERATED_TYPE": "Generato {{size}}x{{size}}",
+  "GENERATED_SAMPLES_TEXT": "Questi sono esempi di livelli generati casualmente. Non è garantito che siano divertenti o impegnativi",
+  "GENERATED_SAMPLES_TITLE": "Esempi",
+  "GENERATE_MAY_REQUIRE_MULTIPLE_ATTEMPTS": "Potrebbe richiedere più tentativi, sii paziente"
 }

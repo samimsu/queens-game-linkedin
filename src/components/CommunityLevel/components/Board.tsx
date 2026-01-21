@@ -6,6 +6,7 @@ interface BoardProps {
   board: string[][];
   handleSquareClick: (row: number, col: number) => void;
   handleSquareMouseEnter: (squares: number[][]) => void;
+  handleDrags?: (isClear: boolean, squares: number[][]) => void | undefined;
   boardSize: number;
   colorRegions: string[][];
   regionColors: { [key: string]: string };
@@ -19,6 +20,7 @@ const Board: React.FC<BoardProps> = ({
   board,
   handleSquareClick,
   handleSquareMouseEnter,
+  handleDrags,
   boardSize,
   colorRegions,
   regionColors,
@@ -28,10 +30,13 @@ const Board: React.FC<BoardProps> = ({
   showLetters,
 }) => {
   const [initialSquare, setInitialSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
+  const [initialSquareWasClear, setInitialSquareWasClear] = useState<
+    boolean | undefined
+  >(undefined);
   const [previousSquare, setPreviousSquare] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [initialSquareHandled, setInitialSquareHandled] = useState(false);
 
@@ -60,6 +65,7 @@ const Board: React.FC<BoardProps> = ({
             onPointerDown={(e) => {
               const currentSquare = `${rowIndex},${colIndex}`;
               setInitialSquare(currentSquare);
+              setInitialSquareWasClear(board[rowIndex][colIndex] !== "X");
               setInitialSquareHandled(false);
               // otherwise the PointerUp event will have the row and col of the initial PointerDown event
               (e.target as HTMLElement).releasePointerCapture(e.pointerId);
@@ -77,7 +83,13 @@ const Board: React.FC<BoardProps> = ({
                   setInitialSquareHandled(true);
                 }
 
-                handleSquareMouseEnter(squares);
+                if (!handleDrags) {
+                  handleSquareMouseEnter(squares);
+                }
+
+                if (handleDrags && initialSquareWasClear !== undefined) {
+                  handleDrags(!initialSquareWasClear, squares);
+                }
                 setPreviousSquare(currentSquare);
               }
             }}
@@ -92,6 +104,7 @@ const Board: React.FC<BoardProps> = ({
               setPreviousSquare(undefined);
               setInitialSquare(undefined);
               setInitialSquareHandled(false);
+              setInitialSquareWasClear(undefined);
             }}
             boardSize={boardSize}
             colorRegions={colorRegions}
@@ -105,7 +118,7 @@ const Board: React.FC<BoardProps> = ({
             queenSize={(24 * zoomLevel).toString()}
             showLetter={showLetters}
           />
-        ))
+        )),
       )}
     </div>
   );
