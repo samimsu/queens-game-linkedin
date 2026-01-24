@@ -6,7 +6,7 @@ interface CreatedByInputProps {
   ref?: React.Ref<HTMLInputElement>;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  error?: string;
+  error?: string | null;
 }
 
 const CreatedByInput = ({

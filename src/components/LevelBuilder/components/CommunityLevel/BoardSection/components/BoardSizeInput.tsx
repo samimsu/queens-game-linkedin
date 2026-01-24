@@ -1,13 +1,15 @@
-import React from "react";
-import { createInitialBoardForBuilder } from "../../../utils/board";
 import { useTranslation } from "react-i18next";
 
-const BoardSizeInput = ({ boardSize, handleBoardSizeChange }) => {
+interface BoardSizeInputProps {
+  boardSize: number;
+  handleBoardSizeChange: (size: number) => void;
+}
+
+const BoardSizeInput = ({
+  boardSize,
+  handleBoardSizeChange,
+}: BoardSizeInputProps) => {
   const { t } = useTranslation();
-  // const handleBoardSizeChange = (size) => {
-  //   setBoardSize(size);
-  //   setBoard(createInitialBoardForBuilder(size));
-  // };
 
   return (
     <div className="mb-3 flex items-center space-x-3 text-lg">

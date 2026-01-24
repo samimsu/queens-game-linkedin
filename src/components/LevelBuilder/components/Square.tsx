@@ -1,11 +1,21 @@
-import React from "react";
+interface SquareProps {
+  row: number;
+  col: number;
+  value: string | null;
+  region: string | null;
+  onPointerDown: () => void;
+  onPointerEnter: (e: React.PointerEvent) => void;
+  boardSize: number;
+  colorRegions: (string | null)[][];
+  regionColors: Record<string, string>;
+  hideValues: boolean;
+}
 
 const Square = ({
   row,
   col,
   value,
   region,
-  onClick,
   onPointerDown,
   onPointerEnter,
   boardSize,
@@ -13,10 +23,10 @@ const Square = ({
   regionColors,
   hideValues,
   ...props
-}) => {
+}: SquareProps) => {
   // Function to determine border classes
   const getBorderClasses = () => {
-    const borderClasses = [];
+    const borderClasses: string[] = [];
     const adjacentSquares = [
       { position: "top", value: row > 0 ? colorRegions[row - 1][col] : null },
       {
@@ -47,10 +57,9 @@ const Square = ({
   return (
     <div
       className={`square hover:bg-slate-300 hover:brightness-75 select-none text-black ${borderClasses}`}
-      onClick={onClick}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
-      style={{ backgroundColor: regionColors[region] }}
+      style={{ backgroundColor: (region && regionColors[region]) || undefined }}
       {...props}
     >
       {!hideValues && value}

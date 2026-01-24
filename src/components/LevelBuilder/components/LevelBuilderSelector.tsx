@@ -1,12 +1,13 @@
 import { useTranslation } from "react-i18next";
 import Required from "@/components/Required";
 import Tag from "@/components/Tag";
+import { Dispatch, SetStateAction } from "react";
 
 type LevelType = "community";
 
 interface LevelBuilderSelectorProps {
   levelType: "community";
-  setLevelType: (type: string) => void;
+  setLevelType: Dispatch<SetStateAction<"community">>;
 }
 
 const LevelBuilderSelector = ({

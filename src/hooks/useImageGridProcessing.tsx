@@ -1,6 +1,20 @@
 import { useEffect } from "react";
 import { colorNames } from "../utils/colors";
 
+interface UseImageGridProcessingProps {
+  setBoardSize: React.Dispatch<React.SetStateAction<number>>;
+  setBoard: React.Dispatch<React.SetStateAction<string[][]>>;
+  setRegionColors: React.Dispatch<
+    React.SetStateAction<Record<string, keyof typeof colorNames>>
+  >;
+  levelImg: string | null;
+  setVerticalLines: React.Dispatch<React.SetStateAction<number[]>>;
+  setHorizontalLines: React.Dispatch<React.SetStateAction<number[]>>;
+  tolerance: number;
+  minLineHeight: number;
+  minLineWidth: number;
+}
+
 const useImageGridProcessing = ({
   setBoardSize,
   setBoard,
@@ -11,12 +25,15 @@ const useImageGridProcessing = ({
   tolerance,
   minLineHeight,
   minLineWidth,
-}) => {
+}: UseImageGridProcessingProps) => {
   useEffect(() => {
     if (!levelImg) return;
 
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
+
+    if (!ctx) return;
+
     const img = new Image();
     img.src = levelImg;
 
@@ -49,12 +66,12 @@ const useImageGridProcessing = ({
 
       setBoardSize(board.length);
       setBoard(board);
-      setRegionColors(regionColors);
+      setRegionColors(regionColors as Record<string, keyof typeof colorNames>);
     };
   }, [levelImg, tolerance, minLineHeight, minLineWidth]);
 
   // Convert a hex color to RGB
-  const hexToRgb = (hex) => {
+  const hexToRgb = (hex: string) => {
     const bigint = parseInt(hex.slice(1), 16);
     return {
       r: (bigint >> 16) & 255,
@@ -64,7 +81,10 @@ const useImageGridProcessing = ({
   };
 
   // Calculate the Euclidean distance between two colors
-  const colorDistance = (color1, color2) => {
+  const colorDistance = (
+    color1: { r: number; g: number; b: number },
+    color2: { r: number; g: number; b: number },
+  ) => {
     return Math.sqrt(
       Math.pow(color1.r - color2.r, 2) +
         Math.pow(color1.g - color2.g, 2) +
@@ -73,8 +93,8 @@ const useImageGridProcessing = ({
   };
 
   // Find the closest color in colorNames
-  const closestColorHex = (r, g, b) => {
-    let closestHex = null;
+  const closestColorHex = (r: number, g: number, b: number) => {
+    let closestHex = "";
     let minDistance = Infinity;
 
     Object.keys(colorNames).forEach((hex) => {
@@ -89,7 +109,11 @@ const useImageGridProcessing = ({
     return closestHex;
   };
 
-  const detectGridLinesInRegion = (imageData, width, height) => {
+  const detectGridLinesInRegion = (
+    imageData: ImageData,
+    width: number,
+    height: number,
+  ) => {
     const verticalLines = [];
     const horizontalLines = [];
 
@@ -187,10 +211,14 @@ const useImageGridProcessing = ({
     return { verticalLines, horizontalLines };
   };
 
-  const detectColorsInGrid = (imageData, verticalLines, horizontalLines) => {
+  const detectColorsInGrid = (
+    imageData: ImageData,
+    verticalLines: number[],
+    horizontalLines: number[],
+  ) => {
     const board = [];
-    const regionColors = {};
-    const colorMapping = {};
+    const regionColors: { [key: string]: string } = {};
+    const colorMapping: { [key: string]: string } = {};
     let currentRegionCode = "A".charCodeAt(0);
 
     for (let row = 0; row < horizontalLines.length - 1; row++) {
@@ -204,7 +232,7 @@ const useImageGridProcessing = ({
         const right = verticalLines[col + 1];
 
         // Dominant color within this square, skipping line areas based on tolerance
-        const uniqueColors = {};
+        const uniqueColors: { [key: string]: number } = {};
 
         for (let y = top + tolerance; y < bottom - tolerance; y++) {
           for (let x = left + tolerance; x < right - tolerance; x++) {
@@ -257,8 +285,8 @@ const useImageGridProcessing = ({
   };
 
   // Helper function to find missing lines by checking spacing
-  const insertMissingLines = (lines) => {
-    const differences = [];
+  const insertMissingLines = (lines: number[]) => {
+    const differences: number[] = [];
     for (let i = 1; i < lines.length; i++) {
       differences.push(lines[i] - lines[i - 1]);
     }

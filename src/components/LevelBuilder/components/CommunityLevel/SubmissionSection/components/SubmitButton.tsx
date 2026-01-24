@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type SubmitButtonProps = {
-  handleSubmit: () => void;
+  handleSubmit: (e: React.FormEvent) => void;
   isSubmitting: boolean;
   via: string;
   handleCopy: () => void;

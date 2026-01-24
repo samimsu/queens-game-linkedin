@@ -1,8 +1,11 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import QuestionMarkTooltip from "@/components/QuestionMarkTooltip";
 
-const PasteImage = ({ handlePaste }) => {
+interface PasteImageProps {
+  handlePaste: () => void;
+}
+
+const PasteImage = ({ handlePaste }: PasteImageProps) => {
   const { t } = useTranslation();
 
   return (

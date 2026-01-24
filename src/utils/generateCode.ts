@@ -7,20 +7,20 @@ interface RegionColors {
 }
 
 const generateLevelJSCode = (
-  levelNumber: number,
+  levelNumber: number | null,
   board: Board,
   regionColors: RegionColors,
   createdBy?: string,
   personalLink?: string,
   isNew?: boolean,
-  submitVia?: "email" | "github"
+  submitVia?: "email" | "github",
 ): string => {
   // Get the unique regions used in the board
   const usedRegions = new Set(board.flat().filter(Boolean));
 
   // Filter the regionColors based on used regions
   const usedRegionColors = Object.entries(regionColors).filter(([region]) =>
-    usedRegions.has(region)
+    usedRegions.has(region),
   );
 
   // Get the color variable names for the used colors
@@ -64,8 +64,8 @@ ${regionColorsEntries},
     personalLink
       ? `\n  creatorLink: "${personalLink}",`
       : submitVia === "github"
-      ? `\n  creatorLink: "https://github.com/x",`
-      : ""
+        ? `\n  creatorLink: "https://github.com/x",`
+        : ""
   }
 };
 

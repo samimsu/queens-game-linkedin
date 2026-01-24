@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { createInitialBoardForBuilder } from "../../utils/board";
+import { createInitialBoardForBuilder } from "@/utils/board";
+import generateLevelJSCode from "@/utils/generateCode";
 import {
   altoMain,
   anakiwa,
@@ -15,54 +16,39 @@ import {
   nomad,
   saharaSand,
   turquoiseBlue,
-} from "../../utils/colors";
-import LevelNameInput from "./components/LevelNameInput";
-import RegionSelect from "./components/RegionSelect";
-import Board from "./components/Board";
-import BoardSizeInput from "./components/BoardSizeInput";
-import SectionJSCode from "./components/SectionJSCode";
-import LevelBuilderSelector from "./components/LevelBuilderSelector";
-import useImageGridProcessing from "../../hooks/useImageGridProcessing";
-import PasteImage from "./components/PasteImage";
-import { Switch } from "@/components/ui/switch";
-import PreviewImage from "./PreviewImage";
-import generateLevelJSCode from "@/utils/generateCode";
-import Note from "./components/CommunityLevel/Note";
-import CreatedByInput from "./components/CommunityLevel/CreatedByInput";
-import PersonalLinkInput from "./components/CommunityLevel/PersonalLinkInput";
-import SubmitViaSection from "./components/CommunityLevel/SubmitViaSection";
-import SubmitButton from "./components/CommunityLevel/SubmitButton";
-import TestLevelDialog from "./components/TestLevelDialog";
+} from "@/utils/colors";
+import useImageGridProcessing from "@/hooks/useImageGridProcessing";
 
-const LevelBuilder = () => {
-  const [levelType, setLevelType] = useState("community");
+const useLevelBuilderLogic = () => {
+  const [levelType, setLevelType] = useState<"community">("community");
   const [boardSize, setBoardSize] = useState(7);
-  const [levelName, setLevelName] = useState(1);
   const [board, setBoard] = useState(createInitialBoardForBuilder(boardSize));
   const [selectedRegion, setSelectedRegion] = useState("A");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<string | null>(null);
   const [showGridLines, setShowGridLines] = useState(false);
-  const [verticalLines, setVerticalLines] = useState([]);
-  const [horizontalLines, setHorizontalLines] = useState([]);
+  const [verticalLines, setVerticalLines] = useState<number[]>([]);
+  const [horizontalLines, setHorizontalLines] = useState<number[]>([]);
   const [tolerance, setTolerance] = useState(10);
   const [minLineHeight, setMinLineHeight] = useState(0.1);
   const [minLineWidth, setMinLineWidth] = useState(0.1);
-  const [dragValue, setDragValue] = useState();
-
+  const [dragValue, setDragValue] = useState<string | undefined>();
+  const [isTestDialogOpen, setIsTestDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     levelType: "community",
     createdBy: "",
     personalLink: "",
     level: "",
     submitVia: "email",
+    singleSolution: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, string | null>>({});
 
   const refs = {
-    createdBy: useRef(null),
-    personalLink: useRef(null),
-    level: useRef(null),
+    createdBy: useRef<HTMLInputElement>(null),
+    personalLink: useRef<HTMLInputElement>(null),
+    level: useRef<HTMLDivElement>(null),
+    singleSolution: useRef<HTMLInputElement>(null),
   };
 
   const { t } = useTranslation();
@@ -84,7 +70,7 @@ const LevelBuilder = () => {
       { name: t("COLOR.SAHARA_SAND"), value: saharaSand },
       { name: t("COLOR.TURQUOISE_BLUE"), value: turquoiseBlue },
     ],
-    []
+    [],
   );
 
   const regionKeys = "ABCDEFGHIJK".slice(0, boardSize);
@@ -100,39 +86,35 @@ const LevelBuilder = () => {
     I: lightOrchid,
     J: halfBaked,
     K: turquoiseBlue,
-  };
+  } as const;
 
-  const [regionColors, setRegionColors] = useState(
+  const [regionColors, setRegionColors] = useState<
+    Record<string, keyof typeof colorNames>
+  >(
     Object.fromEntries(
-      regionKeys.split("").map((key) => [key, initialRegionColors[key]])
-    )
+      regionKeys
+        .split("")
+        .map((key) => [
+          key,
+          initialRegionColors[key as keyof typeof initialRegionColors],
+        ]),
+    ),
   );
-  const [jsCode, setJsCode] = useState("");
-  const [copied, setCopied] = useState("");
-  const [copiedEmailDetails, setCopiedEmailDetails] = useState("");
+  const [copiedEmailDetails, setCopiedEmailDetails] = useState(false);
   const [hideRegionValues, setHideRegionValues] = useState(false);
 
-  useImageGridProcessing({
-    setBoardSize,
-    setBoard,
-    setRegionColors,
-    levelImg: image,
-    setVerticalLines,
-    setHorizontalLines,
-    tolerance,
-    minLineHeight,
-    minLineWidth,
-  });
-
-  const handleColorChange = (region, color) => {
+  const handleColorChange = (
+    region: string,
+    color: keyof typeof colorNames,
+  ) => {
     setRegionColors({ ...regionColors, [region]: color });
   };
 
-  const handleRegionSelect = (region) => {
+  const handleRegionSelect = (region: string) => {
     setSelectedRegion(region);
   };
 
-  const handleBoardSizeChange = (newSize) => {
+  const handleBoardSizeChange = (newSize: number) => {
     if (newSize > 11 || newSize < 6) return;
     setBoardSize(newSize);
     setBoard(createInitialBoardForBuilder(newSize));
@@ -143,12 +125,15 @@ const LevelBuilder = () => {
       Object.fromEntries(
         updatedRegionKeys
           .split("")
-          .map((key) => [key, initialRegionColors[key]])
-      )
+          .map((key) => [
+            key,
+            initialRegionColors[key as keyof typeof initialRegionColors],
+          ]),
+      ),
     );
   };
 
-  const handleSquareClick = (row, col) => {
+  const handleSquareClick = (row: number, col: number) => {
     if (errors.level) {
       setErrors({
         ...errors,
@@ -165,14 +150,17 @@ const LevelBuilder = () => {
           return newDragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
 
-  const handleSquareTouchMove = (e) => {
+  const handleSquareTouchMove = (e: React.TouchEvent) => {
     const touch = e.touches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+    const target = document.elementFromPoint(
+      touch.clientX,
+      touch.clientY,
+    ) as HTMLElement;
 
     if (target && target.dataset.row && target.dataset.col) {
       const rowIndex = parseInt(target.dataset.row, 10);
@@ -182,14 +170,14 @@ const LevelBuilder = () => {
     }
   };
 
-  const handleDrag = (row, col) => {
+  const handleDrag = (row: number, col: number) => {
     const newBoard = board.map((r, rIdx) =>
       r.map((square, cIdx) => {
         if (rIdx === row && cIdx === col) {
           return dragValue;
         }
         return square;
-      })
+      }),
     );
     setBoard(newBoard);
   };
@@ -207,23 +195,23 @@ const LevelBuilder = () => {
     });
   };
 
-  const handlePasteByShortcut = (event) => {
+  const handlePasteByShortcut = (event: KeyboardEvent) => {
     if (event.ctrlKey && event.key === "v") {
       handlePaste();
     }
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
     if (file && file.type === "image/png") {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
     }
   };
 
-  const validateCommunityForm = (submitVia) => {
-    const newErrors = {};
-    let firstErrorField = null;
+  const validateCommunityForm = async (submitVia?: "email" | "github") => {
+    const newErrors: { [key: string]: string } = {};
+    let firstErrorField: keyof typeof refs | null = null;
 
     // Validate required fields
     if (!formData.createdBy.trim()) {
@@ -237,8 +225,8 @@ const LevelBuilder = () => {
       regionColors,
       formData.createdBy,
       formData.personalLink,
-      null,
-      submitVia
+      undefined,
+      submitVia,
     );
 
     // Validate board for emptiness, completeness, and color usage
@@ -250,7 +238,7 @@ const LevelBuilder = () => {
       const isEmpty = board.every((row) =>
         row.every((cell) => {
           return !cell;
-        })
+        }),
       );
       if (isEmpty) {
         newErrors.level = "Board cannot be empty";
@@ -264,7 +252,7 @@ const LevelBuilder = () => {
         } else {
           // Check if board uses all colors (number of unique regions should equal board size)
           const uniqueRegions = new Set(
-            board.flat().filter((cell) => cell !== null)
+            board.flat().filter((cell) => cell !== null),
           );
           const boardSize = board.length; // Assuming rectangular board
           if (uniqueRegions.size !== boardSize) {
@@ -285,27 +273,40 @@ const LevelBuilder = () => {
       if (!firstErrorField) firstErrorField = "personalLink";
     }
 
+    // Validate single solution checkbox
+    if (!formData.singleSolution) {
+      newErrors.singleSolution =
+        "You must confirm that the level has a single solution";
+      if (!firstErrorField) firstErrorField = "singleSolution";
+    }
+
     setErrors(newErrors);
 
-    // Focus on the first field with an error
-    if (firstErrorField && refs[firstErrorField]?.current) {
-      setTimeout(() => {
-        refs[firstErrorField].current.focus();
-        refs[firstErrorField].current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }, 100);
+    if (firstErrorField) {
+      // Now TS knows firstErrorField is definitely a string key here
+      const targetElement = refs[firstErrorField].current;
+
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.focus();
+          targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      }
     }
 
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleCommunityFormInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleCommunityFormInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { name, type, checked, value } = e.target;
+
+    const finalValue = type === "checkbox" ? checked : value;
+
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: finalValue,
     });
 
     // Clear the error for this field when the user makes changes
@@ -319,7 +320,7 @@ const LevelBuilder = () => {
 
   const createEmailEncodedContent = () => {
     const subject = encodeURIComponent(
-      `Level Submission: ${formData.levelType} by ${formData.createdBy}`
+      `Level Submission: ${formData.levelType} by ${formData.createdBy}`,
     );
 
     let body = encodeURIComponent(
@@ -332,7 +333,7 @@ const LevelBuilder = () => {
         `Colors:\n${Object.entries(regionColors)
           .map(([region, color]) => `${region}: ${colorNames[color]}`)
           .join(", ")}\n\n` +
-        `Submitted via: Form Email Submission`
+        `Submitted via: Form Email Submission`,
     );
 
     return `mailto:mohammadsamimsu@gmail.com?subject=${subject}&body=${body}`;
@@ -371,7 +372,7 @@ const LevelBuilder = () => {
         `### Level\n\`\`\`\n${formData.level}\n\`\`\``;
 
       const discussionURL = `https://github.com/${GITHUB_REPO}/discussions/new?category=levels&title=${encodeURIComponent(
-        `Level Submission: ${formData.levelType} by ${formData.createdBy}`
+        `Level Submission: ${formData.levelType} by ${formData.createdBy}`,
       )}&body=${encodeURIComponent(discussionBody)}`;
 
       // Open GitHub discussion creation page in a new tab
@@ -381,21 +382,24 @@ const LevelBuilder = () => {
     } catch (error) {
       console.error("Error creating GitHub issue:", error);
       alert(
-        "Could not create GitHub issue. Please try again or contact support."
+        "Could not create GitHub issue. Please try again or contact support.",
       );
       setIsSubmitting(false);
     }
   };
 
-  const handleCommunityFormSubmit = (e) => {
+  const handleCommunityFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const isViaEmail = formData.submitVia === "email";
     const isViaGitHub = formData.submitVia === "github";
-    const submitVia = isViaEmail ? "email" : isViaGitHub ? "github" : "";
+    const submitVia = isViaEmail ? "email" : isViaGitHub ? "github" : undefined;
+
+    const validateForm = await validateCommunityForm(submitVia);
 
     // Validate the form
-    if (!validateCommunityForm(submitVia)) {
+    // if (!validateCommunityForm(submitVia)) {
+    if (!validateForm) {
       return; // Don't proceed if validation fails
     }
 
@@ -407,9 +411,11 @@ const LevelBuilder = () => {
     }
   };
 
-  const handleCopyCommunityLevelEmailDetails = () => {
+  const handleCopyCommunityLevelEmailDetails = async () => {
+    const validateForm = await validateCommunityForm();
+
     // Validate the form
-    if (!validateCommunityForm()) {
+    if (!validateForm) {
       return; // Don't proceed if validation fails
     }
 
@@ -422,9 +428,21 @@ const LevelBuilder = () => {
       (err) => {
         console.error("Could not copy text: ", err);
         alert("Failed to copy email details. Please try again.");
-      }
+      },
     );
   };
+
+  useImageGridProcessing({
+    setBoardSize,
+    setBoard,
+    setRegionColors,
+    levelImg: image,
+    setVerticalLines,
+    setHorizontalLines,
+    tolerance,
+    minLineHeight,
+    minLineWidth,
+  });
 
   // Handle ctrl+v to paste image from clipboard
   useEffect(() => {
@@ -432,168 +450,59 @@ const LevelBuilder = () => {
     return () => window.removeEventListener("keydown", handlePasteByShortcut);
   }, []);
 
-  return (
-    <div className="mt-2 mx-2 sm:mx-8">
-      <h1 className="text-4xl mb-6">{t("LEVEL_BUILDER")}</h1>
-
-      <div className="flex flex-col space-y-2">
-        <LevelBuilderSelector
-          levelType={levelType}
-          setLevelType={setLevelType}
-        />
-
-        {isCommunityLevel && <Note />}
-
-        {isCommunityLevel && (
-          <>
-            <CreatedByInput
-              ref={refs.createdBy}
-              value={formData.createdBy}
-              onChange={handleCommunityFormInputChange}
-              error={errors.createdBy}
-            />
-
-            <PersonalLinkInput
-              ref={refs.personalLink}
-              value={formData.personalLink}
-              onChange={handleCommunityFormInputChange}
-              error={errors.personalLink}
-            />
-          </>
-        )}
-
-        <div ref={refs.level}>
-          <div className="flex flex-col sm:flex-row sm:space-x-8 w-full">
-            <div
-              className={`flex flex-col-reverse sm:space-y-0 sm:flex-row sm:space-x-8 ${
-                isCommunityLevel ? "mt-2" : ""
-              }`}
-            >
-              {/* REGION SELECT */}
-              <div className="flex flex-col space-y-2 mb-6 sm:mb-0">
-                <RegionSelect
-                  regionColors={regionColors}
-                  selectedRegion={selectedRegion}
-                  colorOptions={colorOptions}
-                  handleColorChange={handleColorChange}
-                  handleRegionSelect={handleRegionSelect}
-                />
-              </div>
-
-              {/* BOARD SECTION */}
-              <div className="mb-2 sm:mb-0">
-                <div className="flex flex-col sm:flex-row sm:space-x-4 justify-between sm:items-center">
-                  <BoardSizeInput
-                    boardSize={boardSize}
-                    handleBoardSizeChange={handleBoardSizeChange}
-                  />
-
-                  <div className="flex justify-between space-x-4">
-                    <div className="mb-3">
-                      <TestLevelDialog
-                        disabled={board.some((row) =>
-                          row.some((cell) => !cell)
-                        )}
-                        level={{
-                          size: boardSize,
-                          colorRegions: board,
-                          regionColors: regionColors,
-                        }}
-                      />
-                    </div>
-                    <button
-                      onClick={() => {
-                        setBoard(createInitialBoardForBuilder(boardSize));
-                      }}
-                      className="border border-slate-500 rounded-full py-1 px-3 mb-3 whitespace-nowrap w-fit self-end"
-                    >
-                      {t("CLEAR_BOARD")}
-                    </button>
-                  </div>
-                </div>
-                {/* BOARD */}
-                {errors.level && (
-                  <p className="text-red-500 text-xs mb-1">{errors.level}</p>
-                )}
-                <Board
-                  size={boardSize}
-                  board={board}
-                  regionColors={regionColors}
-                  handleSquareClick={handleSquareClick}
-                  handleSquareMouseEnter={handleDrag}
-                  handleSquareTouchMove={handleSquareTouchMove}
-                  hideRegionValues={hideRegionValues}
-                />
-
-                <div className="flex space-x-3 justify-between mb-2">
-                  <div className="flex items-center">
-                    <Switch
-                      checked={hideRegionValues}
-                      onCheckedChange={() =>
-                        setHideRegionValues((prev) => !prev)
-                      }
-                    />
-                    <label
-                      className="whitespace-nowrap pl-2"
-                      onClick={() => setHideRegionValues((prev) => !prev)}
-                    >
-                      {t("HIDE_LETTERS")}
-                    </label>
-                  </div>
-                  <PasteImage handlePaste={handlePaste} />
-                </div>
-
-                {/* Hidden file input */}
-                <input
-                  id="screenshot-upload"
-                  type="file"
-                  accept="image/png"
-                  onChange={handleFileUpload}
-                  style={{ display: "none" }}
-                />
-
-                {image && (
-                  <PreviewImage
-                    image={image}
-                    verticalLines={verticalLines}
-                    horizontalLines={horizontalLines}
-                    showGridLines={showGridLines}
-                    setShowGridLines={setShowGridLines}
-                    tolerance={tolerance}
-                    setTolerance={setTolerance}
-                    minLineHeight={minLineHeight}
-                    setMinLineHeight={setMinLineHeight}
-                    minLineWidth={minLineWidth}
-                    setMinLineWidth={setMinLineWidth}
-                    className="w-full"
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Submit Via */}
-        {isCommunityLevel && (
-          <SubmitViaSection
-            via={formData.submitVia}
-            handleInputChange={handleCommunityFormInputChange}
-          />
-        )}
-
-        {/* Submit Button */}
-        {isCommunityLevel && (
-          <SubmitButton
-            handleSubmit={handleCommunityFormSubmit}
-            isSubmitting={isSubmitting}
-            via={formData.submitVia}
-            handleCopy={handleCopyCommunityLevelEmailDetails}
-            copied={copiedEmailDetails}
-          />
-        )}
-      </div>
-    </div>
-  );
+  return {
+    state: {
+      board,
+      boardSize,
+      regionColors,
+      formData,
+      errors,
+      isSubmitting,
+      levelType,
+      selectedRegion,
+      image,
+      tolerance,
+      minLineHeight,
+      minLineWidth,
+      isCommunityLevel,
+      colorOptions,
+      isTestDialogOpen,
+      hideRegionValues,
+      verticalLines,
+      horizontalLines,
+      showGridLines,
+      copiedEmailDetails,
+    },
+    actions: {
+      handleSquareClick,
+      handleBoardSizeChange,
+      handleCommunityFormSubmit,
+      handlePaste,
+      setLevelType,
+      setBoard,
+      setBoardSize,
+      setSelectedRegion,
+      setImage,
+      setFormData,
+      setRegionColors,
+      setVerticalLines,
+      setHorizontalLines,
+      handleCommunityFormInputChange,
+      handleColorChange,
+      handleRegionSelect,
+      setIsTestDialogOpen,
+      handleDrag,
+      handleSquareTouchMove,
+      setHideRegionValues,
+      handleFileUpload,
+      setShowGridLines,
+      setTolerance,
+      setMinLineHeight,
+      setMinLineWidth,
+      handleCopyCommunityLevelEmailDetails,
+    },
+    refs,
+  };
 };
 
-export default LevelBuilder;
+export default useLevelBuilderLogic;

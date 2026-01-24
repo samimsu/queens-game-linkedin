@@ -1,4 +1,12 @@
-import React from "react";
+import { colorNames } from "@/utils/colors";
+
+interface RegionSelectProps {
+  regionColors: Record<string, string>;
+  selectedRegion: string | null;
+  colorOptions: { name: string; value: string }[];
+  handleColorChange: (region: string, color: keyof typeof colorNames) => void;
+  handleRegionSelect: (region: string) => void;
+}
 
 const RegionSelect = ({
   regionColors,
@@ -6,7 +14,7 @@ const RegionSelect = ({
   colorOptions,
   handleColorChange,
   handleRegionSelect,
-}) => {
+}: RegionSelectProps) => {
   return (
     <div className="region-select">
       {Object.keys(regionColors).map((region) => (
@@ -31,7 +39,12 @@ const RegionSelect = ({
           ></div>
           <select
             value={regionColors[region]}
-            onChange={(e) => handleColorChange(region, e.target.value)}
+            onChange={(e) =>
+              handleColorChange(
+                region,
+                e.target.value as keyof typeof colorNames,
+              )
+            }
             className="col-span-7 border rounded border-slate-500 w-full"
           >
             {colorOptions.map((color) => (

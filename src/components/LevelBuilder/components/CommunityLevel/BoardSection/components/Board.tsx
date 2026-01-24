@@ -1,6 +1,16 @@
-import React, { useState } from "react";
-import Square from "./Square";
-import useGridSize from "../../../hooks/useGridSize";
+import React from "react";
+import Square from "../../../Square";
+import useGridSize from "../../../../../../hooks/useGridSize";
+
+interface BoardProps {
+  size: number;
+  board: (string | null)[][];
+  regionColors: Record<string, string>;
+  handleSquareClick: (row: number, col: number) => void;
+  handleSquareMouseEnter: (row: number, col: number) => void;
+  handleSquareTouchMove: (e: React.TouchEvent<HTMLDivElement>) => void;
+  hideRegionValues: boolean;
+}
 
 const Board = ({
   size,
@@ -10,10 +20,10 @@ const Board = ({
   handleSquareMouseEnter,
   handleSquareTouchMove,
   hideRegionValues,
-}) => {
+}: BoardProps) => {
   const { gridSize } = useGridSize(size, "small");
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     handleSquareTouchMove(e);
   };
 
@@ -38,7 +48,7 @@ const Board = ({
               onPointerDown={() => {
                 handleSquareClick(rowIndex, colIndex);
               }}
-              onPointerEnter={(e) => {
+              onPointerEnter={(e: React.PointerEvent) => {
                 if (e.buttons === 1) handleSquareMouseEnter(rowIndex, colIndex);
               }}
               boardSize={size}
@@ -49,7 +59,7 @@ const Board = ({
               data-col={colIndex} // Add data attributes for touch handling
             />
           );
-        })
+        }),
       )}
     </div>
   );

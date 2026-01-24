@@ -3,6 +3,21 @@ import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { useTranslation } from "react-i18next";
 
+interface PreviewImageProps {
+  image: string;
+  verticalLines: number[];
+  horizontalLines: number[];
+  showGridLines: boolean;
+  setShowGridLines: React.Dispatch<React.SetStateAction<boolean>>;
+  tolerance: number;
+  setTolerance: React.Dispatch<React.SetStateAction<number>>;
+  minLineHeight: number;
+  setMinLineHeight: React.Dispatch<React.SetStateAction<number>>;
+  minLineWidth: number;
+  setMinLineWidth: React.Dispatch<React.SetStateAction<number>>;
+  className?: string;
+}
+
 const PreviewImage = ({
   image,
   verticalLines,
@@ -16,14 +31,17 @@ const PreviewImage = ({
   minLineWidth,
   setMinLineWidth,
   className = "",
-}) => {
-  const canvasRef = useRef(null);
+}: PreviewImageProps) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const { t } = useTranslation();
 
   useEffect(() => {
     if (showGridLines && canvasRef.current) {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
+
+      if (!ctx) return;
+
       const img = new Image();
       img.src = image;
 
