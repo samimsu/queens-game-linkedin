@@ -472,6 +472,7 @@ const useLevelBuilderLogic = () => {
       horizontalLines,
       showGridLines,
       copiedEmailDetails,
+      initialRegionColors,
     },
     actions: {
       handleSquareClick,

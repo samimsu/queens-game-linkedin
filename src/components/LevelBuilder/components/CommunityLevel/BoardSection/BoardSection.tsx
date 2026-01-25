@@ -119,7 +119,7 @@ const BoardSection = ({ state, actions, refs }: BoardSectionProps) => {
                 setBoard={actions.setBoard}
                 setBoardSize={actions.setBoardSize}
                 setRegionColors={actions.setRegionColors}
-                initialRegionColors={state.regionColors}
+                initialRegionColors={state.initialRegionColors}
               />
             )}
 
