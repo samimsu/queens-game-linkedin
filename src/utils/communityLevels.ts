@@ -426,6 +426,17 @@ import level424 from "./community-levels/level424";
 import level425 from "./community-levels/level425";
 import level426 from "./community-levels/level426";
 import level427 from "./community-levels/level427";
+import level428 from "./community-levels/level428";
+import level429 from "./community-levels/level429";
+import level430 from "./community-levels/level430";
+import level431 from "./community-levels/level431";
+import level432 from "./community-levels/level432";
+import level433 from "./community-levels/level433";
+import level434 from "./community-levels/level434";
+import level435 from "./community-levels/level435";
+import level436 from "./community-levels/level436";
+import level437 from "./community-levels/level437";
+import level438 from "./community-levels/level438";
 
 export const communityLevels: { [key: string]: CommunityLevel } = {
   level1,
@@ -855,4 +866,15 @@ export const communityLevels: { [key: string]: CommunityLevel } = {
   level425,
   level426,
   level427,
+  level428,
+  level429,
+  level430,
+  level431,
+  level432,
+  level433,
+  level434,
+  level435,
+  level436,
+  level437,
+  level438,
 };
