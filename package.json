@@ -41,6 +41,7 @@
   },
   "scripts": {
     "start": "vite --port 3001 --host",
+    "start:prod": "set NODE_ENV=production && vite --port 3001 --host",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",

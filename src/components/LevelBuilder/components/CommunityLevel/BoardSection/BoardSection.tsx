@@ -8,6 +8,7 @@ import Board from "./components/Board";
 import { Switch } from "@/components/ui/switch";
 import PasteImage from "./components/PasteImage";
 import PreviewImage from "./components/PreviewImage";
+import DevBoardImporter from "./components/DevBoardImporter";
 
 interface BoardSectionProps {
   state: ReturnType<typeof useLevelBuilderLogic>["state"];
@@ -112,6 +113,15 @@ const BoardSection = ({ state, actions, refs }: BoardSectionProps) => {
               onChange={actions.handleFileUpload}
               style={{ display: "none" }}
             />
+
+            {process.env.NODE_ENV === "development" && (
+              <DevBoardImporter
+                setBoard={actions.setBoard}
+                setBoardSize={actions.setBoardSize}
+                setRegionColors={actions.setRegionColors}
+                initialRegionColors={state.regionColors}
+              />
+            )}
 
             {state.image && (
               <PreviewImage
