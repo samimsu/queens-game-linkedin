@@ -112,7 +112,7 @@ const CommunityLevel = ({
     const alternateKeys = Object.keys(alternateRegionColors);
     if (defaultKeys.length !== alternateKeys.length) return false;
     return defaultKeys.every(
-      (key) => defaultRegionColors[key] === alternateRegionColors[key]
+      (key) => defaultRegionColors[key] === alternateRegionColors[key],
     );
   }, [defaultRegionColors, alternateRegionColors]);
 
@@ -303,7 +303,7 @@ const CommunityLevel = ({
 
   return (
     <div key={id} className="flex flex-col justify-center items-center pt-4">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center space-y-6">
         <div>
           <div
             className={`flex items-center space-x-0 justify-between py-1 w-full min-w-72 ${
