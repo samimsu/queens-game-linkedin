@@ -11,6 +11,7 @@ import {
   RotateCcw,
   CaseUpper,
 } from "lucide-react";
+import { usePalette } from "@/context/PaletteContext";
 import Board from "./components/Board";
 import { createEmptyBoard } from "../../utils/board";
 import BackIcon from "../icons/BackIcon";
@@ -36,6 +37,7 @@ import {
   celadon,
   chardonnay,
   coldPurple,
+  colorNames,
   emerald,
   halfBaked,
   lightGreen,
@@ -67,6 +69,8 @@ const CommunityLevel = ({
   const { theme } = useTheme();
   const { t, i18n } = useTranslation();
   const isVisible = useVisibility();
+  const { globalPalette } = usePalette();
+
   const [useDefaultColors, setUseDefaultColors] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [notification, setNotification] = useState<string | null>(null);
@@ -78,9 +82,9 @@ const CommunityLevel = ({
 
   const boardSize = levelSize;
   const colorRegions = level.colorRegions;
-  const defaultRegionColors = level.regionColors;
+  const levelColors = level.regionColors;
 
-  const alternateRegionColors = useMemo(() => {
+  const defaultColors = useMemo(() => {
     const colorMap: { [key: string]: string } = {
       A: lightWisteria,
       B: chardonnay,
@@ -101,24 +105,45 @@ const CommunityLevel = ({
       Q: macNCheese,
     };
     const newColors: { [key: string]: string } = {};
-    Object.keys(defaultRegionColors).forEach((region) => {
-      newColors[region] = colorMap[region] || defaultRegionColors[region];
+    Object.keys(levelColors).forEach((region) => {
+      newColors[region] = colorMap[region] || levelColors[region];
     });
     return newColors;
-  }, [defaultRegionColors]);
+  }, [levelColors]);
 
   const areColorsEqual = useMemo(() => {
-    const defaultKeys = Object.keys(defaultRegionColors);
-    const alternateKeys = Object.keys(alternateRegionColors);
+    const defaultKeys = Object.keys(levelColors);
+    const alternateKeys = Object.keys(defaultColors);
     if (defaultKeys.length !== alternateKeys.length) return false;
-    return defaultKeys.every(
-      (key) => defaultRegionColors[key] === alternateRegionColors[key],
-    );
-  }, [defaultRegionColors, alternateRegionColors]);
+    return defaultKeys.every((key) => levelColors[key] === defaultColors[key]);
+  }, [levelColors, defaultColors]);
 
-  const regionColors = useDefaultColors
-    ? alternateRegionColors
-    : defaultRegionColors;
+  const regionColors = useMemo(() => {
+    // 1. Get the base colors (Hex codes) for this level
+    const baseColors = useDefaultColors ? defaultColors : levelColors;
+
+    // 2. If no overrides exist in Context, just return base colors (Fast path) ⚡
+    if (Object.keys(globalPalette).length === 0) return baseColors;
+
+    // 3. Map over every region and check for overrides
+    const activeColors: Record<string, string> = {};
+
+    Object.entries(baseColors).forEach(([regionKey, originalHex]) => {
+      // Find the name: "#6C7A89" -> "altoMain"
+      const name =
+        colorNames[originalHex as keyof typeof colorNames] ||
+        colorNames[originalHex.toUpperCase() as keyof typeof colorNames];
+
+      // Check if "altoMain" has been overridden in the globalPalette
+      if (name && globalPalette[name]) {
+        activeColors[regionKey] = globalPalette[name];
+      } else {
+        activeColors[regionKey] = originalHex;
+      }
+    });
+
+    return activeColors;
+  }, [useDefaultColors, defaultColors, levelColors, globalPalette]);
 
   const {
     board,

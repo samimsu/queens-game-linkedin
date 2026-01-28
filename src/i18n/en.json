@@ -115,5 +115,12 @@
   "ZOOM_OUT": "Zoom out",
   "RESET_ZOOM": "Reset zoom",
   "DEFAULT_COLORS_ALREADY_USED": "Already using default colors",
-  "ONLY_1_SOLUTION": "It has only 1 solution."
+  "ONLY_1_SOLUTION": "It has only 1 solution.",
+  "CUSTOM_PALETTE": "Custom Palette",
+  "PALETTE_DESCRIPTION": "Create and save your own color palette for the levels.",
+  "COLOR_WORD": "Color",
+  "SEARCH_COLORS": "Search colors...",
+  "RESET_ALL": "Reset All",
+  "RESET_ALL_COLORS": "Reset all colors",
+  "RESET_COLOR": "Reset color"
 }

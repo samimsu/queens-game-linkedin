@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, Palette, X } from "lucide-react";
 import Queen from "@/components/Queen";
 import DiscordButton from "./LevelSelection/components/DiscordButton";
 import LanguageDropdown from "./LevelSelection/components/LanguageDropdown";
@@ -70,6 +70,18 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-6">
+          <NavLink
+            to="/settings/palette"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-primary text-white p-2 rounded items-center space-x-2 hidden lg:flex"
+                : "p-2 items-center space-x-2 hidden lg:flex"
+            }
+          >
+            <Palette size={20} />
+            <span>Custom Palette</span>
+          </NavLink>
+
           <LanguageDropdown />
           <div className="flex items-center space-x-4 sm:space-x-5">
             <DiscordButton />
@@ -116,6 +128,17 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          <NavLink
+            to="/settings/palette"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-primary text-white p-2 rounded items-center space-x-2 flex lg:hidden"
+                : "p-2 items-center space-x-2 flex lg:hidden"
+            }
+          >
+            <span>Custom Palette</span>
+            <Palette size={20} />
+          </NavLink>
         </div>
       )}
     </nav>
