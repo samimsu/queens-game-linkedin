@@ -23,8 +23,7 @@ async function solveAllCommunityLevels() {
       let count = 0;
       const solutionsArr = [];
       // Run the solver and collect solutions
-      const fn = board.length >= 12 ? getSolutionsSMT : getSolutions;
-      const solutions = await fn(board, async (solution) => {
+      const solutions = await getSolutions(board, async (solution) => {
         count++;
         solutionsArr.push(solution);
         process.stdout.write(`${count} `);
